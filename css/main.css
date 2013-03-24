@@ -1,0 +1,61 @@
+* {
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+@font-face {
+    font-family: pokemon;
+    src: url('font/Pokemon%20GB.ttf');
+}
+body {
+    font-family:pokemon, sans-serif;
+    background: #aeb999;
+    margin:0;
+    padding:0;
+}
+.pikachu {
+    height:500px;
+    width:100%;
+    position:absolute;
+    bottom:0;
+}
+.pikachu .image {
+    width:300px;
+    height:300px;
+    position:absolute;
+    bottom:0px;
+}
+.eevee {
+    height:500px;
+    width:100%;
+    position:absolute;
+    top:0;
+}
+.button {
+    padding:10px 15px;
+    border-radius:5px;
+    display:inline-block;
+    margin:5px;
+    color:white;
+}
+.button:hover {
+    background:#555555;
+    cursor:pointer;
+}
+.attack {
+    background:red;
+}
+.defend {
+    background:green;
+}
+.healthbar {
+    height:20px;
+    width:500px;
+    background-color:green;
+}
+img {
+    max-width:100%;
+}

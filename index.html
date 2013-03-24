@@ -1,15 +1,12 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <title>GBF Battle - jsFiddle demo by Enkera</title>
-  
-  <script type='text/javascript' src='//code.jquery.com/jquery-1.9.1.js'></script>
-  
-  
-  
-  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  <title>Pokémon Mini by Superpencil</title>
+    
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.responsive.min.css"> 
+  <!-- <link rel="stylesheet" type="text/css" href="css/main.css">   -->
   
   <style type='text/css'>
     * {
@@ -22,13 +19,31 @@
 	}
 	@font-face {
 	    font-family: pokemon;
-	    src: url('Pokemon%20GB.ttf');
+	    src: url('font/Pokemon%20GB.ttf');
 	}
 	body {
 	    font-family:pokemon, sans-serif;
 	    background: #aeb999;
 	    margin:0;
 	    padding:0;
+	}
+	.pikachu {
+	    height:500px;
+	    width:100%;
+	    position:absolute;
+	    bottom:0;
+	}
+	.pikachu .image {
+	    width:300px;
+	    height:300px;
+	    position:absolute;
+	    bottom:0px;
+	}
+	.eevee {
+	    height:500px;
+	    width:100%;
+	    position:absolute;
+	    top:0;
 	}
 	.button {
 	    padding:10px 15px;
@@ -52,24 +67,6 @@
 	    width:500px;
 	    background-color:green;
 	}
-	.pikachu {
-	    height:500px;
-	    width:100%;
-	    position:absolute;
-	    bottom:0;
-	}
-	.pikachu .image {
-	    width:300px;
-	    height:300px;
-	    position:absolute;
-	    bottom:0px;
-	}
-	.eevee {
-	    height:500px;
-	    width:100%;
-	    position:absolute;
-	    top:0;
-	}
 	img {
 	    max-width:100%;
 	}
@@ -79,7 +76,7 @@
 
 <body>
 
-<div class="eevee">Enemy health
+<div class="row">Enemy health
     <p class="enemyHealth">50</p>
     <div class="healthbar GBF"></div>
 </div>
@@ -90,13 +87,19 @@
     <p class="myHealth">50</p>
     <div class="healthbar me"></div>
 </div>
-<div class="menu">
-    <div class="button attack">Attack</div>
-    <div class="button defend">Defend</div>
-    <p class="text1">It's a battle!</p>
-    <p class="text2"></p>
+<div class="bottom">
+	<div class="dialog">
+	    <p class="text1">GARY challenges you</p>
+	    <p class="text2">to a POKéMON battle!</p>
+	</div>
+	<div class="menu">
+	    <div class="button attack">Attack</div>
+	    <div class="button defend">Defend</div>
+	</div>
 </div>
-  
+
+<script type='text/javascript' src='//code.jquery.com/jquery-1.9.1.js'></script>
+<!-- <script src="js/main.js"></script> -->
 <script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
 $(document).ready(function () {
@@ -138,9 +141,6 @@ $(document).ready(function () {
 
 });
 });//]]>  
-
 </script>
-  
 </body>
-
 </html>
