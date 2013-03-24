@@ -32,6 +32,14 @@
 	.pikachu, .eevee {
 	overflow: hidden;
 	}
+	.me .pokemon-image{
+        position:relative;
+        left:-1000px;
+	}
+	.foe .pokemon-image{
+        position:relative;
+        right:-1000px;
+	}
 	.button {
 	    padding:10px 15px;
 	    display:inline-block;
@@ -57,13 +65,23 @@
 	.healthcount {
 		display: inline-block;
 	}
-	.pusher {
-		width: 100%;
-		height: 0px;
+	.menu {
+		width:240px;
+		float: right;
+	}
+	.fight-menu {
+		position: absolute;
+		width:340px;
+		right: 0px;
+		background: #dde8c7;
+		display: none;
 	}
 	.foe, .me {
 		height: 300px;
 		overflow: hidden;
+	}
+	.relative {
+		position: relative;
 	}
 	@media(min-width:1600px){
 		.foe, .me {
@@ -87,13 +105,13 @@
 			</div>
 		</div>
 		<div class="span2"></div>
-		<div class="span5">
-			<div class="eevee"><div class="pusher"></div><img src="img/eevee.png" /></div>
+		<div class="span5 pokemon-image">
+			<div class="eevee"><img src="img/eevee.png" /></div>
 		</div>
 	</div>
 	<div class="row me">
-		<div class="span5">
-			<div class="pikachu"><div class="pusher"></div><img src="img/pikachu.png" /></div>
+		<div class="span5 pokemon-image">
+			<div class="pikachu"><img src="img/pikachu.png" /></div>
 		</div>
 		<div class="span2"></div>
 		<div class="span5">
@@ -107,16 +125,22 @@
 		</div>
 	</div>
 	<div class="row messages">
-		<div class="span9">
-		    <p class="text1">GARY sent</p>
-		    <p class="text2">out EEVEE!</p>
+		<div class="span6">
+		    <p class="text1"></p>
+		    <p class="text2"></p>
 		</div>
-		<div class="span3">
+		<div class="span6 relative">
 			<div class="menu">
 				<div class="button fight">FIGHT</div>
 			    <div class="button pkmn"><sup>P</sup><sub>K</sub><sup>M</sup><sub>N</sub></div>
 			    <div class="button item">ITEM</div>
 			    <div class="button run">RUN</div>
+			</div>
+			<div class="fight-menu">
+				<div class="button thundershock">THUNDERSHOCK</div>
+			    <div class="button growl">GROWL</div>
+			    <div class="button tackle">TACKLE</div>
+			    <div class="button --">--</div>
 			</div>
 		</div>
 	</div>
@@ -126,8 +150,15 @@
 <!-- <script src="js/main.js"></script> -->
 <script type='text/javascript'>//<![CDATA[
 $(document).ready(function(){
-	//Opening animations
-	$(".pikachu").slideDown(500);
+	
+	//Opening animations Foe
+	$(".foe .pokemon-image").animate({ right: "0px" }, 1000);
+	$("p.text1").text("GARY sends out EEVEE!");
+	$("p.text2").text(" ");
+	//Opening animations Me
+	$(".me .pokemon-image").delay(800).animate({ left: "0px" }, 1000);
+	$("p.text1").delay(800).text("Go! Pikachu!");
+	$("p.text2").delay(800).text(" ");
 	
 	//Battle calculations
  	var healthCountEevee = 23;
@@ -136,7 +167,10 @@ $(document).ready(function(){
     $(".myHealth").text(healthCountPikachu);
 
     $('.fight').click(function () {
-
+		
+	});
+	
+	$('.thundershock').click(function () {
         //Your attack
         var damage1 = Math.floor(Math.random() * 7 + 1);
         healthCountEevee -= damage1;
@@ -154,7 +188,7 @@ $(document).ready(function(){
 	        $("p.text2").text("You won!");
 	        $(".foeHealth").text("0");
 	        $(".foe .healthbar").css('width', '0%');
-	        $(".foe .pusher").css('height', '500px');
+	        $(".foe .pokemon-image, .foe .stats").delay(500).animate({ bottom: "-500px" }, 1000);
         } else {
 	        //Foe attack
 	        var damage2 = Math.floor(Math.random() * 7 + 1);
@@ -174,7 +208,7 @@ $(document).ready(function(){
 	        $("p.text2").text("You're out of useable POKéMON!");
 	        $(".myHealth").text("0");
 	        $(".me .healthbar").css('width', '0%');
-	        $(".me .pusher").css('height', '500px');
+	        $(".me .pokemon-image, .me .stats").delay(500).animate({ bottom: "-500px" }, 1000);
         };
 	    
     });
