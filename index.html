@@ -15,6 +15,7 @@
 	    -moz-user-select: none;
 	    -ms-user-select: none;
 	    user-select: none;
+	    transition: all 1s ease-in; 
 	}
 	@font-face {
 	    font-family: pokemon;
@@ -64,8 +65,8 @@
 <div class="container">
 	<div class="row">
 		<div class="span5">
-			Eevee
-			<div class="health">HP <div class="healthcount foeHealth">50</div> / 50</div>
+			EEVEE
+			<div class="health">HP <div class="healthcount foeHealth">23</div> / 23</div>
 		    <div class="healthbarcontainer">
 			    <div class="healthbar foe"></div>
 		    </div>
@@ -81,8 +82,8 @@
 		</div>
 		<div class="span2"></div>
 		<div class="span5">
-			Pikachu
-		    <div class="health">HP <div class="healthcount myHealth">50</div> / 50</div>
+			PIKACHU
+		    <div class="health">HP <div class="healthcount myHealth">19</div> / 19</div>
 		    <div class="healthbarcontainer">
 			    <div class="healthbar me"></div>
 		    </div>
@@ -90,12 +91,12 @@
 	</div>
 	<div class="row">
 		<div class="span8">
-		    <p class="text1">GARY challenges you</p>
-		    <p class="text2">to a POKéMON battle!</p>
+		    <p class="text1">GARY sent</p>
+		    <p class="text2">out EEVEE!</p>
 		</div>
 		<div class="span4">
 			<div class="button attack">Attack</div>
-		    <div class="button defend">Items</div>
+		    <div class="button items">Items</div>
 		    <div class="button attack"><sup>P</sup><sub>K</sub><sup>M</sup><sub>N</sub></div>
 		    <div class="button defend">Run</div>
 		</div>
@@ -106,47 +107,64 @@
 <!-- <script src="js/main.js"></script> -->
 <script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
- 	var healthCountEevee = 50;
-    var healthCountPikachu = 50;
+ 	var healthCountEevee = 23;
+    var healthCountPikachu = 19;
     $(".foeHealth").text(healthCountEevee);
     $(".myHealth").text(healthCountPikachu);
 
     $('.attack').click(function () {
 
         //Your attack
-        var damage1 = Math.floor(Math.random() * 10 + 1);
+        var damage1 = Math.floor(Math.random() * 7 + 1);
         healthCountEevee -= damage1;
         $("p.text1").text("You did " + damage1 + " damage!");
         $(".foeHealth").text(healthCountEevee);
-        $(".foe").css('width', healthCountEevee * 2 + '%');
+        $(".foe").css('width', healthCountEevee * 3 + '%');
+        
+        function foeAttack (){
+        	//Foe attack
+	        var damage2 = Math.floor(Math.random() * 7 + 1);
+	        healthCountPikachu -= damage2;
+	        $("p.text2").text("They did " + damage2 + " damage to you.");
+	        $(".myHealth").text(healthCountPikachu);
+	        $(".me").css('width', healthCountPikachu * 3 + '%');
+        };
         
         if (healthCountEevee <= 0) {
 	        $(".attack").css('display', 'none');
 	        $(".defend").css('display', 'none');
 	        $("p.text1").text("Eevee fainted!");
-	        $("p.text2").text(" ");
+	        $("p.text2").text("You won!");
 	        $(".foeHealth").text("0");
 	        $(".foe").css('width', '0%');
-	        $(".eevee").css('padding-top', '500px');
-        };
-
-        //Foe attack
-        var damage2 = Math.floor(Math.random() * 10 + 1);
-        healthCountPikachu -= damage2;
-        $("p.text2").text("They did " + damage2 + " damage to you.");
-        $(".myHealth").text(healthCountPikachu);
-        $(".me").css('width', healthCountPikachu * 2 + '%');
-        
+	        $(".eevee").fadeOut(500);
+        } else {
+	        foeAttack ();
+	    };
+	    
+	    if (healthCountPikachu <= 0) {
+	        $(".attack").css('display', 'none');
+	        $(".defend").css('display', 'none');
+	        $("p.text1").text("Pikachu fainted...");
+	        $("p.text2").text("You're out of useable POKéMON!");
+	        $(".myHealth").text("0");
+	        $(".me").css('width', '0%');
+	        $(".pikachu").fadeOut(500);
+        } else {
+	        foeAttack ();
+	    };
+	    
     });
 
+    $('.items').click(function () {
+
+    });
+    
     $('.defend').click(function () {
 
-       //Foe attack
-        var damage2 = Math.floor(Math.random() * 2);
-        healthYou -= damage2;
-        $("p.text2").text("They did " + damage2 + " damage to you.");
-        $(".myHealth").text(healthCountPikachu);
-        $(".me").css('width', healthPikachu * 2 + '%');
+    });
+    
+    $('.defend').click(function () {
 
     });
 
