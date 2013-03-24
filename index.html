@@ -22,50 +22,30 @@
 	}
 	body {
 	    font-family:pokemon, sans-serif;
-	    background: #d2deba;
+	    background: #dde8c7;
 	    margin:0;
 	    padding:0;
-	    text-shadow: 2px 2px 0px rgba(0,0,0,0.3)
+	    text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+	    line-height: 150%;
 	}
-	.pikachu {
-	    height:500px;
-	    width:100%;
-	    position:absolute;
-	    bottom:0;
-	}
-	.pikachu .image {
-	    width:300px;
-	    height:300px;
-	    position:absolute;
-	    bottom:0px;
-	}
-	.eevee {
-	    height:500px;
-	    width:100%;
-	    position:absolute;
-	    top:0;
+	.pikachu, .eevee {
+	overflow: hidden;
 	}
 	.button {
 	    padding:10px 15px;
-	    border-radius:5px;
 	    display:inline-block;
-	    margin:5px;
-	    color:white;
 	}
 	.button:hover {
-	    background:#555555;
 	    cursor:pointer;
 	}
-	.attack {
-	    background:red;
-	}
-	.defend {
-	    background:green;
-	}
 	.healthbar {
-	    height:20px;
+	    height:10px;
 	    width:100%;
-	    background-color:green;
+	    background-color:#00f800;
+	}
+	.healthbarcontainer {
+		border: 5px solid rgba(0,0,0,0.75);
+		box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
 	}
 	img {
 	    max-width:100%;
@@ -74,7 +54,7 @@
 		margin-top: 40px;
 	}
 	.healthcount {
-		float: left;
+		display: inline-block;
 	}
   </style>
 
@@ -86,32 +66,38 @@
 		<div class="span5">
 			Eevee
 			<div class="health">HP <div class="healthcount foeHealth">50</div> / 50</div>
-		    <div class="healthbar foe"></div>
+		    <div class="healthbarcontainer">
+			    <div class="healthbar foe"></div>
+		    </div>
 		</div>
 		<div class="span2"></div>
 		<div class="span5">
-			<img src="img/pikachu.png" />
+			<div class="eevee"><img src="img/eevee.png" /></div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="span5">
-			<img src="img/pikachu.png" />
+			<div class="pikachu"><img src="img/pikachu.png" /></div>
 		</div>
 		<div class="span2"></div>
 		<div class="span5">
 			Pikachu
 		    <div class="health">HP <div class="healthcount myHealth">50</div> / 50</div>
-		    <div class="healthbar me"></div>
+		    <div class="healthbarcontainer">
+			    <div class="healthbar me"></div>
+		    </div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="span7">
+		<div class="span8">
 		    <p class="text1">GARY challenges you</p>
 		    <p class="text2">to a POKéMON battle!</p>
 		</div>
-		<div class="span5">
+		<div class="span4">
 			<div class="button attack">Attack</div>
-		    <div class="button defend">Defend</div>
+		    <div class="button defend">Items</div>
+		    <div class="button attack"><sup>P</sup><sub>K</sub><sup>M</sup><sub>N</sub></div>
+		    <div class="button defend">Run</div>
 		</div>
 	</div>
 </div>
@@ -120,7 +106,7 @@
 <!-- <script src="js/main.js"></script> -->
 <script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
- var healthCountEevee = 50;
+ 	var healthCountEevee = 50;
     var healthCountPikachu = 50;
     $(".foeHealth").text(healthCountEevee);
     $(".myHealth").text(healthCountPikachu);
@@ -133,6 +119,16 @@ $(window).load(function(){
         $("p.text1").text("You did " + damage1 + " damage!");
         $(".foeHealth").text(healthCountEevee);
         $(".foe").css('width', healthCountEevee * 2 + '%');
+        
+        if (healthCountEevee <= 0) {
+	        $(".attack").css('display', 'none');
+	        $(".defend").css('display', 'none');
+	        $("p.text1").text("Eevee fainted!");
+	        $("p.text2").text(" ");
+	        $(".foeHealth").text("0");
+	        $(".foe").css('width', '0%');
+	        $(".eevee").css('padding-top', '500px');
+        };
 
         //Foe attack
         var damage2 = Math.floor(Math.random() * 10 + 1);
@@ -140,7 +136,7 @@ $(window).load(function(){
         $("p.text2").text("They did " + damage2 + " damage to you.");
         $(".myHealth").text(healthCountPikachu);
         $(".me").css('width', healthCountPikachu * 2 + '%');
-
+        
     });
 
     $('.defend').click(function () {
@@ -153,10 +149,6 @@ $(window).load(function(){
         $(".me").css('width', healthPikachu * 2 + '%');
 
     });
-
-    if (healthEevee <= 0) {
-        $('.button').removeClass('.attack');
-    };
 
 });//]]> 
 </script>
