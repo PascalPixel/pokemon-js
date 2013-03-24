@@ -15,7 +15,6 @@
 	    -moz-user-select: none;
 	    -ms-user-select: none;
 	    user-select: none;
-	    transition: all 1s ease-in; 
 	}
 	@font-face {
 	    font-family: pokemon;
@@ -28,6 +27,7 @@
 	    padding:0;
 	    text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
 	    line-height: 150%;
+	    transition: all 1s; 
 	}
 	.pikachu, .eevee {
 	overflow: hidden;
@@ -57,115 +57,139 @@
 	.healthcount {
 		display: inline-block;
 	}
+	.pusher {
+		width: 100%;
+		height: 0px;
+	}
+	.foe, .me {
+		height: 300px;
+		overflow: hidden;
+	}
+	@media(min-width:1600px){
+		.foe, .me {
+		height: 370px;
+		}
+	}
   </style>
 
 </head>
 
 <body>
 <div class="container">
-	<div class="row">
+	<div class="row foe">
 		<div class="span5">
-			EEVEE
-			<div class="health">HP <div class="healthcount foeHealth">23</div> / 23</div>
-		    <div class="healthbarcontainer">
-			    <div class="healthbar foe"></div>
-		    </div>
+			<div class="stats">
+				EEVEE
+				<div class="health">HP <div class="healthcount foeHealth">23</div> / 23</div>
+			    <div class="healthbarcontainer">
+				    <div class="healthbar"></div>
+			    </div>
+			</div>
 		</div>
 		<div class="span2"></div>
 		<div class="span5">
-			<div class="eevee"><img src="img/eevee.png" /></div>
+			<div class="eevee"><div class="pusher"></div><img src="img/eevee.png" /></div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row me">
 		<div class="span5">
-			<div class="pikachu"><img src="img/pikachu.png" /></div>
+			<div class="pikachu"><div class="pusher"></div><img src="img/pikachu.png" /></div>
 		</div>
 		<div class="span2"></div>
 		<div class="span5">
-			PIKACHU
-		    <div class="health">HP <div class="healthcount myHealth">19</div> / 19</div>
-		    <div class="healthbarcontainer">
-			    <div class="healthbar me"></div>
-		    </div>
+			<div class="stats">
+				PIKACHU
+			    <div class="health">HP <div class="healthcount myHealth">19</div> / 19</div>
+			    <div class="healthbarcontainer">
+				    <div class="healthbar"></div>
+			    </div>
+			</div>
 		</div>
 	</div>
-	<div class="row">
-		<div class="span8">
+	<div class="row messages">
+		<div class="span9">
 		    <p class="text1">GARY sent</p>
 		    <p class="text2">out EEVEE!</p>
 		</div>
-		<div class="span4">
-			<div class="button attack">Attack</div>
-		    <div class="button items">Items</div>
-		    <div class="button attack"><sup>P</sup><sub>K</sub><sup>M</sup><sub>N</sub></div>
-		    <div class="button defend">Run</div>
+		<div class="span3">
+			<div class="menu">
+				<div class="button fight">FIGHT</div>
+			    <div class="button pkmn"><sup>P</sup><sub>K</sub><sup>M</sup><sub>N</sub></div>
+			    <div class="button item">ITEM</div>
+			    <div class="button run">RUN</div>
+			</div>
 		</div>
 	</div>
 </div>
 
 <script type='text/javascript' src='js/jquery-1.9.1.js'></script>
 <!-- <script src="js/main.js"></script> -->
-<script type='text/javascript'>//<![CDATA[ 
-$(window).load(function(){
+<script type='text/javascript'>//<![CDATA[
+$(document).ready(function(){
+	//Opening animations
+	$(".pikachu").slideDown(500);
+	
+	//Battle calculations
  	var healthCountEevee = 23;
     var healthCountPikachu = 19;
     $(".foeHealth").text(healthCountEevee);
     $(".myHealth").text(healthCountPikachu);
 
-    $('.attack').click(function () {
+    $('.fight').click(function () {
 
         //Your attack
         var damage1 = Math.floor(Math.random() * 7 + 1);
         healthCountEevee -= damage1;
         $("p.text1").text("You did " + damage1 + " damage!");
         $(".foeHealth").text(healthCountEevee);
-        $(".foe").css('width', healthCountEevee * 3 + '%');
+        $(".foe .healthbar").css('width', healthCountEevee * 3 + '%');
         
-        function foeAttack (){
-        	//Foe attack
-	        var damage2 = Math.floor(Math.random() * 7 + 1);
-	        healthCountPikachu -= damage2;
-	        $("p.text2").text("They did " + damage2 + " damage to you.");
-	        $(".myHealth").text(healthCountPikachu);
-	        $(".me").css('width', healthCountPikachu * 3 + '%');
-        };
+        if (healthCountEevee <= 8) {
+	        $(".foe .healthbar").css('background-color', 'red');
+        }; 
         
-        if (healthCountEevee <= 0) {
-	        $(".attack").css('display', 'none');
-	        $(".defend").css('display', 'none');
+        if (healthCountEevee < 1) {
+	        $(".menu").css('display', 'none');
 	        $("p.text1").text("Eevee fainted!");
 	        $("p.text2").text("You won!");
 	        $(".foeHealth").text("0");
-	        $(".foe").css('width', '0%');
-	        $(".eevee").fadeOut(500);
+	        $(".foe .healthbar").css('width', '0%');
+	        $(".foe .pusher").css('height', '500px');
         } else {
-	        foeAttack ();
+	        //Foe attack
+	        var damage2 = Math.floor(Math.random() * 7 + 1);
+	        healthCountPikachu -= damage2;
+	        $("p.text2").text("Eevee did " + damage2 + " damage to you.");
+	        $(".myHealth").text(healthCountPikachu);
+	        $(".me .healthbar").css('width', healthCountPikachu / 3.5 * healthCountPikachu  + '%');
+	        
+	        if (healthCountPikachu <= 7) {
+	        	$(".me .healthbar").css('background-color', 'red');
+	        }
 	    };
 	    
-	    if (healthCountPikachu <= 0) {
-	        $(".attack").css('display', 'none');
-	        $(".defend").css('display', 'none');
+	    if (healthCountPikachu < 1) {
+	        $(".menu").css('display', 'none');
 	        $("p.text1").text("Pikachu fainted...");
 	        $("p.text2").text("You're out of useable POKéMON!");
 	        $(".myHealth").text("0");
-	        $(".me").css('width', '0%');
-	        $(".pikachu").fadeOut(500);
-        } else {
-	        foeAttack ();
-	    };
+	        $(".me .healthbar").css('width', '0%');
+	        $(".me .pusher").css('height', '500px');
+        };
 	    
     });
 
-    $('.items').click(function () {
+    $('.pkmn').click(function () {
 
     });
     
-    $('.defend').click(function () {
+    $('.item').click(function () {
 
     });
     
-    $('.defend').click(function () {
-
+    $('.run').click(function () {
+	    $("p.text1").text("You can't run away");
+	    $("p.text2").text("from a POKéMON battle!");
     });
 
 });//]]> 
