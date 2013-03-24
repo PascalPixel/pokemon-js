@@ -167,10 +167,13 @@ $(document).ready(function(){
     $(".myHealth").text(healthCountPikachu);
 
     $('.fight').click(function () {
-		
+		$(".fight-menu").css('display', 'block');
 	});
 	
 	$('.thundershock').click(function () {
+		//Hide fight-menu
+		$(".fight-menu").css('display', 'none');
+		
         //Your attack
         var damage1 = Math.floor(Math.random() * 7 + 1);
         healthCountEevee -= damage1;
