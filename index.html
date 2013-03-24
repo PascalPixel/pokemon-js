@@ -20,6 +20,10 @@
 	    font-family: pokemon;
 	    src: url('font/Pokemon%20GB.ttf');
 	}
+	@font-face {
+	    font-family: pokemon-KT;
+	    src: url('font/Pokemon%20GB%20Japan%20KT.ttf');
+	}
 	body {
 	    font-family:pokemon, sans-serif;
 	    background: #dde8c7;
@@ -68,6 +72,7 @@
 	.menu {
 		width:240px;
 		float: right;
+		display: none;
 	}
 	.fight-menu {
 		position: absolute;
@@ -152,13 +157,25 @@
 $(document).ready(function(){
 	
 	//Opening animations Foe
-	$(".foe .pokemon-image").animate({ right: "0px" }, 1000);
+	window.setTimeout(function () {
 	$("p.text1").text("GARY sends out EEVEE!");
 	$("p.text2").text(" ");
+	$(".foe .pokemon-image").delay(200).animate({ right: "0px" }, 1000);
+	}, 0);
+	
 	//Opening animations Me
-	$(".me .pokemon-image").delay(800).animate({ left: "0px" }, 1000);
-	$("p.text1").delay(800).text("Go! Pikachu!");
-	$("p.text2").delay(800).text(" ");
+	window.setTimeout(function () {
+    $("p.text1").text("Go! Pikachu!");
+	$("p.text2").text(" ");
+	$(".me .pokemon-image").delay(400).animate({ left: "0px" }, 1000);
+	}, 1500);
+	
+	//Menu appears
+	window.setTimeout(function () {
+    $("p.text1").text("What will you do?");
+	$("p.text2").text(" ");
+	$(".menu").css('display', 'block');
+	}, 4000);
 	
 	//Battle calculations
  	var healthCountEevee = 23;
@@ -207,11 +224,22 @@ $(document).ready(function(){
 	    
 	    if (healthCountPikachu < 1) {
 	        $(".menu").css('display', 'none');
-	        $("p.text1").text("Pikachu fainted...");
-	        $("p.text2").text("You're out of useable POKéMON!");
 	        $(".myHealth").text("0");
 	        $(".me .healthbar").css('width', '0%');
-	        $(".me .pokemon-image, .me .stats").delay(500).animate({ bottom: "-500px" }, 1000);
+	        $(".me .stats").css('display', 'none');
+	        $(".me .pokemon-image").delay(500).animate({ bottom: "-500px" }, 1000);
+	        window.setTimeout(function () {
+			    $("p.text1").text("Pikachu fainted...");
+			    $("p.text2").text(" ");
+			}, 2000);
+			window.setTimeout(function () {
+			    $("p.text1").text("ASH is out of");
+			    $("p.text2").text("useable POKéMON...");
+			}, 4000);
+			window.setTimeout(function () {
+			    $("p.text1").text("ASH is whited out!");
+			    $("p.text2").text(" ");
+			}, 6000);
         };
 	    
     });
