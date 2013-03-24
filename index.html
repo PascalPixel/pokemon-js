@@ -5,17 +5,16 @@
   <title>Pokémon Mini by Superpencil</title>
     
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.responsive.min.css"> 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css"> 
   <!-- <link rel="stylesheet" type="text/css" href="css/main.css">   -->
-  
   <style type='text/css'>
     * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+	    -webkit-touch-callout: none;
+	    -webkit-user-select: none;
+	    -khtml-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    user-select: none;
 	}
 	@font-face {
 	    font-family: pokemon;
@@ -26,6 +25,7 @@
 	    background: #d2deba;
 	    margin:0;
 	    padding:0;
+	    text-shadow: 2px 2px 0px rgba(0,0,0,0.3)
 	}
 	.pikachu {
 	    height:500px;
@@ -64,11 +64,17 @@
 	}
 	.healthbar {
 	    height:20px;
-	    width:500px;
+	    width:100%;
 	    background-color:green;
 	}
 	img {
 	    max-width:100%;
+	}
+	.row {
+		margin-top: 40px;
+	}
+	.healthcount {
+		float: left;
 	}
   </style>
 
@@ -77,82 +83,82 @@
 <body>
 <div class="container">
 	<div class="row">
-		<div class="span6">
+		<div class="span5">
 			Eevee
-			<div class="health">HP <div class="enemyHealth">50</div> / 50</div>
-		    <div class="healthbar eevee"></div>
+			<div class="health">HP <div class="healthcount foeHealth">50</div> / 50</div>
+		    <div class="healthbar foe"></div>
 		</div>
-		<div class="span6">
+		<div class="span2"></div>
+		<div class="span5">
 			<img src="img/pikachu.png" />
 		</div>
 	</div>
 	<div class="row">
-		<div class="span6">
+		<div class="span5">
 			<img src="img/pikachu.png" />
 		</div>
-		<div class="span6">
+		<div class="span2"></div>
+		<div class="span5">
 			Pikachu
-		    <div class="health">HP <p class="myHealth">50</p> / 50</div>
-		    <div class="healthbar pikachu"></div>
+		    <div class="health">HP <div class="healthcount myHealth">50</div> / 50</div>
+		    <div class="healthbar me"></div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="span8">
+		<div class="span7">
 		    <p class="text1">GARY challenges you</p>
 		    <p class="text2">to a POKéMON battle!</p>
 		</div>
-		<div class="span4">
+		<div class="span5">
 			<div class="button attack">Attack</div>
 		    <div class="button defend">Defend</div>
 		</div>
 	</div>
 </div>
 
-<script type='text/javascript' src='//code.jquery.com/jquery-1.9.1.js'></script>
+<script type='text/javascript' src='js/jquery-1.9.1.js'></script>
 <!-- <script src="js/main.js"></script> -->
 <script type='text/javascript'>//<![CDATA[ 
 $(window).load(function(){
-$(document).ready(function () {
-    var healthEevee = 50;
-    var healthPikachu = 50;
-    $("p.enemyHealth").text(healthEevee);
-    $("p.myHealth").text(healthPikachu);
+ var healthCountEevee = 50;
+    var healthCountPikachu = 50;
+    $(".foeHealth").text(healthCountEevee);
+    $(".myHealth").text(healthCountPikachu);
 
     $('.attack').click(function () {
 
-        //You attack
+        //Your attack
         var damage1 = Math.floor(Math.random() * 10 + 1);
-        healthEevee -= damage1;
+        healthCountEevee -= damage1;
         $("p.text1").text("You did " + damage1 + " damage!");
-        $("p.enemyHealth").text(healthEevee);
-        $(".eevee").css('width', healthEevee + '0px');
+        $(".foeHealth").text(healthCountEevee);
+        $(".foe").css('width', healthCountEevee * 2 + '%');
 
-        //GBF attack
+        //Foe attack
         var damage2 = Math.floor(Math.random() * 10 + 1);
-        healthYou -= damage2;
+        healthCountPikachu -= damage2;
         $("p.text2").text("They did " + damage2 + " damage to you.");
-        $("p.myHealth").text(healthPikachu);
-        $(".pikachu").css('width', healthPikachu + '0px');
+        $(".myHealth").text(healthCountPikachu);
+        $(".me").css('width', healthCountPikachu * 2 + '%');
 
     });
 
     $('.defend').click(function () {
 
-        //GBF attack
+       //Foe attack
         var damage2 = Math.floor(Math.random() * 2);
         healthYou -= damage2;
         $("p.text2").text("They did " + damage2 + " damage to you.");
-        $("p.myHealth").text(healthYou);
-        $(".me").css('width', healthYou + '0px');
+        $(".myHealth").text(healthCountPikachu);
+        $(".me").css('width', healthPikachu * 2 + '%');
 
     });
 
     if (healthEevee <= 0) {
         $('.button').removeClass('.attack');
     };
-    
-});
-});//]]>  
+
+});//]]> 
 </script>
 </body>
 </html>
