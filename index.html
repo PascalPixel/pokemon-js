@@ -3,6 +3,29 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <title>Pokémon Mini by Superpencil</title>
+  
+	<!-- iOS Webapp -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="viewport" content="width=320.1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<!-- iPhone -->
+	<link rel="apple-touch-icon" sizes="57x57" href="http://thenextweb.com/conference/europe2013/ios/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-startup-image" media="(device-width: 320px)" href="http://thenextweb.com/conference/europe2013/ios/apple-touch-startup-image-320x460.png">
+	<!-- iPhone (Retina) -->
+	<link rel="apple-touch-icon" sizes="114x114" href="ios/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="http://thenextweb.com/conference/europe2013/ios/apple-touch-startup-image-640x920.png">
+	<!-- iPhone 5 -->
+	<link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="ios/apple-touch-startup-image-640x1096.png">
+	<!-- iPad -->
+	<link rel="apple-touch-icon" sizes="72x72" href="ios/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: portrait)" href="http://thenextweb.com/conference/europe2013/ios/apple-touch-startup-image-768x1004.png">
+	<link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: landscape)" href="http://thenextweb.com/conference/europe2013/ios/apple-touch-startup-image-748x1024.png">
+	<!-- iPad (Retina) -->
+	<link rel="apple-touch-icon" sizes="144x144" href="http://thenextweb.com/conference/europe2013/ios/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" href="http://thenextweb.com/conference/europe2013/ios/apple-touch-startup-image-1536x2008.png">
+	<link rel="apple-touch-startup-image" media="(device-width: 768px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" href="http://thenextweb.com/conference/europe2013/ios/apple-touch-startup-image-1496x2048.png">
+	<!-- iOS Webapp end -->
     
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css"> 
@@ -70,7 +93,7 @@
 		display: inline-block;
 	}
 	.menu {
-		width:240px;
+		width:190px;
 		float: right;
 		display: none;
 	}
@@ -91,13 +114,13 @@
 
 </head>
 
-<body>
-<div class="container">
+<body style="width:320px;">
+<div class="container-fluid">
 	<div class="row-fluid foe">
 		<div class="span5">
 			<div class="stats">
 				EEVEE
-				<div class="health">HP <div class="healthcount foeHealth">23</div> / 23</div>
+				<div class="health">HP <div class="healthcount foeHealth">23</div>/23</div>
 			    <div class="healthbarcontainer">
 				    <div class="healthbar"></div>
 			    </div>
@@ -116,7 +139,7 @@
 		<div class="span5">
 			<div class="stats">
 				PIKACHU
-			    <div class="health">HP <div class="healthcount myHealth">19</div> / 19</div>
+			    <div class="health">HP <div class="healthcount myHealth">19</div>/19</div>
 			    <div class="healthbarcontainer">
 				    <div class="healthbar"></div>
 			    </div>
