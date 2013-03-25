@@ -63,7 +63,7 @@
 	img {
 	    max-width:100%;
 	}
-	.row {
+	.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
 		margin-top: 40px;
 	}
 	.healthcount {
@@ -82,16 +82,10 @@
 		display: none;
 	}
 	.foe, .me {
-		height: 300px;
 		overflow: hidden;
 	}
 	.relative {
 		position: relative;
-	}
-	@media(min-width:1600px){
-		.foe, .me {
-		height: 370px;
-		}
 	}
   </style>
 
@@ -99,7 +93,7 @@
 
 <body>
 <div class="container">
-	<div class="row foe">
+	<div class="row-fluid foe">
 		<div class="span5">
 			<div class="stats">
 				EEVEE
@@ -114,7 +108,7 @@
 			<div class="eevee"><img src="img/eevee.png" /></div>
 		</div>
 	</div>
-	<div class="row me">
+	<div class="row-fluid me">
 		<div class="span5 pokemon-image">
 			<div class="pikachu"><img src="img/pikachu.png" /></div>
 		</div>
@@ -129,7 +123,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row messages">
+	<div class="row-fluid messages">
 		<div class="span6">
 		    <p class="text1"></p>
 		    <p class="text2"></p>
