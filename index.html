@@ -142,7 +142,7 @@
 		</div>
 		<div class="span2"></div>
 		<div class="span5 pokemon-image">
-			<div class="eevee"><img src="img/eevee.png" /></div>
+			<div class="eevee"></div>
 		</div>
 	</div>
 	<div class="row-fluid me">
@@ -236,14 +236,14 @@ $(document).ready(function(){
 		} else if (healthCountPikachu > 10 && healthCountPikachu < 19) {
 			$("p.text1").text("Used POTION!");
 			$("p.text2").text(" ");
-			healthCountPikachu += 8;
+			healthCountPikachu += 10;
 			$(".myHealth").text(healthCountPikachu);
 			$(".me .healthbar").animate({ width: healthCountPikachu * 3 + '%'}, 500);
 			potionCount = 0;
 		} else {
 			$("p.text1").text("Used POTION!");
 			$("p.text2").text(" ");
-			healthCountPikachu += 8;
+			healthCountPikachu += 10;
 			$(".myHealth").text(healthCountPikachu);
 			$(".me .healthbar").animate({ width: healthCountPikachu * 3 + '%'}, 500);
 			potionCount = 0;
@@ -265,7 +265,7 @@ $(document).ready(function(){
 		$(".fight-menu").css('display', 'none');
 		
         //Your attack
-        var damage1 = Math.floor(Math.random() * 6 + 3);
+        var damage1 = Math.floor(Math.random() * 4 + 3);
         healthCountEevee -= damage1;
         $("p.text1").text("You did " + damage1 + " damage!");
         $(".foeHealth").text(healthCountEevee);
@@ -277,14 +277,24 @@ $(document).ready(function(){
         
         if (healthCountEevee < 1) {
 	        $(".menu").css('display', 'none');
-	        $("p.text1").text("Eevee fainted!");
-	        $("p.text2").text("You won!");
 	        $(".foeHealth").text("0");
 	        $(".foe .healthbar").css('width', '0%');
 	        $(".foe .pokemon-image, .foe .stats").delay(500).animate({ bottom: "-500px" }, 1000);
+	        window.setTimeout(function () {
+			    $("p.text1").text("EEVEE fainted!");
+			    $("p.text2").text(" ");
+				window.setTimeout(function () {
+				    $("p.text1").text("Got $5 for winning!");
+				    $("p.text2").text("");
+					window.setTimeout(function () {
+					    $("p.text1").text("GARY: I can't believe it!");
+					    $("p.text2").text("I chose the wrong Pokémon!");
+					}, 2000);
+				}, 2000);
+			}, 2000);
         } else {
 	        //Foe attack
-	        var damage2 = Math.floor(Math.random() * 6 + 3);
+	        var damage2 = Math.floor(Math.random() * 4 + 4);
 	        healthCountPikachu -= damage2;
 	        $("p.text2").text("Eevee did " + damage2 + " damage to you.");
 	        $(".myHealth").text(healthCountPikachu);
@@ -304,15 +314,15 @@ $(document).ready(function(){
 	        window.setTimeout(function () {
 			    $("p.text1").text("Pikachu fainted...");
 			    $("p.text2").text(" ");
+				window.setTimeout(function () {
+				    $("p.text1").text("ASH is out of");
+				    $("p.text2").text("useable POKéMON...");
+					window.setTimeout(function () {
+					    $("p.text1").text("ASH whited out!");
+					    $("p.text2").text(" ");
+					}, 2000);
+				}, 2000);
 			}, 2000);
-			window.setTimeout(function () {
-			    $("p.text1").text("ASH is out of");
-			    $("p.text2").text("useable POKéMON...");
-			}, 4000);
-			window.setTimeout(function () {
-			    $("p.text1").text("ASH is whiped out!");
-			    $("p.text2").text(" ");
-			}, 6000);
         };
 	    
     });
