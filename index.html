@@ -61,11 +61,11 @@
 	}
 	.me .pokemon-image{
         position:relative;
-        left:-1000px;
+        left:1000px;
 	}
 	.foe .pokemon-image{
         position:relative;
-        right:-1000px;
+        right:1000px;
 	}
 	.button {
 	    padding:10px 15px;
@@ -132,6 +132,7 @@
 <div class="container">
 	<div class="row-fluid foe">
 		<div class="span5">
+			<div class="gary_balls"><img src="img/gary_balls.png" /></div>
 			<div class="stats">
 				EEVEE
 				<div class="health">HP <div class="healthcount foeHealth">23</div>/23</div>
@@ -142,15 +143,20 @@
 		</div>
 		<div class="span2"></div>
 		<div class="span5 pokemon-image">
-			<div class="eevee"></div>
+			<div class="gary_black"><img src="img/gary_black.png" /></div>
+			<div class="gary"><img src="img/gary.png" /></div>
+			<div class="eevee"><img src="img/eevee.png" /></div>
 		</div>
 	</div>
 	<div class="row-fluid me">
 		<div class="span5 pokemon-image">
+			<div class="ash_black"><img src="img/ash_black.png" /></div>
+			<div class="ash"><img src="img/ash.png" /></div>
 			<div class="pikachu"><img src="img/pikachu.png" /></div>
 		</div>
 		<div class="span2"></div>
 		<div class="span5">
+			<div class="ash_balls"><img src="img/ash_balls.png" /></div>
 			<div class="stats">
 				PIKACHU
 			    <div class="health">HP <div class="healthcount myHealth">19</div>/19</div>
@@ -201,26 +207,49 @@
 <script type='text/javascript'>//<![CDATA[
 $(document).ready(function(){
 	
-	//Opening animations Foe
-	window.setTimeout(function () {
-	$("p.text1").text("GARY sends out EEVEE!");
-	$("p.text2").text(" ");
-	$(".foe .pokemon-image").delay(200).animate({ right: "0px" }, 1000);
-	
-		//Opening animations Me
+	//Opening animations trainers
+	$(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
+	$(".foe .pokemon-image").animate({ right: "0px" }, 1700, 'linear');
+	$(".me .pokemon-image").animate({ left: "0px" }, 1700, 'linear');
+		
 		window.setTimeout(function () {
-	    $("p.text1").text("Go! Pikachu!");
-		$("p.text2").text(" ");
-		$(".me .pokemon-image").delay(400).animate({ left: "0px" }, 1000);
-			
-			//Menu appears
+			$(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
+			$(".gary_black, .ash_black").css('display', 'none');
 			window.setTimeout(function () {
-		    $("p.text1").text("What will you do?");
-			$("p.text2").text(" ");
-			$(".menu").css('display', 'block');
-			}, 2000);
-		}, 1500);
-	}, 0);
+				$("p.text1").text("GARY wants");
+				$("p.text2").text("to fight!");
+				window.setTimeout(function () {
+					$(".ash_balls, .gary_balls").css('display', 'none');
+					$(".foe .pokemon-image").animate({ right: "-1000px" }, 700, 'linear');
+					$("p.text1").text("GARY sent");
+					$("p.text2").text("out EEVEE!");
+					window.setTimeout(function () {
+						$(".eevee").css('display', 'block');
+						$(".gary").css('display', 'none');
+						$(".foe .pokemon-image").animate({ right: "0px" }, 700, 'linear');
+						window.setTimeout(function () {
+							$(".foe .stats").css('display', 'block');
+							$(".me .pokemon-image").animate({ left: "-1000px" }, 700, 'linear');
+							$(".ash").css('display', 'none');
+							$(".pikachu").css('display', 'block');
+							window.setTimeout(function () {
+								$(".foe .stats").css('display', 'block');
+								$(".me .pokemon-image").animate({ left: "0px" }, 700, 'linear');
+								$("p.text1").text("Go! PIKACHU!");
+								$("p.text2").text(" ");
+								$(".me .stats").css('display', 'block');
+								//Menu appears
+								window.setTimeout(function () {
+								    $("p.text1").text("What will");
+									$("p.text2").text("you do?");
+									$(".menu").css('display', 'block');
+								}, 2000);
+							}, 1000);
+						}, 1000);
+					}, 1000);
+				}, 1000);
+			}, 1000);
+		}, 1700);
 	
 	//Item menu
 	var potionCount = 1;
