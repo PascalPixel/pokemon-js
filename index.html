@@ -81,6 +81,9 @@
 		font-family: pokemon-KT;
 		src: url('font/Pokemon%20GB%20Japan%20KT.ttf');
 		}
+		html, body, .container-fluid {
+		height: 100%;
+		}
 		body {
 		font-family:pokemon, sans-serif;
 		background: #dde8c7;
@@ -90,15 +93,14 @@
 		line-height: 150%;
 		transition: all 1s; 
 		}
+		.container-fluid {
+		margin: 0 auto;
+		}
 		.copyright {
-		background: #4e5342;
-		color: #dde8c7;
-		position: fixed;
-		bottom: 0;
-		padding: 10px 10px 0;
 		text-shadow: none;
 		font-size: 8px;
 		width: 100%;
+		display: none;
 		}
 		.pikachu, .eevee {
 		overflow: hidden;
@@ -131,7 +133,7 @@
 		max-width:100%;
 		}
 		.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
-		margin-top: 40px;
+		margin-top: 20px;
 		}
 		.healthcount {
 		display: inline-block;
@@ -171,7 +173,7 @@
 	</style>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
 	<div class="row-fluid foe">
 		<div class="span5">
 			<div class="gary_balls"><img src="img/gary_balls.png" /></div>
@@ -234,16 +236,29 @@
 			</div>
 		</div>
 	</div>
-</div>
-<div class="copyright">
-    <p><b>Responsive Pokémon</b><br/>
-    Created by <a href="http://www.superpencil.com">Super Pencil</a><br/>
-    Pokémon is copyright © Nintendo</p>
-    <!-- <audio autoplay="true" controls="false" preload="auto" src="sfx/battle.mp3"></audio> -->
+	<div class="row-fluid copyright">
+		<div class="span6">
+	    <b>Responsive Pokémon</b><br/>
+	    Created by <a href="http://www.superpencil.com">Super Pencil</a><br/>
+	    Copyright © Nintendo All Rights Reserved
+	    </div>
+	    <div class="span6">
+	    <b>Why?</b><br/>
+	    I learned how to use JS and jQuery on <a href="http://www.codecademy.com">Codecademy</a> and decided the first thing I'd want to recreate was the first thing I ever played, which is Pokémon Yellow.
+	    <!-- <audio autoplay="true" controls="false" preload="auto" src="sfx/battle.mp3"></audio> -->
+	    </div>
+	</div>
 </div>
 <script type='text/javascript' src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type='text/javascript'>
 $(document).ready(function(){
+	
+	var windowHeight = $(window).height();
+	$('.container-fluid').css('max-width', windowHeight); 
+	$(window).resize(function() {
+	    var windowHeight = $(window).height();
+	    $('.container-fluid').css('max-width', windowHeight); 
+	});
 	
 	//Opening animations trainers
 	$(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
@@ -309,6 +324,7 @@ $(document).ready(function(){
 
 	//Item menu
 	var potionCount = 1;
+	$(".potionCount").text(potionCount);
 	$('.item').click(function () {
 		$(".item-menu").css('display', 'block');
 	});
@@ -324,15 +340,16 @@ $(document).ready(function(){
 			healthCountPikachu += 10;
 			$(".myHealth").text(healthCountPikachu);
 			$(".me .healthbar").animate({ width: healthCountPikachu * 3 + '%'}, 500);
-			potionCount = 0;
+			potionCount--;
 		} else {
 			$("p.text1").text("Used POTION!");
 			$("p.text2").text(" ");
 			healthCountPikachu += 10;
 			$(".myHealth").text(healthCountPikachu);
 			$(".me .healthbar").animate({ width: healthCountPikachu * 3 + '%'}, 500);
-			potionCount = 0;
+			potionCount--;
 		}
+		$(".potionCount").text(potionCount);
 	});
 	
 	//Battle calculations
