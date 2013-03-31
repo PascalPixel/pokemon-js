@@ -81,17 +81,16 @@
 		font-family: pokemon-KT;
 		src: url('font/Pokemon%20GB%20Japan%20KT.ttf');
 		}
-		html, body, .container-fluid {
-		height: 100%;
-		}
 		body {
 		font-family:pokemon, sans-serif;
+		font-size: 10px;
 		background: #dde8c7;
 		margin:0;
 		padding:0;
 		text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
 		line-height: 150%;
-		transition: all 1s; 
+		transition: all 1s;
+		overflow: hidden; 
 		}
 		.container-fluid {
 		margin: 0 auto;
@@ -100,21 +99,21 @@
 		text-shadow: none;
 		font-size: 8px;
 		width: 100%;
-		display: none;
 		}
 		.pikachu, .eevee {
 		overflow: hidden;
 		}
 		.me .pokemon-image{
 		position:relative;
-		left:500px;
+		left:1000px;
+		top: -20px;
 		}
 		.foe .pokemon-image{
 		position:relative;
-		right:500px;
+		right:1000px;
 		}
 		.button {
-		padding:10px 15px;
+		padding:5px 10px;
 		display:inline-block;
 		}
 		.button:hover {
@@ -139,27 +138,27 @@
 		display: inline-block;
 		}
 		.menu {
-		width:190px;
+		width:135px;
 		float: right;
 		display: none;
 		}
 		.fight-menu {
 		position: absolute;
-		width:315px;
+		width:250px;
 		right: 0px;
 		background: #dde8c7;
 		display: none;
 		}
 		.item-menu {
 		position: absolute;
-		width:315px;
+		width:250px;
 		right: 0px;
 		background: #dde8c7;
 		display: none;
 		}
 		.pkmn-menu {
 		position: absolute;
-		width:315px;
+		width:250px;
 		right: 0px;
 		background: #dde8c7;
 		display: none;
@@ -169,6 +168,9 @@
 		}
 		.relative {
 		position: relative;
+		}
+		.messages {
+			height: 100px;
 		}
 	</style>
 </head>
@@ -226,13 +228,15 @@
 				<div class="button thundershock">THUNDERSHOCK</div>
 			    <div class="button growl">GROWL</div>
 			    <div class="button tackle">TACKLE</div>
-			    <div class="button --">--</div>
+			    <div class="button back">cancel</div>
 			</div>
 			<div class="item-menu">
 				<div class="button potion">POTION x <div class="potionCount">1</div></div>
+				<div class="button back">cancel</div>
 			</div>
 			<div class="pkmn-menu">
 				<div class="button pikachuButton">PIKACHU</div>
+				<div class="button back">cancel</div>
 			</div>
 		</div>
 	</div>
@@ -245,20 +249,35 @@
 	    <div class="span6">
 	    <b>Why?</b><br/>
 	    I learned how to use JS and jQuery on <a href="http://www.codecademy.com">Codecademy</a> and decided the first thing I'd want to recreate was the first thing I ever played, which is Pokémon Yellow.
-	    <!-- <audio autoplay="true" controls="false" preload="auto" src="sfx/battle.mp3"></audio> -->
 	    </div>
 	</div>
 </div>
-<script type='text/javascript' src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type='text/javascript' src="js/hide-address-bar.js"></script>
+<script type='text/javascript' src="http://code.jquery.com/jquery-1.9.1.min.js"></script><script type='text/javascript'>
+$(document).onload(function(){
+
+	//GAMEBOY® aspect ratio
+	var aspectRatio = function(){
+		var windowHeight = $(window).height();
+		$('.container-fluid').css('max-width', windowHeight); 
+	};
+	aspectRatio();
+	$(window).resize(function() {
+	    aspectRatio(); 
+	});
+});
+</script>
 <script type='text/javascript'>
 $(document).ready(function(){
 	
-	var windowHeight = $(window).height();
-	$('.container-fluid').css('max-width', windowHeight); 
-	$(window).resize(function() {
-	    var windowHeight = $(window).height();
-	    $('.container-fluid').css('max-width', windowHeight); 
-	});
+	//Battle music
+	var music=document.createElement("audio");
+	music.setAttribute('src', "sfx/battle.mp3");
+	music.setAttribute('autoplay', 'true');
+	music.setAttribute('controls', 'false');
+	music.setAttribute('preload', 'auto');
+	music.setAttribute('style', 'display:none;');
+	document.body.appendChild(music);
 	
 	//Opening animations trainers
 	$(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
@@ -312,6 +331,7 @@ $(document).ready(function(){
 										    $("p.text1").text("What will");
 											$("p.text2").text("you do?");
 											$(".menu").css('display', 'block');
+											aspectRatio();
 										}, 3000);
 									}, 500);
 								}, 1500);
@@ -350,6 +370,14 @@ $(document).ready(function(){
 			potionCount--;
 		}
 		$(".potionCount").text(potionCount);
+		if (potionCount <= 0){
+			$(".potion").css('display', 'none');
+		}
+	});
+	
+	//Menu closer
+	$('.back').click(function () {
+		$(".item-menu, .pkmn-menu, .fight-menu").css('display', 'none');
 	});
 	
 	//Battle calculations
@@ -362,7 +390,7 @@ $(document).ready(function(){
 		$(".fight-menu").css('display', 'block');
 	});
 	
-	$('.thundershock').click(function () {
+	$('.thundershock, .tackle, .growl').click(function () {
 		//Hide fight-menu
 		$(".fight-menu").css('display', 'none');
 		
@@ -430,16 +458,13 @@ $(document).ready(function(){
     });
 
     $('.pkmn').click(function () {
-
-    });
-    
-    $('.item').click(function () {
-
+	    $("p.text1").text("No other");
+	    $("p.text2").text("POKéMON");
     });
     
     $('.run').click(function () {
-	    $("p.text1").text("You can't run away");
-	    $("p.text2").text("from a POKéMON battle!");
+	    $("p.text1").text("You can't run from");
+	    $("p.text2").text("a POKéMON battle!");
     });
     
 });
