@@ -63,7 +63,7 @@
 	
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css"> 
-	<!-- <link rel="stylesheet" type="text/css" href="css/main.css">   -->
+	
 	<style type='text/css'>
 		* {
 		-webkit-touch-callout: none;
@@ -83,7 +83,6 @@
 		}
 		body {
 		font-family:pokemon, sans-serif;
-		font-size: 10px;
 		background: #dde8c7;
 		margin:0;
 		padding:0;
@@ -92,6 +91,9 @@
 		}
 		.container-fluid {
 		margin: 0 auto;
+		}
+		.row-fluid {
+			width: auto;
 		}
 		.copyright {
 		text-shadow: none;
@@ -134,30 +136,24 @@
 		display: inline-block;
 		}
 		.menu {
-		width:135px;
-		float: right;
+		margin: -30px -20px -20px 0px;
+		background: #dde8c7;
+		padding: 5px;
 		display: none;
 		}
-		.fight-menu {
+		.fight-menu, .item-menu, .pkmn-menu {
 		position: absolute;
-		width:250px;
-		right: 0px;
+		right: -20px;
 		background: #dde8c7;
+		top: -30px;
+		bottom: -20px;
 		display: none;
 		}
 		.item-menu {
-		position: absolute;
-		width:250px;
-		right: 0px;
-		background: #dde8c7;
-		display: none;
+		
 		}
 		.pkmn-menu {
-		position: absolute;
-		width:250px;
-		right: 0px;
-		background: #dde8c7;
-		display: none;
+		
 		}
 		.foe, .me {
 		overflow: hidden;
@@ -166,8 +162,17 @@
 		position: relative;
 		}
 		.messages {
-		height: 70px;
-		margin-top: 20px;
+		min-height: 70px;
+		margin: 20px 0;
+		display: block;
+		}
+		.frame {
+		border-style: solid;
+		border-width: 20px;
+		-moz-border-image: url(img/border.png) 48 49 repeat;
+		-webkit-border-image: url(img/border.png) 48 49 repeat;
+		-o-border-image: url(img/border.png) 48 49 repeat;
+		border-image: url(img/border.png) 48 49 fill repeat;
 		}
 	</style>
 </head>
@@ -207,29 +212,31 @@
 			</div>
 		</div>
 	</div>
-	<div class="row-fluid messages">
+	<div class="row-fluid messages frame">
 		<div class="span6">
+			<p>.</p>
 		    <p class="text1"></p>
+		    <p>.</p>
 		    <p class="text2"></p>
 		</div>
 		<div class="span6 relative">
-			<div class="menu">
+			<div class="menu frame">
 				<div class="button fight">FIGHT</div>
 			    <div class="button pkmn"><sup>P</sup><sub>K</sub><sup>M</sup><sub>N</sub></div>
 			    <div class="button item">ITEM</div>
 			    <div class="button run">RUN</div>
 			</div>
-			<div class="fight-menu">
+			<div class="fight-menu frame">
 				<div class="button thundershock">THUNDERSHOCK</div>
 			    <div class="button growl">GROWL</div>
 			    <div class="button tackle">TACKLE</div>
 			    <div class="button back">cancel</div>
 			</div>
-			<div class="item-menu">
+			<div class="item-menu frame">
 				<div class="button potion">POTION x <div class="potionCount">1</div></div>
 				<div class="button back">cancel</div>
 			</div>
-			<div class="pkmn-menu">
+			<div class="pkmn-menu frame">
 				<div class="button pikachuButton">PIKACHU</div>
 				<div class="button back">cancel</div>
 			</div>
@@ -262,13 +269,13 @@ $(document).ready(function(){
 	});
 	
 	//Battle music
-	var music=document.createElement("audio");
+	/*var music=document.createElement("audio");
 	music.setAttribute('src', "sfx/battle.mp3");
 	music.setAttribute('autoplay', 'true');
 	music.setAttribute('controls', 'false');
 	music.setAttribute('preload', 'auto');
 	music.setAttribute('style', 'display:none;');
-	document.body.appendChild(music);
+	document.body.appendChild(music);*/
 	
 	//Opening animations trainers
 	$(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
@@ -291,13 +298,13 @@ $(document).ready(function(){
 						$(".gary").css('display', 'none');
 						$(".foe .pokemon-image").animate({ right: "0px" }, 1300, 'linear');
 						window.setTimeout(function () {
-							var eev=document.createElement("audio");
+							/*var eev=document.createElement("audio");
 							eev.setAttribute('src', "sfx/eevee.mp3");
 							eev.setAttribute('autoplay', 'true');
 							eev.setAttribute('controls', 'false');
 							eev.setAttribute('preload', 'auto');
 							eev.setAttribute('style', 'display:none;');
-							document.body.appendChild(eev);
+							document.body.appendChild(eev);*/
 							window.setTimeout(function () {
 								$(".foe .stats").css('display', 'block');
 								$(".me .pokemon-image").animate({ left: "-1000px" }, 700, 'linear');
@@ -310,13 +317,13 @@ $(document).ready(function(){
 									$("p.text2").text(" ");
 									$(".me .stats").css('display', 'block');
 									window.setTimeout(function () {
-										var pika=document.createElement("audio");
+										/*var pika=document.createElement("audio");
 										pika.setAttribute('src', "sfx/pikachu.mp3");
 										pika.setAttribute('autoplay', 'true');
 										pika.setAttribute('controls', 'false');
 										pika.setAttribute('preload', 'auto');
 										pika.setAttribute('style', 'display:none;');
-										document.body.appendChild(pika);
+										document.body.appendChild(pika);*/
 										//Menu appears
 											window.setTimeout(function () {
 										    $("p.text1").text("What will");
