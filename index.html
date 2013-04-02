@@ -103,8 +103,8 @@
 		.me .pokemon-image{
 		position:relative;
 		left:1000px;
-		top: -10px;
-		margin-bottom: -10px;
+		margin-top: -20px;
+		margin-bottom: 10px;
 		}
 		.foe .pokemon-image{
 		position:relative;
@@ -136,16 +136,18 @@
 		display: inline-block;
 		}
 		.menu {
-		margin: -30px -20px -20px 0px;
+		margin: -40px -20px -20px 0;
 		background: #dde8c7;
 		padding: 5px;
 		display: none;
+		max-width: 190px;
+		float: right;
 		}
 		.fight-menu, .item-menu, .pkmn-menu {
 		position: absolute;
 		right: -20px;
 		background: #dde8c7;
-		top: -30px;
+		top: -40px;
 		bottom: -20px;
 		display: none;
 		}
@@ -163,7 +165,7 @@
 		}
 		.messages {
 		min-height: 70px;
-		margin: 20px 0;
+		margin: 0;
 		display: block;
 		}
 		.frame {
@@ -212,14 +214,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="row-fluid messages frame">
-		<div class="span6">
-			<p>.</p>
+	<div class="row-fluid messages frame relative">
+		<div class="span12">
 		    <p class="text1"></p>
-		    <p>.</p>
 		    <p class="text2"></p>
-		</div>
-		<div class="span6 relative">
 			<div class="menu frame">
 				<div class="button fight">FIGHT</div>
 			    <div class="button pkmn"><sup>P</sup><sub>K</sub><sup>M</sup><sub>N</sub></div>
@@ -243,13 +241,11 @@
 		</div>
 	</div>
 	<div class="row-fluid copyright">
-		<div class="span6">
+		<div class="span12">
 	    <b>Responsive Pokémon</b><br/>
 	    Created by <a href="http://www.superpencil.com">Super Pencil</a><br/><br/>
-	    Pokémon, Pikachu and Eevee are trademarks of The Pokémon Company & Nintendo Inc.</div>
-	    <div class="span6">
-	    <b>Why?</b><br/>
-	    I learned how to use JS and jQuery on <a href="http://www.codecademy.com">Codecademy</a> and decided the first thing I'd want to recreate was the first thing I ever played, Pokémon Yellow <3
+	    Pokémon, Pikachu and Eevee are trademarks of The Pokémon Company & Nintendo Inc.<br/><br/>
+	    <b>Why?</b> I learned how to use JS and jQuery on <a href="http://www.codecademy.com">Codecademy</a> and decided the first thing I'd want to recreate was the first thing I ever played, Pokémon Yellow <3
 	    </div>
 	</div>
 </div>
@@ -308,9 +304,9 @@ $(document).ready(function(){
 							window.setTimeout(function () {
 								$(".foe .stats").css('display', 'block');
 								$(".me .pokemon-image").animate({ left: "-1000px" }, 700, 'linear');
-								$(".ash").css('display', 'none');
-								$(".pikachu").css('display', 'block');
 								window.setTimeout(function () {
+									$(".ash").css('display', 'none');
+									$(".pikachu").css('display', 'block');
 									$(".foe .stats").css('display', 'block');
 									$(".me .pokemon-image").animate({ left: "0px" }, 1300, 'linear');
 									$("p.text1").text("Go! PIKACHU!");
@@ -326,8 +322,8 @@ $(document).ready(function(){
 										document.body.appendChild(pika);*/
 										//Menu appears
 											window.setTimeout(function () {
-										    $("p.text1").text("What will");
-											$("p.text2").text("you do?");
+										    $("p.text1").text(" ");
+											$("p.text2").text(" ");
 											$(".menu").css('display', 'block');
 										}, 3000);
 									}, 500);
