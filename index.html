@@ -180,13 +180,30 @@
 			border-radius:3px;
 			text-shadow:none;
 		}
+		.big {
+			padding: 8px 10px 4px;
+			border-radius: 5px;
+			display: block;
+		}
 		.container-fluid {
 			overflow: hidden;
 		}
+		.battle {display: none;}
+		.loader {display: block;padding-top: 80px;text-align: center;position: fixed;top: -300px;}
 	</style>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid loader">
+	<div class="row-fluid">
+		<div class="span2"></div>
+		<div class="span8">
+			<img src="img/superpencil.png"/><br><br>
+			<a class="link big" href="http://www.superpencil.com">Super Pencil</a>
+		</div>
+		<div class="span2"></div>
+	</div>
+</div>
+<div class="container-fluid battle">
 	<div class="row-fluid foe">
 		<div class="span7">
 			<div class="gary_balls"><img src="img/gary_balls.png" /></div>
@@ -284,67 +301,72 @@ $(document).ready(function(){
 	music.setAttribute('style', 'display:none;');
 	document.body.appendChild(music);*/
 	
-	//Opening animations trainers
-	$(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
-	$(".foe .pokemon-image").animate({ right: "0px" }, 2000, 'linear');
-	$(".me .pokemon-image").animate({ left: "0px" }, 2000, 'linear');
-		
+	$(".loader").animate({ top: "0px" }, 2000);
+	
 		window.setTimeout(function () {
-			$(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
-			$(".gary_black, .ash_black").css('display', 'none');
+			$(".loader").css('display', 'none');
+			$(".battle").css('display', 'block');
+			//Opening animations trainers
+			$(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
+			$(".foe .pokemon-image").animate({ right: "0px" }, 2000, 'linear');
+			$(".me .pokemon-image").animate({ left: "0px" }, 2000, 'linear');
 			window.setTimeout(function () {
-				$("p.text1").text("GARY wants");
-				$("p.text2").text("to fight!");
+				$(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
+				$(".gary_black, .ash_black").css('display', 'none');
 				window.setTimeout(function () {
-					$(".ash_balls, .gary_balls").css('display', 'none');
-					$(".foe .pokemon-image").animate({ right: "-1000px" }, 700, 'linear');
+					$("p.text1").text("GARY wants");
+					$("p.text2").text("to fight!");
 					window.setTimeout(function () {
-						$("p.text1").text("GARY sent");
-						$("p.text2").text("out EEVEE!");
-						$(".eevee").css('display', 'block');
-						$(".gary").css('display', 'none');
-						$(".foe .pokemon-image").animate({ right: "0px" }, 1300, 'linear');
+						$(".ash_balls, .gary_balls").css('display', 'none');
+						$(".foe .pokemon-image").animate({ right: "-1000px" }, 700, 'linear');
 						window.setTimeout(function () {
-							/*var eev=document.createElement("audio");
-							eev.setAttribute('src', "sfx/eevee.mp3");
-							eev.setAttribute('autoplay', 'true');
-							eev.setAttribute('controls', 'false');
-							eev.setAttribute('preload', 'auto');
-							eev.setAttribute('style', 'display:none;');
-							document.body.appendChild(eev);*/
+							$("p.text1").text("GARY sent");
+							$("p.text2").text("out EEVEE!");
+							$(".eevee").css('display', 'block');
+							$(".gary").css('display', 'none');
+							$(".foe .pokemon-image").animate({ right: "0px" }, 1300, 'linear');
 							window.setTimeout(function () {
-								$(".foe .stats").css('display', 'block');
-								$(".me .pokemon-image").animate({ left: "-1000px" }, 700, 'linear');
+								/*var eev=document.createElement("audio");
+								eev.setAttribute('src', "sfx/eevee.mp3");
+								eev.setAttribute('autoplay', 'true');
+								eev.setAttribute('controls', 'false');
+								eev.setAttribute('preload', 'auto');
+								eev.setAttribute('style', 'display:none;');
+								document.body.appendChild(eev);*/
 								window.setTimeout(function () {
-									$(".ash").css('display', 'none');
-									$(".pikachu").css('display', 'block');
 									$(".foe .stats").css('display', 'block');
-									$(".me .pokemon-image").animate({ left: "0px" }, 1300, 'linear');
-									$("p.text1").text("Go! PIKACHU!");
-									$("p.text2").text(" ");
-									$(".me .stats").css('display', 'block');
+									$(".me .pokemon-image").animate({ left: "-1000px" }, 700, 'linear');
 									window.setTimeout(function () {
-										/*var pika=document.createElement("audio");
-										pika.setAttribute('src', "sfx/pikachu.mp3");
-										pika.setAttribute('autoplay', 'true');
-										pika.setAttribute('controls', 'false');
-										pika.setAttribute('preload', 'auto');
-										pika.setAttribute('style', 'display:none;');
-										document.body.appendChild(pika);*/
-										//Menu appears
-											window.setTimeout(function () {
-										    $("p.text1").text(" ");
-											$("p.text2").text(" ");
-											$(".menu").css('display', 'block');
-										}, 3000);
-									}, 500);
-								}, 1500);
-							}, 2000);
-						}, 500);
-					}, 1000);
-				}, 2000);
-			}, 400);
-		}, 2010);
+										$(".ash").css('display', 'none');
+										$(".pikachu").css('display', 'block');
+										$(".foe .stats").css('display', 'block');
+										$(".me .pokemon-image").animate({ left: "0px" }, 1300, 'linear');
+										$("p.text1").text("Go! PIKACHU!");
+										$("p.text2").text(" ");
+										$(".me .stats").css('display', 'block');
+										window.setTimeout(function () {
+											/*var pika=document.createElement("audio");
+											pika.setAttribute('src', "sfx/pikachu.mp3");
+											pika.setAttribute('autoplay', 'true');
+											pika.setAttribute('controls', 'false');
+											pika.setAttribute('preload', 'auto');
+											pika.setAttribute('style', 'display:none;');
+											document.body.appendChild(pika);*/
+											//Menu appears
+												window.setTimeout(function () {
+											    $("p.text1").text(" ");
+												$("p.text2").text(" ");
+												$(".menu").css('display', 'block');
+											}, 3000);
+										}, 500);
+									}, 1500);
+								}, 2000);
+							}, 500);
+						}, 1000);
+					}, 2000);
+				}, 400);
+			}, 2010);
+		}, 3000);
 
 	//Item menu
 	var potionCount = 1;
