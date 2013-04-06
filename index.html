@@ -111,7 +111,7 @@
 			right:1000px;
 		}
 		.button {
-			padding:5px 10px;
+			padding:1px 8px;
 			display:inline-block;
 		}
 		.button:hover {
@@ -183,13 +183,19 @@
 		.big {
 			padding: 8px 10px 4px;
 			border-radius: 5px;
-			display: block;
 		}
 		.container-fluid {
 			overflow: hidden;
 		}
 		.battle {display: none;}
-		.loader {display: block;padding-top: 80px;text-align: center;position: fixed;top: -300px;}
+		.loader {display: block;padding-top: 80px;text-align: center;margin-top: -300px;}
+		
+		/*#stage {
+			position: relative;
+			height: 480px;
+			border: solid 2px #000;
+			overflow: hidden;
+		}*/
 	</style>
 </head>
 <body>
@@ -209,8 +215,7 @@
 			<div class="gary_balls"><img src="img/gary_balls.png" /></div>
 			<div class="stats">
 				EEVEE
-				<div class="health">HP <div class="healthcount foeHealth">23</div>/23</div>
-			    <div class="healthbarcontainer">
+				    <div class="healthbarcontainer">
 				    <div class="healthbar"></div>
 			    </div>
 			</div>
@@ -274,11 +279,17 @@
 	    Pokémon & Pikachu are trademarks of The Pokémon Company & Nintendo Inc.<br/><br/>
 	    <b>Why?</b><br>
 	    I learned how to use JS and jQuery on <a href="http://www.codecademy.com">Codecademy</a> and decided the first thing I'd want to recreate was the first thing I ever played, Pokémon Yellow <3 <br><br>
+	    
+		<div id="stage">
+			<div id="character"></div>
+		</div>
+	    
 	    </div>
 	</div>
 </div>
 <script type='text/javascript' src="js/hide-address-bar.js"></script>
 <script type='text/javascript' src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<!-- <script type='text/javascript' src="js/jquery.spritify-1.0.3.js"></script> -->
 <script type='text/javascript'>
 $(document).ready(function(){
 
@@ -301,7 +312,7 @@ $(document).ready(function(){
 	music.setAttribute('style', 'display:none;');
 	document.body.appendChild(music);*/
 	
-	$(".loader").animate({ top: "0px" }, 2000);
+	$(".loader").animate({ marginTop: "0px" }, 2000);
 	
 		window.setTimeout(function () {
 			$(".loader").css('display', 'none');
@@ -424,7 +435,6 @@ $(document).ready(function(){
         var damage1 = Math.floor(Math.random() * 4 + 3);
         healthCountEevee -= damage1;
         $("p.text1").text("You did " + damage1 + " damage!");
-        $(".foeHealth").text(healthCountEevee);
         $(".foe .healthbar").animate({ width: healthCountEevee * 3.5 + '%'}, 500);
         
         if (healthCountEevee <= 8) {
@@ -433,7 +443,6 @@ $(document).ready(function(){
         
         if (healthCountEevee < 1) {
 	        $(".menu").css('display', 'none');
-	        $(".foeHealth").text("0");
 	        $(".foe .healthbar").css('width', '0%');
 	        $(".foe .pokemon-image, .foe .stats").delay(500).animate({ bottom: "-500px" }, 1000);
 	        window.setTimeout(function () {
@@ -492,6 +501,9 @@ $(document).ready(function(){
 	    $("p.text1").text("You can't run from");
 	    $("p.text2").text("a POKéMON battle!");
     });
+    
+    /*//Walking
+    $('#character').spritify();*/
     
 });
 </script>
