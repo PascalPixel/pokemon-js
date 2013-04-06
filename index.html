@@ -86,8 +86,7 @@
 			background: #dde8c7;
 			margin:0;
 			padding:0;
-			text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
-			line-height: 150%;
+			text-shadow: 2px 2px 0px rgba(0,0,0,0.2);
 		}
 		.container-fluid {
 			margin: 0 auto;
@@ -110,21 +109,44 @@
 			position:relative;
 			right:1000px;
 		}
-		.button {
-			padding:1px 8px;
+		.me .stats {
+			background-image: url('img/ash_line.png');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: center bottom;
+			padding-bottom: 25px;
+			margin-bottom: 5px;
+		}
+		.foe .stats {
+			background-image: url('img/gary_line.png');
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: center bottom;
+			padding-bottom: 10px;
+			margin-bottom: 5px;
+		}
+		.menu .button {
+			margin: 6px 0px 0px;
 			display:inline-block;
 		}
 		.button:hover {
 			cursor:pointer;
 		}
 		.healthbar {
-			height:10px;
+			height:5px;
 			width:100%;
 			background-color:#00f800;
 		}
 		.healthbarcontainer {
-			border: 5px solid rgba(0,0,0,0.75);
 			box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+			margin: 0px 15px 10px 50px;
+			border: 3px solid rgba(0,0,0,0.75);
+			border-radius:5px; 
+		}
+		.health {
+			float: right;
+			margin-right: 15px;
+			margin-top: -5px;
 		}
 		img {
 			max-width:100%;
@@ -136,19 +158,18 @@
 			display: inline-block;
 		}
 		.menu {
-			margin: -40px -20px -20px 0;
+			margin: -35px -20px -20px 0;
 			background: #dde8c7;
-			padding: 5px;
 			display: none;
-			max-width: 190px;
+			max-width: 150px;
 			float: right;
 		}
 		.fight-menu, .item-menu, .pkmn-menu {
 			position: absolute;
 			right: -20px;
 			background: #dde8c7;
-			top: -40px;
-			bottom: -20px;
+			padding-top: 5px;
+			bottom: -15px;
 			display: none;
 		}
 		.item-menu {
@@ -161,17 +182,22 @@
 			position: relative;
 		}
 		.messages {
-			min-height: 70px;
+			min-height: 54px;
 			margin: 0;
 			display: block;
 		}
+		.hp {
+			margin-left: -30px;
+			position: absolute;
+			width: 25px;
+		}
 		.frame {
 			border-style: solid;
-			border-width: 20px;
-			-moz-border-image: url(img/border.png) 48 49 repeat;
-			-webkit-border-image: url(img/border.png) 48 49 repeat;
-			-o-border-image: url(img/border.png) 48 49 repeat;
-			border-image: url(img/border.png) 48 49 fill repeat;
+			border-width: 15px;
+			-moz-border-image: url(img/border.png) 41 41 repeat;
+			-webkit-border-image: url(img/border.png) 41 41 repeat;
+			-o-border-image: url(img/border.png) 41 41 repeat;
+			border-image: url(img/border.png) 41 41 fill repeat;
 		}
 		.link {
 			background-color:rgba(255,0,0,0.8);
@@ -216,6 +242,7 @@
 			<div class="stats">
 				EEVEE
 				    <div class="healthbarcontainer">
+				    <img class="hp" src="img/hp.png" />
 				    <div class="healthbar"></div>
 			    </div>
 			</div>
@@ -236,10 +263,11 @@
 			<div class="ash_balls"><img src="img/ash_balls.png" /></div>
 			<div class="stats">
 				PIKACHU
-			    <div class="health">HP <div class="healthcount myHealth">19</div>/19</div>
 			    <div class="healthbarcontainer">
+				    <img class="hp" src="img/hp.png" />
 				    <div class="healthbar"></div>
 			    </div>
+			    <div class="health"><div class="healthcount myHealth">19</div>/ 19</div>
 			</div>
 		</div>
 	</div>
@@ -312,7 +340,7 @@ $(document).ready(function(){
 	music.setAttribute('style', 'display:none;');
 	document.body.appendChild(music);*/
 	
-	$(".loader").animate({ marginTop: "0px" }, 2000);
+	$(".loader").animate({ marginTop: "0px" }, 2000, 'linear');
 	
 		window.setTimeout(function () {
 			$(".loader").css('display', 'none');
@@ -367,7 +395,7 @@ $(document).ready(function(){
 												window.setTimeout(function () {
 											    $("p.text1").text(" ");
 												$("p.text2").text(" ");
-												$(".menu").css('display', 'block');
+												$(".menu").css('display', 'block');									
 											}, 3000);
 										}, 500);
 									}, 1500);
@@ -378,6 +406,17 @@ $(document).ready(function(){
 				}, 400);
 			}, 2010);
 		}, 3000);
+											/*}, 0);
+										}, 0);
+									}, 0);
+								}, 0);
+							}, 0);
+						}, 0);
+					}, 0);
+				}, 0);
+			}, 0);
+		}, 0);
+*/
 
 	//Item menu
 	var potionCount = 1;
@@ -386,24 +425,30 @@ $(document).ready(function(){
 		$(".item-menu").css('display', 'block');
 	});
 	$('.potion').click(function () {
-		$(".item-menu").css('display', 'none');
+		$(".item-menu, .menu").css('display', 'none');
 		console.log(healthCountPikachu);
 		if (healthCountPikachu >= 19) {
 			$("p.text1").text("HP already");
 			$("p.text2").text("full!");
-		} else if (healthCountPikachu > 10 && healthCountPikachu < 19) {
-			$("p.text1").text("Used POTION!");
-			$("p.text2").text(" ");
-			healthCountPikachu += 10;
-			$(".myHealth").text(healthCountPikachu);
-			$(".me .healthbar").animate({ width: healthCountPikachu * 3 + '%'}, 500);
-			potionCount--;
+			window.setTimeout(function () {
+			    $("p.text1").text(" ");
+			    $("p.text2").text(" ");
+			    $(".menu, .item-menu").css('display', 'block');
+		    }, 2000);
 		} else {
 			$("p.text1").text("Used POTION!");
 			$("p.text2").text(" ");
 			healthCountPikachu += 10;
+			window.setTimeout(function () {
+			    $("p.text1").text(" ");
+			    $("p.text2").text(" ");
+			    $(".menu").css('display', 'block');
+		    }, 2000);
+			if (healthCountPikachu >= 19) {
+			healthCountPikachu = 19;
+			}
 			$(".myHealth").text(healthCountPikachu);
-			$(".me .healthbar").animate({ width: healthCountPikachu * 3 + '%'}, 500);
+			$(".me .healthbar").animate({ width: healthCountPikachu * 5 + '%'}, 500);
 			potionCount--;
 		}
 		$(".potionCount").text(potionCount);
@@ -493,13 +538,18 @@ $(document).ready(function(){
     });
 
     $('.pkmn').click(function () {
-	    $("p.text1").text("No other");
-	    $("p.text2").text("POKéMON");
+		$(".pkmn-menu").css('display', 'block');
     });
     
     $('.run').click(function () {
+    	$(".menu").css('display', 'none');
 	    $("p.text1").text("You can't run from");
 	    $("p.text2").text("a POKéMON battle!");
+	    window.setTimeout(function () {
+		    $("p.text1").text(" ");
+		    $("p.text2").text(" ");
+		    $(".menu").css('display', 'block');
+	    }, 2000);
     });
     
     /*//Walking
