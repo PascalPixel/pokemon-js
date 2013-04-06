@@ -66,90 +66,90 @@
 	
 	<style type='text/css'>
 		* {
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 		}
 		@font-face {
-		font-family: pokemon;
-		src: url('font/Pokemon%20GB.ttf');
+			font-family: pokemon;
+			src: url('font/Pokemon%20GB.ttf');
 		}
 		@font-face {
-		font-family: pokemon-KT;
-		src: url('font/Pokemon%20GB%20Japan%20KT.ttf');
+			font-family: pokemon-KT;
+			src: url('font/Pokemon%20GB%20Japan%20KT.ttf');
 		}
 		body {
-		font-family:pokemon, sans-serif;
-		background: #dde8c7;
-		margin:0;
-		padding:0;
-		text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
-		line-height: 150%;
+			font-family:pokemon, sans-serif;
+			background: #dde8c7;
+			margin:0;
+			padding:0;
+			text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+			line-height: 150%;
 		}
 		.container-fluid {
-		margin: 0 auto;
+			margin: 0 auto;
 		}
 		.row-fluid {
 			width: auto;
 		}
 		.copyright {
-		text-shadow: none;
-		font-size: 8px;
-		width: 100%;
+			text-shadow: none;
+			font-size: 8px;
+			width: 100%;
 		}
 		.me .pokemon-image{
-		position:relative;
-		left:1000px;
-		margin-top: -20px;
-		margin-bottom: 10px;
+			position:relative;
+			left:1000px;
+			margin-top: -50px;
+			margin-bottom: 10px;
 		}
 		.foe .pokemon-image{
-		position:relative;
-		right:1000px;
+			position:relative;
+			right:1000px;
 		}
 		.button {
-		padding:5px 10px;
-		display:inline-block;
+			padding:5px 10px;
+			display:inline-block;
 		}
 		.button:hover {
-		cursor:pointer;
+			cursor:pointer;
 		}
 		.healthbar {
-		height:10px;
-		width:100%;
-		background-color:#00f800;
+			height:10px;
+			width:100%;
+			background-color:#00f800;
 		}
 		.healthbarcontainer {
-		border: 5px solid rgba(0,0,0,0.75);
-		box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+			border: 5px solid rgba(0,0,0,0.75);
+			box-shadow: 2px 2px 0px rgba(0,0,0,0.3);
 		}
 		img {
-		max-width:100%;
+			max-width:100%;
 		}
 		.span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12 {
-		margin-top: 10px;
+			margin-top: 10px;
 		}
 		.healthcount {
-		display: inline-block;
+			display: inline-block;
 		}
 		.menu {
-		margin: -40px -20px -20px 0;
-		background: #dde8c7;
-		padding: 5px;
-		display: none;
-		max-width: 190px;
-		float: right;
+			margin: -40px -20px -20px 0;
+			background: #dde8c7;
+			padding: 5px;
+			display: none;
+			max-width: 190px;
+			float: right;
 		}
 		.fight-menu, .item-menu, .pkmn-menu {
-		position: absolute;
-		right: -20px;
-		background: #dde8c7;
-		top: -40px;
-		bottom: -20px;
-		display: none;
+			position: absolute;
+			right: -20px;
+			background: #dde8c7;
+			top: -40px;
+			bottom: -20px;
+			display: none;
 		}
 		.item-menu {
 		
@@ -157,31 +157,38 @@
 		.pkmn-menu {
 		
 		}
-		.foe, .me {
-		overflow: hidden;
-		}
 		.relative {
-		position: relative;
+			position: relative;
 		}
 		.messages {
-		min-height: 70px;
-		margin: 0;
-		display: block;
+			min-height: 70px;
+			margin: 0;
+			display: block;
 		}
 		.frame {
-		border-style: solid;
-		border-width: 20px;
-		-moz-border-image: url(img/border.png) 48 49 repeat;
-		-webkit-border-image: url(img/border.png) 48 49 repeat;
-		-o-border-image: url(img/border.png) 48 49 repeat;
-		border-image: url(img/border.png) 48 49 fill repeat;
+			border-style: solid;
+			border-width: 20px;
+			-moz-border-image: url(img/border.png) 48 49 repeat;
+			-webkit-border-image: url(img/border.png) 48 49 repeat;
+			-o-border-image: url(img/border.png) 48 49 repeat;
+			border-image: url(img/border.png) 48 49 fill repeat;
+		}
+		.link {
+			background-color:rgba(255,0,0,0.8);
+			color:#dde8c7;
+			padding:4px 5px 2px;
+			border-radius:3px;
+			text-shadow:none;
+		}
+		.container-fluid {
+			overflow: hidden;
 		}
 	</style>
 </head>
 <body>
 <div class="container-fluid">
 	<div class="row-fluid foe">
-		<div class="span6">
+		<div class="span7">
 			<div class="gary_balls"><img src="img/gary_balls.png" /></div>
 			<div class="stats">
 				EEVEE
@@ -191,19 +198,19 @@
 			    </div>
 			</div>
 		</div>
-		<div class="span6 pokemon-image">
+		<div class="span5 pokemon-image">
 			<div class="gary_black"><img src="img/gary_black.png" /></div>
 			<div class="gary"><img src="img/gary.png" /></div>
 			<div class="eevee"><img src="img/eevee.png" /></div>
 		</div>
 	</div>
 	<div class="row-fluid me">
-		<div class="span6 pokemon-image">
+		<div class="span5 pokemon-image">
 			<div class="ash_black"><img src="img/ash_black.png" /></div>
 			<div class="ash"><img src="img/ash.png" /></div>
 			<div class="pikachu"><img src="img/pikachu.png" /></div>
 		</div>
-		<div class="span6">
+		<div class="span7">
 			<div class="ash_balls"><img src="img/ash_balls.png" /></div>
 			<div class="stats">
 				PIKACHU
@@ -241,11 +248,15 @@
 		</div>
 	</div>
 	<div class="row-fluid copyright">
-		<div class="span12">
-	    <b>Responsive Pokémon</b><br/>
-	    Created by <a href="http://www.superpencil.com">Super Pencil</a><br/><br/>
-	    Pokémon, Pikachu and Eevee are trademarks of The Pokémon Company & Nintendo Inc.<br/><br/>
-	    <b>Why?</b> I learned how to use JS and jQuery on <a href="http://www.codecademy.com">Codecademy</a> and decided the first thing I'd want to recreate was the first thing I ever played, Pokémon Yellow <3
+	<div class="span2"><img src="img/superpencil.png"/></div>
+		<div class="span10">
+	    Created by <a class="link" href="http://www.superpencil.com">Super Pencil</a><br>
+	    Designer & developer for hire<br/><br/>
+	    
+	    <b>Disclaimer</b><br>
+	    Pokémon & Pikachu are trademarks of The Pokémon Company & Nintendo Inc.<br/><br/>
+	    <b>Why?</b><br>
+	    I learned how to use JS and jQuery on <a href="http://www.codecademy.com">Codecademy</a> and decided the first thing I'd want to recreate was the first thing I ever played, Pokémon Yellow <3 <br><br>
 	    </div>
 	</div>
 </div>
