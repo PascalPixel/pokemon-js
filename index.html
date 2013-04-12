@@ -441,48 +441,23 @@ $(document).ready(function () {
 	/*---------- Variables ----------------------------------------------------------------*/
 
     //Menu closer
-    var closer = function() {
+    var reset = function() {
         $(".item-menu, .pkmn-menu, .fight-menu").css('display', 'none');
         $("p.text1").text(" ");
         $("p.text2").text(" ");
         $(".menu").css('display', 'block');
     }
     
-    //Thundershock
-    var thundershock = function() {
-		var damage1 = Math.floor(Math.random() * 4 + 3);
-        healthCountEevee -= damage1;
-        $("p.text1").text("You did " + damage1 + " damage!");
-        $("p.text2").text(" ");
-        $(".foe .healthbar").animate({
-            width: healthCountEevee * 3.5 + '%'
-        }, 500);
-        window.setTimeout(function () {
-            closer();
-        }, 2000);
-	}
-	
-	//Growl
-	var growl = function() {
-        $("p.text1").text("EEVEE's defence");
-        $("p.text2").text("dropped by 2!");
-	}
-	
-	//Tackle
-	var tackle = function() {
-		var damage1 = Math.floor(Math.random() * 3 + 2);
-        healthCountEevee -= damage1;
-        $("p.text1").text("You did " + damage1 + " damage!");
-        $("p.text2").text(" ");
-        $(".foe .healthbar").animate({
-            width: healthCountEevee * 3.5 + '%'
-        }, 500);
-	}
-	
-	//End of attack check
+    //Hide menus
+    var hider = function() {
+        $(".menu, .item-menu, .pkmn-menu, .fight-menu").css('display', 'none');
+    }
+    
+	//End of attack and return attack
 	var attackEnd = function() {
 		if (healthCountEevee <= 8) {$(".foe .healthbar").css('background-color', 'red');}
 		else if (healthCountEevee <= 8) {$(".foe .healthbar").css('background-color', 'red');}
+		
 		//Win
 		else if (healthCountEevee < 1) {
 		    $(".menu").css('display', 'none');
@@ -521,62 +496,96 @@ $(document).ready(function () {
 	                width: healthCountPikachu * 3.5 + '%'
 	            }, 500);
 	            window.setTimeout(function () {
-	                $("p.text1").text(" ");
-	                $("p.text2").text(" ");
-	                $(".menu").css('display', 'block');
+	                reset();
 	            }, 2000);
 	        }, 2000);
-	    }
 	    
-	    //Health bar color change
-	    if (healthCountPikachu <= 7) {
-	        $(".me .healthbar").css('background-color', 'red');
+		    //Health bar color change
+		    if (healthCountPikachu <= 7) {
+		        $(".me .healthbar").css('background-color', 'red');
+		    }
+		    
+		    //Lose
+		    else if (healthCountPikachu < 1) {
+		        $(".menu").css('display', 'none');
+		        $(".myHealth").text("0");
+		        $(".me .healthbar").css('width', '0%');
+		        $(".me .stats").css('display', 'none');
+		        $(".me .pokemon-image").delay(500).animate({
+		            bottom: "-500px"
+		        }, 1000);
+		        window.setTimeout(function () {
+		            $("p.text1").text("Pikachu fainted...");
+		            $("p.text2").text(" ");
+		            window.setTimeout(function () {
+		                $("p.text1").text("ASH is out of");
+		                $("p.text2").text("useable POKéMON...");
+		                window.setTimeout(function () {
+		                    $("p.text1").text("ASH whited out!");
+		                    $("p.text2").text(" ");
+		                    window.setTimeout(function () {
+			                    $(".foe, .me, .messages").slideUp(500);
+			                }, 2000);
+		                }, 2000);
+		            }, 2000);
+		        }, 2000);
+		    }
 	    }
-	    
-	    //Lose
-	    else if (healthCountPikachu < 1) {
-	        $(".menu").css('display', 'none');
-	        $(".myHealth").text("0");
-	        $(".me .healthbar").css('width', '0%');
-	        $(".me .stats").css('display', 'none');
-	        $(".me .pokemon-image").delay(500).animate({
-	            bottom: "-500px"
-	        }, 1000);
+	}
+    
+    //Thundershock
+    var thundershock = function() {
+    	hider();
+		var damage1 = Math.floor(Math.random() * 4 + 3);
+        healthCountEevee -= damage1;
+        $("p.text1").text("You did " + damage1 + " damage!");
+        $("p.text2").text(" ");
+        $(".foe .healthbar").animate({
+            width: healthCountEevee * 3.5 + '%'
+        }, 500);
+        attackEnd();
+	}
+	
+	//Growl
+	var growl = function() {
+		hider();
+        $("p.text1").text("PIKACHU used");
+        $("p.text2").text("GROWL!");
+        window.setTimeout(function () {
+            $("p.text1").text("EEVEE's defence");
+	        $("p.text2").text("dropped by 2!");
 	        window.setTimeout(function () {
-	            $("p.text1").text("Pikachu fainted...");
-	            $("p.text2").text(" ");
-	            window.setTimeout(function () {
-	                $("p.text1").text("ASH is out of");
-	                $("p.text2").text("useable POKéMON...");
-	                window.setTimeout(function () {
-	                    $("p.text1").text("ASH whited out!");
-	                    $("p.text2").text(" ");
-	                }, 2000);
-	            }, 2000);
+	            attackEnd();
 	        }, 2000);
-	    }
+        }, 2000);
+	}
+	
+	//Tackle
+	var tackle = function() {
+		hider();
+		var damage1 = Math.floor(Math.random() * 3 + 2);
+        healthCountEevee -= damage1;
+        $("p.text1").text("You did " + damage1 + " damage!");
+        $("p.text2").text(" ");
+        $(".foe .healthbar").animate({
+            width: healthCountEevee * 3.5 + '%'
+        }, 500);
+        attackEnd();
 	}
 	
 	//potion use
 	var potion = function() {
-		$(".item-menu, .menu").css('display', 'none');
+		hider();
         if (healthCountPikachu >= 19) {
             $("p.text1").text("HP already");
             $("p.text2").text("full!");
             window.setTimeout(function () {
-                $("p.text1").text(" ");
-                $("p.text2").text(" ");
-                $(".menu").css('display', 'block');
-            }, 2000);
+                reset();
+            }, 1000);
         } else {
             $("p.text1").text("Used POTION!");
             $("p.text2").text(" ");
             healthCountPikachu += 10;
-            window.setTimeout(function () {
-                $("p.text1").text(" ");
-                $("p.text2").text(" ");
-                $(".menu").css('display', 'block');
-            }, 2000);
             if (healthCountPikachu >= 19) {
                 healthCountPikachu = 19;
             }
@@ -585,6 +594,7 @@ $(document).ready(function () {
                 width: healthCountPikachu * 5 + '%'
             }, 500);
             potionCount--;
+            attackEnd();
         }
         $(".potionCount").text(potionCount);
         if (potionCount <= 0) {
@@ -597,7 +607,6 @@ $(document).ready(function () {
 	
 	//Open item menu
     $('.item').click(function () {
-	    $(".menu").css('display', 'none');
         $(".item-menu").css('display', 'block');
     });
     
@@ -610,40 +619,39 @@ $(document).ready(function () {
     $('.fight').click(function () {
         $(".fight-menu").css('display', 'block');
     });
-
-    //Attack animation & results
-    $('.thundershock, .growl, .tackle').click(function () {
-        $(".fight-menu").css('display', 'none');
-    });
     
+    //Thundershock
     $('.thundershock').click(function () {
         thundershock();
     });
     
+    //Growl
     $('.growl').click(function () {
 		growl();
 	});
 	
+	//Tackle
     $('.tackle').click(function () {
         tackle();
     });
     
+    //Back
     $('.back').click(function () {
-    	closer();
+    	reset();
     });
-
+    
+    //Pokemon
     $('.pkmn').click(function () {
         $(".pkmn-menu").css('display', 'block');
     });
 
+    //Run
     $('.run').click(function () {
-        $(".menu").css('display', 'none');
+        hider();
         $("p.text1").text("You can't run from");
         $("p.text2").text("a POKéMON battle!");
         window.setTimeout(function () {
-            $("p.text1").text(" ");
-            $("p.text2").text(" ");
-            $(".menu").css('display', 'block');
+            reset();
         }, 2000);
     });
 });
