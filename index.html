@@ -323,7 +323,9 @@
 <script type='text/javascript'>
 $(document).ready(function () {
 
-    //GAMEBOY® aspect ratio
+	/*---------- Setup --------------------------------------------------------------------*/
+	
+	//GAMEBOY® aspect ratio
     var aspectRatio = function () {
         var windowHeight = $(window).height();
         $('.container-fluid').css('max-width', windowHeight);
@@ -335,111 +337,236 @@ $(document).ready(function () {
 
     //Battle music
     /*var music=document.createElement("audio");
-	music.setAttribute('src', "sfx/battle.mp3");
-	music.setAttribute('autoplay', 'true');
-	music.setAttribute('controls', 'false');
-	music.setAttribute('preload', 'auto');
-	music.setAttribute('style', 'display:none;');
-	document.body.appendChild(music);*/
+    music.setAttribute('src', "sfx/battle.mp3");
+    music.setAttribute('autoplay', 'true');
+    music.setAttribute('controls', 'false');
+    music.setAttribute('preload', 'auto');
+    music.setAttribute('style', 'display:none;');
+    document.body.appendChild(music);*/
 
-    $(".loader").animate({
-        marginTop: "0px"
-    }, 2000, 'linear');
-
-    window.setTimeout(function () {
-        $(".loader").css('display', 'none');
-        $(".battle").css('display', 'block');
-        //Opening animations trainers
-        $(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
-        $(".foe .pokemon-image").animate({
-            right: "0px"
-        }, 2000, 'linear');
-        $(".me .pokemon-image").animate({
-            left: "0px"
-        }, 2000, 'linear');
-        window.setTimeout(function () {
-            $(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
-            $(".gary_black, .ash_black").css('display', 'none');
-            window.setTimeout(function () {
-                $("p.text1").text("GARY wants");
-                $("p.text2").text("to fight!");
-                window.setTimeout(function () {
-                    $(".ash_balls, .gary_balls").css('display', 'none');
-                    $(".foe .pokemon-image").animate({
-                        right: "-1000px"
-                    }, 700, 'linear');
-                    window.setTimeout(function () {
-                        $("p.text1").text("GARY sent");
-                        $("p.text2").text("out EEVEE!");
-                        $(".eevee").css('display', 'block');
-                        $(".gary").css('display', 'none');
-                        $(".foe .pokemon-image").animate({
-                            right: "0px"
-                        }, 1300, 'linear');
-                        window.setTimeout(function () {
-                            /*var eev=document.createElement("audio");
-								eev.setAttribute('src', "sfx/eevee.mp3");
-								eev.setAttribute('autoplay', 'true');
-								eev.setAttribute('controls', 'false');
-								eev.setAttribute('preload', 'auto');
-								eev.setAttribute('style', 'display:none;');
-								document.body.appendChild(eev);*/
-                            window.setTimeout(function () {
-                                $(".foe .stats").css('display', 'block');
-                                $(".me .pokemon-image").animate({
-                                    left: "-1000px"
-                                }, 700, 'linear');
-                                window.setTimeout(function () {
-                                    $(".ash").css('display', 'none');
-                                    $(".pikachu").css('display', 'block');
-                                    $(".foe .stats").css('display', 'block');
-                                    $(".me .pokemon-image").animate({
-                                        left: "0px"
-                                    }, 1300, 'linear');
-                                    $("p.text1").text("Go! PIKACHU!");
-                                    $("p.text2").text(" ");
-                                    $(".me .stats").css('display', 'block');
-                                    window.setTimeout(function () {
-                                        /*var pika=document.createElement("audio");
-											pika.setAttribute('src', "sfx/pikachu.mp3");
-											pika.setAttribute('autoplay', 'true');
-											pika.setAttribute('controls', 'false');
-											pika.setAttribute('preload', 'auto');
-											pika.setAttribute('style', 'display:none;');
-											document.body.appendChild(pika);*/
-                                        //Menu appears
-                                        window.setTimeout(function () {
-                                            $("p.text1").text(" ");
-                                            $("p.text2").text(" ");
-                                            $(".menu").css('display', 'block');
-                                       /* }, 3000);
-                                    }, 500);
-                                }, 1500);
-                            }, 2000);
-                        }, 500);
-                    }, 1000);
-                }, 2000);
-            }, 400);
-        }, 2010);
-    }, 3000);*/
-    }, 0);}, 0);}, 0);}, 0);}, 0);}, 0);}, 0);}, 0);}, 0);}, 0);
-
-    //Item menu
+     //HP
+    var healthCountEevee = 23;
+    var healthCountPikachu = 19;
+    $(".foeHealth").text(healthCountEevee);
+    $(".myHealth").text(healthCountPikachu);
+    
+    //Potioncount
     var potionCount = 1;
     $(".potionCount").text(potionCount);
-    $('.item').click(function () {
-        $(".item-menu").css('display', 'block');
-    });
-    $('.potion').click(function () {
-        $(".item-menu, .menu").css('display', 'none');
-        console.log(healthCountPikachu);
+    
+    
+    /*---------- Opening Animation ----------------------------------------------------------------*/
+    
+    window.setTimeout(function () {
+	    $(".loader").animate({marginTop: "0px"}, 2000, 'linear');
+	    window.setTimeout(function () {
+	        $(".loader").css('display', 'none');
+	        $(".battle").css('display', 'block');
+	        //Opening animations trainers
+	        $(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
+	        $(".foe .pokemon-image").animate({
+	            right: "0px"
+	        }, 2000, 'linear');
+	        $(".me .pokemon-image").animate({
+	            left: "0px"
+	        }, 2000, 'linear');
+	        window.setTimeout(function () {
+	            $(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
+	            $(".gary_black, .ash_black").css('display', 'none');
+	            window.setTimeout(function () {
+	                $("p.text1").text("GARY wants");
+	                $("p.text2").text("to fight!");
+	                window.setTimeout(function () {
+	                    $(".ash_balls, .gary_balls").css('display', 'none');
+	                    $(".foe .pokemon-image").animate({
+	                        right: "-1000px"
+	                    }, 700, 'linear');
+	                    window.setTimeout(function () {
+	                        $("p.text1").text("GARY sent");
+	                        $("p.text2").text("out EEVEE!");
+	                        $(".eevee").css('display', 'block');
+	                        $(".gary").css('display', 'none');
+	                        $(".foe .pokemon-image").animate({
+	                            right: "0px"
+	                        }, 1300, 'linear');
+	                        window.setTimeout(function () {
+	                            /*var eev=document.createElement("audio");
+	                                eev.setAttribute('src', "sfx/eevee.mp3");
+	                                eev.setAttribute('autoplay', 'true');
+	                                eev.setAttribute('controls', 'false');
+	                                eev.setAttribute('preload', 'auto');
+	                                eev.setAttribute('style', 'display:none;');
+	                                document.body.appendChild(eev);*/
+	                            window.setTimeout(function () {
+	                                $(".foe .stats").css('display', 'block');
+	                                $(".me .pokemon-image").animate({
+	                                    left: "-1000px"
+	                                }, 700, 'linear');
+	                                window.setTimeout(function () {
+	                                    $(".ash").css('display', 'none');
+	                                    $(".pikachu").css('display', 'block');
+	                                    $(".foe .stats").css('display', 'block');
+	                                    $(".me .pokemon-image").animate({
+	                                        left: "0px"
+	                                    }, 1300, 'linear');
+	                                    $("p.text1").text("Go! PIKACHU!");
+	                                    $("p.text2").text(" ");
+	                                    $(".me .stats").css('display', 'block');
+	                                    window.setTimeout(function () {
+	                                        /*var pika=document.createElement("audio");
+	                                            pika.setAttribute('src', "sfx/pikachu.mp3");
+	                                            pika.setAttribute('autoplay', 'true');
+	                                            pika.setAttribute('controls', 'false');
+	                                            pika.setAttribute('preload', 'auto');
+	                                            pika.setAttribute('style', 'display:none;');
+	                                            document.body.appendChild(pika);*/
+	                                        //Menu appears
+	                                        window.setTimeout(function () {
+	                                            $("p.text1").text(" ");
+	                                            $("p.text2").text(" ");
+	                                            $(".menu").css('display', 'block');
+	                                        }, 3000);
+	                                    }, 500);
+	                                }, 1500);
+	                            }, 2000);
+	                        }, 500);
+	                    }, 1000);
+	                }, 2000);
+	            }, 400);
+	        }, 2010);
+	    }, 3000);
+    }, 0);
+    
+    
+	/*---------- Variables ----------------------------------------------------------------*/
+
+    //Menu closer
+    var closer = function() {
+        $(".item-menu, .pkmn-menu, .fight-menu").css('display', 'none');
+        $("p.text1").text(" ");
+        $("p.text2").text(" ");
+        $(".menu").css('display', 'block');
+    }
+    
+    //Thundershock
+    var thundershock = function() {
+		var damage1 = Math.floor(Math.random() * 4 + 3);
+        healthCountEevee -= damage1;
+        $("p.text1").text("You did " + damage1 + " damage!");
+        $("p.text2").text(" ");
+        $(".foe .healthbar").animate({
+            width: healthCountEevee * 3.5 + '%'
+        }, 500);
+        window.setTimeout(function () {
+            closer();
+        }, 2000);
+	}
+	
+	//Growl
+	var growl = function() {
+        $("p.text1").text("EEVEE's defence");
+        $("p.text2").text("dropped by 2!");
+	}
+	
+	//Tackle
+	var tackle = function() {
+		var damage1 = Math.floor(Math.random() * 3 + 2);
+        healthCountEevee -= damage1;
+        $("p.text1").text("You did " + damage1 + " damage!");
+        $("p.text2").text(" ");
+        $(".foe .healthbar").animate({
+            width: healthCountEevee * 3.5 + '%'
+        }, 500);
+	}
+	
+	//End of attack check
+	var attackEnd = function() {
+		if (healthCountEevee <= 8) {$(".foe .healthbar").css('background-color', 'red');}
+		else if (healthCountEevee <= 8) {$(".foe .healthbar").css('background-color', 'red');}
+		//Win
+		else if (healthCountEevee < 1) {
+		    $(".menu").css('display', 'none');
+		    $(".foe .healthbar").css('width', '0%');
+		    $(".foe .pokemon-image, .foe .stats").delay(500).animate({
+		        bottom: "-500px"
+		    }, 1000);
+		    window.setTimeout(function () {
+		        $("p.text1").text("EEVEE fainted!");
+		        $("p.text2").text(" ");
+		        window.setTimeout(function () {
+		            $("p.text1").text("Got $5 for winning!");
+		            $("p.text2").text("");
+		            window.setTimeout(function () {
+		                $("p.text1").text("GARY: I can't");
+		                $("p.text2").text(" believe it!");
+		                window.setTimeout(function () {
+		                    $("p.text1").text("I chose the");
+		                    $("p.text2").text("wrong POKéMON!");
+		                }, 2000);
+		            }, 2000);
+		        }, 2000);
+		    }, 2000);
+		}
+		
+		//Return attack
+	    else {
+	        window.setTimeout(function () {
+	            //Foe attack
+	            var damage2 = Math.floor(Math.random() * 4 + 4);
+	            healthCountPikachu -= damage2;
+	            $("p.text1").text("Eevee did " + damage2);
+	            $("p.text2").text("damage to you.");
+	            $(".myHealth").text(healthCountPikachu);
+	            $(".me .healthbar").animate({
+	                width: healthCountPikachu * 3.5 + '%'
+	            }, 500);
+	            window.setTimeout(function () {
+	                $("p.text1").text(" ");
+	                $("p.text2").text(" ");
+	                $(".menu").css('display', 'block');
+	            }, 2000);
+	        }, 2000);
+	    }
+	    
+	    //Health bar color change
+	    if (healthCountPikachu <= 7) {
+	        $(".me .healthbar").css('background-color', 'red');
+	    }
+	    
+	    //Lose
+	    else if (healthCountPikachu < 1) {
+	        $(".menu").css('display', 'none');
+	        $(".myHealth").text("0");
+	        $(".me .healthbar").css('width', '0%');
+	        $(".me .stats").css('display', 'none');
+	        $(".me .pokemon-image").delay(500).animate({
+	            bottom: "-500px"
+	        }, 1000);
+	        window.setTimeout(function () {
+	            $("p.text1").text("Pikachu fainted...");
+	            $("p.text2").text(" ");
+	            window.setTimeout(function () {
+	                $("p.text1").text("ASH is out of");
+	                $("p.text2").text("useable POKéMON...");
+	                window.setTimeout(function () {
+	                    $("p.text1").text("ASH whited out!");
+	                    $("p.text2").text(" ");
+	                }, 2000);
+	            }, 2000);
+	        }, 2000);
+	    }
+	}
+	
+	//potion use
+	var potion = function() {
+		$(".item-menu, .menu").css('display', 'none');
         if (healthCountPikachu >= 19) {
             $("p.text1").text("HP already");
             $("p.text2").text("full!");
             window.setTimeout(function () {
                 $("p.text1").text(" ");
                 $("p.text2").text(" ");
-                $(".menu, .item-menu").css('display', 'block');
+                $(".menu").css('display', 'block');
             }, 2000);
         } else {
             $("p.text1").text("Used POTION!");
@@ -463,107 +590,46 @@ $(document).ready(function () {
         if (potionCount <= 0) {
             $(".potion").css('display', 'none');
         }
+	}
+	
+	
+	/*---------- Interactions ------------------------------------------------------------*/
+	
+	//Open item menu
+    $('.item').click(function () {
+	    $(".menu").css('display', 'none');
+        $(".item-menu").css('display', 'block');
     });
-
-    //Menu closer
-    $('.back').click(function () {
-        $(".item-menu, .pkmn-menu, .fight-menu").css('display', 'none');
+    
+    //Potion
+    $('.potion').click(function () {
+        potion();
     });
-
-    //Battle calculations
-    var healthCountEevee = 23;
-    var healthCountPikachu = 19;
-    $(".foeHealth").text(healthCountEevee);
-    $(".myHealth").text(healthCountPikachu);
-
+    
+	//Fight
     $('.fight').click(function () {
         $(".fight-menu").css('display', 'block');
     });
 
-    $('.thundershock').click(function () {
-        //Hide fight-menu
+    //Attack animation & results
+    $('.thundershock, .growl, .tackle').click(function () {
         $(".fight-menu").css('display', 'none');
-
-        //Your attack
-        var damage1 = Math.floor(Math.random() * 4 + 3);
-        healthCountEevee -= damage1;
-        $("p.text1").text("You did " + damage1 + " damage!");
-        $("p.text2").text(" ");
-        $(".foe .healthbar").animate({
-            width: healthCountEevee * 3.5 + '%'
-        }, 500);
-
-        if (healthCountEevee <= 8) {
-            $(".foe .healthbar").css('background-color', 'red');
-        };
-
-        if (healthCountEevee < 1) {
-            $(".menu").css('display', 'none');
-            $(".foe .healthbar").css('width', '0%');
-            $(".foe .pokemon-image, .foe .stats").delay(500).animate({
-                bottom: "-500px"
-            }, 1000);
-            window.setTimeout(function () {
-                $("p.text1").text("EEVEE fainted!");
-                $("p.text2").text(" ");
-                window.setTimeout(function () {
-                    $("p.text1").text("Got $5 for winning!");
-                    $("p.text2").text("");
-                    window.setTimeout(function () {
-                        $("p.text1").text("GARY: I can't");
-                        $("p.text2").text(" believe it!");
-                         window.setTimeout(function () {
-				            $("p.text1").text("I chose the");
-				            $("p.text2").text("wrong POKéMON!");
-				        }, 2000);
-                    }, 2000);
-                }, 2000);
-            }, 2000);
-        } else {
-        	window.setTimeout(function () {
-            //Foe attack
-            var damage2 = Math.floor(Math.random() * 4 + 4);
-            healthCountPikachu -= damage2;
-            $("p.text1").text("Eevee did " + damage2);
-            $("p.text2").text("damage to you.");
-            $(".myHealth").text(healthCountPikachu);
-            $(".me .healthbar").animate({
-                width: healthCountPikachu * 3.5 + '%'
-            }, 500);
-            window.setTimeout(function () {
-                $("p.text1").text(" ");
-                $("p.text2").text(" ");
-                $(".menu").css('display', 'block');
-            }, 2000);
-            }, 2000);
-
-            if (healthCountPikachu <= 7) {
-                $(".me .healthbar").css('background-color', 'red');
-            }
-        };
-
-        if (healthCountPikachu < 1) {
-            $(".menu").css('display', 'none');
-            $(".myHealth").text("0");
-            $(".me .healthbar").css('width', '0%');
-            $(".me .stats").css('display', 'none');
-            $(".me .pokemon-image").delay(500).animate({
-                bottom: "-500px"
-            }, 1000);
-            window.setTimeout(function () {
-                $("p.text1").text("Pikachu fainted...");
-                $("p.text2").text(" ");
-                window.setTimeout(function () {
-                    $("p.text1").text("ASH is out of");
-                    $("p.text2").text("useable POKéMON...");
-                    window.setTimeout(function () {
-                        $("p.text1").text("ASH whited out!");
-                        $("p.text2").text(" ");
-                    }, 2000);
-                }, 2000);
-            }, 2000);
-        };
-
+    });
+    
+    $('.thundershock').click(function () {
+        thundershock();
+    });
+    
+    $('.growl').click(function () {
+		growl();
+	});
+	
+    $('.tackle').click(function () {
+        tackle();
+    });
+    
+    $('.back').click(function () {
+    	closer();
     });
 
     $('.pkmn').click(function () {
@@ -580,10 +646,6 @@ $(document).ready(function () {
             $(".menu").css('display', 'block');
         }, 2000);
     });
-
-    /*//Walking
-    $('#character').spritify();*/
-
 });
 </script>
 <!-- Google Analytics -->
