@@ -6,7 +6,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Pokémon Mini by Super Pencil</title>
+	<title>Pokémon Mini by Superpencil</title>
 	
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 	
@@ -218,12 +218,6 @@
 		    padding-top:80px;
 		    text-align:center;
 		}
-		/*#stage {
-			position: relative;
-			height: 480px;
-			border: solid 2px #000;
-			overflow: hidden;
-		}*/
 	</style>
 </head>
 <body>
@@ -319,7 +313,6 @@
 </div>
 <script type='text/javascript' src="js/hide-address-bar.js"></script>
 <script type='text/javascript' src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<!-- <script type='text/javascript' src="js/jquery.spritify-1.0.3.js"></script> -->
 <script type='text/javascript'>
 $(document).ready(function () {
 
@@ -336,13 +329,13 @@ $(document).ready(function () {
     });
 
     //Battle music
-    /*var music=document.createElement("audio");
-    music.setAttribute('src', "sfx/battle.mp3");
-    music.setAttribute('autoplay', 'true');
-    music.setAttribute('controls', 'false');
-    music.setAttribute('preload', 'auto');
-    music.setAttribute('style', 'display:none;');
-    document.body.appendChild(music);*/
+    var music=document.createElement("audio");
+	    music.setAttribute('src', "sfx/battle.mp3");
+	    music.setAttribute('autoplay', 'true');
+	    music.setAttribute('controls', 'false');
+	    music.setAttribute('preload', 'auto');
+	    music.setAttribute('style', 'display:none;');
+	    document.body.appendChild(music);
 
      //HP
     var healthCountEevee = 23;
@@ -353,90 +346,7 @@ $(document).ready(function () {
     //Potioncount
     var potionCount = 1;
     $(".potionCount").text(potionCount);
-    
-    
-    /*---------- Opening Animation ----------------------------------------------------------------*/
-    
-    window.setTimeout(function () {
-	    $(".loader").animate({marginTop: "0px"}, 2000, 'linear');
-	    window.setTimeout(function () {
-	        $(".loader").css('display', 'none');
-	        $(".battle").css('display', 'block');
-	        //Opening animations trainers
-	        $(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
-	        $(".foe .pokemon-image").animate({
-	            right: "0px"
-	        }, 2000, 'linear');
-	        $(".me .pokemon-image").animate({
-	            left: "0px"
-	        }, 2000, 'linear');
-	        window.setTimeout(function () {
-	            $(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
-	            $(".gary_black, .ash_black").css('display', 'none');
-	            window.setTimeout(function () {
-	                $("p.text1").text("GARY wants");
-	                $("p.text2").text("to fight!");
-	                window.setTimeout(function () {
-	                    $(".ash_balls, .gary_balls").css('display', 'none');
-	                    $(".foe .pokemon-image").animate({
-	                        right: "-1000px"
-	                    }, 700, 'linear');
-	                    window.setTimeout(function () {
-	                        $("p.text1").text("GARY sent");
-	                        $("p.text2").text("out EEVEE!");
-	                        $(".eevee").css('display', 'block');
-	                        $(".gary").css('display', 'none');
-	                        $(".foe .pokemon-image").animate({
-	                            right: "0px"
-	                        }, 1300, 'linear');
-	                        window.setTimeout(function () {
-	                            /*var eev=document.createElement("audio");
-	                                eev.setAttribute('src', "sfx/eevee.mp3");
-	                                eev.setAttribute('autoplay', 'true');
-	                                eev.setAttribute('controls', 'false');
-	                                eev.setAttribute('preload', 'auto');
-	                                eev.setAttribute('style', 'display:none;');
-	                                document.body.appendChild(eev);*/
-	                            window.setTimeout(function () {
-	                                $(".foe .stats").css('display', 'block');
-	                                $(".me .pokemon-image").animate({
-	                                    left: "-1000px"
-	                                }, 700, 'linear');
-	                                window.setTimeout(function () {
-	                                    $(".ash").css('display', 'none');
-	                                    $(".pikachu").css('display', 'block');
-	                                    $(".foe .stats").css('display', 'block');
-	                                    $(".me .pokemon-image").animate({
-	                                        left: "0px"
-	                                    }, 1300, 'linear');
-	                                    $("p.text1").text("Go! PIKACHU!");
-	                                    $("p.text2").text(" ");
-	                                    $(".me .stats").css('display', 'block');
-	                                    window.setTimeout(function () {
-	                                        /*var pika=document.createElement("audio");
-	                                            pika.setAttribute('src', "sfx/pikachu.mp3");
-	                                            pika.setAttribute('autoplay', 'true');
-	                                            pika.setAttribute('controls', 'false');
-	                                            pika.setAttribute('preload', 'auto');
-	                                            pika.setAttribute('style', 'display:none;');
-	                                            document.body.appendChild(pika);*/
-	                                        //Menu appears
-	                                        window.setTimeout(function () {
-	                                            $("p.text1").text(" ");
-	                                            $("p.text2").text(" ");
-	                                            $(".menu").css('display', 'block');
-	                                        }, 3000);
-	                                    }, 500);
-	                                }, 1500);
-	                            }, 2000);
-	                        }, 500);
-	                    }, 1000);
-	                }, 2000);
-	            }, 400);
-	        }, 2010);
-	    }, 3000);
-    }, 0);
-    
+  
     
 	/*---------- Variables ----------------------------------------------------------------*/
 
@@ -601,6 +511,87 @@ $(document).ready(function () {
             $(".potion").css('display', 'none');
         }
 	}
+	
+	
+	/*---------- Opening Animation ----------------------------------------------------------------*/
+    
+    window.setTimeout(function () {
+	    $(".loader").animate({marginTop: "0px"}, 2000, 'linear');
+	    window.setTimeout(function () {
+	        $(".loader").css('display', 'none');
+	        $(".battle").css('display', 'block');
+	        //Opening animations trainers
+	        $(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
+	        $(".foe .pokemon-image").animate({
+	            right: "0px"
+	        }, 2000, 'linear');
+	        $(".me .pokemon-image").animate({
+	            left: "0px"
+	        }, 2000, 'linear');
+	        window.setTimeout(function () {
+	            $(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
+	            $(".gary_black, .ash_black").css('display', 'none');
+	            window.setTimeout(function () {
+	                $("p.text1").text("GARY wants");
+	                $("p.text2").text("to fight!");
+	                window.setTimeout(function () {
+	                    $(".ash_balls, .gary_balls").css('display', 'none');
+	                    $(".foe .pokemon-image").animate({
+	                        right: "-1000px"
+	                    }, 700, 'linear');
+	                    window.setTimeout(function () {
+	                        $("p.text1").text("GARY sent");
+	                        $("p.text2").text("out EEVEE!");
+	                        $(".eevee").css('display', 'block');
+	                        $(".gary").css('display', 'none');
+	                        $(".foe .pokemon-image").animate({
+	                            right: "0px"
+	                        }, 1300, 'linear');
+	                        window.setTimeout(function () {
+	                            var eev=document.createElement("audio");
+	                                eev.setAttribute('src', "sfx/eevee.mp3");
+	                                eev.setAttribute('autoplay', 'true');
+	                                eev.setAttribute('controls', 'false');
+	                                eev.setAttribute('preload', 'auto');
+	                                eev.setAttribute('style', 'display:none;');
+	                                document.body.appendChild(eev);
+	                            window.setTimeout(function () {
+	                                $(".foe .stats").css('display', 'block');
+	                                $(".me .pokemon-image").animate({
+	                                    left: "-1000px"
+	                                }, 700, 'linear');
+	                                window.setTimeout(function () {
+	                                    $(".ash").css('display', 'none');
+	                                    $(".pikachu").css('display', 'block');
+	                                    $(".foe .stats").css('display', 'block');
+	                                    $(".me .pokemon-image").animate({
+	                                        left: "0px"
+	                                    }, 1300, 'linear');
+	                                    $("p.text1").text("Go! PIKACHU!");
+	                                    $("p.text2").text(" ");
+	                                    $(".me .stats").css('display', 'block');
+	                                    window.setTimeout(function () {
+	                                        var pika=document.createElement("audio");
+	                                            pika.setAttribute('src', "sfx/pikachu.mp3");
+	                                            pika.setAttribute('autoplay', 'true');
+	                                            pika.setAttribute('controls', 'false');
+	                                            pika.setAttribute('preload', 'auto');
+	                                            pika.setAttribute('style', 'display:none;');
+	                                            document.body.appendChild(pika);
+	                                        //Menu appears
+	                                        window.setTimeout(function () {
+	                                            reset();
+	                                        }, 3000);
+	                                    }, 500);
+	                                }, 1500);
+	                            }, 2000);
+	                        }, 500);
+	                    }, 1000);
+	                }, 2000);
+	            }, 400);
+	        }, 2010);
+	    }, 3000);
+    }, 0);
 	
 	
 	/*---------- Interactions ------------------------------------------------------------*/
