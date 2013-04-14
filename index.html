@@ -124,7 +124,7 @@
 		}
 		.menu .button {
 			  display:inline-block;
-			  margin:6px 0 0;
+			  margin:8px 0 0;
 		}
 		.button:hover {
 			  cursor:pointer;
@@ -303,7 +303,7 @@
 		<div class="span2"><img src="img/superpencil.png"/></div>
 			<div class="span10">
 			  Created by <a class="link" href="http://www.superpencil.com">Super Pencil</a><br>
-			  Designer & developer for hire<br/><br/>
+			  Designer & developer <a href="mailto:pascal@superpencil.com">for hire</a><br/><br/>
 			  
 			  <b>Disclaimer</b><br>
 			  Pokémon & Pikachu are trademarks of The Pokémon Company & Nintendo Inc.<br/><br/>
@@ -391,20 +391,19 @@
 		
 		//End of attack and return attack
 		var attackEnd = function () {
-		    if (healthCountEevee <= 8) {
-		        $(".foe .healthbar").css('background-color', 'red');
-		    } else if (healthCountEevee <= 8) {
-		        $(".foe .healthbar").css('background-color', 'red');
-		    }
 		
+			if (healthCountEevee <= 8) {
+		        $(".foe .healthbar").css('background-color', 'red');
+		    };
+		    
 		    //Win
-		    else if (healthCountEevee < 1) {
+		    if (healthCountEevee <= 0) {
 		        $(".menu").css('display', 'none');
 		        $(".foe .healthbar").css('width', '0%');
-		        $(".foe .pokemon-image, .foe .stats").delay(500).animate({
-		            bottom: "-500px"
-		        }, 1000);
 		        window.setTimeout(function () {
+		        	$(".foe .pokemon-image, .foe .stats").delay(500).animate({
+			            bottom: "-500px"
+			        }, 1000);
 		            $("p.text1").text("EEVEE fainted!");
 		            $("p.text2").text(" ");
 		            typer();
@@ -420,6 +419,9 @@
 		                        $("p.text1").text("I chose the");
 		                        $("p.text2").text("wrong POKéMON!");
 		                        typer();
+		                        window.setTimeout(function () {
+		                            $(".foe, .me, .messages").slideUp(500);
+		                        }, 2000);
 		                    }, 2000);
 		                }, 2000);
 		            }, 2000);
@@ -430,60 +432,57 @@
 		    else {
 		        window.setTimeout(function () {
 		            //Foe attack
-		            var damage2 = Math.floor(Math.random() * 4 + 4);
+		            var damage2 = Math.floor(Math.random() * 3 + 2);
 		            healthCountPikachu -= damage2;
 		            $("p.text1").text("Eevee did " + damage2);
 		            $("p.text2").text("damage to you.");
 		            typer();
+		            if (healthCountPikachu <= 7) {
+			            $(".me .healthbar").css('background-color', 'red');
+			        };
+		            if (healthCountPikachu <= 0) {
+				            $(".menu").css('display', 'none');
+				            $(".myHealth").text("0");
+				            $(".me .healthbar").css('width', '0%');
+				            $(".me .stats").css('display', 'none');
+				            window.setTimeout(function () {
+				            	$(".me .pokemon-image").delay(500).animate({
+					                bottom: "-500px"
+					            }, 1000);
+				                $("p.text1").text("Pikachu fainted...");
+				                $("p.text2").text(" ");
+				                typer();
+				                window.setTimeout(function () {
+				                    $("p.text1").text("ASH is out of");
+				                    $("p.text2").text("useable POKéMON...");
+				                    typer();
+				                    window.setTimeout(function () {
+				                        $("p.text1").text("ASH whited out!");
+				                        $("p.text2").text(" ");
+				                        typer();
+				                        window.setTimeout(function () {
+				                            $(".foe, .me, .messages").slideUp(500);
+				                        }, 2000);
+				                    }, 2000);
+				                }, 2000);
+				            }, 2000);
+		            } else {
 		            $(".myHealth").text(healthCountPikachu);
 		            $(".me .healthbar").animate({
 		                width: healthCountPikachu * 3.5 + '%'
 		            }, 500);
 		            window.setTimeout(function () {
-		                reset();
-		            }, 2000);
-		        }, 2000);
-		
-		        //Health bar color change
-		        if (healthCountPikachu <= 7) {
-		            $(".me .healthbar").css('background-color', 'red');
-		        }
-		
-		        //Lose
-		        else if (healthCountPikachu < 1) {
-		            $(".menu").css('display', 'none');
-		            $(".myHealth").text("0");
-		            $(".me .healthbar").css('width', '0%');
-		            $(".me .stats").css('display', 'none');
-		            $(".me .pokemon-image").delay(500).animate({
-		                bottom: "-500px"
-		            }, 1000);
-		            window.setTimeout(function () {
-		                $("p.text1").text("Pikachu fainted...");
-		                $("p.text2").text(" ");
-		                typer();
-		                window.setTimeout(function () {
-		                    $("p.text1").text("ASH is out of");
-		                    $("p.text2").text("useable POKéMON...");
-		                    typer();
-		                    window.setTimeout(function () {
-		                        $("p.text1").text("ASH whited out!");
-		                        $("p.text2").text(" ");
-		                        typer();
-		                        window.setTimeout(function () {
-		                            $(".foe, .me, .messages").slideUp(500);
-		                        }, 2000);
-		                    }, 2000);
-		                }, 2000);
-		            }, 2000);
-		        }
+		            	reset();
+		            }, 2400);
+			        };
+			    }, 2000);
 		    }
 		};
 		
 		//Thundershock
 		var thundershock = function () {
 		    hider();
-		    var damage1 = Math.floor(Math.random() * 4 + 3);
+		    var damage1 = Math.floor(Math.random() * 3 + 2);
 		    healthCountEevee -= damage1;
 		    $("p.text1").text("You did " + damage1 + " damage!");
 		    $("p.text2").text(" ");
@@ -513,7 +512,7 @@
 		//Tackle
 		var tackle = function () {
 		    hider();
-		    var damage1 = Math.floor(Math.random() * 3 + 2);
+		    var damage1 = Math.floor(Math.random() * 2 + 1);
 		    healthCountEevee -= damage1;
 		    $("p.text1").text("You did " + damage1 + " damage!");
 		    $("p.text2").text(" ");
