@@ -67,10 +67,13 @@
     font-family: 'pokemon', sans-serif;
     text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
     font-size: 14px;
+  }
+  
+  .container {
     overflow: hidden;
     width: 320px;
     height: 288px;
-    margin: 10px auto;
+    margin-top: 10px;
   }
   
   .foe {
@@ -270,9 +273,7 @@
   }
   
   @media (min-width: 768px) {
-    body {
-      font-size: 24px;
-    }
+  
   }
   
   @media (min-width: 992px) {
@@ -287,6 +288,9 @@
 </head>
 
 <body>
+
+<div class="pokemongetter"></div>
+
 <div class="container loader">
   <div class="row">
     <div class="col-xs-12">
@@ -420,6 +424,12 @@
   <script src="http://code.jquery.com/jquery-1.10.2.min.js" type='text/javascript'></script>
   <script type='text/javascript'>
   $(document).ready(function() {
+  
+    /*--- Pokémon JSON ---*/
+    $.getJSON("js/pokemon.json", function (pokedex) {
+      var pokemon = pokedex[1].name;
+      $('.pokemongetter').text("Hi");
+    });
   
     /*---------- Setup --------------------------------------------------------------------*/
   
@@ -650,69 +660,67 @@
   
     /*---------- Opening Animation ----------------------------------------------------------------*/
   
+    $(".loader").animate({
+      marginTop: "0px"
+    }, 2000, 'linear');
     window.setTimeout(function() {
-      $(".loader").animate({
-        marginTop: "0px"
-      }, 0, 'linear');
+      $(".loader").css('display', 'none');
+      $(".battle").css('display', 'block');
+      //Opening animations trainers
+      $(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
+      $(".foe .pokemon-image").animate({
+        right: "0px"
+      }, 2000, 'linear');
+      $(".player .pokemon-image").animate({
+        left: "0px"
+      }, 2000, 'linear');
       window.setTimeout(function() {
-        $(".loader").css('display', 'none');
-        $(".battle").css('display', 'block');
-        //Opening animations trainers
-        $(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
-        $(".foe .pokemon-image").animate({
-          right: "0px"
-        }, 0, 'linear');
-        $(".player .pokemon-image").animate({
-          left: "0px"
-        }, 0, 'linear');
+        $(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
+        $(".gary_black, .ash_black").css('display', 'none');
         window.setTimeout(function() {
-          $(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
-          $(".gary_black, .ash_black").css('display', 'none');
+          $("p.text1").text("GARY wants");
+          $("p.text2").text("to fight!");
+          typer();
           window.setTimeout(function() {
-            $("p.text1").text("GARY wants");
-            $("p.text2").text("to fight!");
-            typer();
+            $(".ash_balls, .gary_balls").css('display', 'none');
+            $(".foe .pokemon-image").animate({
+              right: "-1000px"
+            }, 700, 'linear');
             window.setTimeout(function() {
-              $(".ash_balls, .gary_balls").css('display', 'none');
+              $("p.text1").text("GARY sent");
+              $("p.text2").text("out EEVEE!");
+              typer();
+              $(".eevee").css('display', 'block');
+              $(".gary").css('display', 'none');
               $(".foe .pokemon-image").animate({
-                right: "-1000px"
-              }, 0, 'linear');
+                right: "0px"
+              }, 1300, 'linear');
               window.setTimeout(function() {
-                $("p.text1").text("GARY sent");
-                $("p.text2").text("out EEVEE!");
-                typer();
-                $(".eevee").css('display', 'block');
-                $(".gary").css('display', 'none');
-                $(".foe .pokemon-image").animate({
-                  right: "0px"
-                }, 0, 'linear');
+                $(".foe .stats").css('display', 'block');
+                $(".player .pokemon-image").animate({
+                  left: "-1000px"
+                }, 700, 'linear');
                 window.setTimeout(function() {
+                  $(".ash").css('display', 'none');
+                  $(".pikachu").css('display', 'block');
                   $(".foe .stats").css('display', 'block');
                   $(".player .pokemon-image").animate({
-                    left: "-1000px"
-                  }, 0, 'linear');
+                    left: "0px"
+                  }, 1300, 'linear');
+                  $("p.text1").text("Go! PIKACHU!");
+                  $("p.text2").text(" ");
+                  typer();
+                  $(".player .stats").css('display', 'block');
                   window.setTimeout(function() {
-                    $(".ash").css('display', 'none');
-                    $(".pikachu").css('display', 'block');
-                    $(".foe .stats").css('display', 'block');
-                    $(".player .pokemon-image").animate({
-                      left: "0px"
-                    }, 0, 'linear');
-                    $("p.text1").text("Go! PIKACHU!");
-                    $("p.text2").text(" ");
-                    typer();
-                    $(".player .stats").css('display', 'block');
-                    window.setTimeout(function() {
-                      reset();
-                    }, 0);
-                  }, 0);
-                }, 0);
-              }, 0);
-            }, 0);
-          }, 0);
-        }, 0);
-      }, 0);
-    }, 0);
+                    reset();
+                  }, 3000);
+                }, 1500);
+              }, 2000);
+            }, 1000);
+          }, 2000);
+        }, 400);
+      }, 2010);
+    }, 3000);
   
   
     /*---------- Interactions ------------------------------------------------------------*/
