@@ -289,7 +289,7 @@
 
 <body>
 
-<div class="pokemongetter"></div>
+<div class="pokemonname"></div>
 
 <div class="container loader">
   <div class="row">
@@ -425,13 +425,29 @@
   <script type='text/javascript'>
   $(document).ready(function() {
   
-    /*--- Pokémon JSON ---*/
-    $.getJSON("js/pokemon.json", function (pokedex) {
-      var pokemon = pokedex[1].name;
-      $('.pokemongetter').text("Hi");
-    });
+    /*--- Pokédex ---*/
+    function pokedex(dex, itm) {
+      $.ajax({
+        'async': false,
+        'global': false,
+        'url': "js/pokemon.json",
+        'dataType': "json",
+        'success': function (data) {
+            poke = data;
+        }
+      });
+      if (itm == "name") {
+        return poke[dex].name;
+      } else if (itm == "id") {
+        return poke[dex].id;
+      } else if (itm == "hp") {
+        return poke[dex].stats.hp;
+      } else {
+        return false;
+      }
+    }
   
-    /*---------- Setup --------------------------------------------------------------------*/
+    /*--- Setup ---*/
   
     //Typer
     var typer = function() {

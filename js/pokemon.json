@@ -1,3 +1,13 @@
+[
+{
+  "id": "000",
+  "name": "MissingNo",
+  "img": "img/pkmn_sprites/0.png",
+  "type": [
+    "Normal",
+    "Flying"
+  ]
+},
 {
   "id": "001",
   "name": "Bulbasaur",
@@ -54560,3 +54570,4 @@
     "entreeforestlevel": "30"
   }
 }
+]
