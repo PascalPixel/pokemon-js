@@ -105,7 +105,7 @@
     display: none;
   }
   
-  .pikachu img {
+  .playerPokemon img {
     margin-left: 17px;
   }
   
@@ -331,13 +331,13 @@
       <div class="col-xs-5 pokemon-image">
         <div class="ash_black"><img src="img/ash_black.png"></div>
         <div class="ash"><img src="img/ash.png"></div>
-        <div class="pikachu"><img src="img/pikachu.png"></div>
+        <div class="playerPokemon"><img src="img/pikachu.png"></div>
       </div>
   
       <div class="col-xs-7 statswrap">
         <div class="ash_balls"><img src="img/ash_balls.png"></div>
         <div class="stats">
-          <span style="margin-left:13px;">PIKACHU</span><br>
+          <span class="playerpokemonname" style="margin-left:13px;"></span><br>
           <div style="margin:-5px 0 -1px 73px;">
             <img src="img/L.png" width="12px">5
           </div>
@@ -347,8 +347,8 @@
           </div>
           <div class="health">
             <div class="healthcount myHealth">
-              18
-            </div>/ 18
+              23
+            </div>/ <span class="playerpokemontotalhp"></span>
           </div>
         </div>
       </div>
@@ -398,8 +398,8 @@
           </div>
         </div>
         <div class="pkmn-menu frame">
-          <div class="button pikachuButton">
-            PIKACHU
+          <div class="button playerPokemonButton">
+            <span class="playerpokemonname"></span>
           </div>
           <div class="button back">
             cancel
@@ -416,7 +416,7 @@
         Created by <a href="http://www.superpencil.com">Superpencil</a><br>
         Designer & developer<br> <a class="link" href="mailto:pascal@superpencil.com">for hire</a><br>
         <br>
-        Pokémon & Pikachu are trademarks of The Pokémon Company & Nintendo Inc.<br>
+        Pokémon & playerPokemon are trademarks of The Pokémon Company & Nintendo Inc.<br>
       </div>
     </div>
   </footer>
@@ -442,10 +442,48 @@
         return poke[dex].id;
       } else if (itm == "hp") {
         return poke[dex].stats.hp;
+      } else if (itm == "atk") {
+        return poke[dex].stats.attack;
+      } else if (itm == "def") {
+        return poke[dex].stats.defense;
+      } else if (itm == "spa") {
+        return poke[dex].stats.spattack;
+      } else if (itm == "spd") {
+        return poke[dex].stats.spdefense;
+      } else if (itm == "spe") {
+        return poke[dex].stats.speed;
       } else {
         return false;
       }
     }
+    
+    function levelAdjust(dex, level) {
+      var stats = new Object();
+          stats['hp']  = Math.floor((pokedex(dex, "hp") * 2 + 193) * level / 100 + 10);
+          stats['atk'] = Math.floor(((pokedex(dex, "atk") * 2 + 193) * level / 100 + 10) * level / 100);
+          stats['def'] = Math.floor((pokedex(dex, "def") * 2 + 193) * level / 100 + 10);
+          stats['spa'] = Math.floor(((pokedex(dex, "spa") * 2 + 193) * level / 100 + 10) * level / 100);
+          stats['spd'] = Math.floor((pokedex(dex, "spd") * 2 + 193) * level / 100 + 10);
+          stats['spe'] = Math.floor((pokedex(dex, "spe") * 2 + 193) * level / 100 + 10);
+      return stats;
+    }
+    
+    /*--- Player's Pokemon ---*/
+    var hpTotal;
+    function pokemon(dex, lvl) {
+      var stats = levelAdjust(dex, lvl);
+      $('.playerpokemonname').text(pokedex(dex, "name").toUpperCase());
+      var hpTotal = stats['hp'];
+      $('.playerpokemontotalhp').text(hpTotal);
+    }
+    pokemon(25,5);
+    
+    //HP
+    var healthCountEeveeFull = 22;
+    var healthCountEevee = healthCountEeveeFull;
+    var healthCountplayerPokemon = hpTotal;
+    $(".foeHealth").text(healthCountEevee);
+    $(".myHealth").text(healthCountplayerPokemon);
   
     /*--- Setup ---*/
   
@@ -469,14 +507,6 @@
         $(this).delay(40 * i).fadeIn(0);
       });
     };
-  
-    //HP
-    var healthCountEeveeFull = 22;
-    var healthCountPikachuFull = 18;
-    var healthCountEevee = healthCountEeveeFull;
-    var healthCountPikachu = healthCountPikachuFull;
-    $(".foeHealth").text(healthCountEevee);
-    $(".myHealth").text(healthCountPikachu);
   
     //Potioncount
     var potionCount = 1;
@@ -552,14 +582,14 @@
           window.setTimeout(function() {
             //Foe attack
             var damage2 = Math.floor(Math.random() * 3 + 2);
-            healthCountPikachu -= damage2;
+            healthCountplayerPokemon -= damage2;
             $("p.text1").text("Eevee did " + damage2);
             $("p.text2").text("damage to you.");
             typer();
-            if (healthCountPikachu <= 7) {
+            if (healthCountplayerPokemon <= 7) {
               $(".player .healthbar").css('background-color', 'red');
             };
-            if (healthCountPikachu <= 0) {
+            if (healthCountplayerPokemon <= 0) {
               $(".menu").css('display', 'none');
               $(".myHealth").text("0");
               $(".player .healthbar").css('width', '0%');
@@ -568,7 +598,7 @@
                 $(".player .pokemon-image").delay(500).animate({
                   bottom: "-500px"
                 }, 1000);
-                $("p.text1").text("Pikachu fainted...");
+                $("p.text1").text("playerPokemon fainted...");
                 $("p.text2").text(" ");
                 typer();
                 window.setTimeout(function() {
@@ -586,9 +616,9 @@
                 }, 2000);
               }, 2000);
             } else {
-              $(".myHealth").text(healthCountPikachu);
+              $(".myHealth").text(healthCountplayerPokemon);
               $(".player .healthbar").animate({
-                width: healthbar(healthCountPikachu, healthCountPikachuFull) + '%'
+                width: healthbar(healthCountplayerPokemon, hpTotal) + '%'
               }, 500);
               window.setTimeout(function() {
                 reset();
@@ -615,7 +645,7 @@
     //Growl
     var growl = function() {
         hider();
-        $("p.text1").text("PIKACHU");
+        $("p.text1").text("playerPokemon");
         $("p.text2").text("used GROWL!");
         typer();
         window.setTimeout(function() {
@@ -645,7 +675,7 @@
     //potion use
     var potion = function() {
         hider();
-        if (healthCountPikachu >= 18) {
+        if (healthCountplayerPokemon >= 18) {
           $("p.text1").text("HP already");
           $("p.text2").text("full!");
           typer();
@@ -656,13 +686,13 @@
           $("p.text1").text("Used POTION!");
           $("p.text2").text(" ");
           typer();
-          healthCountPikachu += 10;
-          if (healthCountPikachu >= 18) {
-            healthCountPikachu = 18;
+          healthCountplayerPokemon += 10;
+          if (healthCountplayerPokemon >= 18) {
+            healthCountplayerPokemon = 18;
           }
-          $(".myHealth").text(healthCountPikachu);
+          $(".myHealth").text(healthCountplayerPokemon);
           $(".player .healthbar").animate({
-            width: healthbar(healthCountPikachu, healthCountPikachuFull) + '%'
+            width: healthbar(healthCountplayerPokemon, hpTotal) + '%'
           }, 500);
           potionCount--;
           attackEnd();
@@ -683,7 +713,7 @@
       $(".loader").css('display', 'none');
       $(".battle").css('display', 'block');
       //Opening animations trainers
-      $(".eevee, .pikachu, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
+      $(".eevee, .playerPokemon, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
       $(".foe .pokemon-image").animate({
         right: "0px"
       }, 2000, 'linear');
@@ -718,12 +748,12 @@
                 }, 700, 'linear');
                 window.setTimeout(function() {
                   $(".ash").css('display', 'none');
-                  $(".pikachu").css('display', 'block');
+                  $(".playerPokemon").css('display', 'block');
                   $(".foe .stats").css('display', 'block');
                   $(".player .pokemon-image").animate({
                     left: "0px"
                   }, 1300, 'linear');
-                  $("p.text1").text("Go! PIKACHU!");
+                  $("p.text1").text("Go! playerPokemon!");
                   $("p.text2").text(" ");
                   typer();
                   $(".player .stats").css('display', 'block');
