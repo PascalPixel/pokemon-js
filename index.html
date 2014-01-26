@@ -57,233 +57,234 @@
 
 <style type='text/css'>
 
-  @font-face {
-    font-family:'pokemon';
-    src:url('font/Pokemon%20GB.ttf');
-  }
+@font-face {
+  font-family:'pokemon';
+  src:url('font/Pokemon%20GB.ttf');
+}
+
+body {
+  background: #dde8c7;
+  font-family: 'pokemon', sans-serif;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  font-size: 14px;
+}
+
+.container {
+  overflow: hidden;
+  width: 320px;
+  height: 288px;
+  margin-top: 10px;
+}
+
+.foe {
+  overflow: hidden;
+}
+
+.foepush {
+  padding-left: 18px;
+}
+
+.row {
+  position: relative;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  font-size: 8px;
+  margin-top: 10px;
+  line-height: 18px;
+  display: none;
+}
+
+.playerPokemon img {
+  margin-left: 17px;
+}
+
+.player .pokemon-image {
+  left: 1000px;
+  position: relative;
+}
+
+.foe .pokemon-image {
+  position: relative;
+  right: 1000px;
+}
+
+.player .stats {
+  background-image: url(img/ash_line.png);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-bottom: 5px;
+  padding-bottom: 18px;
+  margin-right: 17px;
+}
+
+.foe .stats {
+  background-image: url(img/gary_line.png);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  padding-bottom: 2px;
+}
+
+.menu .button {
+  display: inline-block;
+  margin: 8px 0 0;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.healthbar {
+  background-color: #30cb30;
+  height: 3px;
+  width: 100%;
+}
+
+.healthbarcontainer {
+  border: 2px solid rgba(0,0,0,0.75);
+  border-radius: 5px;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  margin: 0 15px 10px 40px;
+  display: block;
+}
+
+.health {
+  float: right;
+  margin-right: 15px;
+  margin-top: -5px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.hp {
+  display: inline-block;
+}
+
+.menu {
+  background: #dde8c7;
+  display: none;
+  float: right;
+  margin: -25px -30px -15px 0;
+  width: 172px;
+  height: 85px;
+  padding-top: 6px;
+  padding-left: 13px;
+}
+
+.fight-menu,.item-menu,.pkmn-menu {
+  background: #dde8c7;
+  bottom: -15px;
+  display: none;
+  padding-top: 5px;
+  position: absolute;
+  right: -20px;
+}
+
+.item-menu,.pkmn-menu {
+  left: -15px;
+  right: -15px;
+  top: -110px;
+  bottom: -15px;
+}
+
+.relative {
+  position: relative;
+}
+
+.messages {
+  display: block;
+  margin: 0;
+  height: 85px;
+}
+
+.text {
+  margin-left: -15px;
+  margin-top: 10px;
+  margin-right: -15px;
+}
+
+.hp_img {
+  margin-left: -30px;
+  position: absolute;
+  width:20px;
+  margin-top:-2px;
+}
+
+.frame {
+  -moz-border-image: url(img/border.png) 41 41 repeat;
+  -o-border-image: url(img/border.png) 41 41 repeat;
+  -webkit-border-image: url(img/border.png) 41 41 repeat;
+  border-image: url(img/border.png) 41 41 fill repeat;
+  border-style: solid;
+  border-width: 15px;
+}
+
+.link {
+  background-color: rgba(255,0,0,0.8);
+  border-radius: 3px;
+  color: #dde8c7;
+  padding: 4px 5px 2px;
+  text-shadow: none;
+}
+
+.battle {
+  display: none;
+}
+
+.loader {
+  display: block;
+  margin-top: -300px;
+  padding-top: 80px;
+  text-align: center;
+}
+
+.loader a {
+  border-radius: 5px;
+  padding: 8px 10px 4px;
+}
+
+.player {
+  position: relative;
+  margin-top: -30px;
+  overflow-y: hidden;
+}
+
+.messages span {
+  margin-right: -14px;
+}
+
+.statswrap {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 992px) {
   
-  body {
-    background: #dde8c7;
-    font-family: 'pokemon', sans-serif;
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
-    font-size: 14px;
-  }
+}
+
+@media (min-width: 1200px) {
   
-  .container {
-    overflow: hidden;
-    width: 320px;
-    height: 288px;
-    margin-top: 10px;
-  }
-  
-  .foe {
-    overflow: hidden;
-  }
-  
-  .foepush {
-    padding-left: 18px;
-  }
-  
-  .row {
-    position: relative;
-  }
-  
-  a {
-    text-decoration: none !important;
-    color: inherit;
-  }
-  
-  p {
-    margin: 0;
-    padding: 0;
-  }
-  
-  footer {
-    font-size: 8px;
-    margin-top: 10px;
-    line-height: 18px;
-    display: none;
-  }
-  
-  .playerPokemon img {
-    margin-left: 17px;
-  }
-  
-  .player .pokemon-image {
-    left: 1000px;
-    position: relative;
-  }
-  
-  .foe .pokemon-image {
-    position: relative;
-    right: 1000px;
-  }
-  
-  .player .stats {
-    background-image: url(img/ash_line.png);
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    margin-bottom: 5px;
-    padding-bottom: 18px;
-    margin-right: 17px;
-  }
-  
-  .foe .stats {
-    background-image: url(img/gary_line.png);
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    padding-bottom: 2px;
-  }
-  
-  .menu .button {
-    display: inline-block;
-    margin: 8px 0 0;
-  }
-  
-  .button:hover {
-    cursor: pointer;
-  }
-  
-  .healthbar {
-    background-color: #30cb30;
-    height: 3px;
-    width: 100%;
-  }
-  
-  .healthbarcontainer {
-    border: 2px solid rgba(0,0,0,0.75);
-    border-radius: 5px;
-    box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
-    margin: 0 15px 10px 40px;
-    display: block;
-  }
-  
-  .health {
-    float: right;
-    margin-right: 15px;
-    margin-top: -5px;
-  }
-  
-  img {
-    max-width: 100%;
-  }
-  
-  .healthcount {
-    display: inline-block;
-  }
-  
-  .menu {
-    background: #dde8c7;
-    display: none;
-    float: right;
-    margin: -25px -30px -15px 0;
-    width: 172px;
-    height: 85px;
-    padding-top: 6px;
-    padding-left: 13px;
-  }
-  
-  .fight-menu,.item-menu,.pkmn-menu {
-    background: #dde8c7;
-    bottom: -15px;
-    display: none;
-    padding-top: 5px;
-    position: absolute;
-    right: -20px;
-  }
-  
-  .item-menu,.pkmn-menu {
-    left: -15px;
-    right: -15px;
-    top: -110px;
-    bottom: -15px;
-  }
-  
-  .relative {
-    position: relative;
-  }
-  
-  .messages {
-    display: block;
-    margin: 0;
-    height: 85px;
-  }
-  
-  .text {
-    margin-left: -15px;
-    margin-top: 10px;
-    margin-right: -15px;
-  }
-  
-  .hp {
-    margin-left: -30px;
-    position: absolute;
-    width:20px;
-    margin-top:-2px;
-  }
-  
-  .frame {
-    -moz-border-image: url(img/border.png) 41 41 repeat;
-    -o-border-image: url(img/border.png) 41 41 repeat;
-    -webkit-border-image: url(img/border.png) 41 41 repeat;
-    border-image: url(img/border.png) 41 41 fill repeat;
-    border-style: solid;
-    border-width: 15px;
-  }
-  
-  .link {
-    background-color: rgba(255,0,0,0.8);
-    border-radius: 3px;
-    color: #dde8c7;
-    padding: 4px 5px 2px;
-    text-shadow: none;
-  }
-  
-  .battle {
-    display: none;
-  }
-  
-  .loader {
-    display: block;
-    margin-top: -300px;
-    padding-top: 80px;
-    text-align: center;
-  }
-  
-  .loader a {
-    border-radius: 5px;
-    padding: 8px 10px 4px;
-  }
-  
-  .player {
-    position: relative;
-    margin-top: -30px;
-  }
-  
-  .messages span {
-    margin-right: -14px;
-  }
-  
-  .statswrap {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
-  
-  @media (min-width: 768px) {
-  
-  }
-  
-  @media (min-width: 992px) {
-    
-  }
-  
-  @media (min-width: 1200px) {
-    
-  }
-  
+}
+
 </style>
 </head>
 
@@ -303,23 +304,18 @@
 
 <div class="gameboy">
   <div class="container battle">
+  
     <div class="row foe">
       <div class="col-xs-7">
         <div class="foepush">
           <div class="gary_balls"><img src="img/gary_balls.png"></div>
           <div class="stats">
-            EEVEE<br>
-            <div style="margin:-5px 0 -1px 45px;">
-              <img src="img/L.png" width="12px">5
-            </div>
-            <div class="healthbarcontainer">
-              <img class="hp" src="img/hp.png">
-              <div class="healthbar"></div>
-            </div>
+            <span class="name" style="margin-left:13px;"></span><br>
+            <div style="margin:-5px 0 -1px 45px;"><img src="img/l.png" width="12px"><span class="level"></span></div>
+            <div class="healthbarcontainer"><img class="hp_img" src="img/hp.png"><div class="healthbar"></div></div>
           </div>
         </div>
       </div>
-  
       <div class="col-xs-5 pokemon-image">
         <div class="gary_black"><img src="img/gary_black.png"></div>
         <div class="gary"><img src="img/gary.png"></div>
@@ -333,23 +329,13 @@
         <div class="ash"><img src="img/ash.png"></div>
         <div class="playerPokemon"><img src="img/pikachu.png"></div>
       </div>
-  
       <div class="col-xs-7 statswrap">
         <div class="ash_balls"><img src="img/ash_balls.png"></div>
         <div class="stats">
-          <span class="playerpokemonname" style="margin-left:13px;"></span><br>
-          <div style="margin:-5px 0 -1px 73px;">
-            <img src="img/L.png" width="12px">5
-          </div>
-          <div class="healthbarcontainer">
-            <img class="hp" src="img/hp.png">
-            <div class="healthbar"></div>
-          </div>
-          <div class="health">
-            <div class="healthcount myHealth">
-              23
-            </div>/ <span class="playerpokemontotalhp"></span>
-          </div>
+          <span class="name" style="margin-left:13px;"></span><br>
+          <div style="margin:-5px 0 -1px 73px;"><img src="img/l.png" width="12px"><span class="level"></span></div>
+          <div class="healthbarcontainer"><img class="hp_img" src="img/hp.png"><div class="healthbar"></div></div>
+          <div class="health"><span class="hp"></span>/ <span class="hpTotal"></span></div>
         </div>
       </div>
     </div>
@@ -359,478 +345,495 @@
         <p class="text text1"></p>
         <p class="text text2"></p>
         <div class="menu frame">
-          <div class="button fight">
-            FIGHT
-          </div>
-          <div class="button pkmn">
-            <sup>P</sup><sub>K</sub><sup>M</sup><sub>N</sub>
-          </div>
-          <div class="button item">
-            ITEM&nbsp;
-          </div>
-          <div class="button run">
-            RUN
-          </div>
+          <div class="button fight">FIGHT</div>
+          <div class="button pkmn"><sup>P</sup><sub>K</sub><sup>M</sup><sub>N</sub></div>
+          <div class="button item">ITEM&nbsp;</div>
+          <div class="button run">RUN</div>
         </div>
         <div class="fight-menu frame">
-          <div class="button thundershock">
-            THUNDERSHOCK
-          </div>
-          <div class="button growl">
-            GROWL
-          </div>
-          <div class="button tackle">
-            TACKLE
-          </div>
-          <div class="button back">
-            cancel
-          </div>
+          <div class="button thundershock">THUNDERSHOCK</div>
+          <div class="button growl">GROWL</div>
+          <div class="button tackle">TACKLE</div>
+          <div class="button back">cancel</div>
         </div>
         <div class="item-menu frame">
-          <div class="button potion">
-            POTION x
-            <div class="potionCount">
-              1
-            </div>
-          </div>
-          <div class="button back" style="position:absolute;bottom:20px;">
-            cancel
-          </div>
+          <div class="button potion">POTION x <span class="potionCount">1</span></div>
+          <div class="button back" style="position:absolute;bottom:20px;">cancel</div>
         </div>
         <div class="pkmn-menu frame">
-          <div class="button playerPokemonButton">
-            <span class="playerpokemonname"></span>
-          </div>
-          <div class="button back">
-            cancel
-          </div>
+          <div class="button playerPokemonButton"><span class="playerpokemonname"></span></div>
+          <div class="button back">cancel</div>
         </div>
       </div>
     </div>
+    
   </div>
+</div>
 
-  <footer class="container">
-    <div class="row">
-      <div class="col-xs-3"><img src="img/superpencil.png"></div>
-      <div class="col-xs-9">
-        Created by <a href="http://www.superpencil.com">Superpencil</a><br>
-        Designer & developer<br> <a class="link" href="mailto:pascal@superpencil.com">for hire</a><br>
-        <br>
-        Pokémon & Pikachu are trademarks of The Pokémon Company & Nintendo Inc.<br>
-      </div>
+<footer class="container">
+  <div class="row">
+    <div class="col-xs-3"><img src="img/superpencil.png"></div>
+    <div class="col-xs-9">
+      Created by <a href="http://www.superpencil.com">Superpencil</a><br>
+      Designer & developer<br> <a class="link" href="mailto:pascal@superpencil.com">for hire</a><br>
+      <br>
+      Pokémon & Pikachu are trademarks of The Pokémon Company & Nintendo Inc.<br>
     </div>
-  </footer>
-  
-  <script src="http://code.jquery.com/jquery-1.10.2.min.js" type='text/javascript'></script>
-  <script type='text/javascript'>
-  $(document).ready(function() {
-  
-    /*--- Pokédex ---*/
-    function pokedex(dex, itm) {
-      $.ajax({
-        'async': false,
-        'global': false,
-        'url': "js/pokemon.json",
-        'dataType': "json",
-        'success': function (data) {
-            poke = data;
-        }
-      });
-      if (itm == "name") {
-        return poke[dex].name;
-      } else if (itm == "id") {
-        return poke[dex].id;
-      } else if (itm == "hp") {
-        return poke[dex].stats.hp;
-      } else if (itm == "atk") {
-        return poke[dex].stats.attack;
-      } else if (itm == "def") {
-        return poke[dex].stats.defense;
-      } else if (itm == "spa") {
-        return poke[dex].stats.spattack;
-      } else if (itm == "spd") {
-        return poke[dex].stats.spdefense;
-      } else if (itm == "spe") {
-        return poke[dex].stats.speed;
-      } else {
-        return false;
-      }
+  </div>
+</footer>
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js" type='text/javascript'></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/json3/3.3.0/json3.min.js" type='text/javascript'></script>
+<script type='text/javascript'>
+$(document).ready(function() {
+
+//Initiate Player
+var player = "Ash";
+var playerLevel = 5;
+var playerPokemon = pokedex(25,playerLevel);
+var hpPlayerTotal = playerPokemon['hp'];
+var hpPlayer = hpPlayerTotal;
+var playerBaseAttack = playerPokemon['atk'];
+var playerBaseDefense = playerPokemon['def'];
+$('.player .level').text(playerLevel);
+$('.player .hp').text(hpPlayerTotal);
+$('.player .hpTotal').text(hpPlayerTotal);
+$('.player .name').text(playerPokemon['name'].toUpperCase());
+
+//Initiate Foe
+var foe = "Gary";
+var foeLevel = 5;
+var foePokemon = pokedex(133,foeLevel);
+var hpFoeFull = foePokemon['hp'];
+var hpFoe = hpFoeFull;
+var foeBaseAttack = foePokemon['atk'];
+var foeBaseDefense = foePokemon['def'];
+$('.foe .level').text(playerLevel);
+$('.foe .name').text(foePokemon['name'].toUpperCase());
+
+/*--- Pokédex ---*/
+function pokedex(dex, level) {
+  $.ajax({
+    'async': false,
+    'global': false,
+    'url': "js/pokemon.json",
+    'dataType': "json",
+    'success': function (data) {
+        poke = data;
     }
-    
-    function levelAdjust(dex, level) {
-      var stats = new Object();
-          stats['hp']  = Math.floor((pokedex(dex, "hp") * 2 + 193) * level / 100 + 10);
-          stats['atk'] = Math.floor(((pokedex(dex, "atk") * 2 + 193) * level / 100 + 10) * level / 100);
-          stats['def'] = Math.floor((pokedex(dex, "def") * 2 + 193) * level / 100 + 10);
-          stats['spa'] = Math.floor(((pokedex(dex, "spa") * 2 + 193) * level / 100 + 10) * level / 100);
-          stats['spd'] = Math.floor((pokedex(dex, "spd") * 2 + 193) * level / 100 + 10);
-          stats['spe'] = Math.floor((pokedex(dex, "spe") * 2 + 193) * level / 100 + 10);
-      return stats;
+  });
+  var stats = new Object();
+      stats['id'] = poke[dex].id;
+      stats['name'] = poke[dex].name;
+      stats['hp']  = Math.floor((poke[dex].stats.hp * 2 + 193) * level / 100 + 10);
+      stats['atk'] = Math.floor(((poke[dex].stats.attack * 2 + 193) * level / 100 + 10) * level / 100);
+      stats['def'] = Math.floor((poke[dex].stats.defense * 2 + 193) * level / 100 + 10);
+      stats['spa'] = Math.floor(((poke[dex].stats.spattack * 2 + 193) * level / 100 + 10) * level / 100);
+      stats['spd'] = Math.floor((poke[dex].stats.spdefense * 2 + 193) * level / 100 + 10);
+      stats['spe'] = Math.floor((poke[dex].stats.speed * 2 + 193) * level / 100 + 10);
+  return stats;
+}
+
+/*--- Setup ---*/
+
+//Typer
+var typer = function() {
+  $('div.messages .text1, div.messages .text2').each(function() {
+    $(this).text($(this).text().replace(/ /g, '\u00A0'));
+  });
+  var line = $('div.messages .text1, div.messages .text2');
+  line.hide().contents().each(function() {
+    var letters;
+    letters = '<span> ' + this.data.split("").join(' <\/span><span> ') + ' <\/span>';
+    $(this).replaceWith(letters);
+  });
+  line.find('span').hide().each(function() {
+    if (!$.trim(this.innerHTML)) {
+      $(this).remove();
     }
-    
-    /*--- Player's Pokemon ---*/
-    var hpTotal;
-    function pokemon(dex, lvl) {
-      var stats = levelAdjust(dex, lvl);
-      $('.playerpokemonname').text(pokedex(dex, "name").toUpperCase());
-      var hpTotal = stats['hp'];
-      $('.playerpokemontotalhp').text(hpTotal);
-    }
-    pokemon(25,5);
-    
-    //HP
-    var healthCountEeveeFull = 22;
-    var healthCountEevee = healthCountEeveeFull;
-    var healthCountplayerPokemon = hpTotal;
-    $(".foeHealth").text(healthCountEevee);
-    $(".myHealth").text(healthCountplayerPokemon);
-  
-    /*--- Setup ---*/
-  
-    //Typer
-    var typer = function() {
-      $('div.messages .text1, div.messages .text2').each(function() {
-        $(this).text($(this).text().replace(/ /g, '\u00A0'));
-      });
-      var line = $('div.messages .text1, div.messages .text2');
-      line.hide().contents().each(function() {
-        var letters;
-        letters = '<span> ' + this.data.split("").join(' <\/span><span> ') + ' <\/span>';
-        $(this).replaceWith(letters);
-      });
-      line.find('span').hide().each(function() {
-        if (!$.trim(this.innerHTML)) {
-          $(this).remove();
-        }
-      });
-      line.show().find('span').each(function(i) {
-        $(this).delay(40 * i).fadeIn(0);
-      });
-    };
-  
-    //Potioncount
-    var potionCount = 1;
-    $(".potionCount").text(potionCount);
-  
-  
-    /*---------- Variables ----------------------------------------------------------------*/
-  
-    //Menu closer
-    var reset = function() {
-        $(".item-menu, .pkmn-menu, .fight-menu").css('display', 'none');
-        $("p.text1").text(" ");
-        $("p.text2").text(" ");
-        $(".menu").css('display', 'block');
-      }
-  
-    //Hide menus
-    var hider = function() {
-      $(".menu, .item-menu, .pkmn-menu, .fight-menu").css('display', 'none');
-    };
-    
-    //Convert health to percentage
-    function healthbar(current, total) {
-      var hpCurrent = current;
-      var hpTotal = total;
-      var percentTotal = 100;
-      var percentCurrent = (hpCurrent * percentTotal) / hpTotal;
-      return percentCurrent;
-    }
-    
-    //End of attack and return attack
-    var attackEnd = function() {
-  
-        if (healthCountEevee <= 8) {
-          $(".foe .healthbar").css('background-color', 'red');
-        };
-  
-        //Win
-        if (healthCountEevee <= 0) {
-          $(".menu").css('display', 'none');
-          $(".foe .healthbar").css('width', '0%');
-          window.setTimeout(function() {
-            $(".foe .pokemon-image, .foe .stats").delay(500).animate({
-              bottom: "-500px"
-            }, 1000);
-            $("p.text1").text("EEVEE fainted!");
-            $("p.text2").text(" ");
-            typer();
-            window.setTimeout(function() {
-              $("p.text1").text("Got $5 for");
-              $("p.text2").text("winning!");
-              typer();
-              window.setTimeout(function() {
-                $("p.text1").text("GARY: I can't");
-                $("p.text2").text(" believe it!");
-                typer();
-                window.setTimeout(function() {
-                  $("p.text1").text("I chose the");
-                  $("p.text2").text("wrong POKéMON!");
-                  typer();
-                  window.setTimeout(function() {
-                    $(".foe, .player, .messages").slideUp(500);
-                    $("footer").show();
-                  }, 2000);
-                }, 2000);
-              }, 2000);
-            }, 2000);
-          }, 2000);
-        }
-  
-        //Return attack
-        else {
-          window.setTimeout(function() {
-            //Foe attack
-            var damage2 = Math.floor(Math.random() * 3 + 2);
-            healthCountplayerPokemon -= damage2;
-            $("p.text1").text("Eevee did " + damage2);
-            $("p.text2").text("damage to you.");
-            typer();
-            if (healthCountplayerPokemon <= 7) {
-              $(".player .healthbar").css('background-color', 'red');
-            };
-            if (healthCountplayerPokemon <= 0) {
-              $(".menu").css('display', 'none');
-              $(".myHealth").text("0");
-              $(".player .healthbar").css('width', '0%');
-              $(".player .stats").css('display', 'none');
-              window.setTimeout(function() {
-                $(".player .pokemon-image").delay(500).animate({
-                  bottom: "-500px"
-                }, 1000);
-                $("p.text1").text("Pikachu fainted...");
-                $("p.text2").text(" ");
-                typer();
-                window.setTimeout(function() {
-                  $("p.text1").text("ASH is out of");
-                  $("p.text2").text("useable POKéMON...");
-                  typer();
-                  window.setTimeout(function() {
-                    $("p.text1").text("ASH whited out!");
-                    $("p.text2").text(" ");
-                    typer();
-                    window.setTimeout(function() {
-                      $(".foe, .player, .messages").slideUp(500);
-                    }, 2000);
-                  }, 2000);
-                }, 2000);
-              }, 2000);
-            } else {
-              $(".myHealth").text(healthCountplayerPokemon);
-              $(".player .healthbar").animate({
-                width: healthbar(healthCountplayerPokemon, hpTotal) + '%'
-              }, 500);
-              window.setTimeout(function() {
-                reset();
-              }, 2400);
-            };
-          }, 2000);
-        }
-      };
-  
-    //Thundershock
-    var thundershock = function() {
-        hider();
-        var damage1 = Math.floor(Math.random() * 3 + 2);
-        healthCountEevee -= damage1;
-        $("p.text1").text("You did");
-        $("p.text2").text(damage1 + " damage!");
-        typer();
-        $(".foe .healthbar").animate({
-          width: healthbar(healthCountEevee, healthCountEeveeFull) + '%'
-        }, 500);
-        attackEnd();
-      };
-  
-    //Growl
-    var growl = function() {
-        hider();
-        $("p.text1").text("PIKACHU");
-        $("p.text2").text("used GROWL!");
-        typer();
-        window.setTimeout(function() {
-          $("p.text1").text("EEVEE's defense");
-          $("p.text2").text("dropped by 2!");
-          typer();
-          window.setTimeout(function() {
-            attackEnd();
-          }, 2000);
-        }, 2000);
-      };
-  
-    //Tackle
-    var tackle = function() {
-        hider();
-        var damage1 = Math.floor(Math.random() * 2 + 1);
-        healthCountEevee -= damage1;
-        $("p.text1").text("You did " + damage1 + " damage!");
-        $("p.text2").text(" ");
-        typer();
-        $(".foe .healthbar").animate({
-          width: healthbar(healthCountEevee, healthCountEeveeFull) + '%'
-        }, 500);
-        attackEnd();
-      };
-  
-    //potion use
-    var potion = function() {
-        hider();
-        if (healthCountplayerPokemon >= 18) {
-          $("p.text1").text("HP already");
-          $("p.text2").text("full!");
-          typer();
-          window.setTimeout(function() {
-            reset();
-          }, 1000);
-        } else {
-          $("p.text1").text("Used POTION!");
-          $("p.text2").text(" ");
-          typer();
-          healthCountplayerPokemon += 10;
-          if (healthCountplayerPokemon >= 18) {
-            healthCountplayerPokemon = 18;
-          }
-          $(".myHealth").text(healthCountplayerPokemon);
-          $(".player .healthbar").animate({
-            width: healthbar(healthCountplayerPokemon, hpTotal) + '%'
-          }, 500);
-          potionCount--;
-          attackEnd();
-        }
-        $(".potionCount").text(potionCount);
-        if (potionCount <= 0) {
-          $(".potion").css('display', 'none');
-        }
-      };
-  
-  
-    /*---------- Opening Animation ----------------------------------------------------------------*/
-  
-    $(".loader").animate({
-      marginTop: "0px"
-    }, 2000, 'linear');
+  });
+  line.show().find('span').each(function(i) {
+    $(this).delay(40 * i).fadeIn(0);
+  });
+};
+
+//Potioncount
+var potionCount = 1;
+$(".potionCount").text(potionCount);
+
+
+/*--- Variables ---*/
+
+//Menu closer
+function reset() {
+  $(".item-menu, .pkmn-menu, .fight-menu").css('display', 'none');
+  $("p.text1").text(" ");
+  $("p.text2").text(" ");
+  $(".menu").css('display', 'block');
+}
+
+//Hide menus
+function hider() {
+  $(".menu, .item-menu, .pkmn-menu, .fight-menu").css('display', 'none');
+};
+
+//Convert health to percentage
+function healthbar(current, total) {
+  var hpCurrent = current;
+  var hpTotal = total;
+  var percentTotal = 100;
+  var percentCurrent = (hpCurrent * percentTotal) / hpTotal;
+  return percentCurrent;
+}
+
+//End of attack and return attack
+function attackEnd() {
+  if (hpFoe <= 8) {
+    $(".foe .healthbar").css('background-color', 'red');
+  };
+  //Win
+  if (hpFoe <= 0) {
+    $(".menu").css('display', 'none');
+    $(".foe .healthbar").css('width', '0%');
     window.setTimeout(function() {
-      $(".loader").css('display', 'none');
-      $(".battle").css('display', 'block');
-      //Opening animations trainers
-      $(".eevee, .playerPokemon, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
-      $(".foe .pokemon-image").animate({
-        right: "0px"
-      }, 2000, 'linear');
-      $(".player .pokemon-image").animate({
-        left: "0px"
-      }, 2000, 'linear');
-      window.setTimeout(function() {
-        $(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
-        $(".gary_black, .ash_black").css('display', 'none');
-        window.setTimeout(function() {
-          $("p.text1").text("GARY wants");
-          $("p.text2").text("to fight!");
-          typer();
-          window.setTimeout(function() {
-            $(".ash_balls, .gary_balls").css('display', 'none');
-            $(".foe .pokemon-image").animate({
-              right: "-1000px"
-            }, 700, 'linear');
-            window.setTimeout(function() {
-              $("p.text1").text("GARY sent");
-              $("p.text2").text("out EEVEE!");
-              typer();
-              $(".eevee").css('display', 'block');
-              $(".gary").css('display', 'none');
-              $(".foe .pokemon-image").animate({
-                right: "0px"
-              }, 1300, 'linear');
-              window.setTimeout(function() {
-                $(".foe .stats").css('display', 'block');
-                $(".player .pokemon-image").animate({
-                  left: "-1000px"
-                }, 700, 'linear');
-                window.setTimeout(function() {
-                  $(".ash").css('display', 'none');
-                  $(".playerPokemon").css('display', 'block');
-                  $(".foe .stats").css('display', 'block');
-                  $(".player .pokemon-image").animate({
-                    left: "0px"
-                  }, 1300, 'linear');
-                  $("p.text1").text("Go! PIKACHU!");
-                  $("p.text2").text(" ");
-                  typer();
-                  $(".player .stats").css('display', 'block');
-                  window.setTimeout(function() {
-                    reset();
-                  }, 3000);
-                }, 1500);
-              }, 2000);
-            }, 1000);
-          }, 2000);
-        }, 400);
-      }, 2010);
-    }, 3000);
-  
-  
-    /*---------- Interactions ------------------------------------------------------------*/
-  
-    //Open item menu
-    $('.item').click(function() {
-      $(".item-menu").css('display', 'block');
-    });
-  
-    //Potion
-    $('.potion').click(function() {
-      potion();
-    });
-  
-    //Fight
-    $('.fight').click(function() {
-      $(".fight-menu").css('display', 'block');
-    });
-  
-    //Thundershock
-    $('.thundershock').click(function() {
-      thundershock();
-    });
-  
-    //Growl
-    $('.growl').click(function() {
-      growl();
-    });
-  
-    //Tackle
-    $('.tackle').click(function() {
-      tackle();
-    });
-  
-    //Back
-    $('.back').click(function() {
-      reset();
-    });
-  
-    //Pokemon
-    $('.pkmn').click(function() {
-      $(".pkmn-menu").css('display', 'block');
-    });
-  
-    //Run
-    $('.run').click(function() {
-      hider();
-      $("p.text1").text("You can't run from");
-      $("p.text2").text("a POKéMON battle!");
+      $(".foe .pokemon-image, .foe .stats").delay(500).animate({
+        bottom: "-500px"
+      }, 1000);
+      $("p.text1").text(foePokemon['name'].toUpperCase()+" fainted!");
+      $("p.text2").text("");
       typer();
       window.setTimeout(function() {
-        reset();
+        $("p.text1").text("Got $"+Math.floor(playerLevel*2.5)+" for");
+        $("p.text2").text("winning!");
+        typer();
+        window.setTimeout(function() {
+          $("p.text1").text(foe.toUpperCase()+": I can't");
+          $("p.text2").text("believe it!");
+          typer();
+          window.setTimeout(function() {
+            $("p.text1").text("I chose the");
+            $("p.text2").text("wrong POKéMON!");
+            typer();
+            window.setTimeout(function() {
+              $(".foe, .player, .messages").slideUp(500);
+              $("footer").show();
+            }, 2000);
+          }, 2000);
+        }, 2000);
       }, 2000);
-    });
-  });
-  </script>
-  
-  <!-- Google Analytics -->
-  <script>
-    var _gaq=[['_setAccount','UA-9432622-1'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script>
+    }, 2000);
+  }
+  //Return attack
+  else {
+    window.setTimeout(function() {
+      $(".foe .pokemon-image").animate({
+          left: "10px"
+      }, 100, "linear").animate({
+          left: "-20px"
+      }, 50, "linear").delay(100).animate({
+          left: "0px"
+      }, 10, "linear");
+      window.setTimeout(function() {
+        $(".player .pokemon-image").css('opacity', 0);
+        window.setTimeout(function() {
+          $(".player .pokemon-image").css('opacity', 1);
+          window.setTimeout(function() {
+            $(".player .pokemon-image").css('opacity', 0);
+            window.setTimeout(function() {
+              $(".player .pokemon-image").css('opacity', 1);
+              window.setTimeout(function() {
+                $(".player .pokemon-image").css('opacity', 0);
+                window.setTimeout(function() {
+                  $(".player .pokemon-image").css('opacity', 1);
+                  var basePower = 40;
+                  var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * foePokemon['atk']/playerPokemon['def'])/50) + 2;
+                  hpPlayer -= baseDamage;
+                  $("p.text1").text(foePokemon['name'].toUpperCase()+" did " + baseDamage);
+                  $("p.text2").text("damage to you.");
+                  typer();
+                  if (hpPlayer <= 7) {
+                    $(".player .healthbar").css('background-color', 'red');
+                  };
+                  if (hpPlayer <= 0) {
+                    $(".menu").css('display', 'none');
+                    $(".player .hp").text("0");
+                    $(".player .healthbar").css('width', '0%');
+                    $(".player .stats").css('display', 'none');
+                    window.setTimeout(function() {
+                      $(".player .pokemon-image").delay(500).animate({
+                        bottom: "-500px"
+                      }, 1000);
+                      $("p.text1").text(playerPokemon['name'].toUpperCase()+" fainted...");
+                      $("p.text2").text("");
+                      typer();
+                      window.setTimeout(function() {
+                        $("p.text1").text(player.toUpperCase()+" is out of");
+                        $("p.text2").text("useable POKéMON...");
+                        typer();
+                        window.setTimeout(function() {
+                          $("p.text1").text(player.toUpperCase()+" whited out!");
+                          $("p.text2").text(" ");
+                          typer();
+                          window.setTimeout(function() {
+                            $(".foe, .player, .messages").slideUp(500);
+                          }, 2000);
+                        }, 2000);
+                      }, 2000);
+                    }, 2000);
+                  } else {
+                    $(".player .hp").text(hpPlayer);
+                    $(".player .healthbar").animate({
+                      width: healthbar(hpPlayer, hpPlayerTotal) + '%'
+                    }, 500);
+                    window.setTimeout(function() {
+                      reset();
+                    }, 2400);
+                  };
+                }, 100);
+              }, 100);
+            }, 100);
+          }, 100);
+        }, 100);
+      }, 100);
+    }, 2000);
+  }
+};
+
+//Thundershock
+function thundershock() {
+  hider();
+  $(".player .pokemon-image").animate({
+      left: "-10px"
+  }, 100, "linear").animate({
+      left: "20px"
+  }, 50, "linear").delay(100).animate({
+      left: "0px"
+  }, 10, "linear");
+  window.setTimeout(function() {
+    $(".foe .pokemon-image").css('opacity', 0);
+    window.setTimeout(function() {
+      $(".foe .pokemon-image").css('opacity', 1);
+      window.setTimeout(function() {
+        $(".foe .pokemon-image").css('opacity', 0);
+        window.setTimeout(function() {
+          $(".foe .pokemon-image").css('opacity', 1);
+          window.setTimeout(function() {
+            $(".foe .pokemon-image").css('opacity', 0);
+            window.setTimeout(function() {
+              $(".foe .pokemon-image").css('opacity', 1);
+              var basePower = 40;
+              var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * playerPokemon['atk']/foePokemon['def'])/50) + 2;
+              hpFoe -= baseDamage;
+              $("p.text1").text("You did");
+              $("p.text2").text(baseDamage + " damage!");
+              typer();
+              $(".foe .healthbar").animate({
+                width: healthbar(hpFoe, hpFoeFull) + '%'
+              }, 500);
+              attackEnd();
+            }, 100);
+          }, 100);
+        }, 100);
+      }, 100);
+    }, 100);
+  }, 100);
+};
+
+//Growl
+function growl() {
+  hider();
+  $("p.text1").text(playerPokemon['name'].toUpperCase());
+  $("p.text2").text("used GROWL!");
+  typer();
+  window.setTimeout(function() {
+    if (foeBaseDefense < (foePokemon['def'] - 20)) {
+      $("p.text1").text(foePokemon['name'].toUpperCase()+"\'s defense");
+      $("p.text2").text("can\'t drop lower!");
+      typer();
+      window.setTimeout(function() {
+        attackEnd();
+      }, 2000);
+    } else {
+      $("p.text1").text(foePokemon['name'].toUpperCase()+"\'s defense");
+      $("p.text2").text("dropped by 2!");
+      foeBaseDefense-2;
+      typer();
+      window.setTimeout(function() {
+        attackEnd();
+      }, 2000); 
+    }
+  }, 2000);
+};
+
+//Tackle
+function tackle() {
+  hider();
+  var basePower = 35;
+  var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * playerPokemon['atk']/foePokemon['def'])/50) + 2;
+  hpFoe -= baseDamage;
+  $("p.text1").text("You did " + baseDamage + " damage!");
+  $("p.text2").text(" ");
+  typer();
+  $(".foe .healthbar").animate({
+    width: healthbar(hpFoe, hpFoeFull) + '%'
+  }, 500);
+  attackEnd();
+};
+
+//potion use
+function potion() {
+  hider();
+  if (hpPlayer >= hpPlayerTotal) {
+    $("p.text1").text("HP already");
+    $("p.text2").text("full!");
+    typer();
+    window.setTimeout(function() {
+      reset();
+    }, 1000);
+  } else {
+    $("p.text1").text("Used POTION!");
+    $("p.text2").text(" ");
+    typer();
+    hpPlayer += 20;
+    if (hpPlayer >= hpPlayerTotal) {
+      hpPlayer = hpPlayerTotal;
+    }
+    $(".player .hp").text(hpPlayer);
+    $(".player .healthbar").animate({
+      width: healthbar(hpPlayer, hpPlayerTotal) + '%'
+    }, 500);
+    potionCount--;
+    attackEnd();
+  }
+  $(".potionCount").text(potionCount);
+  if (potionCount <= 0) {
+    $(".potion").css('display', 'none');
+  }
+};
+
+
+/*--- Opening Animation ---*/
+
+$(".loader").animate({
+  marginTop: "0px"
+}, 2000, 'linear');
+window.setTimeout(function() {
+  $(".loader").css('display', 'none');
+  $(".battle").css('display', 'block');
+  //Opening animations trainers
+  $(".eevee, .playerPokemon, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
+  $(".foe .pokemon-image").animate({
+    right: "0px"
+  }, 2000, 'linear');
+  $(".player .pokemon-image").animate({
+    left: "0px"
+  }, 2000, 'linear');
+  window.setTimeout(function() {
+    $(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
+    $(".gary_black, .ash_black").css('display', 'none');
+    window.setTimeout(function() {
+      $("p.text1").text(foe.toUpperCase()+" wants");
+      $("p.text2").text("to fight!");
+      typer();
+      window.setTimeout(function() {
+        $(".ash_balls, .gary_balls").css('display', 'none');
+        $(".foe .pokemon-image").animate({
+          right: "-1000px"
+        }, 700, 'linear');
+        window.setTimeout(function() {
+          $("p.text1").text(foe.toUpperCase()+" sent");
+          $("p.text2").text("out "+foePokemon['name'].toUpperCase()+"!");
+          typer();
+          $(".eevee").css('display', 'block');
+          $(".gary").css('display', 'none');
+          $(".foe .pokemon-image").animate({
+            right: "0px"
+          }, 1300, 'linear');
+          window.setTimeout(function() {
+            $(".foe .stats").css('display', 'block');
+            $(".player .pokemon-image").animate({
+              left: "-1000px"
+            }, 700, 'linear');
+            window.setTimeout(function() {
+              $(".ash").css('display', 'none');
+              $(".playerPokemon").css('display', 'block');
+              $(".foe .stats").css('display', 'block');
+              $(".player .pokemon-image").animate({
+                left: "0px"
+              }, 1300, 'linear');
+              $("p.text1").text("Go! "+playerPokemon['name'].toUpperCase()+"!");
+              $("p.text2").text(" ");
+              typer();
+              $(".player .stats").css('display', 'block');
+              window.setTimeout(function() {
+                reset();
+              }, 3000);
+            }, 1500);
+          }, 2000);
+        }, 1000);
+      }, 2000);
+    }, 400);
+  }, 2010);
+}, 3000);
+
+//Skip intro
+/* $(".loader").animate({marginTop:"0px"},0,"linear"),window.setTimeout(function(){$(".loader").css("display","none"),$(".battle").css("display","block"),$(".eevee, .playerPokemon, .gary, .ash, .stats, .ash_balls, .gary_balls").css("display","none"),$(".foe .pokemon-image").animate({right:"0px"},0,"linear"),$(".player .pokemon-image").animate({left:"0px"},0,"linear"),window.setTimeout(function(){$(".gary, .ash, .ash_balls, .gary_balls").css("display","block"),$(".gary_black, .ash_black").css("display","none"),window.setTimeout(function(){$("p.text1").text("GARY wants"),$("p.text2").text("to fight!"),typer(),window.setTimeout(function(){$(".ash_balls, .gary_balls").css("display","none"),$(".foe .pokemon-image").animate({right:"-1000px"},0,"linear"),window.setTimeout(function(){$("p.text1").text("GARY sent"),$("p.text2").text("out EEVEE!"),typer(),$(".eevee").css("display","block"),$(".gary").css("display","none"),$(".foe .pokemon-image").animate({right:"0px"},0,"linear"),window.setTimeout(function(){$(".foe .stats").css("display","block"),$(".player .pokemon-image").animate({left:"-1000px"},0,"linear"),window.setTimeout(function(){$(".ash").css("display","none"),$(".playerPokemon").css("display","block"),$(".foe .stats").css("display","block"),$(".player .pokemon-image").animate({left:"0px"},0,"linear"),$("p.text1").text("Go! PIKACHU!"),$("p.text2").text(" "),typer(),$(".player .stats").css("display","block"),window.setTimeout(function(){reset()},0)},0)},0)},0)},0)},0)},0)},0) */
+
+/*--- Interactions ---*/
+
+//Open item menu
+$('.item').click(function() {
+  $(".item-menu").css('display', 'block');
+});
+
+//Potion
+$('.potion').click(function() {
+  potion();
+});
+
+//Fight
+$('.fight').click(function() {
+  $(".fight-menu").css('display', 'block');
+});
+
+//Thundershock
+$('.thundershock').click(function() {
+  thundershock();
+});
+
+//Growl
+$('.growl').click(function() {
+  growl();
+});
+
+//Tackle
+$('.tackle').click(function() {
+  tackle();
+});
+
+//Back
+$('.back').click(function() {
+  reset();
+});
+
+//Pokemon
+$('.pkmn').click(function() {
+  $(".pkmn-menu").css('display', 'block');
+});
+
+//Run
+$('.run').click(function() {
+  hider();
+  $("p.text1").text("You can't run from");
+  $("p.text2").text("a POKéMON battle!");
+  typer();
+  window.setTimeout(function() {
+    reset();
+  }, 2000);
+});
+
+});
+</script>
   
 </div>
 </body>
