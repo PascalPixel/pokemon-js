@@ -63,7 +63,7 @@
 }
 
 body {
-  background: #dde8c7;
+  background: #e5e7e2;
   font-family: 'pokemon', sans-serif;
   text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
   font-size: 14px;
@@ -175,7 +175,7 @@ img {
 }
 
 .menu {
-  background: #dde8c7;
+  background: #e5e7e2;
   display: none;
   float: right;
   margin: -25px -30px -15px 0;
@@ -186,7 +186,7 @@ img {
 }
 
 .fight-menu,.item-menu,.pkmn-menu {
-  background: #dde8c7;
+  background: #e5e7e2;
   bottom: -15px;
   display: none;
   padding-top: 5px;
@@ -236,7 +236,7 @@ img {
 .link {
   background-color: rgba(255,0,0,0.8);
   border-radius: 3px;
-  color: #dde8c7;
+  color: #e5e7e2;
   padding: 4px 5px 2px;
   text-shadow: none;
 }
@@ -271,6 +271,10 @@ img {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.foe, .player {
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -425,8 +429,8 @@ function pokedex(dex, level) {
   var stats = new Object();
       stats['id'] = poke[dex].id;
       stats['name'] = poke[dex].name;
-      stats['hp']  = Math.floor((poke[dex].stats.hp * 2 + 193) * level / 100 + 10);
-      stats['atk'] = Math.floor(((poke[dex].stats.attack * 2 + 193) * level / 100 + 10) * level / 100);
+      stats['hp']  = Math.floor((poke[dex].stats.hp * 2 + 193) * level / 100 + 5);
+      stats['atk'] = Math.floor(((poke[dex].stats.attack * 2 + 193) * level / 100 + 10) * level / 100 + 20);
       stats['def'] = Math.floor((poke[dex].stats.defense * 2 + 193) * level / 100 + 10);
       stats['spa'] = Math.floor(((poke[dex].stats.spattack * 2 + 193) * level / 100 + 10) * level / 100);
       stats['spd'] = Math.floor((poke[dex].stats.spdefense * 2 + 193) * level / 100 + 10);
@@ -702,6 +706,7 @@ function potion() {
     $(".player .healthbar").animate({
       width: healthbar(hpPlayer, hpPlayerTotal) + '%'
     }, 500);
+    $(".player .healthbar").css('background-color', 'green');
     potionCount--;
     attackEnd();
   }
