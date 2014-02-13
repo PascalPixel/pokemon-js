@@ -59,11 +59,11 @@
 
 @font-face {
   font-family:'pokemon';
-  src:url('font/Pokemon%20GB.ttf');
+  src:url('font/latin.ttf');
 }
 
 body {
-  background: #fff;
+  background: #f5f6f0;
   font-family: 'pokemon', sans-serif;
   text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
   font-size: 14px;
@@ -109,12 +109,16 @@ footer {
   margin-left: 17px;
 }
 
-.player .pokemon-image {
+.sprite {
+  -webkit-filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.3));
+}
+
+.player .image {
   left: 1000px;
   position: relative;
 }
 
-.foe .pokemon-image {
+.foe .image {
   position: relative;
   right: 1000px;
 }
@@ -175,7 +179,7 @@ img {
 }
 
 .menu {
-  background: #fff;
+  background: #f5f6f0;
   display: none;
   float: right;
   margin: -25px -30px -15px 0;
@@ -186,7 +190,7 @@ img {
 }
 
 .fight-menu,.item-menu,.pkmn-menu {
-  background: #fff;
+  background: #f5f6f0;
   bottom: -15px;
   display: none;
   padding-top: 5px;
@@ -277,6 +281,10 @@ img {
   overflow: hidden;
 }
 
+.image {
+  padding-bottom: 5px;
+}
+
 @media (min-width: 768px) {
 
 }
@@ -293,8 +301,6 @@ img {
 </head>
 
 <body>
-
-<div class="pokemonname"></div>
 
 <div class="container loader">
   <div class="row">
@@ -320,7 +326,7 @@ img {
           </div>
         </div>
       </div>
-      <div class="col-xs-5 pokemon-image">
+      <div class="col-xs-5 image">
         <div class="gary_black"><img src="img/gary_black.png"></div>
         <div class="gary"><img src="img/gary.png"></div>
         <div class="sprite"></div>
@@ -328,7 +334,7 @@ img {
     </div>
   
     <div class="row player">
-      <div class="col-xs-5 pokemon-image">
+      <div class="col-xs-5 image">
         <div class="ash_black"><img src="img/ash_black.png"></div>
         <div class="ash"><img src="img/ash.png"></div>
         <div class="sprite"></div>
@@ -393,8 +399,8 @@ $(document).ready(function() {
 
 //Initiate Player
 var player = "Ash";
-var playerID = 99;
-var playerLevel = 67;
+var playerID = 25;
+var playerLevel = 5;
 var playerPokemon = pokedex(playerID,playerLevel);
 var hpPlayerTotal = playerPokemon['hp'];
 var hpPlayer = hpPlayerTotal;
@@ -408,8 +414,8 @@ $('.player .sprite').html("<img src='img/pokemon/back/"+playerID+".gif'/>");
 
 //Initiate Foe
 var foe = "Gary";
-var foeID = 37;
-var foeLevel = 65;
+var foeID = 133;
+var foeLevel = 5;
 var foePokemon = pokedex(foeID,foeLevel);
 var hpFoeFull = foePokemon['hp'];
 var hpFoe = hpFoeFull;
@@ -504,13 +510,14 @@ function attackEnd() {
     $(".menu").css('display', 'none');
     $(".foe .healthbar").css('width', '0%');
     window.setTimeout(function() {
-      $(".foe .pokemon-image, .foe .stats").delay(500).animate({
+      $(".foe .image").delay(500).animate({
         bottom: "-500px"
       }, 1000);
       $("p.text1").text(foePokemon['name'].toUpperCase()+" fainted!");
       $("p.text2").text("");
       typer();
       window.setTimeout(function() {
+        $(".foe .stats").css('display', 'none');
         $("p.text1").text("Got $"+Math.floor(playerLevel*2.5)+" for");
         $("p.text2").text("winning!");
         typer();
@@ -523,7 +530,7 @@ function attackEnd() {
             $("p.text2").text("wrong POKéMON!");
             typer();
             window.setTimeout(function() {
-              $(".foe, .player, .messages").slideUp(500);
+              $(".gameboy").hide();
               $("footer").show();
             }, 2000);
           }, 2000);
@@ -534,7 +541,7 @@ function attackEnd() {
   //Return attack
   else {
     window.setTimeout(function() {
-      $(".foe .pokemon-image").animate({
+      $(".foe .image").animate({
           left: "10px"
       }, 100, "linear").animate({
           left: "-20px"
@@ -542,17 +549,17 @@ function attackEnd() {
           left: "0px"
       }, 10, "linear");
       window.setTimeout(function() {
-        $(".player .pokemon-image").css('opacity', 0);
+        $(".player .image").css('opacity', 0);
         window.setTimeout(function() {
-          $(".player .pokemon-image").css('opacity', 1);
+          $(".player .image").css('opacity', 1);
           window.setTimeout(function() {
-            $(".player .pokemon-image").css('opacity', 0);
+            $(".player .image").css('opacity', 0);
             window.setTimeout(function() {
-              $(".player .pokemon-image").css('opacity', 1);
+              $(".player .image").css('opacity', 1);
               window.setTimeout(function() {
-                $(".player .pokemon-image").css('opacity', 0);
+                $(".player .image").css('opacity', 0);
                 window.setTimeout(function() {
-                  $(".player .pokemon-image").css('opacity', 1);
+                  $(".player .image").css('opacity', 1);
                   var basePower = 40;
                   var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * foePokemon['atk']/playerPokemon['def'])/50) + 2;
                   hpPlayer -= baseDamage;
@@ -568,7 +575,7 @@ function attackEnd() {
                     $(".player .healthbar").css('width', '0%');
                     $(".player .stats").css('display', 'none');
                     window.setTimeout(function() {
-                      $(".player .pokemon-image").delay(500).animate({
+                      $(".player .image").delay(500).animate({
                         bottom: "-500px"
                       }, 1000);
                       $("p.text1").text(playerPokemon['name'].toUpperCase()+" fainted...");
@@ -583,7 +590,8 @@ function attackEnd() {
                           $("p.text2").text(" ");
                           typer();
                           window.setTimeout(function() {
-                            $(".foe, .player, .messages").slideUp(500);
+                            $(".gameboy").hide();
+                            $("footer").show();
                           }, 2000);
                         }, 2000);
                       }, 2000);
@@ -610,7 +618,7 @@ function attackEnd() {
 //Thundershock
 function thundershock() {
   hider();
-  $(".player .pokemon-image").animate({
+  $(".player .image").animate({
       left: "-10px"
   }, 100, "linear").animate({
       left: "20px"
@@ -618,17 +626,17 @@ function thundershock() {
       left: "0px"
   }, 10, "linear");
   window.setTimeout(function() {
-    $(".foe .pokemon-image").css('opacity', 0);
+    $(".foe .image").css('opacity', 0);
     window.setTimeout(function() {
-      $(".foe .pokemon-image").css('opacity', 1);
+      $(".foe .image").css('opacity', 1);
       window.setTimeout(function() {
-        $(".foe .pokemon-image").css('opacity', 0);
+        $(".foe .image").css('opacity', 0);
         window.setTimeout(function() {
-          $(".foe .pokemon-image").css('opacity', 1);
+          $(".foe .image").css('opacity', 1);
           window.setTimeout(function() {
-            $(".foe .pokemon-image").css('opacity', 0);
+            $(".foe .image").css('opacity', 0);
             window.setTimeout(function() {
-              $(".foe .pokemon-image").css('opacity', 1);
+              $(".foe .image").css('opacity', 1);
               var basePower = 40;
               var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * playerPokemon['atk']/foePokemon['def'])/50) + 2;
               hpFoe -= baseDamage;
@@ -731,10 +739,10 @@ window.setTimeout(function() {
   $(".battle").css('display', 'block');
   //Opening animations trainers
   $(".sprite, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
-  $(".foe .pokemon-image").animate({
+  $(".foe .image").animate({
     right: "0px"
   }, 2000, 'linear');
-  $(".player .pokemon-image").animate({
+  $(".player .image").animate({
     left: "0px"
   }, 2000, 'linear');
   window.setTimeout(function() {
@@ -746,7 +754,7 @@ window.setTimeout(function() {
       typer();
       window.setTimeout(function() {
         $(".ash_balls, .gary_balls").css('display', 'none');
-        $(".foe .pokemon-image").animate({
+        $(".foe .image").animate({
           right: "-1000px"
         }, 700, 'linear');
         window.setTimeout(function() {
@@ -755,19 +763,19 @@ window.setTimeout(function() {
           typer();
           $(".foe .sprite").css('display', 'block');
           $(".gary").css('display', 'none');
-          $(".foe .pokemon-image").animate({
+          $(".foe .image").animate({
             right: "0px"
           }, 1300, 'linear');
           window.setTimeout(function() {
             $(".foe .stats").css('display', 'block');
-            $(".player .pokemon-image").animate({
+            $(".player .image").animate({
               left: "-1000px"
             }, 700, 'linear');
             window.setTimeout(function() {
               $(".ash").css('display', 'none');
               $(".player .sprite").css('display', 'block');
               $(".foe .stats").css('display', 'block');
-              $(".player .pokemon-image").animate({
+              $(".player .image").animate({
                 left: "0px"
               }, 1300, 'linear');
               $("p.text1").text("Go! "+playerPokemon['name'].toUpperCase()+"!");
