@@ -59,7 +59,7 @@
 
 @font-face {
   font-family:'pokemon';
-  src:url('font/latin.ttf');
+  src:url('font/Pokemon%20GB.ttf');
 }
 
 body {
@@ -409,19 +409,24 @@ function getQueryVariable(variable)
 }
 
 //Initiate Player
-var playerURL = getQueryVariable("player");
-if (playerURL != 0) {
-  var player = getQueryVariable("player");
-} else {
-  var player = "Ash"; 
-}
-var pokedexURL = getQueryVariable("pokedex");
-if (pokedexURL != 0) {
-  var playerID = getQueryVariable("pokedex");
+var player = "Ash";
+if (getQueryVariable("playerdex") != 0) {
+  var playerID = getQueryVariable("playerdex");
 } else {
   var playerID = 25; 
 }
-var playerLevel = 5;
+if (getQueryVariable("foedex") != 0) {
+  var foeID = getQueryVariable("foedex");
+} else {
+  var foeID = 133;
+}
+if (getQueryVariable("level") != 0) {
+  var playerLevel = getQueryVariable("level");
+  var foeLevel = getQueryVariable("level");
+} else {
+  var playerLevel = 5;
+  var foeLevel = 5;
+}
 var playerPokemon = pokedex(playerID,playerLevel);
 var hpPlayerTotal = playerPokemon['hp'];
 var hpPlayer = hpPlayerTotal;
@@ -435,8 +440,6 @@ $('.player .sprite').html("<img src='img/pokemon/back/"+playerID+".gif'/>");
 
 //Initiate Foe
 var foe = "Gary";
-var foeID = 133;
-var foeLevel = 5;
 var foePokemon = pokedex(foeID,foeLevel);
 var hpFoeFull = foePokemon['hp'];
 var hpFoe = hpFoeFull;
