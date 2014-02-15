@@ -285,16 +285,16 @@ img {
   padding-bottom: 5px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 400px) {
+}
 
+@media (min-width: 768px) {
 }
 
 @media (min-width: 992px) {
-  
 }
 
 @media (min-width: 1200px) {
-  
 }
 
 </style>
@@ -361,9 +361,8 @@ img {
           <div class="button run">RUN</div>
         </div>
         <div class="fight-menu frame">
-          <div class="button thundershock">THUNDERSHOCK</div>
-          <div class="button growl">GROWL</div>
           <div class="button tackle">TACKLE</div>
+          <div class="button growl">GROWL</div>
           <div class="button back">cancel</div>
         </div>
         <div class="item-menu frame">
@@ -639,46 +638,6 @@ function attackEnd() {
   }
 };
 
-//Thundershock
-function thundershock() {
-  hider();
-  $(".player .image").animate({
-      left: "-10px"
-  }, 100, "linear").animate({
-      left: "20px"
-  }, 50, "linear").delay(100).animate({
-      left: "0px"
-  }, 10, "linear");
-  window.setTimeout(function() {
-    $(".foe .image").css('opacity', 0);
-    window.setTimeout(function() {
-      $(".foe .image").css('opacity', 1);
-      window.setTimeout(function() {
-        $(".foe .image").css('opacity', 0);
-        window.setTimeout(function() {
-          $(".foe .image").css('opacity', 1);
-          window.setTimeout(function() {
-            $(".foe .image").css('opacity', 0);
-            window.setTimeout(function() {
-              $(".foe .image").css('opacity', 1);
-              var basePower = 40;
-              var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * playerPokemon['atk']/foePokemon['def'])/50) + 2;
-              hpFoe -= baseDamage;
-              $("p.text1").text("You did");
-              $("p.text2").text(baseDamage + " damage!");
-              typer();
-              $(".foe .healthbar").animate({
-                width: healthbar(hpFoe, hpFoeFull) + '%'
-              }, 500);
-              attackEnd();
-            }, 100);
-          }, 100);
-        }, 100);
-      }, 100);
-    }, 100);
-  }, 100);
-};
-
 //Growl
 function growl() {
   hider();
@@ -706,23 +665,62 @@ function growl() {
 };
 
 //Tackle
-function tackle() {
+function attack(moveName) {
   hider();
-  var basePower = 35;
-  var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * playerPokemon['atk']/foePokemon['def'])/50) + 2;
-  hpFoe -= baseDamage;
-  $("p.text1").text("You did " + baseDamage + " damage!");
-  $("p.text2").text(" ");
+  $("p.text1").text(playerPokemon['name'].toUpperCase()+" used");
+  $("p.text2").text(moveName.toUpperCase()+"!");
   typer();
-  $(".foe .healthbar").animate({
-    width: healthbar(hpFoe, hpFoeFull) + '%'
-  }, 500);
-  attackEnd();
+  window.setTimeout(function() {
+    $(".player .image").animate({
+        left: "-10px"
+    }, 100, "linear").animate({
+        left: "20px"
+    }, 50, "linear").delay(100).animate({
+        left: "0px"
+    }, 10, "linear");
+    window.setTimeout(function() {
+      $(".foe .image").css('opacity', 0);
+      window.setTimeout(function() {
+        $(".foe .image").css('opacity', 1);
+        window.setTimeout(function() {
+          $(".foe .image").css('opacity', 0);
+          window.setTimeout(function() {
+            $(".foe .image").css('opacity', 1);
+            window.setTimeout(function() {
+              $(".foe .image").css('opacity', 0);
+              window.setTimeout(function() {
+                $(".foe .image").css('opacity', 1);
+                var basePower = 40;
+                var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * playerPokemon['atk']/foePokemon['def'])/50) + 2;
+                hpFoe -= baseDamage;
+                $("p.text1").text("You did");
+                $("p.text2").text(baseDamage + " damage!");
+                typer();
+                $(".foe .healthbar").animate({
+                  width: healthbar(hpFoe, hpFoeFull) + '%'
+                }, 500);
+                attackEnd();
+              }, 100);
+            }, 100);
+          }, 100);
+        }, 100);
+      }, 100);
+    }, 100);
+  }, 1500);
 };
 
 //potion use
-function potion() {
+function potion(potionStrength) {
   hider();
+  if (potionStrength == "normal") {
+    var theStrength = 20;
+  } else if (potionStrength == "super") {
+    var theStrength = 50;
+  } else if (potionStrength == "hyper") {
+    var theStrength = 200;
+  } else if (potionStrength == "max") {
+    var theStrength = 999;
+  }
   if (hpPlayer >= hpPlayerTotal) {
     $("p.text1").text("HP already");
     $("p.text2").text("full!");
@@ -734,7 +732,7 @@ function potion() {
     $("p.text1").text("Used POTION!");
     $("p.text2").text(" ");
     typer();
-    hpPlayer += 20;
+    hpPlayer += theStrength;
     if (hpPlayer >= hpPlayerTotal) {
       hpPlayer = hpPlayerTotal;
     }
@@ -826,7 +824,7 @@ $('.item').click(function() {
 
 //Potion
 $('.potion').click(function() {
-  potion();
+  potion("normal");
 });
 
 //Fight
@@ -836,7 +834,7 @@ $('.fight').click(function() {
 
 //Thundershock
 $('.thundershock').click(function() {
-  thundershock();
+  attack('Thundershock');
 });
 
 //Growl
@@ -846,7 +844,7 @@ $('.growl').click(function() {
 
 //Tackle
 $('.tackle').click(function() {
-  tackle();
+  attack('Tackle');
 });
 
 //Back
