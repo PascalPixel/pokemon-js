@@ -62,18 +62,51 @@
   src:url('font/Pokemon%20GB.ttf');
 }
 
+/* Magic Responsiveness */
+                          body{font-size: 14px;}
+@media (min-width:400px) {body{font-size: 18px;}}
+@media (min-width:500px) {body{font-size: 22px;}}
+@media (min-width:600px) {body{font-size: 26px;}}
+@media (min-width:700px) {body{font-size: 30px;}}
+@media (min-width:800px) {body{font-size: 34px;}}
+@media (min-width:900px) {body{font-size: 38px;}}
+@media (min-width:1000px){body{font-size: 42px;}}
+@media (min-width:1100px){body{font-size: 46px;}}
+@media (min-width:1200px){body{font-size: 50px;}}
+@media (min-width:1300px){body{font-size: 54px;}}
+@media (min-width:1400px){body{font-size: 58px;}}
+@media (min-width:1500px){body{font-size: 62px;}}
+@media (min-width:1600px){body{font-size: 66px;}}
+@media (min-width:1700px){body{font-size: 70px;}}
+@media (min-width:1800px){body{font-size: 74px;}}
+@media (min-width:1900px){body{font-size: 78px;}}
+@media (min-width:2000px){body{font-size: 82px;}}
+@media (min-width:2100px){body{font-size: 86px;}}
+@media (min-width:2200px){body{font-size: 90px;}}
+@media (min-width:2300px){body{font-size: 94px;}}
+@media (min-width:2400px){body{font-size: 98px;}}
+@media (min-width:2500px){body{font-size:102px;}}
+@media (min-width:2600px){body{font-size:106px;}}
+@media (min-width:2700px){body{font-size:110px;}}
+@media (min-width:2800px){body{font-size:114px;}}
+@media (min-width:2900px){body{font-size:118px;}}
+@media (min-width:3000px){body{font-size:122px;}}
+
 body {
   background: #f5f6f0;
   font-family: 'pokemon', sans-serif;
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
-  font-size: 14px;
+  text-shadow: 0.143em 0.143em 0 rgba(0,0,0,0.2);
 }
 
-.container {
+.loader, .gameboy {
   overflow: hidden;
-  width: 320px;
-  height: 288px;
-  margin-top: 10px;
+  min-width: 320px;
+  min-height: 288px;
+  padding: 0.8em;
+}
+
+.gameboy {
+  overflow: hidden;
 }
 
 .foe {
@@ -81,7 +114,7 @@ body {
 }
 
 .foepush {
-  padding-left: 18px;
+  padding-left: 1.286em;
 }
 
 .row {
@@ -99,28 +132,28 @@ p {
 }
 
 footer {
-  font-size: 8px;
-  margin-top: 10px;
-  line-height: 18px;
+  font-size: 0.571em;
+  margin-top: 0.714em;
+  line-height: 1.286em;
   display: none;
 }
 
 .player .sprite img {
-  margin-left: 17px;
+  margin-left: 1.214em;
 }
 
 .sprite {
-  -webkit-filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.3));
+  -webkit-filter: drop-shadow(0.143em 0.143em 0.000em rgba(0,0,0,0.3));
 }
 
 .player .image {
-  left: 1000px;
+  left: 71.429em;
   position: relative;
 }
 
 .foe .image {
   position: relative;
-  right: 1000px;
+  right: 71.429em;
 }
 
 .player .stats {
@@ -128,9 +161,9 @@ footer {
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
-  margin-bottom: 5px;
-  padding-bottom: 18px;
-  margin-right: 17px;
+  margin-bottom: 0.357em;
+  padding-bottom: 1.286em;
+  margin-right: 1.214em;
 }
 
 .foe .stats {
@@ -138,12 +171,12 @@ footer {
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
-  padding-bottom: 2px;
+  padding-bottom: 0.143em;
 }
 
 .menu .button {
   display: inline-block;
-  margin: 8px 0 0;
+  margin: 0.571em 0 0;
 }
 
 .button:hover {
@@ -152,22 +185,22 @@ footer {
 
 .healthbar {
   background-color: #30cb30;
-  height: 3px;
+  height: 0.214em;
   width: 100%;
 }
 
 .healthbarcontainer {
-  border: 2px solid rgba(0,0,0,0.75);
-  border-radius: 5px;
-  box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
-  margin: 0 15px 10px 40px;
+  border: 0.143em solid rgba(0,0,0,0.75);
+  border-radius: 0.357em;
+  box-shadow: 0.143em 0.143em 0 rgba(0,0,0,0.3);
+  margin: 0 1.071em 0.714em 2.857em;
   display: block;
 }
 
 .health {
   float: right;
-  margin-right: 15px;
-  margin-top: -5px;
+  margin-right: 1.071em;
+  margin-top: -0.357em;
 }
 
 img {
@@ -182,27 +215,27 @@ img {
   background: #f5f6f0;
   display: none;
   float: right;
-  margin: -25px -30px -15px 0;
-  width: 172px;
-  height: 85px;
-  padding-top: 6px;
-  padding-left: 13px;
+  margin: -1.786em -2.143em -1.071em 0;
+  width: 12.286em;
+  height: 6.071em;
+  padding-top: 0.429em;
+  padding-left: 0.929em;
 }
 
 .fight-menu,.item-menu,.pkmn-menu {
   background: #f5f6f0;
-  bottom: -15px;
+  bottom: -1.071em;
   display: none;
-  padding-top: 5px;
+  padding-top: 0.357em;
   position: absolute;
-  right: -20px;
+  right: -1.429em;
 }
 
 .item-menu,.pkmn-menu {
-  left: -15px;
-  right: -15px;
-  top: -110px;
-  bottom: -15px;
+  left: -1.071em;
+  right: -1.071em;
+  top: -7.857em;
+  bottom: -1.071em;
 }
 
 .relative {
@@ -212,20 +245,20 @@ img {
 .messages {
   display: block;
   margin: 0;
-  height: 85px;
+  height: 6.071em;
 }
 
 .text {
-  margin-left: -15px;
-  margin-top: 10px;
-  margin-right: -15px;
+  margin-left: -1.071em;
+  margin-top: 0.714em;
+  margin-right: -1.071em;
 }
 
 .hp_img {
-  margin-left: -30px;
+  margin-left: -2.143em;
   position: absolute;
-  width:20px;
-  margin-top:-2px;
+  width:1.429em;
+  margin-top:-0.143em;
 }
 
 .frame {
@@ -234,14 +267,14 @@ img {
   -webkit-border-image: url(img/border.png) 41 41 repeat;
   border-image: url(img/border.png) 41 41 fill repeat;
   border-style: solid;
-  border-width: 15px;
+  border-width: 1.071em;
 }
 
 .link {
   background-color: rgba(255,0,0,0.8);
-  border-radius: 3px;
+  border-radius: 0.214em;
   color: #e5e7e2;
-  padding: 4px 5px 2px;
+  padding: 0.286em 0.357em 0.143em;
   text-shadow: none;
 }
 
@@ -251,24 +284,24 @@ img {
 
 .loader {
   display: block;
-  margin-top: -300px;
-  padding-top: 80px;
+  margin-top: -21.429em;
+  padding-top: 5.714em;
   text-align: center;
 }
 
 .loader a {
-  border-radius: 5px;
-  padding: 8px 10px 4px;
+  border-radius: 0.357em;
+  padding: 0.571em 0.714em 0.286em;
 }
 
 .player {
   position: relative;
-  margin-top: -30px;
+  margin-top: -2.143em;
   overflow-y: hidden;
 }
 
 .messages span {
-  margin-right: -14px;
+  margin-right: -1.000em;
 }
 
 .statswrap {
@@ -282,19 +315,11 @@ img {
 }
 
 .image {
-  padding-bottom: 5px;
+  padding-bottom: 0.357em;
 }
 
-@media (min-width: 400px) {
-}
-
-@media (min-width: 768px) {
-}
-
-@media (min-width: 992px) {
-}
-
-@media (min-width: 1200px) {
+.logo {
+  width: 7.143em;
 }
 
 </style>
@@ -302,10 +327,10 @@ img {
 
 <body>
 
-<div class="container loader">
+<div class="loader">
   <div class="row">
     <div class="col-xs-12">
-      <img width="100px" src="img/superpencil.png"><br>
+      <img class="logo" src="img/superpencil.png"><br>
       <br>
       <a class="link big" href="http://www.superpencil.com">Superpencil</a>
     </div>
@@ -313,15 +338,15 @@ img {
 </div>
 
 <div class="gameboy">
-  <div class="container battle">
+  <div class="battle">
   
     <div class="row foe">
       <div class="col-xs-7">
         <div class="foepush">
           <div class="gary_balls"><img src="img/gary_balls.png"></div>
           <div class="stats">
-            <span class="name" style="margin-left:13px;"></span><br>
-            <div style="margin:-5px 0 -1px 45px;"><img src="img/l.png" width="12px"><span class="level"></span></div>
+            <span class="name" style="margin-left:0.929em;"></span><br>
+            <div style="margin:-0.357em 0 -0.071em 3.214em;"><img src="img/l.png" width="0.857em"><span class="level"></span></div>
             <div class="healthbarcontainer"><img class="hp_img" src="img/hp.png"><div class="healthbar"></div></div>
           </div>
         </div>
@@ -342,8 +367,8 @@ img {
       <div class="col-xs-7 statswrap">
         <div class="ash_balls"><img src="img/ash_balls.png"></div>
         <div class="stats">
-          <span class="name" style="margin-left:13px;"></span><br>
-          <div style="margin:-5px 0 -1px 73px;"><img src="img/l.png" width="12px"><span class="level"></span></div>
+          <span class="name" style="margin-left:0.929em;"></span><br>
+          <div style="margin:-0.357em 0 -0.071em 5.214em;"><img src="img/l.png" width="0.857em"><span class="level"></span></div>
           <div class="healthbarcontainer"><img class="hp_img" src="img/hp.png"><div class="healthbar"></div></div>
           <div class="health"><span class="hp"></span>/ <span class="hpTotal"></span></div>
         </div>
@@ -367,7 +392,7 @@ img {
         </div>
         <div class="item-menu frame">
           <div class="button potion">POTION x <span class="potionCount">1</span></div>
-          <div class="button back" style="position:absolute;bottom:20px;">cancel</div>
+          <div class="button back" style="position:absolute;bottom:1.429em;">cancel</div>
         </div>
         <div class="pkmn-menu frame">
           <div class="button playerPokemonButton"><span class="playerpokemonname"></span></div>
@@ -534,7 +559,7 @@ function attackEnd() {
     $(".foe .healthbar").css('width', '0%');
     window.setTimeout(function() {
       $(".foe .image").delay(500).animate({
-        bottom: "-500px"
+        bottom: "-35.714em"
       }, 1000);
       $("p.text1").text(foePokemon['name'].toUpperCase()+" fainted!");
       $("p.text2").text("");
@@ -565,11 +590,11 @@ function attackEnd() {
   else {
     window.setTimeout(function() {
       $(".foe .image").animate({
-          left: "10px"
+          left: "0.714em"
       }, 100, "linear").animate({
-          left: "-20px"
+          left: "-1.429em"
       }, 50, "linear").delay(100).animate({
-          left: "0px"
+          left: "0.000em"
       }, 10, "linear");
       window.setTimeout(function() {
         $(".player .image").css('opacity', 0);
@@ -599,7 +624,7 @@ function attackEnd() {
                     $(".player .stats").css('display', 'none');
                     window.setTimeout(function() {
                       $(".player .image").delay(500).animate({
-                        bottom: "-500px"
+                        bottom: "-35.714em"
                       }, 1000);
                       $("p.text1").text(playerPokemon['name'].toUpperCase()+" fainted...");
                       $("p.text2").text("");
@@ -672,11 +697,11 @@ function attack(moveName) {
   typer();
   window.setTimeout(function() {
     $(".player .image").animate({
-        left: "-10px"
+        left: "-0.714em"
     }, 100, "linear").animate({
-        left: "20px"
+        left: "1.429em"
     }, 50, "linear").delay(100).animate({
-        left: "0px"
+        left: "0.000em"
     }, 10, "linear");
     window.setTimeout(function() {
       $(".foe .image").css('opacity', 0);
@@ -754,7 +779,7 @@ function potion(potionStrength) {
 /*--- Opening Animation ---*/
 
 $(".loader").animate({
-  marginTop: "0px"
+  marginTop: "0.000em"
 }, 2000, 'linear');
 window.setTimeout(function() {
   $(".loader").css('display', 'none');
@@ -762,10 +787,10 @@ window.setTimeout(function() {
   //Opening animations trainers
   $(".sprite, .gary, .ash, .stats, .ash_balls, .gary_balls").css('display', 'none');
   $(".foe .image").animate({
-    right: "0px"
+    right: "0.000em"
   }, 2000, 'linear');
   $(".player .image").animate({
-    left: "0px"
+    left: "0.000em"
   }, 2000, 'linear');
   window.setTimeout(function() {
     $(".gary, .ash, .ash_balls, .gary_balls").css('display', 'block');
@@ -777,7 +802,7 @@ window.setTimeout(function() {
       window.setTimeout(function() {
         $(".ash_balls, .gary_balls").css('display', 'none');
         $(".foe .image").animate({
-          right: "-1000px"
+          right: "-71.429em"
         }, 700, 'linear');
         window.setTimeout(function() {
           $("p.text1").text(foe.toUpperCase()+" sent");
@@ -786,19 +811,19 @@ window.setTimeout(function() {
           $(".foe .sprite").css('display', 'block');
           $(".gary").css('display', 'none');
           $(".foe .image").animate({
-            right: "0px"
+            right: "0.000em"
           }, 1300, 'linear');
           window.setTimeout(function() {
             $(".foe .stats").css('display', 'block');
             $(".player .image").animate({
-              left: "-1000px"
+              left: "-71.429em"
             }, 700, 'linear');
             window.setTimeout(function() {
               $(".ash").css('display', 'none');
               $(".player .sprite").css('display', 'block');
               $(".foe .stats").css('display', 'block');
               $(".player .image").animate({
-                left: "0px"
+                left: "0.000em"
               }, 1300, 'linear');
               $("p.text1").text("Go! "+playerPokemon['name'].toUpperCase()+"!");
               $("p.text2").text(" ");
