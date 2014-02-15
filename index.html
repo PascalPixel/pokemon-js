@@ -65,31 +65,57 @@
 /* Magic Responsiveness */
                           body{font-size: 14px;}
 @media (min-width:400px) {body{font-size: 18px;}}
+@media (min-width:450px) {body{font-size: 20px;}}
 @media (min-width:500px) {body{font-size: 22px;}}
+@media (min-width:550px) {body{font-size: 24px;}}
 @media (min-width:600px) {body{font-size: 26px;}}
+@media (min-width:650px) {body{font-size: 28px;}}
 @media (min-width:700px) {body{font-size: 30px;}}
+@media (min-width:750px) {body{font-size: 32px;}}
 @media (min-width:800px) {body{font-size: 34px;}}
+@media (min-width:850px) {body{font-size: 36px;}}
 @media (min-width:900px) {body{font-size: 38px;}}
+@media (min-width:950px) {body{font-size: 40px;}}
 @media (min-width:1000px){body{font-size: 42px;}}
+@media (min-width:1050px){body{font-size: 44px;}}
 @media (min-width:1100px){body{font-size: 46px;}}
+@media (min-width:1150px){body{font-size: 48px;}}
 @media (min-width:1200px){body{font-size: 50px;}}
+@media (min-width:1250px){body{font-size: 52px;}}
 @media (min-width:1300px){body{font-size: 54px;}}
+@media (min-width:1350px){body{font-size: 56px;}}
 @media (min-width:1400px){body{font-size: 58px;}}
+@media (min-width:1450px){body{font-size: 60px;}}
 @media (min-width:1500px){body{font-size: 62px;}}
+@media (min-width:1550px){body{font-size: 64px;}}
 @media (min-width:1600px){body{font-size: 66px;}}
+@media (min-width:1650px){body{font-size: 68px;}}
 @media (min-width:1700px){body{font-size: 70px;}}
+@media (min-width:1750px){body{font-size: 72px;}}
 @media (min-width:1800px){body{font-size: 74px;}}
+@media (min-width:1850px){body{font-size: 76px;}}
 @media (min-width:1900px){body{font-size: 78px;}}
+@media (min-width:1950px){body{font-size: 80px;}}
 @media (min-width:2000px){body{font-size: 82px;}}
+@media (min-width:2050px){body{font-size: 84px;}}
 @media (min-width:2100px){body{font-size: 86px;}}
+@media (min-width:2150px){body{font-size: 88px;}}
 @media (min-width:2200px){body{font-size: 90px;}}
+@media (min-width:2250px){body{font-size: 92px;}}
 @media (min-width:2300px){body{font-size: 94px;}}
+@media (min-width:2350px){body{font-size: 96px;}}
 @media (min-width:2400px){body{font-size: 98px;}}
+@media (min-width:2450px){body{font-size:100px;}}
 @media (min-width:2500px){body{font-size:102px;}}
+@media (min-width:2500px){body{font-size:104px;}}
 @media (min-width:2600px){body{font-size:106px;}}
+@media (min-width:2650px){body{font-size:108px;}}
 @media (min-width:2700px){body{font-size:110px;}}
+@media (min-width:2750px){body{font-size:112px;}}
 @media (min-width:2800px){body{font-size:114px;}}
+@media (min-width:2850px){body{font-size:116px;}}
 @media (min-width:2900px){body{font-size:118px;}}
+@media (min-width:2950px){body{font-size:120px;}}
 @media (min-width:3000px){body{font-size:122px;}}
 
 body {
@@ -322,6 +348,14 @@ img {
   width: 7.143em;
 }
 
+.levelsign {
+  margin:-0.357em 0 -0.071em 3.214em;
+}
+
+.levelsign img {
+  width:0.857em;
+}
+
 </style>
 </head>
 
@@ -346,7 +380,7 @@ img {
           <div class="gary_balls"><img src="img/gary_balls.png"></div>
           <div class="stats">
             <span class="name" style="margin-left:0.929em;"></span><br>
-            <div style="margin:-0.357em 0 -0.071em 3.214em;"><img src="img/l.png" width="0.857em"><span class="level"></span></div>
+            <div class="levelsign"><img src="img/l.png"><span class="level"></span></div>
             <div class="healthbarcontainer"><img class="hp_img" src="img/hp.png"><div class="healthbar"></div></div>
           </div>
         </div>
@@ -368,7 +402,7 @@ img {
         <div class="ash_balls"><img src="img/ash_balls.png"></div>
         <div class="stats">
           <span class="name" style="margin-left:0.929em;"></span><br>
-          <div style="margin:-0.357em 0 -0.071em 5.214em;"><img src="img/l.png" width="0.857em"><span class="level"></span></div>
+          <div class="levelsign"><img src="img/l.png"><span class="level"></span></div>
           <div class="healthbarcontainer"><img class="hp_img" src="img/hp.png"><div class="healthbar"></div></div>
           <div class="health"><span class="hp"></span>/ <span class="hpTotal"></span></div>
         </div>
@@ -695,43 +729,41 @@ function attack(moveName) {
   $("p.text1").text(playerPokemon['name'].toUpperCase()+" used");
   $("p.text2").text(moveName.toUpperCase()+"!");
   typer();
+  $(".player .image").animate({
+      left: "-0.714em"
+  }, 100, "linear").animate({
+      left: "1.429em"
+  }, 50, "linear").delay(100).animate({
+      left: "0.000em"
+  }, 10, "linear");
   window.setTimeout(function() {
-    $(".player .image").animate({
-        left: "-0.714em"
-    }, 100, "linear").animate({
-        left: "1.429em"
-    }, 50, "linear").delay(100).animate({
-        left: "0.000em"
-    }, 10, "linear");
+    $(".foe .image").css('opacity', 0);
     window.setTimeout(function() {
-      $(".foe .image").css('opacity', 0);
+      $(".foe .image").css('opacity', 1);
       window.setTimeout(function() {
-        $(".foe .image").css('opacity', 1);
+        $(".foe .image").css('opacity', 0);
         window.setTimeout(function() {
-          $(".foe .image").css('opacity', 0);
+          $(".foe .image").css('opacity', 1);
           window.setTimeout(function() {
-            $(".foe .image").css('opacity', 1);
+            $(".foe .image").css('opacity', 0);
             window.setTimeout(function() {
-              $(".foe .image").css('opacity', 0);
-              window.setTimeout(function() {
-                $(".foe .image").css('opacity', 1);
-                var basePower = 40;
-                var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * playerPokemon['atk']/foePokemon['def'])/50) + 2;
-                hpFoe -= baseDamage;
-                $("p.text1").text("You did");
-                $("p.text2").text(baseDamage + " damage!");
-                typer();
-                $(".foe .healthbar").animate({
-                  width: healthbar(hpFoe, hpFoeFull) + '%'
-                }, 500);
-                attackEnd();
-              }, 100);
+              $(".foe .image").css('opacity', 1);
+              var basePower = 40;
+              var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * playerPokemon['atk']/foePokemon['def'])/50) + 2;
+              hpFoe -= baseDamage;
+              $("p.text1").text("You did");
+              $("p.text2").text(baseDamage + " damage!");
+              typer();
+              $(".foe .healthbar").animate({
+                width: healthbar(hpFoe, hpFoeFull) + '%'
+              }, 500);
+              attackEnd();
             }, 100);
           }, 100);
         }, 100);
       }, 100);
     }, 100);
-  }, 1500);
+  }, 100);
 };
 
 //potion use
