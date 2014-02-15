@@ -8,48 +8,48 @@
 <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
 
 <!-- iOS Webapp -->
-<meta content="width=device-width, initial-scale=1, user-scalable=no" 
+<meta content="width=device-width, initial-scale=1, user-scalable=no"
       name="viewport">
-<meta content="width=320.1" 
+<meta content="width=320.1"
       name="viewport">
-<meta content="yes" 
+<meta content="yes"
       name="apple-mobile-web-app-capable">
-<meta content="black" 
+<meta content="black"
       name="apple-mobile-web-app-status-bar-style"><!-- Basic -->
-<link href="apple-touch-icon-precomposed.png" 
+<link href="apple-touch-icon-precomposed.png"
       rel="apple-touch-icon-precomposed"><!-- iPhone -->
-<link href="apple-touch-icon-57x57-precomposed.png" 
-      rel="apple-touch-icon-precomposed" 
+<link href="apple-touch-icon-57x57-precomposed.png"
+      rel="apple-touch-icon-precomposed"
       sizes="57x57">
-<link href="apple-touch-startup-image-320x460.png" 
-      media="(device-width: 320px)" 
+<link href="apple-touch-startup-image-320x460.png"
+      media="(device-width: 320px)"
       rel="apple-touch-startup-image"><!-- iPhone (Retina) -->
-<link href="apple-touch-icon-144x144-precomposed.png" 
-      rel="apple-touch-icon-precomposed" 
+<link href="apple-touch-icon-144x144-precomposed.png"
+      rel="apple-touch-icon-precomposed"
       sizes="114x114">
-<link href="apple-touch-startup-image-640x920.png" 
-      media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" 
+<link href="apple-touch-startup-image-640x920.png"
+      media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image"><!-- iPhone 5 -->
-<link href="apple-touch-startup-image-640x1096.png" 
-      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" 
+<link href="apple-touch-startup-image-640x1096.png"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image"><!-- iPad -->
-<link href="apple-touch-icon-72x72-precomposed.png" 
-      rel="apple-touch-icon-precomposed" 
+<link href="apple-touch-icon-72x72-precomposed.png"
+      rel="apple-touch-icon-precomposed"
       sizes="72x72">
-<link href="apple-touch-startup-image-768x1004.png" 
-      media="(device-width: 768px) and (orientation: portrait)" 
+<link href="apple-touch-startup-image-768x1004.png"
+      media="(device-width: 768px) and (orientation: portrait)"
       rel="apple-touch-startup-image">
-<link href="apple-touch-startup-image-748x1024.png" 
-      media="(device-width: 768px) and (orientation: landscape)" 
+<link href="apple-touch-startup-image-748x1024.png"
+      media="(device-width: 768px) and (orientation: landscape)"
       rel="apple-touch-startup-image"><!-- iPad (Retina) -->
-<link href="apple-touch-icon-144x144-precomposed.png" 
-      rel="apple-touch-icon-precomposed" 
+<link href="apple-touch-icon-144x144-precomposed.png"
+      rel="apple-touch-icon-precomposed"
       sizes="144x144">
-<link href="apple-touch-startup-image-1536x2008.png" 
-      media="(device-width: 768px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" 
+<link href="apple-touch-startup-image-1536x2008.png"
+      media="(device-width: 768px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image">
-<link href="apple-touch-startup-image-1496x2048.png" 
-      media="(device-width: 768px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" 
+<link href="apple-touch-startup-image-1496x2048.png"
+      media="(device-width: 768px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
       rel="apple-touch-startup-image">
 <!-- iOS Webapp end -->
 
@@ -63,11 +63,26 @@
 }
 
 /* Magic Responsiveness */
-body{font-size: 14px;}
-.loader, .gameboy {width: 320px;height: 288px;}
-@media (min-width:0px)   {
-body{font-size: 8px; }
-.loader, .gameboy {width: auto;height: auto;}
+body {
+  font-size: 14px;
+  background: #f5f6f0;
+  font-family: 'pokemon', sans-serif;
+  text-shadow: 0.143em 0.143em 0 rgba(0,0,0,0.2);
+}
+.loader,
+.gameboy {
+  width: 320px;
+  height: 288px;
+}
+@media (min-width:0px) {
+  body {
+    font-size: 8px
+  }
+  .loader,
+  .gameboy {
+    width: auto;
+    height: auto;
+  }
 }
 @media (min-width:200px) {body{font-size: 10px;}}
 @media (min-width:250px) {body{font-size: 12px;}}
@@ -126,69 +141,51 @@ body{font-size: 8px; }
 @media (min-width:2900px){body{font-size:118px;}}
 @media (min-width:2950px){body{font-size:120px;}}
 @media (min-width:3000px){body{font-size:122px;}}
-
-body {
-  background: #f5f6f0;
-  font-family: 'pokemon', sans-serif;
-  text-shadow: 0.143em 0.143em 0 rgba(0,0,0,0.2);
-}
-
-.loader, .gameboy {
+.loader,
+.gameboy {
   overflow: hidden;
   padding: 0.8em;
 }
-
 .gameboy {
-  overflow: hidden;
+  overflow: hidden
 }
-
 .foe {
-  overflow: hidden;
+  overflow: hidden
 }
-
 .foepush {
-  padding-left: 1.286em;
+  padding-left: 1.286em
 }
-
 .row {
-  position: relative;
+  position: relative
 }
-
 a {
   text-decoration: none !important;
   color: inherit;
 }
-
 p {
   margin: 0;
   padding: 0;
 }
-
 footer {
   font-size: 0.571em;
   margin-top: 0.714em;
   line-height: 1.286em;
   display: none;
 }
-
 .player .sprite img {
-  margin-left: 1.214em;
+  margin-left: 1.214em
 }
-
 .sprite {
   -webkit-filter: drop-shadow(0.143em 0.143em 0.000em rgba(0,0,0,0.3));
 }
-
 .player .image {
   left: 71.429em;
   position: relative;
 }
-
 .foe .image {
   position: relative;
   right: 71.429em;
 }
-
 .player .stats {
   background-image: url(img/ash_line.png);
   background-position: center bottom;
@@ -198,7 +195,6 @@ footer {
   padding-bottom: 1.286em;
   margin-right: 1.214em;
 }
-
 .foe .stats {
   background-image: url(img/gary_line.png);
   background-position: center bottom;
@@ -206,22 +202,18 @@ footer {
   background-size: 100%;
   padding-bottom: 0.143em;
 }
-
 .menu .button {
   display: inline-block;
   margin: 0.571em 0 0;
 }
-
 .button:hover {
-  cursor: pointer;
+  cursor: pointer
 }
-
 .healthbar {
   background-color: #30cb30;
   height: 0.214em;
   width: 100%;
 }
-
 .healthbarcontainer {
   border: 0.143em solid rgba(0,0,0,0.75);
   border-radius: 0.357em;
@@ -229,21 +221,17 @@ footer {
   margin: 0 1.071em 0.714em 2.857em;
   display: block;
 }
-
 .health {
   float: right;
   margin-right: 1.071em;
   margin-top: -0.357em;
 }
-
 img {
-  max-width: 100%;
+  max-width: 100%
 }
-
 .hp {
-  display: inline-block;
+  display: inline-block
 }
-
 .menu {
   background: #f5f6f0;
   display: none;
@@ -254,8 +242,9 @@ img {
   padding-top: 0.429em;
   padding-left: 0.929em;
 }
-
-.fight-menu,.item-menu,.pkmn-menu {
+.fight-menu,
+.item-menu,
+.pkmn-menu {
   background: #f5f6f0;
   bottom: -1.071em;
   display: none;
@@ -263,37 +252,32 @@ img {
   position: absolute;
   right: -1.429em;
 }
-
-.item-menu,.pkmn-menu {
+.item-menu,
+.pkmn-menu {
   left: -1.071em;
   right: -1.071em;
   top: -7.857em;
   bottom: -1.071em;
 }
-
 .relative {
-  position: relative;
+  position: relative
 }
-
 .messages {
   display: block;
   margin: 0;
   height: 6.071em;
 }
-
 .text {
   margin-left: -1.071em;
   margin-top: 0.714em;
   margin-right: -1.071em;
 }
-
 .hp_img {
   margin-left: -2.143em;
   position: absolute;
-  width:1.429em;
-  margin-top:-0.143em;
+  width: 1.429em;
+  margin-top: -0.143em;
 }
-
 .frame {
   -moz-border-image: url(img/border.png) 41 41 repeat;
   -o-border-image: url(img/border.png) 41 41 repeat;
@@ -302,7 +286,6 @@ img {
   border-style: solid;
   border-width: 1.071em;
 }
-
 .link {
   background-color: rgba(255,0,0,0.8);
   border-radius: 0.214em;
@@ -310,59 +293,44 @@ img {
   padding: 0.286em 0.357em 0.143em;
   text-shadow: none;
 }
-
-.battle {
-  display: none;
-}
-
+.battle { display: none }
 .loader {
   display: block;
   margin-top: -21.429em;
   padding-top: 5.714em;
   text-align: center;
 }
-
 .loader a {
   border-radius: 0.357em;
   padding: 0.571em 0.714em 0.286em;
 }
-
 .player {
   position: relative;
   margin-top: -2.143em;
   overflow-y: hidden;
 }
-
-.messages span {
-  margin-right: -1.000em;
-}
-
+.messages span { margin-right: -1.000em }
 .statswrap {
   position: absolute;
   bottom: 0;
   right: 0;
 }
-
-.foe, .player {
-  overflow: hidden;
+.foe,
+.player {
+  overflow: hidden
 }
-
 .image {
-  padding-bottom: 0.357em;
+  padding-bottom: 0.357em
 }
-
 .logo {
-  width: 7.143em;
+  width: 7.143em
 }
-
 .levelsign {
-  margin:-0.357em 0 -0.071em 3.214em;
+  margin: -0.357em 0 -0.071em 3.214em
 }
-
 .levelsign img {
-  width:0.857em;
+  width: 0.857em
 }
-
 </style>
 </head>
 
@@ -380,7 +348,7 @@ img {
 
 <div class="gameboy">
   <div class="battle">
-  
+
     <div class="row foe">
       <div class="col-xs-7">
         <div class="foepush">
@@ -398,7 +366,7 @@ img {
         <div class="sprite"></div>
       </div>
     </div>
-  
+
     <div class="row player">
       <div class="col-xs-5 image">
         <div class="ash_black"><img src="img/ash_black.png"></div>
@@ -415,7 +383,7 @@ img {
         </div>
       </div>
     </div>
-  
+
     <div class="row messages frame relative">
       <div class="col-xs-12">
         <p class="text text1"></p>
@@ -441,7 +409,7 @@ img {
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>
 
@@ -478,7 +446,7 @@ var player = "Ash";
 if (getQueryVariable("playerdex") != 0) {
   var playerID = getQueryVariable("playerdex");
 } else {
-  var playerID = 25; 
+  var playerID = 25;
 }
 if (getQueryVariable("foedex") != 0) {
   var foeID = getQueryVariable("foedex");
@@ -725,7 +693,7 @@ function growl() {
       typer();
       window.setTimeout(function() {
         attackEnd();
-      }, 2000); 
+      }, 2000);
     }
   }, 2000);
 };
@@ -934,7 +902,7 @@ $('.run').click(function() {
 
 });
 </script>
-  
+
 </div>
 </body>
 </html>
