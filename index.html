@@ -65,7 +65,8 @@
 /* Magic Responsiveness */
 body {
   font-size: 14px;
-  background: #f5f6f0;
+  background: #e0e0e0;
+  color: #333333;
   font-family: 'pokemon', sans-serif;
   text-shadow: 0.143em 0.143em 0 rgba(0,0,0,0.2);
 }
@@ -160,7 +161,7 @@ body {
 }
 a {
   text-decoration: none !important;
-  color: inherit;
+  color: #333333;
 }
 p {
   margin: 0;
@@ -187,7 +188,7 @@ footer {
   right: 71.429em;
 }
 .player .stats {
-  background-image: url(img/ash_line.png);
+  background-image: url(img/bw/ash_line.png);
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -196,7 +197,7 @@ footer {
   margin-right: 1.214em;
 }
 .foe .stats {
-  background-image: url(img/gary_line.png);
+  background-image: url(img/bw/gary_line.png);
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -233,7 +234,7 @@ img {
   display: inline-block
 }
 .menu {
-  background: #f5f6f0;
+  background: #e0e0e0;
   display: none;
   float: right;
   margin: -1.786em -2.143em -1.071em 0;
@@ -245,7 +246,7 @@ img {
 .fight-menu,
 .item-menu,
 .pkmn-menu {
-  background: #f5f6f0;
+  background: #e0e0e0;
   bottom: -1.071em;
   display: none;
   padding-top: 0.357em;
@@ -279,10 +280,10 @@ img {
   margin-top: -0.143em;
 }
 .frame {
-  -moz-border-image: url(img/border.png) 41 41 repeat;
-  -o-border-image: url(img/border.png) 41 41 repeat;
-  -webkit-border-image: url(img/border.png) 41 41 repeat;
-  border-image: url(img/border.png) 41 41 fill repeat;
+  -moz-border-image: url(img/bw/border.png) 41 41 repeat;
+  -o-border-image: url(img/bw/border.png) 41 41 repeat;
+  -webkit-border-image: url(img/bw/border.png) 41 41 repeat;
+  border-image: url(img/bw/border.png) 41 41 fill repeat;
   border-style: solid;
   border-width: 1.071em;
 }
@@ -339,7 +340,7 @@ img {
 <div class="loader">
   <div class="row">
     <div class="col-xs-12">
-      <img class="logo" src="img/superpencil.png"><br>
+      <img class="logo" src="img/bw/superpencil.png"><br>
       <br>
       <a class="link big" href="http://www.superpencil.com">Superpencil</a>
     </div>
@@ -352,33 +353,33 @@ img {
     <div class="row foe">
       <div class="col-xs-7">
         <div class="foepush">
-          <div class="gary_balls"><img src="img/gary_balls.png"></div>
+          <div class="gary_balls"><img src="img/bw/gary_balls.png"></div>
           <div class="stats">
             <span class="name" style="margin-left:0.929em;"></span><br>
-            <div class="levelsign"><img src="img/l.png"><span class="level"></span></div>
-            <div class="healthbarcontainer"><img class="hp_img" src="img/hp.png"><div class="healthbar"></div></div>
+            <div class="levelsign"><img src="img/bw/l.png"><span class="level"></span></div>
+            <div class="healthbarcontainer"><img class="hp_img" src="img/bw/hp.png"><div class="healthbar"></div></div>
           </div>
         </div>
       </div>
       <div class="col-xs-5 image">
-        <div class="gary_black"><img src="img/gary_black.png"></div>
-        <div class="gary"><img src="img/gary.png"></div>
+        <div class="gary_black"><img src="img/bw/gary_black.png"></div>
+        <div class="gary"><img src="img/bw/gary.png"></div>
         <div class="sprite"></div>
       </div>
     </div>
 
     <div class="row player">
       <div class="col-xs-5 image">
-        <div class="ash_black"><img src="img/ash_black.png"></div>
-        <div class="ash"><img src="img/ash.png"></div>
+        <div class="ash_black"><img src="img/bw/ash_black.png"></div>
+        <div class="ash"><img src="img/bw/ash.png"></div>
         <div class="sprite"></div>
       </div>
       <div class="col-xs-7 statswrap">
-        <div class="ash_balls"><img src="img/ash_balls.png"></div>
+        <div class="ash_balls"><img src="img/bw/ash_balls.png"></div>
         <div class="stats">
           <span class="name" style="margin-left:0.929em;"></span><br>
-          <div class="levelsign"><img src="img/l.png"><span class="level"></span></div>
-          <div class="healthbarcontainer"><img class="hp_img" src="img/hp.png"><div class="healthbar"></div></div>
+          <div class="levelsign"><img src="img/bw/l.png"><span class="level"></span></div>
+          <div class="healthbarcontainer"><img class="hp_img" src="img/bw/hp.png"><div class="healthbar"></div></div>
           <div class="health"><span class="hp"></span>/ <span class="hpTotal"></span></div>
         </div>
       </div>
@@ -415,7 +416,7 @@ img {
 
 <footer class="container">
   <div class="row">
-    <div class="col-xs-3"><img src="img/superpencil.png"></div>
+    <div class="col-xs-3"><img src="img/bw/superpencil.png"></div>
     <div class="col-xs-9">
       Created by <a href="http://www.superpencil.com">Superpencil</a><br>
       Designer & developer<br> <a class="link" href="mailto:pascal@superpencil.com">for hire</a><br>
@@ -469,7 +470,7 @@ $('.player .level').text(playerLevel);
 $('.player .hp').text(hpPlayerTotal);
 $('.player .hpTotal').text(hpPlayerTotal);
 $('.player .name').text(playerPokemon['name'].toUpperCase());
-$('.player .sprite').html("<img src='img/pokemon/back/"+playerID+".gif'/>");
+$('.player .sprite').html("<img src='img/bw/back/"+playerID+".gif'/>");
 
 //Initiate Foe
 var foe = "Gary";
@@ -480,7 +481,7 @@ var foeBaseAttack = foePokemon['atk'];
 var foeBaseDefense = foePokemon['def'];
 $('.foe .level').text(playerLevel);
 $('.foe .name').text(foePokemon['name'].toUpperCase());
-$('.foe .sprite').html("<img src='img/pokemon/front/"+foeID+".gif'/>");
+$('.foe .sprite').html("<img src='img/bw/front/"+foeID+".gif'/>");
 
 /*--- Pokédex ---*/
 function pokedex(dex, level) {
