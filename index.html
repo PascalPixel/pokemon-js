@@ -188,7 +188,7 @@ footer {
   right: 71.429em;
 }
 .player .stats {
-  background-image: url(img/bw/ash_line.png);
+  background-image: url(img/color/ash_line.png);
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -197,7 +197,7 @@ footer {
   margin-right: 1.214em;
 }
 .foe .stats {
-  background-image: url(img/bw/gary_line.png);
+  background-image: url(img/color/gary_line.png);
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
@@ -269,9 +269,9 @@ img {
   height: 6.071em;
 }
 .text {
-  margin-left: -1.071em;
+  margin-left: -0.5em;
   margin-top: 0.714em;
-  margin-right: -1.071em;
+  margin-right: -0.5em;
 }
 .hp_img {
   margin-left: -2.143em;
@@ -280,10 +280,10 @@ img {
   margin-top: -0.143em;
 }
 .frame {
-  -moz-border-image: url(img/bw/border.png) 41 41 repeat;
-  -o-border-image: url(img/bw/border.png) 41 41 repeat;
-  -webkit-border-image: url(img/bw/border.png) 41 41 repeat;
-  border-image: url(img/bw/border.png) 41 41 fill repeat;
+  -moz-border-image: url(img/color/border.png) 41 41 repeat;
+  -o-border-image: url(img/color/border.png) 41 41 repeat;
+  -webkit-border-image: url(img/color/border.png) 41 41 repeat;
+  border-image: url(img/color/border.png) 41 41 fill repeat;
   border-style: solid;
   border-width: 1.071em;
 }
@@ -340,7 +340,7 @@ img {
 <div class="loader">
   <div class="row">
     <div class="col-xs-12">
-      <img class="logo" src="img/bw/superpencil.png"><br>
+      <img class="logo" src="img/color/superpencil.png"><br>
       <br>
       <a class="link big" href="http://www.superpencil.com">Superpencil</a>
     </div>
@@ -353,33 +353,33 @@ img {
     <div class="row foe">
       <div class="col-xs-7">
         <div class="foepush">
-          <div class="gary_balls"><img src="img/bw/gary_balls.png"></div>
+          <div class="gary_balls"><img src="img/color/gary_balls.png"></div>
           <div class="stats">
             <span class="name" style="margin-left:0.929em;"></span><br>
-            <div class="levelsign"><img src="img/bw/l.png"><span class="level"></span></div>
-            <div class="healthbarcontainer"><img class="hp_img" src="img/bw/hp.png"><div class="healthbar"></div></div>
+            <div class="levelsign"><img src="img/color/l.png"><span class="level"></span></div>
+            <div class="healthbarcontainer"><img class="hp_img" src="img/color/hp.png"><div class="healthbar"></div></div>
           </div>
         </div>
       </div>
       <div class="col-xs-5 image">
-        <div class="gary_black"><img src="img/bw/gary_black.png"></div>
-        <div class="gary"><img src="img/bw/gary.png"></div>
+        <div class="gary_black"><img src="img/color/gary_black.png"></div>
+        <div class="gary"><img src="img/color/gary.png"></div>
         <div class="sprite"></div>
       </div>
     </div>
 
     <div class="row player">
       <div class="col-xs-5 image">
-        <div class="ash_black"><img src="img/bw/ash_black.png"></div>
-        <div class="ash"><img src="img/bw/ash.png"></div>
+        <div class="ash_black"><img src="img/color/ash_black.png"></div>
+        <div class="ash"><img src="img/color/ash.png"></div>
         <div class="sprite"></div>
       </div>
       <div class="col-xs-7 statswrap">
-        <div class="ash_balls"><img src="img/bw/ash_balls.png"></div>
+        <div class="ash_balls"><img src="img/color/ash_balls.png"></div>
         <div class="stats">
           <span class="name" style="margin-left:0.929em;"></span><br>
-          <div class="levelsign"><img src="img/bw/l.png"><span class="level"></span></div>
-          <div class="healthbarcontainer"><img class="hp_img" src="img/bw/hp.png"><div class="healthbar"></div></div>
+          <div class="levelsign"><img src="img/color/l.png"><span class="level"></span></div>
+          <div class="healthbarcontainer"><img class="hp_img" src="img/color/hp.png"><div class="healthbar"></div></div>
           <div class="health"><span class="hp"></span>/ <span class="hpTotal"></span></div>
         </div>
       </div>
@@ -416,7 +416,7 @@ img {
 
 <footer class="container">
   <div class="row">
-    <div class="col-xs-3"><img src="img/bw/superpencil.png"></div>
+    <div class="col-xs-3"><img src="img/color/superpencil.png"></div>
     <div class="col-xs-9">
       Created by <a href="http://www.superpencil.com">Superpencil</a><br>
       Designer & developer<br> <a class="link" href="mailto:pascal@superpencil.com">for hire</a><br>
@@ -426,8 +426,8 @@ img {
   </div>
 </footer>
 
-<script src="http://code.jquery.com/jquery-1.10.2.min.js" type='text/javascript'></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/json3/3.3.0/json3.min.js" type='text/javascript'></script>
+<script src="js/jquery-1.10.2.min.js" type='text/javascript'></script>
+<script src="js/json3.min.js" type='text/javascript'></script>
 <script type='text/javascript'>
 $(document).ready(function() {
 
@@ -470,7 +470,7 @@ $('.player .level').text(playerLevel);
 $('.player .hp').text(hpPlayerTotal);
 $('.player .hpTotal').text(hpPlayerTotal);
 $('.player .name').text(playerPokemon['name'].toUpperCase());
-$('.player .sprite').html("<img src='img/bw/back/"+playerID+".gif'/>");
+$('.player .sprite').html("<img src='img/color/back/"+playerID+".gif'/>");
 
 //Initiate Foe
 var foe = "Gary";
@@ -481,7 +481,7 @@ var foeBaseAttack = foePokemon['atk'];
 var foeBaseDefense = foePokemon['def'];
 $('.foe .level').text(playerLevel);
 $('.foe .name').text(foePokemon['name'].toUpperCase());
-$('.foe .sprite').html("<img src='img/bw/front/"+foeID+".gif'/>");
+$('.foe .sprite').html("<img src='img/color/front/"+foeID+".gif'/>");
 
 /*--- Pokédex ---*/
 function pokedex(dex, level) {
@@ -727,9 +727,6 @@ function attack(moveName) {
               var basePower = 40;
               var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * playerPokemon['atk']/foePokemon['def'])/50) + 2;
               hpFoe -= baseDamage;
-              $("p.text1").text("You did");
-              $("p.text2").text(baseDamage + " damage!");
-              typer();
               $(".foe .healthbar").animate({
                 width: healthbar(hpFoe, hpFoeFull) + '%'
               }, 500);
