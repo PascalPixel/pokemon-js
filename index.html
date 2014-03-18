@@ -65,10 +65,20 @@
 /* Magic Responsiveness */
 body {
   font-size: 14px;
-  background: #e0e0e0;
+  background: #fff;
   color: #333333;
   font-family: 'pokemon', sans-serif;
   text-shadow: 0.143em 0.143em 0 rgba(0,0,0,0.2);
+}
+.bw {
+  background: #e0e0e0;
+  color: #000;
+  text-shadow: none;
+}
+.bw * {
+  text-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-filter: none !important;
 }
 .loader,
 .gameboy {
@@ -196,12 +206,18 @@ footer {
   padding-bottom: 1.286em;
   margin-right: 1.214em;
 }
+.bw .player .stats {
+  background-image: url(img/color/ash_line.png);
+}
 .foe .stats {
   background-image: url(img/color/gary_line.png);
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 100%;
   padding-bottom: 0.143em;
+}
+.bw .foe .stats {
+  background-image: url(img/color/gary_line.png);
 }
 .menu .button {
   display: inline-block;
@@ -214,6 +230,9 @@ footer {
   background-color: #30cb30;
   height: 0.214em;
   width: 100%;
+}
+.bw .healthbar {
+  background-color: #a6a6a6 !important;
 }
 .healthbarcontainer {
   border: 0.143em solid rgba(0,0,0,0.75);
@@ -234,7 +253,7 @@ img {
   display: inline-block
 }
 .menu {
-  background: #e0e0e0;
+  background: #fff;
   display: none;
   float: right;
   margin: -1.786em -2.143em -1.071em 0;
@@ -246,12 +265,18 @@ img {
 .fight-menu,
 .item-menu,
 .pkmn-menu {
-  background: #e0e0e0;
+  background: #fff;
   bottom: -1.071em;
   display: none;
   padding-top: 0.357em;
   position: absolute;
   right: -1.429em;
+}
+.bw .menu,
+.bw .fight-menu,
+.bw .item-menu,
+.bw .pkmn-menu {
+  background: #e0e0e0;
 }
 .item-menu,
 .pkmn-menu {
@@ -260,7 +285,7 @@ img {
   top: -7.857em;
   bottom: -1.071em;
 }
-.relative {
+.relative { 
   position: relative
 }
 .messages {
@@ -269,9 +294,9 @@ img {
   height: 6.071em;
 }
 .text {
-  margin-left: -0.5em;
-  margin-top: 0.714em;
-  margin-right: -0.5em;
+  margin-left: -1em;
+  margin-top: 0.5em;
+  margin-right: -1em;
 }
 .hp_img {
   margin-left: -2.143em;
@@ -293,6 +318,9 @@ img {
   color: #e5e7e2;
   padding: 0.286em 0.357em 0.143em;
   text-shadow: none;
+}
+.bw .link {
+  background-color: rgba(185,185,185,0.8);
 }
 .battle { display: none }
 .loader {
@@ -396,8 +424,10 @@ img {
           <div class="button run">RUN</div>
         </div>
         <div class="fight-menu frame">
-          <div class="button tackle">TACKLE</div>
-          <div class="button growl">GROWL</div>
+          <div class="button tackle" id="move0"></div>
+          <div class="button tackle" id="move1"></div>
+          <div class="button tackle" id="move2"></div>
+          <div class="button tackle" id="move3"></div>
           <div class="button back">cancel</div>
         </div>
         <div class="item-menu frame">
@@ -431,6 +461,14 @@ img {
 <script type='text/javascript'>
 $(document).ready(function() {
 
+//GAMEBOY Aspect ratio
+/*var windowHeight = $(window).height();
+$('.gameboy').css('max-width', windowHeight); 
+$(window).resize(function() {
+    var windowHeight = $(window).height();
+    $('.gameboy').css('max-width', windowHeight); 
+});*/
+
 function getQueryVariable(variable)
 {
   var query = window.location.search.substring(1);
@@ -440,6 +478,14 @@ function getQueryVariable(variable)
     if(pair[0] == variable){return pair[1];}
   }
   return(false);
+}
+
+//Color or B&W
+if (getQueryVariable("color") != 0) {
+  var colorSetting = 'bw';
+  $('body').addClass('bw');
+} else {
+  var colorSetting = 'color';
 }
 
 //Initiate Player
@@ -470,7 +516,7 @@ $('.player .level').text(playerLevel);
 $('.player .hp').text(hpPlayerTotal);
 $('.player .hpTotal').text(hpPlayerTotal);
 $('.player .name').text(playerPokemon['name'].toUpperCase());
-$('.player .sprite').html("<img src='img/color/back/"+playerID+".gif'/>");
+$('.player .sprite').html("<img src='img/"+colorSetting+"/back/"+playerID+".gif'/>");
 
 //Initiate Foe
 var foe = "Gary";
@@ -481,7 +527,7 @@ var foeBaseAttack = foePokemon['atk'];
 var foeBaseDefense = foePokemon['def'];
 $('.foe .level').text(playerLevel);
 $('.foe .name').text(foePokemon['name'].toUpperCase());
-$('.foe .sprite').html("<img src='img/color/front/"+foeID+".gif'/>");
+$('.foe .sprite').html("<img src='img/"+colorSetting+"/front/"+foeID+".gif'/>");
 
 /*--- Pokédex ---*/
 function pokedex(dex, level) {
@@ -505,6 +551,35 @@ function pokedex(dex, level) {
       stats['spe'] = Math.floor((poke[dex].stats.speed * 2 + 193) * level / 100 + 10);
   return stats;
 }
+
+/*--- Moves ---*/
+function loadMoves(dex, lvl) {
+  $.ajax({
+    'async': false,
+    'global': false,
+    'url': "js/pokemon.json",
+    'dataType': "json",
+    'success': function (data) {
+        themoves = data;
+    }
+  });
+  var i = 0;
+  var move = new Object();
+  var amount = themoves[dex].moves.level;
+  amount.forEach(function(entry) {
+    if (themoves[dex].moves.level[i].learnedat <= lvl) {
+      move[i] = themoves[dex].moves.level[i].name.toUpperCase();
+    }
+    i++;
+  });
+  return move;
+}
+var playerMoves = loadMoves(playerID, playerLevel);
+var foeMoves = loadMoves(foeID, foeLevel);
+$('#move0').html(playerMoves[3]);
+$('#move1').html(playerMoves[2]);
+$('#move2').html(playerMoves[1]);
+$('#move3').html(playerMoves[0]);
 
 /*--- Setup ---*/
 
@@ -599,6 +674,9 @@ function attackEnd() {
   //Return attack
   else {
     window.setTimeout(function() {
+      $("p.text1").text(foePokemon['name'].toUpperCase()+" used");
+      $("p.text2").text(foeMoves[Math.floor(Math.random()*3)].toUpperCase()+"!");
+      typer();
       $(".foe .image").animate({
           left: "0.714em"
       }, 100, "linear").animate({
@@ -618,51 +696,50 @@ function attackEnd() {
                 $(".player .image").css('opacity', 0);
                 window.setTimeout(function() {
                   $(".player .image").css('opacity', 1);
-                  var basePower = 40;
-                  var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * foePokemon['atk']/playerPokemon['def'])/50) + 2;
-                  hpPlayer -= baseDamage;
-                  $("p.text1").text(foePokemon['name'].toUpperCase()+" did " + baseDamage);
-                  $("p.text2").text("damage to you.");
-                  typer();
-                  if (hpPlayer <= 7) {
-                    $(".player .healthbar").css('background-color', 'red');
-                  };
-                  if (hpPlayer <= 0) {
-                    $(".menu").css('display', 'none');
-                    $(".player .hp").text("0");
-                    $(".player .healthbar").css('width', '0%');
-                    $(".player .stats").css('display', 'none');
-                    window.setTimeout(function() {
-                      $(".player .image").delay(500).animate({
-                        bottom: "-35.714em"
-                      }, 1000);
-                      $("p.text1").text(playerPokemon['name'].toUpperCase()+" fainted...");
-                      $("p.text2").text("");
-                      typer();
+                  window.setTimeout(function() {
+                    var basePower = 40;
+                    var baseDamage = Math.floor(Math.floor(Math.floor(2*playerLevel/5+2) * basePower * foePokemon['atk']/playerPokemon['def'])/50) + 2;
+                    hpPlayer -= baseDamage;
+                    if (hpPlayer <= 7) {
+                      $(".player .healthbar").css('background-color', 'red');
+                    };
+                    if (hpPlayer <= 0) {
+                      $(".menu").css('display', 'none');
+                      $(".player .hp").text("0");
+                      $(".player .healthbar").css('width', '0%');
+                      $(".player .stats").css('display', 'none');
                       window.setTimeout(function() {
-                        $("p.text1").text(player.toUpperCase()+" is out of");
-                        $("p.text2").text("useable POKéMON...");
+                        $(".player .image").delay(500).animate({
+                          bottom: "-35.714em"
+                        }, 1000);
+                        $("p.text1").text(playerPokemon['name'].toUpperCase()+" fainted...");
+                        $("p.text2").text("");
                         typer();
                         window.setTimeout(function() {
-                          $("p.text1").text(player.toUpperCase()+" whited out!");
-                          $("p.text2").text(" ");
+                          $("p.text1").text(player.toUpperCase()+" is out of");
+                          $("p.text2").text("useable POKéMON...");
                           typer();
                           window.setTimeout(function() {
-                            $(".gameboy").hide();
-                            $("footer").show();
+                            $("p.text1").text(player.toUpperCase()+" whited out!");
+                            $("p.text2").text(" ");
+                            typer();
+                            window.setTimeout(function() {
+                              $(".gameboy").hide();
+                              $("footer").show();
+                            }, 2000);
                           }, 2000);
                         }, 2000);
                       }, 2000);
-                    }, 2000);
-                  } else {
-                    $(".player .hp").text(hpPlayer);
-                    $(".player .healthbar").animate({
-                      width: healthbar(hpPlayer, hpPlayerTotal) + '%'
-                    }, 500);
-                    window.setTimeout(function() {
-                      reset();
-                    }, 2400);
-                  };
+                    } else {
+                      $(".player .hp").text(hpPlayer);
+                      $(".player .healthbar").animate({
+                        width: healthbar(hpPlayer, hpPlayerTotal) + '%'
+                      }, 500);
+                      window.setTimeout(function() {
+                        reset();
+                      }, 2400);
+                    };
+                  }, 100);
                 }, 100);
               }, 100);
             }, 100);
@@ -862,20 +939,16 @@ $('.fight').click(function() {
   $(".fight-menu").css('display', 'block');
 });
 
-//Thundershock
-$('.thundershock').click(function() {
-  attack('Thundershock');
-});
-
-//Growl
+//Stats Attacks
 $('.growl').click(function() {
   growl();
 });
 
-//Tackle
-$('.tackle').click(function() {
-  attack('Tackle');
-});
+//Damage Attacks
+$('#move0').click(function(){attack(playerMoves[3]);});
+$('#move1').click(function(){attack(playerMoves[2]);});
+$('#move2').click(function(){attack(playerMoves[1]);});
+$('#move3').click(function(){attack(playerMoves[0]);});
 
 //Back
 $('.back').click(function() {

@@ -2,7 +2,7 @@
 {
   "id": "000",
   "name": "MissingNo",
-  "img": "img/pkmn_sprites/0.png",
+  "img": "img/color/front/0.gif",
   "type": [
     "Normal",
     "Flying"
