@@ -1,0 +1,140 @@
+!!! 5
+%html
+  %head
+    %meta{charset: "utf-8"}
+    %meta{content: "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}
+    %title Pokemon Mini by Superpencil
+    %link{href: "/img/favicon.ico", rel: "shortcut icon", type: "image/x-icon"}
+    / iOS Webapp
+    %meta{content: "width=device-width, initial-scale=1, user-scalable=no", name: "viewport"}
+    / Basic
+    %link{href: "/img/apple-touch-icon-precomposed.png", rel: "apple-touch-icon-precomposed"}
+    / iPhone
+    %link{href: "/img/apple-touch-icon-57x57-precomposed.png", rel: "apple-touch-icon-precomposed", sizes: "57x57"}
+    %link{href: "/img/apple-touch-startup-image-320x460.png", media: "(device-width: 320px)", rel: "apple-touch-startup-image"}
+    / iPhone (Retina)
+    %link{href: "/img/apple-touch-icon-144x144-precomposed.png", rel: "apple-touch-icon-precomposed", sizes: "114x114"}
+    %link{href: "/img/apple-touch-startup-image-640x920.png", media: "(device-width: 320px) and (-webkit-device-pixel-ratio: 2)", rel: "apple-touch-startup-image"}
+    / iPhone 5
+    %link{href: "/img/apple-touch-startup-image-640x1096.png", media: "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)", rel: "apple-touch-startup-image"}
+    / iPad
+    %link{href: "/img/apple-touch-icon-72x72-precomposed.png", rel: "apple-touch-icon-precomposed", sizes: "72x72"}
+    %link{href: "/img/apple-touch-startup-image-768x1004.png", media: "(device-width: 768px) and (orientation: portrait)", rel: "apple-touch-startup-image"}
+    %link{href: "/img/apple-touch-startup-image-748x1024.png", media: "(device-width: 768px) and (orientation: landscape)", rel: "apple-touch-startup-image"}
+    / iPad (Retina)
+    %link{href: "/img/apple-touch-icon-144x144-precomposed.png", rel: "apple-touch-icon-precomposed", sizes: "144x144"}
+    %link{href: "/img/apple-touch-startup-image-1536x2008.png", media: "(device-width: 768px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)", rel: "apple-touch-startup-image"}
+    %link{href: "/img/apple-touch-startup-image-1496x2048.png", media: "(device-width: 768px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)", rel: "apple-touch-startup-image"}
+    / iOS Webapp end
+    %link{href: "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css", rel: "stylesheet", type: "text/css"}
+    %link{href: "/css/main.css", rel: "stylesheet", type: "text/css"}
+  %body
+    .container
+      .row
+        .col-xs-6
+          %button.btn.btn-default{value: "THUNDERSHOCK"} THUNDERSHOCK
+          %button.btn.btn-default{value: "GROWL"} GROWL
+          %button.btn.btn-default{value: "TACKLE"} TACKLE
+          %button.btn.btn-default{value: "TAIL WHIP"} TAIL WHIP
+        .col-xs-6
+          %ul#actions
+    %hr
+    .loader
+      .row
+        .col-xs-12
+          %img.logo{src: "/img/color/superpencil.png"}
+          %br
+          %br
+          %a.link.big{href: "http://www.superpencil.com"} Superpencil
+    .gameboy
+      .battle
+        .row.foe
+          .col-xs-7
+            .foepush
+              .gary_balls
+                %img{src: "/img/color/gary_balls.png"}
+              .stats
+                %span.name{style: "margin-left:0.929em;"}
+                %br
+                .levelsign
+                  %img{src: "/img/color/l.png"}
+                  %span.level
+                .healthbarcontainer
+                  %img.hp_img{src: "/img/color/hp.png"}
+                  .healthbar
+          .col-xs-5.image
+            .gary_black
+              %img{src: "/img/color/gary_black.png"}
+            .gary
+              %img{src: "/img/color/gary.png"}
+            .sprite
+        .row.player
+          .col-xs-5.image
+            .ash_black
+              %img{src: "/img/color/ash_black.png"}
+            .ash
+              %img{src: "/img/color/ash.png"}
+            .sprite
+          .col-xs-7.statswrap
+            .ash_balls
+              %img{src: "/img/color/ash_balls.png"}
+            .stats
+              %span.name{style: "margin-left:0.929em;"}
+              %br
+              .levelsign
+                %img{src: "/img/color/l.png"}
+                %span.level
+              .healthbarcontainer
+                %img.hp_img{src: "/img/color/hp.png"}
+                .healthbar
+              .health
+                %span.hp
+                %span.hpTotal
+        .row.messages.frame.relative
+          .col-xs-12
+            %p.text.text1
+            %p.text.text2
+            .menu.frame
+              .button.fight FIGHT
+              .button.pkmn
+                %sup P
+                %sub K
+                %sup M
+                %sub N
+              .button.item ITEM
+              .button.run RUN
+            .fight-menu.frame
+              #move0.button.tackle
+              #move1.button.tackle
+              #move2.button.tackle
+              #move3.button.tackle
+              .button.back cancel
+            .item-menu.frame
+              .button.potion
+                POTION x
+                %span.potionCount 1
+              .button.back{style: "position:absolute;bottom:1.429em;"} cancel
+            .pkmn-menu.frame
+              .button.playerPokemonButton
+                %span.playerpokemonname
+              .button.back cancel
+    %footer.container
+      .row
+        .col-xs-3
+          %img{src: "/img/color/superpencil.png"}
+        .col-xs-9
+          Created by
+          %a{href: "http://www.superpencil.com"} Superpencil
+          %br
+          Product Designer & Developer
+          %br
+          %a.link{href: "mailto:pascal@superpencil.com"} for hire
+          %br
+          %br
+          Pokemon & Pikachu are trademarks of The Pokemon Company & Nintendo Inc.
+          %br
+    %script{src: "/socket.io/socket.io.js"}
+    %script{src: "http://code.jquery.com/jquery-1.11.1.js"}
+    %script{src: "http://cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"}
+    %script{src: "/js/main.js"}
+    %script{src: "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"}
