@@ -21,10 +21,28 @@ describe('Pokemon-Mini connection project', function() {
   });
 
   it('should redirect to a unique url', function(done) {
+    var newUrl, oldUrl;
+    
     request('http://localhost:3000', function(err, res, body) {
       if (err) { return done(err); }
-      console.log(res);
-      return done();
+      oldUrl = res.request.uri.path;
+      assert.equal(res.statusCode, 300); 
+      request('http://localhost:3000', function(err, res, body) {
+        if (err) {return done(err); }
+        newUrl = res.request.uri.path;
+        assert.equal(res.statusCode,300);
+        assert.notEqual(newUrl, oldUrl);
+        return done();
+      });
     });
   });
+
+  it('should only let two people in a room', function(done) {
+    request('http://localhost:3000', function(err, res, body) {
+      request(res.request.uri.href, function(err, res, body) {
+        done();
+      });
+    });
+  });
+
 });
