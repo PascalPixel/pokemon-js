@@ -2,8 +2,16 @@
   "name": "Pokemon-Mini",
   "version": "0.0.2",
   "description": "Responsive HTML5 Pokemon Battle built with Node",
+  "scripts": {
+    "test": "mocha test/*.test.js"
+  },
   "dependencies": {
     "express": "^4.8.5",
     "socket.io": "^1.0.6"
+  },
+  "devDependencies": {
+    "mocha": "~2.1.0",
+    "request": "~2.51.0",
+    "socket.io-client": "~1.2.1"
   }
 }
