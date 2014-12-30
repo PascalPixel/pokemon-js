@@ -40,7 +40,11 @@ describe('Pokemon-Mini connection project', function() {
   it('should only let two people in a room', function(done) {
     request('http://localhost:3000', function(err, res, body) {
       request(res.request.uri.href, function(err, res, body) {
-        done();
+        request(res.request.uri.href, function(err, res, body) {
+          var errorReg = new RegExp(/Error/);
+          assert(errorReg.test(body));
+          done();
+        });
       });
     });
   });
