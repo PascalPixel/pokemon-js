@@ -8,7 +8,7 @@ describe('Pokemon-Mini connection project', function() {
   it('should be happy', function(done) {
     request('http://localhost:3000', function(err, res, body) {
       if (err) { return done(err); } 
-      done(); 
+      return done(); 
     });
   });
 
@@ -16,6 +16,14 @@ describe('Pokemon-Mini connection project', function() {
     var client = socket.connect('http://localhost:3000');
     client.on('connect', function() {
       client.disconnect();
+      return done();
+    });
+  });
+
+  it('should redirect to a unique url', function(done) {
+    request('http://localhost:3000', function(err, res, body) {
+      if (err) { return done(err); }
+      console.log(res);
       return done();
     });
   });
