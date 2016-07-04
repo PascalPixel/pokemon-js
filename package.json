@@ -1,9 +1,0 @@
-{
-  "name": "Pokemon-Mini",
-  "version": "0.0.2",
-  "description": "Responsive HTML5 Pokemon Battle built with Node",
-  "dependencies": {
-    "express": "^4.8.5",
-    "socket.io": "^1.0.6"
-  }
-}
