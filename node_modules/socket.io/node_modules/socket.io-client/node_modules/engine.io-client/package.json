@@ -1,0 +1,82 @@
+{
+  "name": "engine.io-client",
+  "description": "Client for the realtime Engine",
+  "version": "1.3.1",
+  "homepage": "http://socket.io",
+  "contributors": [
+    {
+      "name": "Guillermo Rauch",
+      "email": "rauchg@gmail.com"
+    },
+    {
+      "name": "Vladimir Dronnikov",
+      "email": "dronnikov@gmail.com"
+    },
+    {
+      "name": "Christoph Dorn",
+      "url": "https://github.com/cadorn"
+    },
+    {
+      "name": "Mark Mokryn",
+      "email": "mokesmokes@gmail.com"
+    }
+  ],
+  "dependencies": {
+    "has-cors": "1.0.3",
+    "ws": "0.4.31",
+    "xmlhttprequest": "https://github.com/LearnBoost/node-XMLHttpRequest/archive/0f36d0b5ebc03d85f860d42a64ae9791e1daa433.tar.gz",
+    "component-emitter": "1.1.2",
+    "indexof": "0.0.1",
+    "engine.io-parser": "1.0.6",
+    "debug": "0.7.4",
+    "parseuri": "0.0.2",
+    "parsejson": "0.0.1",
+    "parseqs": "0.0.2",
+    "component-inherit": "0.0.3"
+  },
+  "devDependencies": {
+    "zuul": "1.6.3",
+    "mocha": "1.16.2",
+    "expect.js": "0.2.0",
+    "istanbul": "0.2.3",
+    "browserify": "3.30.1",
+    "engine.io": "1.3.0",
+    "express": "3.4.8",
+    "blob": "0.0.2"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "browser": {
+    "xmlhttprequest": "./lib/xmlhttprequest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LearnBoost/engine.io-client.git"
+  },
+  "gitHead": "e1a9a12df7a8090c55633a77b316ea655af58885",
+  "bugs": {
+    "url": "https://github.com/LearnBoost/engine.io-client/issues"
+  },
+  "_id": "engine.io-client@1.3.1",
+  "_shasum": "1c5a65d5c5af6d04b44c22c3dbcd95c39ed1c989",
+  "_from": "engine.io-client@1.3.1",
+  "_npmVersion": "1.4.14",
+  "_npmUser": {
+    "name": "rauchg",
+    "email": "rauchg@gmail.com"
+  },
+  "maintainers": [
+    {
+      "name": "rauchg",
+      "email": "rauchg@gmail.com"
+    }
+  ],
+  "dist": {
+    "shasum": "1c5a65d5c5af6d04b44c22c3dbcd95c39ed1c989",
+    "tarball": "http://registry.npmjs.org/engine.io-client/-/engine.io-client-1.3.1.tgz"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/engine.io-client/-/engine.io-client-1.3.1.tgz",
+  "readme": "ERROR: No README data found!"
+}
