@@ -2,11 +2,8 @@ var express = require("express");
 var app = express();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
-var privateRoom = require('./private-room');
 
 app.use(express.static(__dirname + '/public'));
-
-app.use(privateRoom());
 
 app.get("/", function(req, res) {
   res.sendfile("public/app.html");
@@ -25,6 +22,6 @@ io.on("connection", function(socket) {
   });
 });
 
-exports.server = http.listen(3000, function() {
+http.listen(3000, function() {
   console.log("listening on *:3000");
 });
