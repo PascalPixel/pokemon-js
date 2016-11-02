@@ -1,23 +1,30 @@
-#<img src="http://www.superpencil.com/battle/apple-touch-icon.png"/> Pokemon-Mini
+# Pokemon-Mini
+#### Classic Pokémon Yellow battles built for the web
+![Screenshot](/src/screenshot_2016.png?raw=true "Screenshot 2016")
 
-<img src="http://www.superpencil.com/battle/img/source/screenshot.png"/>
-####Pokemon Battle built in Javascript & Bootstrap
-Classic Pokémon Yellow battles, now with full Pokédex.
+#### Demo
+<http://www.superpencil.com/en/error>
 
-####To-do
+#### About
+A clone of the very first battle in the first generation of Pokémon GAMEBOY games by Game Freak published by Nintendo.
+
+It started in 2013 as a way of refining web technology skills for Pascal Pixel and now Superpencil, then evolved to include (originally, perhaps not in the current iteration) `PHP`, `GET` requests, `jQuery`, `JSON` to dynamically call specific monsters from an index (Pokédex), `API` usage, `SVG`, dynamic SVG coloring, CSS 3D `transforms`, responsive interfaces based on `em` units, and full mastery of `SASS` and `SCSS`.
+
+We plan to move the project into React & Redux next to get a hold on those new technologies as well.
+
+#### To-do
+- Re-implement JSON Pokedex to call different teams
 - Implement moves
 - Implement real stats
 - Implement different trainers
 - Remove MissingNo bug
+- Convert to React/Redux
+- Make multiplayer
 
-####Demo
-<http://www.superpencil.com/battle>
+#### Clones & Forks
+If you use this code please mention and link to the original repository.
+<https://github.com/Superpencil/Pokemon-Mini>
+If you make improvements, please issue a pull request, we're very happy to have your involvement and look forward to learn from your code.
 
-####Change Pokemon & level through url
-<http://www.superpencil.com/battle/index.html?playerdex=55&foedex=34&level=12>
-
-
-<hr>
-
-<sub><sup>Pokémon, Pikachu and Eevee are trademarks of The Pokémon Company &amp; Nintendo Inc.<br/>
-I learned how to use JS and jQuery on <a href="http://www.codecademy.com">Codecademy</a> and decided to use Pokémon Yellow as a practice project, it's taught me jQuery, Javascript, PHP, URL GET & JSON</sub></sup>
+#### Disclaimer
+Pokémon and Pikachu are trademarks of The Pokémon Company International, this is an internal project used to study new web technologies, it is free to use.
