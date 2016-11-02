@@ -23,8 +23,10 @@ We plan to move the project into React & Redux next to get a hold on those new t
 
 #### Clones & Forks
 If you use this code please mention and link to the original repository.
-<https://github.com/Superpencil/Pokemon-Mini>
+
 If you make improvements, please issue a pull request, we're very happy to have your involvement and look forward to learn from your code.
+
+<https://github.com/Superpencil/Pokemon-Mini>
 
 #### Disclaimer
 Pokémon and Pikachu are trademarks of The Pokémon Company International, this is an internal project used to study new web technologies, it is free to use.
