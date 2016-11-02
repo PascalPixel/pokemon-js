@@ -12,6 +12,9 @@ It started in 2013 as a way of refining web technology skills for Pascal Pixel a
 
 We plan to move the project into React & Redux next to get a hold on those new technologies as well.
 
+#### Authors
+[@PascalPixel](http://github.com/pascalpixel)
+
 #### To-do
 - Re-implement JSON Pokedex to call different teams
 - Implement moves
