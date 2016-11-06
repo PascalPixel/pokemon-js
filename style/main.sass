@@ -9,7 +9,7 @@ $font-types: normal italic
   @each $font-weight in $font-weights
     @font-face
       font-family: 'Pokemon'
-      src: url("fonts/pokemon-#{$font-type}.woff2") format('woff2'), url("fonts/pokemon-#{$font-type}.woff") format('woff')
+      src: url("../fonts/pokemon-#{$font-type}.woff2") format('woff2'), url("../fonts/pokemon-#{$font-type}.woff") format('woff')
       font-weight: $font-weight
       font-style: $font-type
 
@@ -78,7 +78,7 @@ button
   position: relative
   &:before
     position: absolute
-    background-image: url('img/marker.svg')
+    background-image: url('../img/marker.svg')
     background-repeat: no-repeat
     left: -1em
     top: 0.1em
@@ -171,7 +171,7 @@ span,
 
   .stats
     height: 3em
-    background-image: url('img/blue_line.svg')
+    background-image: url('../img/blue_line.svg')
 
   .name
     margin-left: -0.3em
@@ -193,7 +193,7 @@ span,
     right: 1.1em
 
   .stats
-    background-image: url('img/red_line.svg')
+    background-image: url('../img/red_line.svg')
 
   .name
     margin-left: 1em
@@ -211,7 +211,7 @@ span,
 .windows
   .window
     position: absolute
-    border-image: url('img/frame.svg') 45% stretch
+    border-image: url('../img/frame.svg') 45% stretch
     border-style: solid
     border-width: 0.7em
     background: $gameboy-base

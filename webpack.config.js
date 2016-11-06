@@ -19,6 +19,15 @@ module.exports = {
       }, {
         test: /\.sass$/,
         loaders: ['style', 'css', 'sass']
+      }, {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file?name=public/fonts/[name].[ext]'
+      }, {
+        test: /\.(jpg|png)$/,
+        loader: 'file?name=[path][name].[hash].[ext]'
+      }, {
+        test: /\.svg$/,
+        loader: 'file'
       }
     ]
   },
