@@ -112,14 +112,11 @@ export default class App extends Component {
           </div>
         </div>
         <div className="text-area">
-          <br/>
-          <button className="three-dee">Toggle 3D</button>
-          <br/>
-          <h1>Pokémon Mini</h1>
-          <h2>
-            by
-            <a href="http://www.superpencil.com">Superpencil</a>
-          </h2>
+          <p>
+            Pokémon Mini
+            <br/>
+            by <a href="http://www.superpencil.com">Superpencil</a>
+          </p>
           <p>Pokémon and Pikachu are trademarks of The Pokémon Company International</p>
           <p>If you use this code please mention the original repository.</p>
           <p>If you make improvements, please issue a pull request, we're very happy to have your involvement.</p>

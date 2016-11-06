@@ -1,30 +1,4 @@
 $(document).ready(() => {
-  // 3D angle
-  $('.three-dee').click(() => {
-    $('#pokemon').toggleClass('perspective')
-    $('button').toggleClass('active')
-    $('.depth').removeAttr('style')
-  })
-  const handleMouseMove = e => {
-    const offset = $('#pokemon').offset()
-    const width = $('#pokemon').width()
-    const height = $('#pokemon').height()
-    const posX = (100 - (((e.pageX - offset.left) / width * 100)) - 50) * 0.15
-    const posY = (((e.pageY - offset.top) / height * 100) - 50) * 0.15
-    const moving = `rotateX(${posY}deg) rotateY(${posX}deg)`
-    $('.depth').css({'-webkit-transform': moving, '-moz-transform': moving, '-ms-transform': moving, '-o-transform': moving, 'transform': moving})
-  }
-  let enableHandler
-  $('#pokemon').mousemove(function(e) {
-    if ($(this).hasClass('perspective') && enableHandler) {
-      handleMouseMove(e)
-      enableHandler = false
-    }
-  })
-  window.setInterval(() => {
-    enableHandler = true
-  }, 20)
-
   // Pokédex
   // const pokedex = (dex, level) => {
   //   $.ajax({

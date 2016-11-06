@@ -17,13 +17,12 @@ body
   background-color: $gameboy-base
   color: $gameboy-dark
   font-family: 'Pokemon', monospace
-  font-size: 20px
   margin: 1em
   padding: 0
   line-height: 1.3em
 
 a
-  color: #FCE600
+  color: $gameboy-normal
   text-decoration: none
 
 h1, h2, h3, h4, h5, h6
@@ -53,12 +52,13 @@ button
   fill: $gameboy-light
 
 .text-area
-  margin: 0 auto
+  margin: 6em auto
   font-size: 0.5em
   width: 32em
   line-height: 1.6em
 
 #pokemon
+  font-size: 20px
   width: 16.0em
   height: 14.4em
   position: relative
@@ -69,7 +69,7 @@ button
   transform: translateZ(0em) translateY(0em) translateX(0em) rotateX(0deg) rotateY(0deg)
 
   // Image background to compare positioning
-  // background-image: url('src/screenshot_1998.png')
+  // background-image: url('../img/src/screenshot_1998.png')
   // background-size: cover
   // background-repeat: no-repeat
 
@@ -161,6 +161,12 @@ span,
   height: 100%
   width: 100%
   border-radius: 0.4em
+
+.foe,
+.player
+  .pokemon,
+  .stats
+    display: none
 
 .foe
   .images
