@@ -1,6 +1,6 @@
 # Pokemon-Mini
 #### Classic Pokémon Yellow battles built for the web
-![Screenshot](/screenshot.png?raw=true "Screenshot")
+![Screenshot](/img/src/promo.png?raw=true "Screenshot")
 
 #### Demo
 <http://www.superpencil.com/en/error>
