@@ -18,12 +18,14 @@ export default class Game extends Component {
             amount: 0
           }
         ],
+        selectedPokemon: 0,
         pokemon: [
           {
             name: 'Eevee',
             image: 'eevee',
             pokedex: 133,
             level: 5,
+            currentHp: 15,
             baseHp: 15,
             moves: [
               {
@@ -56,12 +58,14 @@ export default class Game extends Component {
             amount: 1
           }
         ],
+        selectedPokemon: 0,
         pokemon: [
           {
             name: 'Pikachu',
             image: 'pikachu',
             pokedex: 25,
             level: 4,
+            currentHp: 13,
             baseHp: 13,
             moves: [
               {
