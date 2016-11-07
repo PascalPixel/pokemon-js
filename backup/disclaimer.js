@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class TextArea extends Component {
+export default class Disclaimer extends Component {
   render() {
     return (
       <div className="text-area">

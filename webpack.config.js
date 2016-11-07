@@ -7,7 +7,6 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
-  devtool: 'source-map',
   module: {
     loaders: [
       {
@@ -35,6 +34,7 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
+    inline: true,
     historyApiFallback: true,
     contentBase: './'
   }
