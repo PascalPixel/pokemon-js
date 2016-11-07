@@ -4,11 +4,21 @@ export default class MoveList extends Component {
   renderMoves() {
     return this.props.moves.map((move) => {
       return (
-        <li
+        <div
           key={move.name}
           className='button'
-          onClick={() => this.props.selectMove(move)}>{move.name}
-        </li>
+          onClick={() => this.props.selectMove(move)}>
+            {move.name}
+            <br/>
+            PP: {move.ppCurrent} / {move.pp}
+            <br/>
+            Type:
+            {move.types.map((type) => {
+              return (
+                <div key={type}>{type}</div>
+              )})}
+            <br/>
+        </div>
       )
     })
   }
@@ -16,9 +26,7 @@ export default class MoveList extends Component {
   render() {
     return (
       <div className='window fight'>
-        <ul>
-          {this.renderMoves()}
-        </ul>
+        {this.renderMoves()}
       </div>
     )
   }

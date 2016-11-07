@@ -25,8 +25,8 @@ export default class Game extends Component {
             image: 'eevee',
             pokedex: 133,
             level: 5,
-            currentHp: 15,
-            baseHp: 15,
+            hpCurrent: 15,
+            hpBase: 15,
             moves: [
               {
                 name: 'Tackle',
@@ -34,7 +34,9 @@ export default class Game extends Component {
                 types: [
                   'Normal'
                 ],
-                baseDamage: 40
+                baseDamage: 40,
+                pp: 5,
+                ppCurrent: 5
               },
               {
                 name: 'Tail Whip',
@@ -42,7 +44,9 @@ export default class Game extends Component {
                 types: [
                   'Normal'
                 ],
-                baseDamage: 0
+                baseDamage: 0,
+                pp: 5,
+                ppCurrent: 5
               }
             ]
           }
@@ -65,8 +69,8 @@ export default class Game extends Component {
             image: 'pikachu',
             pokedex: 25,
             level: 4,
-            currentHp: 13,
-            baseHp: 13,
+            hpCurrent: 13,
+            hpBase: 13,
             moves: [
               {
                 name: 'Tackle',
@@ -74,7 +78,9 @@ export default class Game extends Component {
                 types: [
                   'Normal'
                 ],
-                baseDamage: 40
+                baseDamage: 40,
+                pp: 5,
+                ppCurrent: 5
               },
               {
                 name: 'Tail Whip',
@@ -82,7 +88,9 @@ export default class Game extends Component {
                 types: [
                   'Normal'
                 ],
-                baseDamage: 0
+                baseDamage: 0,
+                pp: 5,
+                ppCurrent: 5
               }
             ]
           }

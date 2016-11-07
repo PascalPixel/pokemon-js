@@ -13,10 +13,9 @@ export default class Pokemon extends Component {
             <h5>{this.props.pokemon.name}</h5>
             <p>Level: {this.props.pokemon.level}</p>
             <p>Pokedex: {this.props.pokemon.pokedex}</p>
+            <p>HP: {this.props.pokemon.hpCurrent} / {this.props.pokemon.hpBase}</p>
             <p>Moves:</p>
-            <ul>
-              <MoveList moves={this.props.pokemon.moves}/>
-            </ul>
+            <MoveList moves={this.props.pokemon.moves}/>
           </div>
         </div>
       </div>
