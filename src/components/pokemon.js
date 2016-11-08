@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import MoveList             from '../containers/move-list'
+import MoveList             from './move-list'
 
 export default class Pokemon extends Component {
   render() {
