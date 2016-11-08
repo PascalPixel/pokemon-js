@@ -12,7 +12,7 @@ export default class Player extends Component {
 
   render() {
     return (
-      <div key={this.props.player.name}>
+      <div key={this.props.player.name} className='col-xs-6'>
         <div className='row'>
           <div className='col-xs-4'>
             <img src={`img/${this.props.player.image}_front.svg`}/>
