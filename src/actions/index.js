@@ -1,6 +1,6 @@
-export function selectMove(move) {
+export function attack(damage) {
   return {
-    type: 'MOVE_SELECTED',
-    payload: move
+    type: 'ATTACK',
+    payload: damage
   }
 }

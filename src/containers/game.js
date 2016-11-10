@@ -1,20 +1,24 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
+import { attack } from '../actions'
+
+require('../../style/main.sass')
 
 class Game extends Component {
   render() {
-    if (!this.props.move) {
+    if (!this.props.game) {
       return (
-        <div className='col-sm-6'>
-          <p>Select Move</p>
-        </div>
+        <button onClick={() => this.props.attack(20)}>Attack</button>
       )
     }
-
     return (
-      <div className='col-sm-6'>
-        <p>Move: {this.props.move.name}</p>
-        <p>Damage: {this.props.move.damage}</p>
+      <div>
+        <button onClick={() => this.props.attack(20)}>Attack</button>
+        <br/>
+        <br/>
+        <p>Attacked! {this.props.game} damage!</p>
       </div>
     )
   }
@@ -22,8 +26,12 @@ class Game extends Component {
 
 function mapStateToProps(state) {
   return {
-    move: state.game
+    game: state.game
   }
 }
 
-export default connect(mapStateToProps)(Game)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ attack }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game)

@@ -16,6 +16,7 @@ const rootReducer = combineReducers({
   types: TypesReducer,
   moves: MovesReducer,
   items: ItemsReducer,
+
   game: GameReducer
 })
 
