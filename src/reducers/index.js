@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
   moves: MovesReducer,
   items: ItemsReducer,
 
-  game: GameReducer
+  foeDamage: GameReducer
 })
 
 export default rootReducer

@@ -2,23 +2,18 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { attack } from '../actions'
+import { attackFoe } from '../actions'
 
 require('../../style/main.sass')
 
 class Game extends Component {
   render() {
-    if (!this.props.game) {
-      return (
-        <button onClick={() => this.props.attack(20)}>Attack</button>
-      )
-    }
     return (
       <div>
-        <button onClick={() => this.props.attack(20)}>Attack</button>
+        <button onClick={() => this.props.attackFoe(7)}>Attack 7</button>
         <br/>
         <br/>
-        <p>Attacked! {this.props.game} damage!</p>
+        <p>Foe health: {this.props.foeDamage}</p>
       </div>
     )
   }
@@ -26,12 +21,12 @@ class Game extends Component {
 
 function mapStateToProps(state) {
   return {
-    game: state.game
+    foeDamage: state.foeDamage
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ attack }, dispatch)
+  return bindActionCreators({ attackFoe }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game)
