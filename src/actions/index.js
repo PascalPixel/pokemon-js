@@ -1,6 +1,6 @@
-export function attackFoe(damage) {
+export function pickCharacter(character) {
   return {
-    type: 'ATTACK_FOE',
-    payload: damage
+    type: 'PICK_CHARACTER',
+    payload: character
   }
 }

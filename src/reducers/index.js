@@ -1,23 +1,23 @@
 import { combineReducers } from 'redux'
 
 // Databases
-import PlayersReducer from './reducer-players'
-import PokedexReducer from './reducer-pokedex'
-import TypesReducer from './reducer-types'
-import MovesReducer from './reducer-moves'
-import ItemsReducer from './reducer-items'
+import CharactersReducer from './reducer-characters'
+// import PokedexReducer from './reducer-pokedex'
+// import TypesReducer from './reducer-types'
+// import MovesReducer from './reducer-moves'
+// import ItemsReducer from './reducer-items'
 
 // Active Game
-import GameReducer from './reducer-game'
+import PlayerReducer from './reducer-player'
 
 const rootReducer = combineReducers({
-  players: PlayersReducer,
-  pokedex: PokedexReducer,
-  types: TypesReducer,
-  moves: MovesReducer,
-  items: ItemsReducer,
-
-  foeDamage: GameReducer
+  characters: CharactersReducer,
+  // pokedex: PokedexReducer,
+  // types: TypesReducer,
+  // moves: MovesReducer,
+  // items: ItemsReducer,
+  // foeDamage: GameReducer,
+  player: PlayerReducer
 })
 
 export default rootReducer

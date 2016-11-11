@@ -1,19 +1,40 @@
+// React & Redux
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { attackFoe } from '../actions'
+// Actions
+import { pickCharacter } from '../actions'
 
+// Styling
 require('../../style/main.sass')
 
+// Main Game component
 class Game extends Component {
+  renderCharacters() {
+    return this.props.characters.map((character) => {
+      return (
+        <div
+          className='col-sm-2'
+          key={`character-${character.key}`}
+          onClick={() => this.props.pickCharacter(character)}>
+          <img src={`../img/${character.name}_front.svg`} />
+          <br/>
+          <br/>
+          {character.name}
+        </div>
+      )
+    })
+  }
+
   render() {
     return (
-      <div>
-        <button onClick={() => this.props.attackFoe(7)}>Attack 7</button>
-        <br/>
-        <br/>
-        <p>Foe health: {this.props.foeDamage}</p>
+      <div className="text-xs-center">
+        <p>Pick your character</p>
+        <div className='row'>
+          <div className='col-sm-3'></div>
+          {this.renderCharacters()}
+        </div>
       </div>
     )
   }
@@ -21,12 +42,12 @@ class Game extends Component {
 
 function mapStateToProps(state) {
   return {
-    foeDamage: state.foeDamage
+    characters: state.characters
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ attackFoe }, dispatch)
+  return bindActionCreators({ pickCharacter }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game)
