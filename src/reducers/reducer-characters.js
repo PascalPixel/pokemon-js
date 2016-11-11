@@ -9,14 +9,14 @@ export default (state, action) => {
     },
     {
       key: 2,
-      name: 'Blue',
+      name: 'Green',
       wins: 0,
       losses: 0,
       money: 100
     },
     {
       key: 3,
-      name: 'Green',
+      name: 'Blue',
       wins: 0,
       losses: 0,
       money: 100
