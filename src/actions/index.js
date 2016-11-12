@@ -1,6 +1,6 @@
-export function pickTrainer(trainer) {
+export function attack(move) {
   return {
-    type: 'PICK_TRAINER',
-    payload: trainer
+    type: 'ATTACK',
+    payload: move
   }
 }
