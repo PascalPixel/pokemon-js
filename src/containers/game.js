@@ -15,7 +15,7 @@ class Game extends Component {
     return moves.map((move) => {
       return (
         <li key={`move-${move.name}`}
-            onClick={() => this.props.attack(move.damage)}>
+            onClick={() => this.props.attack(move)}>
           {move.name.toUpperCase()}
         </li>
       )
@@ -26,11 +26,13 @@ class Game extends Component {
     return pokemons.map((pokemon) => {
       return (
         <div key={`pokemon-${pokemon.name}`}>
-          Pokemon: {pokemon.name.toUpperCase()}
+          <img src={`../img/${pokemon.name}_front.svg`} />
+          <br/>
+          <br/>
+          {pokemon.name.toUpperCase()}
           <br/>
           HP: {pokemon.hp_current}
           <br/>
-          <img src={`../img/${pokemon.name}_front.svg`} />
           <br/>
           Moves:
           <ul className='list-unstyled'>
@@ -42,14 +44,31 @@ class Game extends Component {
   }
 
   renderTrainer(trainer) {
+    if (trainer.name == 'green') {
+      return (
+        <div key={`trainer-${trainer.name}`}
+             className='row'>
+          <div className='col-xs-6'>
+            {this.renderPokemons(trainer.pokemons)}
+          </div>
+          <div className='col-xs-6'>
+            <img src={`../img/${trainer.name}_front.svg`} />
+            {trainer.name.toUpperCase()}
+          </div>
+        </div>
+      )
+    }
+
     return (
-      <div className='col-xs-6'
-           key={`trainer-${trainer.name}`}>
-        Trainer: {trainer.name.toUpperCase()}
-        <br/>
-        <img src={`../img/${trainer.name}_front.svg`} />
-        <br/>
-        {this.renderPokemons(trainer.pokemons)}
+      <div key={`trainer-${trainer.name}`}
+           className='row'>
+        <div className='col-xs-6'>
+          {trainer.name.toUpperCase()}
+          <img src={`../img/${trainer.name}_front.svg`} />
+        </div>
+        <div className='col-xs-6'>
+          {this.renderPokemons(trainer.pokemons)}
+        </div>
       </div>
     )
   }
@@ -57,10 +76,10 @@ class Game extends Component {
   render() {
     return (
       <div>
-        <div className='text-xs-right'>
+        <div className='col-xs-6'>
           {this.renderTrainer(this.props.trainers.player)}
         </div>
-        <div className='text-xs-left'>
+        <div className='col-xs-6'>
           {this.renderTrainer(this.props.trainers.foe)}
         </div>
       </div>

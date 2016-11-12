@@ -15,7 +15,7 @@ const INITIAL_STATE = {
             name: 'tackle',
             category: 'offensive',
             types: ['normal'],
-            damage: 40
+            damage: 4
           }, {
             name: 'tail whip',
             category: 'defensive',
@@ -42,7 +42,7 @@ const INITIAL_STATE = {
             name: 'thundershock',
             category: 'offensive',
             types: ['electric'],
-            damage: 40
+            damage: 4
           }, {
             name: 'tail whip',
             category: 'defensive',
@@ -59,10 +59,10 @@ export default(state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'ATTACK': return {
       ...state, foe: {
-        ...state.foe, pokemon: state.foe.pokemon.map((pokemon) => {
+        ...state.foe, pokemons: state.foe.pokemons.map((pokemon) => {
           if (pokemon.active) {
             return {
-              ...pokemon, hp_current: pokemon.hp_current =- action.payload
+              ...pokemon, hp_current: pokemon.hp_current -= action.payload
             }
           }
           return pokemon
