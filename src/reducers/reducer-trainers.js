@@ -15,12 +15,12 @@ const INITIAL_STATE = {
             name: 'tackle',
             category: 'offensive',
             types: ['normal'],
-            basedamage: 40
+            damage: 40
           }, {
             name: 'tail whip',
             category: 'defensive',
             types: ['normal'],
-            basedamage: 1
+            damage: 1
           }
         ]
       }
@@ -42,12 +42,12 @@ const INITIAL_STATE = {
             name: 'thundershock',
             category: 'offensive',
             types: ['electric'],
-            basedamage: 40
+            damage: 40
           }, {
             name: 'tail whip',
             category: 'defensive',
             types: ['normal'],
-            basedamage: 1
+            damage: 1
           }
         ]
       }

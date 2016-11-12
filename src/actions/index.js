@@ -1,6 +1,6 @@
 export function attack(move) {
   return {
     type: 'ATTACK',
-    payload: move
+    payload: move.damage
   }
 }
