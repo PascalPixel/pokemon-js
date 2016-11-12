@@ -22,21 +22,21 @@ class Game extends Component {
     })
   }
 
-  renderPokemons(pokemons) {
-    return pokemons.map((pokemon) => {
+  renderPokemon(pokemon) {
+    return pokemon.map((mon) => {
       return (
-        <div key={`pokemon-${pokemon.name}`}>
-          <img src={`../img/${pokemon.name}_front.svg`} />
+        <div key={`pokemon-${mon.name}`}>
+          <img src={`../img/${mon.name}_front.svg`} />
           <br/>
           <br/>
-          {pokemon.name.toUpperCase()}
+          {mon.name.toUpperCase()}
           <br/>
-          HP: {pokemon.hp_current}
+          HP: {mon.hp_current}
           <br/>
           <br/>
           Moves:
           <ul className='list-unstyled'>
-            {this.renderMoves(pokemon.moves)}
+            {this.renderMoves(mon.moves)}
           </ul>
         </div>
       )
@@ -49,7 +49,7 @@ class Game extends Component {
         <div key={`trainer-${trainer.name}`}
              className='row'>
           <div className='col-xs-6'>
-            {this.renderPokemons(trainer.pokemons)}
+            {this.renderPokemon(trainer.pokemon)}
           </div>
           <div className='col-xs-6'>
             <img src={`../img/${trainer.name}_front.svg`} />
@@ -67,7 +67,7 @@ class Game extends Component {
           <img src={`../img/${trainer.name}_front.svg`} />
         </div>
         <div className='col-xs-6'>
-          {this.renderPokemons(trainer.pokemons)}
+          {this.renderPokemon(trainer.pokemon)}
         </div>
       </div>
     )

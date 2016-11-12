@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
   foe: {
     name: 'green',
-    pokemons: [
+    pokemon: [
       {
         name: 'eevee',
         pokedex: 133,
@@ -28,7 +28,7 @@ const INITIAL_STATE = {
   },
   player: {
     name: 'red',
-    pokemons: [
+    pokemon: [
       {
         name: 'pikachu',
         pokedex: 25,
@@ -59,13 +59,13 @@ export default(state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'ATTACK': return {
       ...state, foe: {
-        ...state.foe, pokemons: state.foe.pokemons.map((pokemon) => {
-          if (pokemon.active) {
+        ...state.foe, pokemon: state.foe.pokemon.map((mon) => {
+          if (mon.active) {
             return {
-              ...pokemon, hp_current: pokemon.hp_current -= action.payload
+              ...mon, hp_current: mon.hp_current -= action.payload
             }
           }
-          return pokemon
+          return mon
         })
       }
     }
