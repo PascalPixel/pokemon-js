@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 // Components
 import CharacterPicker from './character-picker'
+import PokemonPicker from './pokemon-picker'
 
 // Styling
 require('../../style/main.sass')
@@ -11,10 +12,18 @@ require('../../style/main.sass')
 // Main Game component
 class Game extends Component {
   render() {
-    if (this.props.player) {
+    if (this.props.player_pokemon && this.props.foe_pokemon) {
       return (
-        <div className="text-xs-center">
-          <p>Pick your Pokémon</p>
+        <div className='text-xs-center'>
+          <p>Battle start</p>
+        </div>
+      )
+    }
+
+    if (this.props.player && this.props.foe) {
+      return (
+        <div>
+          <PokemonPicker />
         </div>
       )
     }
@@ -29,7 +38,10 @@ class Game extends Component {
 
 function mapStateToProps(state) {
   return {
-    player: state.player
+    player: state.player,
+    foe: state.foe,
+    player_pokemon: state.player_pokemon,
+    foe_pokemon: state.foe_pokemon
   }
 }
 
