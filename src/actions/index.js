@@ -1,13 +1,6 @@
-export function pickCharacter(character) {
+export function pickTrainer(trainer) {
   return {
-    type: 'PICK_CHARACTER',
-    payload: character
-  }
-}
-
-export function pickPokemon(pokemon) {
-  return {
-    type: 'PICK_POKEMON',
-    payload: pokemon
+    type: 'PICK_TRAINER',
+    payload: trainer
   }
 }

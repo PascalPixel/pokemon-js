@@ -2,35 +2,29 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-// Components
-import CharacterPicker from './character-picker'
-import PokemonPicker from './pokemon-picker'
-
 // Styling
 require('../../style/main.sass')
 
 // Main Game component
 class Game extends Component {
+  renderTrainers(trainers) {
+    return trainers.map((trainer) => {
+      return (
+        <div className='col-xs-4 text-xs-center'
+             key={`trainer-${trainer.name}`}>
+          <img src={`../img/${trainer.name}_front.svg`} />
+          <br/>
+          <br/>
+          {trainer.name.toUpperCase()}
+        </div>
+      )
+    })
+  }
+
   render() {
-    if (this.props.player_pokemon && this.props.foe_pokemon) {
-      return (
-        <div className='text-xs-center'>
-          <p>Battle start</p>
-        </div>
-      )
-    }
-
-    if (this.props.player && this.props.foe) {
-      return (
-        <div>
-          <PokemonPicker />
-        </div>
-      )
-    }
-
     return (
       <div>
-        <CharacterPicker />
+        {this.renderTrainers(this.props.trainers)}
       </div>
     )
   }
@@ -38,10 +32,7 @@ class Game extends Component {
 
 function mapStateToProps(state) {
   return {
-    player: state.player,
-    foe: state.foe,
-    player_pokemon: state.player_pokemon,
-    foe_pokemon: state.foe_pokemon
+    trainers: state.trainers
   }
 }
 
