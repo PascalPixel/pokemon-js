@@ -33,17 +33,6 @@ h1, h2, h3, h4, h5, h6
   background: $gameboy-normal
   color: $gameboy-base
 
-button
-  background: $gameboy-base
-  color: $gameboy-normal
-  border: 1px solid $gameboy-normal
-  border-radius: 0.3em
-  padding: 0.4em 0.8em 0.5em
-  cursor: pointer
-  &.active
-    background: $gameboy-normal
-    color: $gameboy-base
-
 // Color inline SVG's
 .gb-dark
   fill: $gameboy-dark
@@ -73,19 +62,21 @@ button
   // background-size: cover
   // background-repeat: no-repeat
 
-.button:hover
-  cursor: pointer
-  position: relative
-  &:before
-    position: absolute
-    background-image: url('../img/marker.svg')
-    background-repeat: no-repeat
-    left: -1em
-    top: 0.1em
-    width: 0.5em
-    height: 0.7em
-    background-size: 0.5em
-    content: ""
+.button
+  margin-right: .7em
+  &:hover
+    cursor: pointer
+    position: relative
+    &:before
+      position: absolute
+      background-image: url('../img/marker.svg')
+      background-repeat: no-repeat
+      left: -1em
+      top: 0.1em
+      width: 0.5em
+      height: 0.7em
+      background-size: 0.5em
+      content: ""
 
 img,
 svg
@@ -240,9 +231,7 @@ span,
       sup,
       sub
         display: inline-block
-        margin-right: -1.3em
         font-size: 0.7em
-        margin-left: -0.4em
     &.fight
       bottom: 0.1em
       right: 0.1em

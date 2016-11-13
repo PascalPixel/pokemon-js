@@ -33,18 +33,24 @@ class Windows extends Component {
       return (
         <div className='window menu'>
           <span
-            onClick={this.setState({windowFightVisible: true})}
+            onClick={() => this.setState({windowFightVisible: true})}
             className='button fight'>
             FIGHT
           </span>
-          <span className='button pkmn'>
+          <span
+            onClick={() => this.setState({windowPokemonVisible: true})}
+            className='button'>
             <sup>P</sup>
             <sub>K</sub>
             <sup>M</sup>
             <sub>N</sub>
           </span>
-          <span className='button item'>ITEM</span>
-          <span className='button run'>RUN</span>
+          <span
+            onClick={() => this.setState({windowItemsVisible: true})}
+            className='button'>
+            ITEM
+          </span>
+          <span className='button'>RUN</span>
         </div>
       )
     }
@@ -85,7 +91,11 @@ class Windows extends Component {
               }
             })
           }
-          <div className='button back'>cancel</div>
+          <div
+            className='button'
+            onClick={() => this.setState({windowFightVisible: false})}>
+            cancel
+          </div>
         </div>
       )
     }
@@ -105,7 +115,11 @@ class Windows extends Component {
               </div>
             )
           })}
-          <div className='button back'>cancel</div>
+          <div
+            onClick={() => this.setState({windowItemsVisible: false})}
+            className='button'>
+            cancel
+          </div>
         </div>
       )
     }
@@ -124,7 +138,11 @@ class Windows extends Component {
               </div>
             )
           })}
-          <div className='button back'>cancel</div>
+          <div
+            onClick={() => this.setState({windowPokemonVisible: false})}
+            className='button'>
+            cancel
+          </div>
         </div>
       )
     }
