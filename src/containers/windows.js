@@ -8,6 +8,17 @@ import * as actions from '../actions'
 
 // Windows component
 class Windows extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      windowMenuVisible   : true,
+      windowFightVisible  : false,
+      windowItemsVisible  : false,
+      windowPokemonVisible: false
+    }
+  }
+
   windowMessages() {
     return (
       <div className='window texts'>
@@ -18,97 +29,105 @@ class Windows extends Component {
   }
 
   windowMenu() {
-    return (
-      <div className='window menu'>
-        <span
-          onClick={null}
-          className='button fight'>
-          FIGHT
-        </span>
-        <span className='button pkmn'>
-          <sup>P</sup>
-          <sub>K</sub>
-          <sup>M</sup>
-          <sub>N</sub>
-        </span>
-        <span className='button item'>ITEM</span>
-        <span className='button run'>RUN</span>
-      </div>
-    )
+    if (this.state.windowMenuVisible) {
+      return (
+        <div className='window menu'>
+          <span
+            onClick={this.setState({windowFightVisible: true})}
+            className='button fight'>
+            FIGHT
+          </span>
+          <span className='button pkmn'>
+            <sup>P</sup>
+            <sub>K</sub>
+            <sup>M</sup>
+            <sub>N</sub>
+          </span>
+          <span className='button item'>ITEM</span>
+          <span className='button run'>RUN</span>
+        </div>
+      )
+    }
   }
 
   windowFight(player) {
-    return (
-      <div className='window fight'>
-        {
-          player.pokemon.map((mon) => {
-            if (mon.active) {
-              return mon.moves.map((move) => {
-                return (
-                  <div
-                    className='button'
-                    key={`move-${move.name}`}
-                    onClick={() => this.props.attack(move)}>
-                    {move.name.toUpperCase()}
-                    <div className='window fight-details'>
-                      <span className='type-header'>TYPE/</span>
+    if (this.state.windowFightVisible) {
+      return (
+        <div className='window fight'>
+          {
+            player.pokemon.map((mon) => {
+              if (mon.active) {
+                return mon.moves.map((move) => {
+                  return (
+                    <div
+                      className='button'
+                      key={`move-${move.name}`}
+                      onClick={() => this.props.attack(move)}>
+                      {move.name.toUpperCase()}
+                      <div className='window fight-details'>
+                        <span className='type-header'>TYPE/</span>
+                        <br/>
+                        {move.types.map((type) => {
+                          return (
+                            <span
+                                key={type}
+                                className='type'>
+                                {type}
+                                <br/>
+                            </span>
+                          )
+                        })}
+                      </div>
                       <br/>
-                      {move.types.map((type) => {
-                        return (
-                          <span
-                              key={type}
-                              className='type'>
-                              {type}
-                              <br/>
-                          </span>
-                        )
-                      })}
                     </div>
-                    <br/>
-                  </div>
-                )
-              })
-            }
-          })
-        }
-        <div className='button back'>cancel</div>
-      </div>
-    )
+                  )
+                })
+              }
+            })
+          }
+          <div className='button back'>cancel</div>
+        </div>
+      )
+    }
   }
 
   windowItems(player) {
-    return (
-      <div className='window item'>
-        {player.items.map((item) => {
-          return (
-            <div
-              key={item.name}
-              className='button'>
-              <span>{item.name} x</span>
-              <span className='potionCount'>{item.amount}</span>
-            </div>
-          )
-        })}
-        <div className='button back'>cancel</div>
-      </div>
-    )
+    if (this.state.windowItemsVisible) {
+      return (
+        <div className='window item'>
+          {player.items.map((item) => {
+            return (
+              <div
+                key={item.name}
+                className='button'>
+                <span>{item.name} x</span>
+                <span className='potionCount'>{item.amount}</span>
+              </div>
+            )
+          })}
+          <div className='button back'>cancel</div>
+        </div>
+      )
+    }
   }
 
   windowPokemon(player) {
-    return (
-      <div className='window pkmn'>
-        {player.pokemon.map((mon) => {
-          return (
-            <div
-              key={mon.name}
-              className='button playerPokemonButton'>
-              <span className='playerpokemonname'>{mon.name}</span>
-            </div>
-          )
-        })}
-        <div className='button back'>cancel</div>
-      </div>
-    )
+    if (this.state.windowPokemonVisible) {
+      return (
+        <div className='window pkmn'>
+          {player.pokemon.map((mon) => {
+            return (
+              <div
+                key={mon.name}
+                className='button playerPokemonButton'>
+                <span className='playerpokemonname'>{mon.name.toUpperCase()}</span>
+              </div>
+            )
+          })}
+          <div className='button back'>cancel</div>
+        </div>
+      )
+    }
   }
 
   render() {
