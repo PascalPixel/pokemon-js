@@ -2,21 +2,25 @@ $gameboy-dark:   #2f3622
 $gameboy-normal: #4d5d31
 $gameboy-light:  #7d7f4c
 $gameboy-base:   #bbac58
+$font-weights: 400
+$font-types: normal italic
 
-@font-face
-  font-family: 'Pokemon'
-  src: url("../fonts/pokemon-normal.woff2") format('woff2'), url("../fonts/pokemon-normal.woff") format('woff')
-  font-weight: 400
-  font-style: normal
+@each $font-type in $font-types
+  @each $font-weight in $font-weights
+    @font-face
+      font-family: 'Pokemon'
+      src: url("../fonts/pokemon-#{$font-type}.woff2") format('woff2'), url("../fonts/pokemon-#{$font-type}.woff") format('woff')
+      font-weight: $font-weight
+      font-style: $font-type
 
 body
   background-color: $gameboy-base
   color: $gameboy-dark
   font-family: 'Pokemon', monospace
-  margin: 0
+  font-size: 20px
+  margin: 1em
   padding: 0
   line-height: 1.3em
-  font-size: 8px
 
 a
   color: $gameboy-normal
@@ -49,19 +53,25 @@ button
   fill: $gameboy-light
 
 .text-area
-  margin: 6em auto
+  margin: 0 auto
   font-size: 0.5em
   width: 32em
   line-height: 1.6em
 
 #pokemon
-  font-size: 40px
   width: 16.0em
   height: 14.4em
   position: relative
-  margin: 1em auto
+  // user-select: none
+  margin: 0 auto
+  // image-rendering: pixelated
+  // -webkit-font-smoothing: none
   transform: translateZ(0em) translateY(0em) translateX(0em) rotateX(0deg) rotateY(0deg)
-  font-size: 20px
+
+  // Image background to compare positioning
+  // background-image: url('src/screenshot_1998.png')
+  // background-size: cover
+  // background-repeat: no-repeat
 
 .button:hover
   cursor: pointer
@@ -114,6 +124,7 @@ span,
   background-position: bottom
   background-size: 7.7em
   background-repeat: no-repeat
+  height: 4em
 
 .level-wrap
   margin-top: -0.1em
@@ -122,13 +133,12 @@ span,
   svg
     width: 0.6em
     display: inline-block
-    margin-right: -0.8em
+    margin-right: .1em
 
 .health
   margin-left: 2.5em
   span
     display: inline-block
-    width: 0.8em
 
 .hp-wrap
   height: 0.9em
@@ -143,7 +153,7 @@ span,
   height: 0.3em
   width: 4.8em
   display: inline-block
-  margin-left: -0.7em
+  margin-left: .2em
   display: inline-block
 
 .hp-bar-active
@@ -151,12 +161,6 @@ span,
   height: 100%
   width: 100%
   border-radius: 0.4em
-
-.foe,
-.player
-  .trainer,
-  .balls
-    display: none
 
 .foe
   .images
@@ -181,6 +185,7 @@ span,
 
 .player
   padding-top: 4em
+  height: 10.4em
 
   .images
     left: 0.8em
@@ -292,3 +297,8 @@ span,
   .window.pkmn
     transform: translateZ(8em)
     transform-style: preserve-3d
+
+// React Hacks
+.trainer,
+.balls
+  display: none

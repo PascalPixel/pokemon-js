@@ -11,12 +11,6 @@ require('../../style/main.sass')
 
 // Main Game component
 class Game extends Component {
-  renderMovesTypes(move) {
-    return move.types.map((type) => {
-      <span className='type'>{type}<br/></span>
-    })
-  }
-
   renderStats(pokemonList, player) {
     return pokemonList.map((mon) => {
       if (mon.active) {
@@ -32,14 +26,14 @@ class Game extends Component {
               <div className='hp-bar'>
                 <div className='hp-bar-active'></div>
               </div>
-              {player?(
-                <div className='health'>
-                  <span className='hp'>{mon.hp_current}</span>
-                  <span>/</span>
-                  <span className='hpTotal'>{mon.hp_total}</span>
-                </div>
-              ):null}
             </div>
+            {player?(
+              <div className='health'>
+                <span className='hp'>{mon.hp_current}</span>
+                <span>/</span>
+                <span className='hpTotal'>{mon.hp_base}</span>
+              </div>
+            ):null}
           </div>
         )
       }
@@ -56,7 +50,16 @@ class Game extends Component {
               {move.name.toUpperCase()}
               <div className='window fight-details'>
                 <span className='type-header'>TYPE/</span>
-                {this.renderMovesTypes(move)}
+                {move.types.map((type) => {
+                  return (
+                    <span
+                        key={type}
+                        className='type'>
+                        {type}
+                        <br/>
+                    </span>
+                  )
+                })}
               </div>
             </li>
           )
