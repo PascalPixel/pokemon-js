@@ -24,6 +24,18 @@ const INITIAL_STATE = {
           }
         ]
       }
+    ],
+    items: [
+      {
+        name: 'Potion',
+        type: 'healing',
+        amount: 20
+      },
+      {
+        name: 'Super Potion',
+        type: 'healing',
+        amount: 50
+      }
     ]
   },
   player: {
@@ -50,6 +62,18 @@ const INITIAL_STATE = {
             damage: 1
           }
         ]
+      }
+    ],
+    items: [
+      {
+        name: 'Potion',
+        type: 'healing',
+        amount: 20
+      },
+      {
+        name: 'Super Potion',
+        type: 'healing',
+        amount: 50
       }
     ]
   }

@@ -3,8 +3,11 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
+// Components
+import Windows from './windows'
+
 // Actions
-import { attack } from '../actions'
+import * as actions from '../actions'
 
 // Styling
 require('../../style/main.sass')
@@ -36,34 +39,6 @@ class Game extends Component {
             ):null}
           </div>
         )
-      }
-    })
-  }
-
-  renderMoves(trainer) {
-    return trainer.pokemon.map((mon) => {
-      if (mon.active) {
-        return mon.moves.map((move) => {
-          return (
-            <li key={`move-${move.name}`}
-                onClick={() => this.props.attack(move)}>
-              {move.name.toUpperCase()}
-              <div className='window fight-details'>
-                <span className='type-header'>TYPE/</span>
-                {move.types.map((type) => {
-                  return (
-                    <span
-                        key={type}
-                        className='type'>
-                        {type}
-                        <br/>
-                    </span>
-                  )
-                })}
-              </div>
-            </li>
-          )
-        })
       }
     })
   }
@@ -126,52 +101,13 @@ class Game extends Component {
     )
   }
 
-  windows(phase, trainer) {
-    return (
-      <div className='layer windows'>
-        <div className='window texts'>
-          <div className='text text1'></div>
-          <div className='text text2'></div>
-        </div>
-        <div className='window menu'>
-          <span className='button fight'>FIGHT</span>
-          <span className='button pkmn'>
-            <sup>P</sup>
-            <sub>K</sub>
-            <sup>M</sup>
-            <sub>N</sub>
-          </span>
-          <span className='button item'>ITEM</span>
-          <span className='button run'>RUN</span>
-        </div>
-        <div className='window fight'>
-          {this.renderMoves(trainer)}
-          <div className='button back'>cancel</div>
-        </div>
-        <div className='window item'>
-          <div className='button potion'>
-            <span>POTION x</span>
-            <span className='potionCount'>1</span>
-          </div>
-          <div className='button back'>cancel</div>
-        </div>
-        <div className='window pkmn'>
-          <div className='button playerPokemonButton'>
-            <span className='playerpokemonname'></span>
-          </div>
-          <div className='button back'>cancel</div>
-        </div>
-      </div>
-    )
-  }
-
   render() {
     return (
       <div id='pokemon'>
         <div className='depth'>
           {this.foe(this.props.trainers.foe, 'front')}
           {this.player(this.props.trainers.player, 'back')}
-          {this.windows(this.props.phase, this.props.trainers.player)}
+          <Windows player={this.props.trainers.player}/>
         </div>
       </div>
     )
@@ -185,7 +121,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ attack }, dispatch)
+  return bindActionCreators(actions, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game)
