@@ -82,14 +82,30 @@ const INITIAL_STATE = {
 export default(state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'ATTACK': return {
+      damageCalc(mon, damage) {
+        if (mon.active) {
+          let newHp = mon.hp_current -= damage
+          if (newHp <= 0) {
+            newHp = 0
+          }
+          return {
+            ...mon, hp_current: newHp
+          }
+        }
+        return mon
+      },
+
+      // Attack on foe
       ...state, foe: {
         ...state.foe, pokemon: state.foe.pokemon.map((mon) => {
-          if (mon.active) {
-            return {
-              ...mon, hp_current: mon.hp_current -= action.payload
-            }
-          }
-          return mon
+          damageCalc(mon, action.payload)
+        })
+      },
+
+      // Return attack
+      ...state, player: {
+        ...state.player, pokemon: state.player.pokemon.map((mon) => {
+          damageCalc(mon, action.payload)
         })
       }
     }

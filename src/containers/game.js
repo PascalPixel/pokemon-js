@@ -14,6 +14,26 @@ require('../../style/main.sass')
 
 // Main Game component
 class Game extends Component {
+  hpBar(current, total) {
+    return (
+      <div className='hp-bar'>
+        <div
+          className='hp-bar-active'
+          style={{width: current * 100 / total}}></div>
+      </div>
+    )
+  }
+
+  hpCounters(current, total) {
+    return (
+      <div className='health'>
+        <span className='hp'>{current}</span>
+        <span>/</span>
+        <span className='hpTotal'>{total}</span>
+      </div>
+    )
+  }
+
   renderStats(pokemonList, player) {
     return pokemonList.map((mon) => {
       if (mon.active) {
@@ -26,17 +46,9 @@ class Game extends Component {
             </div>
             <div className='hp-wrap'>
               <img src='img/hp.svg'/>
-              <div className='hp-bar'>
-                <div className='hp-bar-active'></div>
-              </div>
+              {this.hpBar(mon.hp_current, mon.hp_base)}
             </div>
-            {player?(
-              <div className='health'>
-                <span className='hp'>{mon.hp_current}</span>
-                <span>/</span>
-                <span className='hpTotal'>{mon.hp_base}</span>
-              </div>
-            ):null}
+            {player ? this.hpCounters(mon.hp_current, mon.hp_base) : null}
           </div>
         )
       }

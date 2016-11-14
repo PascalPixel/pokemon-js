@@ -68,7 +68,9 @@ class Windows extends Component {
                     <div
                       className='button'
                       key={`move-${move.name}`}
-                      onClick={() => this.props.attack(move)}>
+                      onClick={() => {
+                        this.setState({windowFightVisible: false}), this.props.attack(move)
+                      }}>
                       {move.name.toUpperCase()}
                       <div className='window fight-details'>
                         <span className='type-header'>TYPE/</span>
