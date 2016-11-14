@@ -1,7 +1,7 @@
 // React & Redux
-import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import React, {Component} from 'react'
+import {bindActionCreators} from 'redux'
+import {connect} from 'react-redux'
 
 // Components
 import Windows from './windows'
@@ -17,9 +17,9 @@ class Game extends Component {
   hpBar(current, total) {
     return (
       <div className='hp-bar'>
-        <div
-          className='hp-bar-active'
-          style={{width: current * 100 / total}}></div>
+        <div className='hp-bar-active' style={{
+          width: `${current * 100 / total}%`
+        }}></div>
       </div>
     )
   }
@@ -45,10 +45,11 @@ class Game extends Component {
               <span className='level'>{mon.level}</span>
             </div>
             <div className='hp-wrap'>
-              <img src='img/hp.svg'/>
-              {this.hpBar(mon.hp_current, mon.hp_base)}
+              <img src='img/hp.svg'/> {this.hpBar(mon.hp_current, mon.hp_base)}
             </div>
-            {player ? this.hpCounters(mon.hp_current, mon.hp_base) : null}
+            {player
+              ? this.hpCounters(mon.hp_current, mon.hp_base)
+              : null}
           </div>
         )
       }
@@ -57,15 +58,11 @@ class Game extends Component {
 
   spriteRender(object, side, type) {
     if (type == 'trainer') {
-      return (
-        <img src={`../img/${object.name}_${side}.svg`} />
-      )
+      return (<img src={`../img/${object.name}_${side}.svg`}/>)
     } else {
       return object.map((mon) => {
         if (mon.active) {
-          return (
-            <img key={mon.name} src={`../img/${mon.name}_${side}.svg`} />
-          )
+          return (<img key={mon.name} src={`../img/${mon.name}_${side}.svg`}/>)
         }
       })
     }
@@ -119,7 +116,7 @@ class Game extends Component {
         <div className='depth'>
           {this.foe(this.props.trainers.foe, 'front')}
           {this.player(this.props.trainers.player, 'back')}
-          <Windows player={this.props.trainers.player}/>
+          <Windows trainers={this.props.trainers}/>
         </div>
       </div>
     )
@@ -127,9 +124,7 @@ class Game extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    trainers: state.trainers
-  }
+  return {trainers: state.trainers}
 }
 
 function mapDispatchToProps(dispatch) {

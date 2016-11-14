@@ -1,22 +1,22 @@
-$gameboy-dark:   #2f3622
+$gameboy-dark: #2f3622
 $gameboy-normal: #4d5d31
-$gameboy-light:  #7d7f4c
-$gameboy-base:   #bbac58
+$gameboy-light: #7d7f4c
+$gameboy-base: #bbac58
 $font-weights: 400
 $font-types: normal italic
 
 @each $font-type in $font-types
   @each $font-weight in $font-weights
     @font-face
-      font-family: 'Pokemon'
-      src: url("../fonts/pokemon-#{$font-type}.woff2") format('woff2'), url("../fonts/pokemon-#{$font-type}.woff") format('woff')
+      font-family: "Pokemon"
+      src: url("../fonts/pokemon-#{$font-type}.woff2") format("woff2"), url("../fonts/pokemon-#{$font-type}.woff") format("woff")
       font-weight: $font-weight
       font-style: $font-type
 
 body
   background-color: $gameboy-base
   color: $gameboy-dark
-  font-family: 'Pokemon', monospace
+  font-family: "Pokemon", monospace
   font-size: 20px
   margin: 1em
   padding: 0
@@ -29,15 +29,17 @@ a
 h1, h2, h3, h4, h5, h6
   color: $gameboy-light
 
-::selection
+\::selection
   background: $gameboy-normal
   color: $gameboy-base
 
 // Color inline SVG's
 .gb-dark
   fill: $gameboy-dark
+
 .gb-normal
   fill: $gameboy-normal
+
 .gb-light
   fill: $gameboy-light
 
@@ -48,28 +50,22 @@ h1, h2, h3, h4, h5, h6
   line-height: 1.6em
 
 #pokemon
-  width: 16.0em
+  width: 16em
   height: 14.4em
   position: relative
-  // user-select: none
   margin: 0 auto
-  // image-rendering: pixelated
-  // -webkit-font-smoothing: none
   transform: translateZ(0em) translateY(0em) translateX(0em) rotateX(0deg) rotateY(0deg)
 
-  // Image background to compare positioning
-  // background-image: url('src/screenshot_1998.png')
-  // background-size: cover
-  // background-repeat: no-repeat
-
 .button
-  margin-right: .7em
+  margin-right: 0.7em
+
   &:hover
     cursor: pointer
     position: relative
+
     &:before
       position: absolute
-      background-image: url('../img/marker.svg')
+      background-image: url("../img/marker.svg")
       background-repeat: no-repeat
       left: -1em
       top: 0.1em
@@ -88,12 +84,13 @@ span,
 .level,
 .name
   font-size: 0.8em
+
   span
     font-size: 1em
 
 .layer
   position: absolute
-  width: 16.0em
+  width: 16em
   height: 14.4em
   overflow: hidden
 
@@ -120,19 +117,22 @@ span,
 .level-wrap
   margin-top: -0.1em
   height: 0.8em
+
   img,
   svg
     width: 0.6em
     display: inline-block
-    margin-right: .1em
+    margin-right: 0.1em
 
 .health
   margin-left: 2.5em
+
   span
     display: inline-block
 
 .hp-wrap
   height: 0.9em
+
   img,
   svg
     width: 1.1em
@@ -142,10 +142,9 @@ span,
   border: 0.1em solid $gameboy-dark
   border-radius: 0.4em
   height: 0.3em
-  width: 4.8em
+  width: 4.5em
   display: inline-block
-  margin-left: .2em
-  display: inline-block
+  margin-left: -0.7em
 
 .hp-bar-active
   background-color: $gameboy-light
@@ -162,7 +161,7 @@ span,
 
   .stats
     height: 3em
-    background-image: url('../img/blue_line.svg')
+    background-image: url("../img/blue_line.svg")
 
   .name
     margin-left: -0.3em
@@ -185,7 +184,7 @@ span,
     right: 1.1em
 
   .stats
-    background-image: url('../img/red_line.svg')
+    background-image: url("../img/red_line.svg")
 
   .name
     margin-left: 1em
@@ -203,55 +202,66 @@ span,
 .windows
   .window
     position: absolute
-    border-image: url('../img/frame.svg') 45% stretch
+    border-image: url("../img/frame.svg") 45% stretch
     border-style: solid
     border-width: 0.7em
     background: $gameboy-base
+
     &.texts
       margin: 0
       height: 3.2em
       left: 0.1em
       right: 0.1em
       bottom: 0.1em
+
       .text
         span
           height: 1em
           width: 1em
           display: inline-block
+
         &.text1
           margin-top: 0.5em
+
         &.text2
           margin-top: 0.1em
+
     &.menu
       bottom: 0.1em
       right: 0.1em
       height: 2.7em
       width: 7.4em
       padding: 0.5em 0 0 0.8em
+
       sup,
       sub
         display: inline-block
         font-size: 0.7em
+
     &.fight
       bottom: 0.1em
       right: 0.1em
       left: 3.3em
       min-height: 4.6em
       padding: 0.5em 0 0 0.8em
+
       .fight-details
         top: -3.9em
         left: -3.9em
         width: 6.6em
         height: 2.4em
+
         span
           height: 0.8em
           margin-top: -0.3em
+
     &.item
       top: 1.7em
       bottom: 4.1em
       left: 3.3em
       right: 0.1em
       padding: 0.6em
+
     &.pkmn
       top: 0.1em
       bottom: 0.1em
@@ -262,21 +272,27 @@ span,
 .perspective
   perspective: 30em
   transform-style: preserve-3d
+
   .depth
     transform: rotateX(0deg) rotateY(0deg)
     transform-style: preserve-3d
+
   .foe
     transform: translateZ(-8em)
     transform-style: preserve-3d
+
   .player
     transform: translateZ(-4em)
     transform-style: preserve-3d
+
   .windows
     transform: translateZ(0em)
     transform-style: preserve-3d
+
   .window.menu
     transform: translateZ(4em)
     transform-style: preserve-3d
+
   .window.fight,
   .window.item,
   .window.pkmn

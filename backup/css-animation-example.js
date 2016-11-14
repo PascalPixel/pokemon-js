@@ -1,9 +1,11 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 export default class Red extends Component {
   constructor() {
     super()
-    this.state = {attacking: false}
+    this.state = {
+      attacking: false
+    }
 
     this.onAttack = this.onAttack.bind(this)
   }
@@ -23,7 +25,9 @@ export default class Red extends Component {
 
     return (
       <div className='player'>
-        <div className={'pokemon ' + (attacking ? 'pokemon--attacking' : '')}>
+        <div className={'pokemon ' + (attacking
+          ? 'pokemon--attacking'
+          : '')}>
           test
         </div>
       </div>

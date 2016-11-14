@@ -1,7 +1,7 @@
-import { renderComponent , expect } from '../test_helper'
+import {renderComponent, expect} from '../test_helper'
 import App from '../../src/components/app'
 
-describe('App' , () => {
+describe('App', () => {
   let component
 
   beforeEach(() => {
