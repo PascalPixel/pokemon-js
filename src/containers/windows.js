@@ -8,7 +8,7 @@ import * as actions from '../actions'
 
 // Windows component
 class Windows extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.state = {
@@ -19,16 +19,16 @@ class Windows extends Component {
     }
   }
 
-  windowMessages() {
+  windowMessages () {
     return (
       <div className='window texts'>
-        <div className='text text1'></div>
-        <div className='text text2'></div>
+        <div className='text text1' />
+        <div className='text text2' />
       </div>
     )
   }
 
-  windowMenu() {
+  windowMenu () {
     if (this.state.windowMenuVisible) {
       return (
         <div className='window menu'>
@@ -52,7 +52,7 @@ class Windows extends Component {
     }
   }
 
-  windowFight(player, foe) {
+  windowFight (player, foe) {
     if (this.state.windowFightVisible) {
       return (
         <div className='window fight'>
@@ -61,20 +61,21 @@ class Windows extends Component {
               return mon.moves.map((move) => {
                 return (
                   <div className='button' key={`move-${move.name}`} onClick={() => {
-                    this.setState({windowFightVisible: false}),
-                    this.props.attack(move, foe)
+                    this.props.attack(move, foe).setState({windowFightVisible: false})
                   }}>
                     {move.name.toUpperCase()}
                     <div className='window fight-details'>
                       <span className='type-header'>
                         TYPE/
-                      </span><br/> {move.types.map((type) => {
+                      </span><br /> {move.types.map((type) => {
                         return (
-                          <span key={type} className='type'>{type}<br/></span>
+                          <span key={type} className='type'>{type}
+                            <br />
+                          </span>
                         )
                       })}
                     </div>
-                    <br/>
+                    <br />
                   </div>
                 )
               })
@@ -88,7 +89,7 @@ class Windows extends Component {
     }
   }
 
-  windowItems(player) {
+  windowItems (player) {
     if (this.state.windowItemsVisible) {
       return (
         <div className='window item'>
@@ -111,7 +112,7 @@ class Windows extends Component {
     }
   }
 
-  windowPokemon(player) {
+  windowPokemon (player) {
     if (this.state.windowPokemonVisible) {
       return (
         <div className='window pkmn'>
@@ -132,7 +133,7 @@ class Windows extends Component {
     }
   }
 
-  render() {
+  render () {
     return (
       <div className='layer windows'>
         {this.windowMessages()}
@@ -145,11 +146,11 @@ class Windows extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   return {windows: state.windows}
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return bindActionCreators(actions, dispatch)
 }
 

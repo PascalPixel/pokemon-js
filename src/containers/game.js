@@ -14,17 +14,17 @@ require('../../style/main.sass')
 
 // Main Game component
 class Game extends Component {
-  hpBar(current, total) {
+  hpBar (current, total) {
     return (
       <div className='hp-bar'>
         <div className='hp-bar-active' style={{
           width: `${current * 100 / total}%`
-        }}></div>
+        }} />
       </div>
     )
   }
 
-  hpCounters(current, total) {
+  hpCounters (current, total) {
     return (
       <div className='health'>
         <span className='hp'>{current}</span>
@@ -34,18 +34,18 @@ class Game extends Component {
     )
   }
 
-  renderStats(pokemonList, player) {
+  renderStats (pokemonList, player) {
     return pokemonList.map((mon) => {
       if (mon.active) {
         return (
           <div key={mon.name} className='stats'>
             <div className='name'>{mon.name.toUpperCase()}</div>
             <div className='level-wrap'>
-              <img src='img/level.svg'/>
+              <img src='img/level.svg' />
               <span className='level'>{mon.level}</span>
             </div>
             <div className='hp-wrap'>
-              <img src='img/hp.svg'/> {this.hpBar(mon.hp_current, mon.hp_base)}
+              <img src='img/hp.svg' /> {this.hpBar(mon.hp_current, mon.hp_base)}
             </div>
             {player
               ? this.hpCounters(mon.hp_current, mon.hp_base)
@@ -56,24 +56,24 @@ class Game extends Component {
     })
   }
 
-  spriteRender(object, side, type) {
-    if (type == 'trainer') {
-      return (<img src={`../img/${object.name}_${side}.svg`}/>)
+  spriteRender (object, side, type) {
+    if (type === 'trainer') {
+      return (<img src={`../img/${object.name}_${side}.svg`} />)
     } else {
       return object.map((mon) => {
         if (mon.active) {
-          return (<img key={mon.name} src={`../img/${mon.name}_${side}.svg`}/>)
+          return (<img key={mon.name} src={`../img/${mon.name}_${side}.svg`} />)
         }
       })
     }
   }
 
-  foe(trainer) {
+  foe (trainer) {
     return (
       <div className='layer foe'>
         <div className='info'>
           <div className='balls'>
-            <img src='img/blue_balls.svg'/>
+            <img src='img/blue_balls.svg' />
           </div>
           {this.renderStats(trainer.pokemon, false)}
         </div>
@@ -89,7 +89,7 @@ class Game extends Component {
     )
   }
 
-  player(trainer) {
+  player (trainer) {
     return (
       <div className='layer player'>
         <div className='images'>
@@ -102,7 +102,7 @@ class Game extends Component {
         </div>
         <div className='info'>
           <div className='balls'>
-            <img src='img/red_balls.svg'/>
+            <img src='img/red_balls.svg' />
           </div>
           {this.renderStats(trainer.pokemon, true)}
         </div>
@@ -110,24 +110,24 @@ class Game extends Component {
     )
   }
 
-  render() {
+  render () {
     return (
       <div id='pokemon'>
         <div className='depth'>
-          {this.foe(this.props.trainers.foe, 'front')}
-          {this.player(this.props.trainers.player, 'back')}
-          <Windows trainers={this.props.trainers}/>
+          {this.foe(this.props.game.trainers.foe, 'front')}
+          {this.player(this.props.game.trainers.player, 'back')}
+          <Windows trainers={this.props.game.trainers} />
         </div>
       </div>
     )
   }
 }
 
-function mapStateToProps(state) {
-  return {trainers: state.trainers}
+function mapStateToProps (state) {
+  return {game: state.game}
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return bindActionCreators(actions, dispatch)
 }
 

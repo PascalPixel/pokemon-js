@@ -1,4 +1,4 @@
-export function attack(move, foe) {
+export function attack (move, foe) {
   let newHp = 0
   foe.pokemon.map((mon) => {
     if (mon.active) {
