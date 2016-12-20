@@ -15,6 +15,7 @@ const SpriteMaker = (props) => {
         {colors.map((color, index) => {
           return (
             <path
+              key={index}
               d={images[props.name][props.currentTrainer][index]}
               fill={color} />
           )
