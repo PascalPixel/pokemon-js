@@ -1,13 +1,30 @@
 const INITIAL_STATE = {
-  isBattleOver: false,
-  commandQueue: [],
-  commandMsg: null,
-  commandIndex: 0,
-  isNextButtonLocked: false,
-  isDuringTurn: false,
-  trainers: {
-    foe: {
+  // Visibility of frames
+  frames: {
+    menu: true,
+    fight: false,
+    items: false,
+    pokemon: false,
+    messages: true
+  },
+
+  // Text output
+  lines: {
+    top: null,
+    bottom: null
+  },
+
+  // Get trainer from database based on id
+  allot: {
+    left: 1, // Left trainer is...
+    right: 0 // Right trainer is...
+  },
+
+  // Trainers
+  trainers: [
+    {
       name: 'green',
+      activePokemon: 0,
       pokemon: [
         {
           name: 'eevee',
@@ -44,8 +61,9 @@ const INITIAL_STATE = {
         }
       ]
     },
-    player: {
+    {
       name: 'red',
+      activePokemon: 0,
       pokemon: [
         {
           name: 'pikachu',
@@ -82,31 +100,7 @@ const INITIAL_STATE = {
         }
       ]
     }
-  }
+  ]
 }
 
-export default(state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case 'ATTACK':
-      return {
-        ...state,
-        trainers: {
-          ...state.foe,
-          foe: {
-            ...state.foe,
-            pokemon: state.foe.pokemon.map((mon) => {
-              if (mon.active) {
-                return {
-                  ...mon,
-                  hp_current: action.payload
-                }
-              }
-              return mon
-            })
-          }
-        }
-      }
-    default:
-      return state
-  }
-}
+export default INITIAL_STATE
