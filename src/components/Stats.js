@@ -17,15 +17,16 @@ const Stats = (props) => {
       <div className='hp-wrap'>
         <img src='img/hp.svg' />
         <div className='hp-bar'>
-          <div className='hp-bar-active' style={{
-            width: `${current * 100 / total}%`
-          }} />
+          <div
+            className='hp-bar-active'
+            style={{
+              width: `${current * 100 / total}%`
+            }}
+          />
         </div>
       </div>
       {currentTrainer ? <div className='health'>
-        <span className='hp'>{current}</span>
-        <span>/</span>
-        <span className='hpTotal'>{total}</span>
+        <span>{current}/{total}</span>
       </div> : null}
     </div>
   )

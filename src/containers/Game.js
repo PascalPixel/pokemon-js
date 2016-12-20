@@ -1,15 +1,15 @@
 import React, {Component} from 'react'
-import Trainer from './Trainer'
-import Windows from './Windows'
-import INITIAL_STATE from './initial-state'
+import Trainer from '../components/Trainer'
+import Windows from '../components/Windows'
+import STORE from '../data/store'
 
-require('../style/main.sass')
+require('../../style/main.sass')
 
 export default class Game extends Component {
   constructor (props) {
     super(props)
 
-    this.state = INITIAL_STATE
+    this.state = STORE
   }
 
   // Actions

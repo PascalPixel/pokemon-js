@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Sprite from './Sprite'
+import SpriteMaker from './SpriteMaker'
 import Stats from './Stats'
 
 export default class Trainer extends Component {
@@ -7,21 +7,16 @@ export default class Trainer extends Component {
     const trainer = this.props.trainer
     const pokemon = trainer.pokemon[trainer.activePokemon]
     const currentTrainer = this.props.currentTrainer
-    let side
-    if (currentTrainer) {
-      side = 'player'
-    } else {
-      side = 'foe'
-    }
+    let side = currentTrainer ? 'player' : 'foe'
 
     return (
       <div className={'layer ' + side}>
         <div className='images'>
           <div className='trainer'>
-            <Sprite name={trainer.name} currentTrainer={currentTrainer} />
+            <SpriteMaker name={trainer.name} currentTrainer={currentTrainer} />
           </div>
           <div className='pokemon'>
-            <Sprite name={pokemon.name} currentTrainer={currentTrainer} />
+            <SpriteMaker name={pokemon.name} currentTrainer={currentTrainer} />
           </div>
         </div>
         <div className='info'>

@@ -1,4 +1,4 @@
-const INITIAL_STATE = {
+const STORE = {
   // Visibility of frames
   frames: {
     menu: true,
@@ -103,4 +103,4 @@ const INITIAL_STATE = {
   ]
 }
 
-export default INITIAL_STATE
+export default STORE
