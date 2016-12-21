@@ -23,7 +23,7 @@ const STORE = {
   // Trainers
   trainers: [
     {
-      name: 'green',
+      name: 'blue',
       activePokemon: 0,
       pokemon: [
         {

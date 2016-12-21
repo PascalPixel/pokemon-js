@@ -1,28 +1,37 @@
-import React from 'react'
-import images from '../data/images'
+let SpriteMaker = (props) => {
+  let imageString = []
+  let img = new Image()
+  img.crossOrigin = 'Anonymous'
+  img.src = `../../images/${props.url}.png`
 
-const colors = ['#242803', '#4D5607', '#7A8718']
+  img.onload = function () {
+    let canvas = document.getElementById('canvas')
+    canvas.width = img.width
+    canvas.height = img.height
+    let ctx = canvas.getContext('2d')
+    ctx.drawImage(img, 0, 0)
 
-const SpriteMaker = (props) => {
-  return (
-    <svg
-      viewBox={props.currentTrainer ? '0 0 28 28' : '0 0 56 56'}
-      xmlns='http://www.w3.org/2000/svg'>
-      <title>{props.name}_{props.currentTrainer}</title>
-      <g
-        fill='none'
-        fillRule='evenodd'>
-        {colors.map((color, index) => {
-          return (
-            <path
-              key={index}
-              d={images[props.name][props.currentTrainer][index]}
-              fill={color} />
-          )
-        })}
-      </g>
-    </svg>
-  )
+    for (let y = 0; y < canvas.height; y++) {
+      let line = []
+      for (let x = 0; x < canvas.width; x++) {
+        let object = ctx.getImageData(x, y, 1, 1)
+        let color
+        if (object.data[0] === 255) {
+          color = '▓'
+        } else if (object.data[0] === 153) {
+          color = '▒'
+        } else if (object.data[0] === 119) {
+          color = '░'
+        } else {
+          color = ' '
+        }
+        line.push(color)
+      }
+      imageString.push('\'' + line.join('') + '\',\n')
+    }
+
+    return (<div>{imageString.join('')}</div>)
+  }
 }
 
 export default SpriteMaker

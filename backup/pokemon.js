@@ -45,7 +45,7 @@ $(document).ready(() => {
   $('#move2').html('-')
 
   // Foe setup
-  const foe = 'green'
+  const foe = 'blue'
   // var foeID = 133
   const foePokemon = {
     'name': 'Eevee',

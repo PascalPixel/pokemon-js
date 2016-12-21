@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import SpriteMaker from './SpriteMaker'
+import Sprite from './Sprite'
 import Stats from './Stats'
 
 export default class Trainer extends Component {
@@ -13,10 +13,10 @@ export default class Trainer extends Component {
       <div className={'layer ' + side}>
         <div className='images'>
           <div className='trainer'>
-            <SpriteMaker name={trainer.name} currentTrainer={currentTrainer} />
+            <Sprite name={trainer.name} currentTrainer={currentTrainer} />
           </div>
           <div className='pokemon'>
-            <SpriteMaker name={pokemon.name} currentTrainer={currentTrainer} />
+            <Sprite name={pokemon.name} currentTrainer={currentTrainer} />
           </div>
         </div>
         <div className='info'>
