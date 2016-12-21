@@ -20,7 +20,7 @@ let Sprite = (props) => {
         case '▒':
           color = '#7A8718'
           break
-        case '░':
+        case ' ':
           color = null
           break
         default:
@@ -34,7 +34,7 @@ let Sprite = (props) => {
     <svg
       viewBox={`0 0 ${height} ${width}`}
       xmlns='http://www.w3.org/2000/svg'
-      class={props.name + '_' + props.currentTrainer}>
+      className={props.name + '_' + props.currentTrainer}>
       {pixels}
     </svg>
   )

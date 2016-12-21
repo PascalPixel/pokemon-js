@@ -1,36 +1,72 @@
-let SpriteMaker = (props) => {
-  let imageString = []
-  let img = new Image()
-  img.crossOrigin = 'Anonymous'
-  img.src = `../../images/${props.url}.png`
+import React from 'react'
 
-  img.onload = function () {
-    let canvas = document.getElementById('canvas')
-    canvas.width = img.width
-    canvas.height = img.height
-    let ctx = canvas.getContext('2d')
-    ctx.drawImage(img, 0, 0)
+class SpriteMaker extends React.Component {
+  constructor (props) {
+    super(props)
 
-    for (let y = 0; y < canvas.height; y++) {
-      let line = []
-      for (let x = 0; x < canvas.width; x++) {
-        let object = ctx.getImageData(x, y, 1, 1)
-        let color
-        if (object.data[0] === 255) {
-          color = '▓'
-        } else if (object.data[0] === 153) {
-          color = '▒'
-        } else if (object.data[0] === 119) {
-          color = '░'
-        } else {
-          color = ' '
-        }
-        line.push(color)
-      }
-      imageString.push('\'' + line.join('') + '\',\n')
+    this.state = {
+      imageString: 'Loading...'
     }
+  }
 
-    return (<div>{imageString.join('')}</div>)
+  componentDidMount () {
+    let shades = [' ', '░', '▒', '▓', '█']
+    let range = 255 / shades.length
+
+    let img = document.getElementById('source')
+    img.onload = () => {
+      let canvas = document.getElementById('target')
+      canvas.width = img.width
+      canvas.height = img.height
+
+      let ctx = canvas.getContext('2d')
+      ctx.drawImage(img, 0, 0)
+
+      let pixels = []
+      for (let y = 0; y < canvas.height; y++) {
+        let line = []
+        for (let x = 0; x < canvas.width; x++) {
+          let pixel = ctx.getImageData(x, y, 1, 1).data[0]
+
+          let color
+          if (pixel >= (range * 4)) {
+            color = shades[0]
+          } else if (pixel >= (range * 3)) {
+            color = shades[1]
+          } else if (pixel >= (range * 2)) {
+            color = shades[2]
+          } else if (pixel >= (range * 1)) {
+            color = shades[3]
+          } else {
+            color = shades[4]
+          }
+          line.push(color)
+        }
+        pixels.push('\'' + line.join('') + '\',\n')
+      }
+
+      this.setState({
+        imageString: pixels.join('')
+      })
+    }
+  }
+
+  render () {
+    return (
+      <div style={{fontSize: 2.5, lineHeight: 1}}>
+        <img
+          id='source'
+          src='../../img/font.png'
+          style={{
+            width: 128,
+            height: 64
+          }} />
+        <canvas id='target' />
+        <div id='result'>
+          {this.state.imageString}
+        </div>
+      </div>
+    )
   }
 }
 

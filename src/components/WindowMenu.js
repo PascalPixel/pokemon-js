@@ -6,14 +6,12 @@ const WindowMenu = (props) => {
       <div className='window menu'>
         <span
           className='button'
-          onClick={() => props.reframe({ fight: true })}
-        >
+          onClick={() => props.reframe({ fight: true })}>
           FIGHT
         </span>
         <span
           className='button'
-          onClick={() => props.reframe({ pokemon: true })}
-        >
+          onClick={() => props.reframe({ pokemon: true })}>
           <sup>P</sup>
           <sub>K</sub>
           <sup>M</sup>
@@ -21,14 +19,12 @@ const WindowMenu = (props) => {
         </span>
         <span
           className='button'
-          onClick={() => props.reframe({ items: true })}
-        >
+          onClick={() => props.reframe({ items: true })}>
           ITEM
         </span>
         <span
           className='button'
-          onClick={() => props.run()}
-        >
+          onClick={() => props.run()}>
           RUN
         </span>
       </div>

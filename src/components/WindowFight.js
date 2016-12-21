@@ -12,8 +12,7 @@ const WindowFight = (props) => {
               onClick={() => {
                 props.attack(move)
                 props.reframe({ fight: false })
-              }}
-            >
+              }}>
               {move.name.toUpperCase()}
               <div className='window fight-details'>
                 <span className='type-header'>
@@ -24,8 +23,7 @@ const WindowFight = (props) => {
                   return (
                     <span
                       key={type}
-                      className='type'
-                    >
+                      className='type'>
                       {type}
                       <br />
                     </span>
@@ -38,8 +36,7 @@ const WindowFight = (props) => {
         })}
         <div
           className='button'
-          onClick={() => props.reframe({ fight: false })}
-        >
+          onClick={() => props.reframe({ fight: false })}>
           cancel
         </div>
       </div>

@@ -12,8 +12,7 @@ const WindowItems = (props) => {
               onClick={() => {
                 props.use(item)
                 props.reframe({ items: false })
-              }}
-            >
+              }}>
               <span>
                 {item.name}x
               </span>
@@ -25,8 +24,7 @@ const WindowItems = (props) => {
         })}
         <div
           className='button'
-          onClick={() => props.reframe({ items: false })}
-        >
+          onClick={() => props.reframe({ items: false })}>
           cancel
         </div>
       </div>

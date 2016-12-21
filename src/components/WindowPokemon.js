@@ -10,10 +10,9 @@ const WindowPokemon = (props) => {
               key={mon.name}
               className='button playerPokemonButton'
               onClick={() => {
-                props.switch(mon)
+                props.change(mon)
                 props.reframe({ pokemon: false })
-              }}
-            >
+              }}>
               <span className='playerpokemonname'>
                 {mon.name.toUpperCase()}
               </span>
@@ -22,8 +21,7 @@ const WindowPokemon = (props) => {
         })}
         <div
           className='button'
-          onClick={() => props.reframe({ pokemon: false })}
-        >
+          onClick={() => props.reframe({ pokemon: false })}>
           cancel
         </div>
       </div>

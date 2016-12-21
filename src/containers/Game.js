@@ -1,11 +1,11 @@
-import React, {Component} from 'react'
+import React from 'react'
 import Trainer from '../components/Trainer'
 import Windows from '../components/Windows'
 import STORE from '../data/store'
 
 require('../../style/main.sass')
 
-export default class Game extends Component {
+export default class Game extends React.Component {
   constructor (props) {
     super(props)
 
@@ -20,7 +20,7 @@ export default class Game extends Component {
   attack = (move) => {
     console.log('attack: ' + move.name)
   }
-  switch = (pokemon) => {
+  change = (pokemon) => {
     console.log('switch: ' + pokemon.name)
   }
   use = (item) => {
@@ -38,12 +38,10 @@ export default class Game extends Component {
       <div className='depth'>
         <Trainer
           trainer={foe}
-          currentTrainer={0}
-        />
+          currentTrainer={0} />
         <Trainer
           trainer={player}
-          currentTrainer={1}
-        />
+          currentTrainer={1} />
         <Windows
           trainer={player}
           frames={this.state.frames}
@@ -52,10 +50,9 @@ export default class Game extends Component {
           // Actions
           reframe={this.reframe}
           attack={this.attack}
-          switch={this.switch}
+          change={this.change}
           use={this.use}
-          run={this.run}
-        />
+          run={this.run} />
       </div>
     )
   }

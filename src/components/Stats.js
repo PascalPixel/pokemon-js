@@ -21,8 +21,7 @@ const Stats = (props) => {
             className='hp-bar-active'
             style={{
               width: `${current * 100 / total}%`
-            }}
-          />
+            }} />
         </div>
       </div>
       {currentTrainer ? <div className='health'>
