@@ -17,7 +17,6 @@
     "babel-preset-stage-0": "^6.16.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
-    "get-pixels": "^3.3.0",
     "lodash": "^4.17.2",
     "node-sass": "^4.1.0",
     "sass-loader": "^4.1.0",
@@ -27,13 +26,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
-    "data-uri-to-buffer": "0.0.4",
-    "ndarray": "^1.0.18",
-    "ndarray-pack": "^1.2.1",
-    "omggif": "^1.0.8",
-    "path": "^0.12.7",
     "react": "^15.4.0",
-    "react-dom": "^15.4.1",
-    "through": "^2.3.8"
+    "react-dom": "^15.4.1"
   }
 }
