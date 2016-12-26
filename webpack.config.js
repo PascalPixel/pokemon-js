@@ -1,39 +1,60 @@
-module.exports = {
-  entry: ['./src/index.js'],
+const path = require('path')
+const webpack = require('webpack')
+const merge = require('webpack-merge')
+
+const common = {
+  entry: path.resolve(__dirname, 'src'),
   output: {
+    filename: 'pokemon-mini.js',
     path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
+    publicPath: '/'
   },
   module: {
-    loaders: [
+    rules: [
       {
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['react', 'es2015', 'stage-1']
+        test: /\.js$/,
+        loader: 'babel-loader',
+        options: {
+          presets: ['es2015', 'react', 'stage-0']
         }
-      }, {
+      },
+      {
         test: /\.sass$/,
-        loaders: ['style', 'css', 'sass']
-      }, {
-        test: /\.(woff|woff2)$/,
-        loader: 'file?name=public/fonts/[name].[ext]'
-      }, {
-        test: /\.(jpg|png)$/,
-        loader: 'file?name=[path][name].[hash].[ext]'
-      }, {
-        test: /\.svg$/,
-        loader: 'file'
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|svg|woff|woff2|ico)$/,
+        loader: 'file-loader?name=[path][name].[ext]'
       }
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    modules: ['src', 'node_modules'],
+    extensions: ['.js', '.jsx']
   },
+  target: 'web'
+}
+
+const development = merge(common, {
   devServer: {
     inline: true,
     historyApiFallback: true,
-    contentBase: './'
-  }
+    contentBase: '/'
+  },
+  devtool: 'source-map'
+})
+
+const production = merge(common, {
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        screw_ie8: true,
+        warnings: false
+      }
+    })
+  ]
+})
+
+module.exports = (env) => {
+  return env === 'production' ? production : development
 }

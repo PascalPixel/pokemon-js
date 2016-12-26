@@ -1,7 +1,10 @@
-/node_modules
-bundle.js
-npm-debug.log
+# Don't check auto-generated stuff into git
+coverage
+build
+node_modules
+stats.json
 
-# IntelliJ
-*.iml
-/.idea
+# Cruft
+.DS_Store
+npm-debug.log
+.idea

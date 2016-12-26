@@ -2,7 +2,7 @@
 
 ## Classic Pokémon Yellow battles built for the web
 
-![Screenshot](/img/src/promo.png?raw=true "Screenshot")
+![Screenshot](/img/promo.png?raw=true "Screenshot")
 
 ## Demo
 

@@ -3,8 +3,6 @@ import Trainer from '../components/Trainer'
 import Windows from '../components/Windows'
 import STORE from '../data/store'
 
-require('../../style/main.sass')
-
 export default class Game extends React.Component {
   constructor (props) {
     super(props)

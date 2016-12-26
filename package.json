@@ -1,32 +1,39 @@
 {
   "name": "pokemon-mini",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "JavaScript-based Classic Pokemon Yellow Battles",
-  "main": "index.js",
-  "repository": "git@github.com:Superpencil/Pokemon-Mini.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Superpencil/Pokemon-Mini.git"
+  },
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js"
+    "start": "webpack-dev-server --env development",
+    "build": "webpack --env production"
   },
   "author": "Pascal Pixel <pascal@superpencil.com>",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.20.0",
+    "babel-core": "^6.21.0",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "css-loader": "^0.25.0",
     "file-loader": "^0.9.0",
-    "lodash": "^4.17.2",
+    "html-webpack-plugin": "^2.24.1",
     "node-sass": "^4.1.0",
-    "sass-loader": "^4.1.0",
+    "path": "^0.12.7",
+    "sass-loader": "^4.1.1",
     "standard": "^8.6.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack": "2.2.0-rc.2",
+    "webpack-dev-server": "2.2.0-rc.0",
+    "webpack-merge": "^1.1.1"
   },
   "dependencies": {
-    "react": "^15.4.0",
+    "cross-env": "3.1.3",
+    "lodash": "^4.17.2",
+    "react": "^15.4.1",
     "react-dom": "^15.4.1"
   }
 }
