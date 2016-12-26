@@ -38,7 +38,7 @@ const development = merge(common, {
   devServer: {
     inline: true,
     historyApiFallback: true,
-    contentBase: '/'
+    contentBase: './'
   },
   devtool: 'source-map'
 })
