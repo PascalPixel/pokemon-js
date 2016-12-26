@@ -22,7 +22,7 @@ const common = {
         loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
-        test: /\.(png|svg|woff|woff2|ico)$/,
+        test: /\.(svg|woff|woff2)$/,
         loader: 'file-loader?name=[path][name].[ext]'
       }
     ]
