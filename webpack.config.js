@@ -6,8 +6,7 @@ const common = {
   entry: path.resolve(__dirname, 'src'),
   output: {
     filename: 'pokemon-mini.js',
-    path: __dirname,
-    publicPath: '/'
+    path: __dirname
   },
   module: {
     rules: [
