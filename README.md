@@ -2,11 +2,11 @@
 
 ## Classic Pokémon Yellow battles built for the web
 
-![Screenshot](/img/promo.png?raw=true "Screenshot")
+![Screenshot](/img/promo.png?raw=true 'Pokemon Mini')
 
 ## Demo
 
-<http://www.superpencil.com/en/error>
+<http://www.superpencil.com/en/work/pokemon>
 
 ## About
 
@@ -15,6 +15,8 @@ A clone of the very first battle in the first generation of Pokémon GAMEBOY gam
 It started in 2013 as a way of refining web technology skills for Pascal Pixel and now Superpencil, then evolved to include (originally, perhaps not in the current iteration) `PHP`, `GET` requests, `jQuery`, `JSON` to dynamically call specific monsters from an index (Pokédex), `API` usage, `SVG`, dynamic SVG coloring, CSS 3D `transforms`, responsive interfaces based on `em` units, and full mastery of `SASS` and `SCSS`.
 
 We plan to move the project into React & Redux next to get a hold on those new technologies as well.
+
+The font used is an extended version of the original available on Github: [PascalPixel/pokemon-font](http://github.com/PascalPixel/pokemon-font)
 
 ## Authors
 

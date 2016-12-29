@@ -3,35 +3,19 @@ $gameboy-normal: #4D5607
 $gameboy-light: #7A8718
 $gameboy-base: #A7B72D
 
-@font-face
-  font-family: "Pokemon"
-  src: url("../fonts/pokemon.woff2") format("woff2"), url("../fonts/pokemon.woff") format("woff")
-  font-weight: 400
-  font-style: normal
+html
+  zoom: 200%
 
 body
   background-color: $gameboy-base
   color: $gameboy-dark
-  font-family: "Pokemon", monospace
-  font-size: 40px
+  font-family: 'pokemon-font', monospace
+  font-size: 10px
   margin: 1em
-  line-height: 1.14em
-
-a
-  color: $gameboy-normal
-  text-decoration: none
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6
-  color: $gameboy-light
-
-::selection
-  background: $gameboy-normal
-  color: $gameboy-base
+  line-height: 5px
+  user-select: none
+  font-smooth: never
+  -webkit-font-smoothing: none
 
 // Color inline SVG's
 .gb-dark
@@ -42,12 +26,6 @@ h6
 
 .gb-light
   fill: $gameboy-light
-
-.text-area
-  margin: 0 auto
-  font-size: 0.5em
-  width: 32em
-  line-height: 1.6em
 
 #pokemon
   width: 16em
@@ -76,14 +54,6 @@ img,
 svg
   width: 100%
   height: auto
-
-span,
-.button,
-.level,
-.name
-  font-size: 0.8em
-  span
-    font-size: 1em
 
 .layer
   position: absolute
@@ -184,6 +154,7 @@ span,
     margin-top: 4em
 
 .windows
+  line-height: 14px
   .window
     position: absolute
     border-image: url("../img/frame.svg") 45% stretch
@@ -211,10 +182,6 @@ span,
       height: 2.7em
       width: 7.4em
       padding: 0.5em 0 0 0.8em
-      sup,
-      sub
-        display: inline-block
-        font-size: 0.7em
     &.fight
       bottom: 0.1em
       right: 0.1em
@@ -240,31 +207,6 @@ span,
       bottom: 0.1em
       left: 0.1em
       right: 0.1em
-
-// 3D
-.perspective
-  perspective: 30em
-  transform-style: preserve-3d
-  .depth
-    transform: rotateX(0deg) rotateY(0deg)
-    transform-style: preserve-3d
-  .foe
-    transform: translateZ(-8em)
-    transform-style: preserve-3d
-  .player
-    transform: translateZ(-4em)
-    transform-style: preserve-3d
-  .window
-    transform: translateZ(0em)
-    transform-style: preserve-3d
-  .window.menu
-    transform: translateZ(4em)
-    transform-style: preserve-3d
-  .window.fight,
-  .window.item,
-  .window.pkmn
-    transform: translateZ(8em)
-    transform-style: preserve-3d
 
 // React Hacks
 .trainer,

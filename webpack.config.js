@@ -18,11 +18,11 @@ const common = {
         }
       },
       {
-        test: /\.sass$/,
+        test: /\.(css|scss|sass)$/,
         loaders: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
-        test: /\.(svg|woff|woff2)$/,
+        test: /\.(svg|eot|otf|ttf|woff|woff2)$/,
         loader: 'file-loader?name=[path][name].[ext]'
       }
     ]
@@ -40,7 +40,10 @@ const development = merge(common, {
     historyApiFallback: true,
     contentBase: './'
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  performance: {
+    hints: false
+  }
 })
 
 const production = merge(common, {

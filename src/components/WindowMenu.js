@@ -12,11 +12,9 @@ const WindowMenu = (props) => {
         <span
           className='button'
           onClick={() => props.reframe({ pokemon: true })}>
-          <sup>P</sup>
-          <sub>K</sub>
-          <sup>M</sup>
-          <sub>N</sub>
+          PKMN
         </span>
+        <br />
         <span
           className='button'
           onClick={() => props.reframe({ items: true })}>
