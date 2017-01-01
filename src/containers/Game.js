@@ -11,31 +11,30 @@ export default class Game extends React.Component {
   }
 
   // Actions
-  reframe = (update) => {
-    const newState = Object.assign({}, this.state.frames, update)
-    this.setState({ frames: newState })
+  reframe (update) {
+    const frames = Object.assign({}, this.state.frames, update)
+    this.setState({ frames })
   }
-  attack = (move) => {
+  attack (move) {
     console.log('attack: ' + move.name)
   }
-  change = (pokemon) => {
+  change (pokemon) {
     console.log('switch: ' + pokemon.name)
   }
-  use = (item) => {
+  use (item) {
     console.log('use: ' + item.name)
   }
-  run = () => {
+  run () {
     console.log('run')
   }
 
   render () {
-    const foe = this.state.trainers[this.state.allot.right]
     const player = this.state.trainers[this.state.allot.left]
 
     return (
       <div className='depth'>
         <Trainer
-          trainer={foe}
+          trainer={this.state.trainers[this.state.allot.right]}
           currentTrainer={0} />
         <Trainer
           trainer={player}
@@ -46,11 +45,11 @@ export default class Game extends React.Component {
           lines={this.state.lines}
 
           // Actions
-          reframe={this.reframe}
-          attack={this.attack}
-          change={this.change}
-          use={this.use}
-          run={this.run} />
+          reframe={this.reframe.bind(this)}
+          attack={this.attack.bind(this)}
+          change={this.change.bind(this)}
+          use={this.use.bind(this)}
+          run={this.run.bind(this)} />
       </div>
     )
   }

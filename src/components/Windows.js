@@ -6,8 +6,6 @@ import WindowItems from './WindowItems'
 import WindowPokemon from './WindowPokemon'
 
 const Windows = (props) => {
-  const moves = props.trainer.pokemon[props.trainer.activePokemon].moves
-
   return (
     <div className='layer windows'>
       <WindowMessages
@@ -21,7 +19,7 @@ const Windows = (props) => {
         run={props.run} />
       <WindowFight
         visibility={props.frames.fight}
-        moves={moves}
+        moves={props.trainer.pokemon[props.trainer.activePokemon].moves}
 
         // Actions
         reframe={props.reframe}
