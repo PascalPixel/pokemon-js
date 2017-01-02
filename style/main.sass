@@ -3,6 +3,16 @@ $gameboy-normal: #4D5607
 $gameboy-light: #7A8718
 $gameboy-base: #A7B72D
 
+// Color inline SVGs
+.gb-dark
+  fill: $gameboy-dark
+
+.gb-normal
+  fill: $gameboy-normal
+
+.gb-light
+  fill: $gameboy-light
+
 html
   zoom: 200%
 
@@ -16,16 +26,6 @@ body
   user-select: none
   font-smooth: never
   -webkit-font-smoothing: none
-
-// Color inline SVG's
-.gb-dark
-  fill: $gameboy-dark
-
-.gb-normal
-  fill: $gameboy-normal
-
-.gb-light
-  fill: $gameboy-light
 
 #pokemon
   width: 16em
@@ -41,14 +41,8 @@ body
     position: relative
     &:before
       position: absolute
-      background-image: url("../img/marker.svg")
-      background-repeat: no-repeat
-      left: -1em
-      top: 0.1em
-      width: 0.5em
-      height: 0.7em
-      background-size: 0.5em
-      content: ""
+      left: -0.7em
+      content: "\25B6"
 
 img,
 svg
@@ -64,6 +58,7 @@ svg
 .images
   position: absolute
   width: 5.6em
+  transition: left 100ms
 
 .info
   position: absolute
@@ -190,13 +185,21 @@ svg
       min-height: 4.6em
       padding: 0.5em 0 0 0.8em
       .fight-details
+        display: none
         top: -3.9em
         left: -3.9em
         width: 6.6em
         height: 2.4em
         span
-          height: 0.8em
-          margin-top: -0.3em
+          display: block
+          height: 0em
+          margin-top: -0.2em
+      .button:hover
+        position: initial
+        &:before
+          left: 0em
+        .fight-details
+          display: initial
     &.item
       top: 1.7em
       bottom: 4.1em
@@ -208,6 +211,7 @@ svg
       bottom: 0.1em
       left: 0.1em
       right: 0.1em
+      padding-left: 0.8em
 
 // React Hacks
 .trainer,

@@ -3,8 +3,8 @@ import React from 'react'
 const Stats = (props) => {
   const name = props.pokemon.name.toUpperCase()
   const level = props.pokemon.level
-  const current = props.pokemon.hp_current
-  const total = props.pokemon.hp_base
+  const current = props.pokemon.hpCurrent
+  const total = props.pokemon.hpBase
   const currentTrainer = props.currentTrainer
 
   return (
