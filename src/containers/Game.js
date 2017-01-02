@@ -89,7 +89,6 @@ export default class Game extends React.Component {
 
     return (
       <div className='depth'>
-
         <Trainer
           trainer={this.state.trainers[this.state.allot.right]}
           currentTrainer={0} />
@@ -102,9 +101,11 @@ export default class Game extends React.Component {
           lines={this.state.lines}
 
           // Actions
-          reframe={this.reframe.bind(this)} attack={this.attack.bind(this)} change={this.change.bind(this)} use={this.use.bind(this)}
+          reframe={this.reframe.bind(this)}
+          attack={this.attack.bind(this)}
+          change={this.change.bind(this)}
+          use={this.use.bind(this)}
           run={this.run.bind(this)} />
-
       </div>
     )
   }
