@@ -32,6 +32,8 @@ const STORE = {
           level: 5,
           hp_current: 15,
           hp_base: 15,
+          weight: 60,
+          height: 4,
           fainted: false,
           active: true,
           moves: [
@@ -39,12 +41,19 @@ const STORE = {
               name: 'tackle',
               category: 'offensive',
               types: ['normal'],
-              damage: 4
-            }, {
+              id: 88,
+              pp: 30,
+              accuracy: 100,
+              power: 40
+            },
+            {
               name: 'tail whip',
               category: 'defensive',
               types: ['normal'],
-              damage: 1
+              id: 87,
+              pp: 30,
+              accuracy: 100,
+              power: 0
             }
           ]
         }
@@ -71,6 +80,8 @@ const STORE = {
           level: 4,
           hp_current: 13,
           hp_base: 13,
+          weight: 60,
+          height: 4,
           fainted: false,
           active: true,
           moves: [
@@ -78,12 +89,19 @@ const STORE = {
               name: 'thundershock',
               category: 'offensive',
               types: ['electric'],
-              damage: 4
-            }, {
+              id: 84,
+              pp: 30,
+              accuracy: 100,
+              power: 40
+            },
+            {
               name: 'tail whip',
               category: 'defensive',
               types: ['normal'],
-              damage: 1
+              id: 85,
+              pp: 30,
+              accuracy: 100,
+              power: 0
             }
           ]
         }
@@ -93,7 +111,8 @@ const STORE = {
           name: 'Potion',
           type: 'healing',
           amount: 20
-        }, {
+        },
+        {
           name: 'Super Potion',
           type: 'healing',
           amount: 50

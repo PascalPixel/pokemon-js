@@ -10,7 +10,9 @@ export default class Trainer extends React.Component {
     let side = currentTrainer ? 'player' : 'foe'
 
     return (
-      <div className={'layer ' + side}>
+      <div
+        id={side}
+        className={'layer'}>
         <div className='images'>
           <div className='trainer'>
             <Sprite

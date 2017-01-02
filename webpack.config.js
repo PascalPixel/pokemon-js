@@ -14,12 +14,21 @@ const common = {
         test: /\.js$/,
         loader: 'babel-loader',
         options: {
-          presets: ['es2015', 'react', 'stage-0']
+          presets: [
+            'es2015',
+            'react',
+            'stage-0'
+          ]
         }
       },
       {
         test: /\.(css|scss|sass)$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader']
+        loaders: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
       },
       {
         test: /\.(svg|eot|otf|ttf|woff|woff2)$/,
@@ -28,8 +37,14 @@ const common = {
     ]
   },
   resolve: {
-    modules: ['src', 'node_modules'],
-    extensions: ['.js', '.jsx']
+    modules: [
+      'src',
+      'node_modules'
+    ],
+    extensions: [
+      '.js',
+      '.jsx'
+    ]
   },
   target: 'web'
 }
