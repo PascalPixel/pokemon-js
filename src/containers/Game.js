@@ -13,9 +13,10 @@ export default class Game extends React.Component {
     this.state = STORE
   }
 
-  // Calculate damage
-  calculateDamage (level, power) {
-    return Math.floor((2 * level / 5 + 2) * power / 50 + 2)
+  // Calculate hp
+  calculateHp (level, current, power) {
+    const newHp = current - Math.floor((2 * level / 5 + 2) * power / 50 + 2)
+    return newHp > 0 ? newHp : 0
   }
 
   // Update HP
@@ -64,10 +65,10 @@ export default class Game extends React.Component {
     const moveFoe = pokemonFoe.moves[Math.floor(Math.random() * pokemonFoe.moves.length)]
 
     // New HP foePokemon
-    const hpNewPokemonFoe = pokemonFoe.hpCurrent - this.calculateDamage(pokemonPlayer.level, movePlayer.power)
+    const hpNewPokemonFoe = this.calculateHp(pokemonPlayer.level, pokemonFoe.hpCurrent, movePlayer.power)
 
     // New HP playerPokemon
-    const hpNewPokemonPlayer = pokemonPlayer.hpCurrent - this.calculateDamage(pokemonFoe.level, moveFoe.power)
+    const hpNewPokemonPlayer = this.calculateHp(pokemonFoe.level, pokemonPlayer.hpCurrent, moveFoe.power)
 
     // Array with all steps of the attack, including start and end functions, second argument is delay before running.
     this.animateArray([
