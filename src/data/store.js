@@ -9,10 +9,7 @@ const STORE = {
   },
 
   // Text output
-  lines: {
-    top: null,
-    bottom: null
-  },
+  lines: null,
 
   // Get trainer from database based on id
   allot: {

@@ -11,12 +11,14 @@ const Windows = (props) => {
       <WindowMessages
         visibility={props.frames.messages}
         lines={props.lines} />
+
       <WindowMenu
         visibility={props.frames.menu}
 
         // Actions
         reframe={props.reframe}
         run={props.run} />
+
       <WindowFight
         visibility={props.frames.fight}
         moves={props.trainer.pokemon[props.trainer.activePokemon].moves}
@@ -24,6 +26,7 @@ const Windows = (props) => {
         // Actions
         reframe={props.reframe}
         attack={props.attack} />
+
       <WindowItems
         visibility={props.frames.items}
         items={props.trainer.items}
@@ -31,6 +34,7 @@ const Windows = (props) => {
         // Actions
         reframe={props.reframe}
         use={props.use} />
+
       <WindowPokemon
         visibility={props.frames.pokemon}
         pokemon={props.trainer.pokemon}

@@ -13,20 +13,22 @@ export default class Game extends React.Component {
     this.state = STORE
   }
 
+  // Calculate damage
+  calculateDamage (level, power) {
+    return Math.floor((2 * level / 5 + 2) * power / 50 + 2)
+  }
+
   // Function that loops over array of functions with timeouts.
   animateArray (array) {
-    console.log('Animation started.')
-
     let offset = 0
     array.map((step) => {
-      step[1] ? offset += step[1] : null
+      let delay = step[0] * 1000
+      delay ? offset += delay : null
       _.delay(() => {
-        let trigger = step[0]
+        let trigger = step[1]
         trigger()
       }, offset)
     })
-
-    console.log('Animation finished.')
   }
 
   // Changes that Windows are visible.
@@ -38,66 +40,68 @@ export default class Game extends React.Component {
   }
 
   // Perform a move.
-  attack (move) {
-    console.log('Move clicked: ' + move.name)
-
+  attack (movePlayer) {
     // Get all elements for animation; images and HP bars.
     const imagePlayer = document.getElementById('player').getElementsByClassName('images')[0]
     const imageFoe = document.getElementById('foe').getElementsByClassName('images')[0]
-    const hpBar = document.getElementById('foe').getElementsByClassName('hp-bar-active')[0]
+    const hpBarPlayer = document.getElementById('player').getElementsByClassName('hp-bar-active')[0]
+    const hpBarFoe = document.getElementById('foe').getElementsByClassName('hp-bar-active')[0]
 
     // Get the players.
     const player = this.state.trainers[this.state.allot.left]
     const foe = this.state.trainers[this.state.allot.right]
 
     // Get details about the current Pokemon on both sides.
-    const playerPokemonLevel = player.pokemon[player.activePokemon].level
-    const foePokemonHpBase = foe.pokemon[foe.activePokemon].hpBase
-    const foePokemonHpCurrent = foe.pokemon[foe.activePokemon].hpCurrent
+    const pokemonPlayer = player.pokemon[player.activePokemon]
+    const pokemonFoe = foe.pokemon[foe.activePokemon]
 
-    // New HP
-    const foePokemonHpUpdate = foePokemonHpBase - Math.floor((2 * playerPokemonLevel / 5 + 2) * move.power / 50 + 2)
-    console.log('Move damage: ' + foePokemonHpUpdate)
+    // CPU pick foe move
+    const moveFoe = pokemonFoe.moves[Math.floor(Math.random() * pokemonFoe.moves.length)]
 
-    // Before Attacking.
-    function startAttack () {
-      // Hide the Menu and Fight Menu.
-      this.reframe({
-        fight: false,
-        menu: false
-      })
-    }
+    // New HP foePokemon
+    const hpNewFoe = pokemonFoe.hpCurrent - this.calculateDamage(pokemonPlayer.level, movePlayer.power)
+
+    // New HP playerPokemon
+    const hpNewPlayer = pokemonPlayer.hpCurrent - this.calculateDamage(pokemonFoe.level, moveFoe.power)
 
     // Array with all steps of the attack, including start and end functions, second argument is delay before running.
     this.animateArray([
-      [() => { startAttack() }, 0],
-      [() => { imagePlayer.style.left = '0em' }, 100],
-      [() => { imagePlayer.style.left = '1.5em' }, 100],
-      [() => { imagePlayer.style.left = '0.8em' }, 100],
-      [() => { imageFoe.style.opacity = 0 }, 100],
-      [() => { imageFoe.style.opacity = 1 }, 100],
-      [() => { imageFoe.style.opacity = 0 }, 100],
-      [() => { imageFoe.style.opacity = 1 }, 100],
-      [() => { imageFoe.style.opacity = 0 }, 100],
-      [() => { imageFoe.style.opacity = 1 }, 100],
-      [() => { hpBar.style.width = `${foePokemonHpUpdate * 100 / foePokemonHpBase}%` }, 100],
-      [() => { endAttack() }, 500]
+      // Start turns.
+      [ 0.0, () => { this.reframe({ fight: false, menu: false }) } ],
+
+      // Player turn.
+      [ 0.1, () => { this.setState({ lines: 'Pikachu used THUNDERSHOCK!' }) } ],
+      [ 1.0, () => { imagePlayer.style.left = '0em' } ],
+      [ 0.1, () => { imagePlayer.style.left = '1.5em' } ],
+      [ 0.1, () => { imagePlayer.style.left = '0.8em' } ],
+      [ 0.1, () => { imageFoe.style.opacity = 0 } ],
+      [ 0.1, () => { imageFoe.style.opacity = 1 } ],
+      [ 0.1, () => { imageFoe.style.opacity = 0 } ],
+      [ 0.1, () => { imageFoe.style.opacity = 1 } ],
+      [ 0.1, () => { imageFoe.style.opacity = 0 } ],
+      [ 0.1, () => { imageFoe.style.opacity = 1 } ],
+      [ 0.1, () => { hpBarFoe.style.width = `${hpNewFoe * 100 / pokemonFoe.hpBase}%` } ],
+      [ 0.0, () => { this.setState({ hpNewFoe: hpNewFoe }) } ], /* FIXME */
+      [ 0.8, () => { this.setState({ lines: null }) } ],
+
+      // Foe turn.
+      [ 0.1, () => { this.setState({ lines: 'Eeevee used TACKLE!' }) } ],
+      [ 1.0, () => { imageFoe.style.right = '0em' } ],
+      [ 0.1, () => { imageFoe.style.right = '1.5em' } ],
+      [ 0.1, () => { imageFoe.style.right = '0.8em' } ],
+      [ 0.1, () => { imagePlayer.style.opacity = 0 } ],
+      [ 0.1, () => { imagePlayer.style.opacity = 1 } ],
+      [ 0.1, () => { imagePlayer.style.opacity = 0 } ],
+      [ 0.1, () => { imagePlayer.style.opacity = 1 } ],
+      [ 0.1, () => { imagePlayer.style.opacity = 0 } ],
+      [ 0.1, () => { imagePlayer.style.opacity = 1 } ],
+      [ 0.1, () => { hpBarPlayer.style.width = `${hpNewPlayer * 100 / pokemonPlayer.hpBase}%` } ],
+      [ 0.0, () => { this.setState({ hpNewPlayer: hpNewPlayer }) } ], /* FIXME */
+      [ 0.8, () => { this.setState({ lines: null }) } ],
+
+      // End turns.
+      [ 0.1, () => { this.reframe({ menu: true }) } ]
     ])
-
-    // After Attacking.
-    function endAttack () {
-      // Update the State with new HP.
-      this.setState({
-        [foePokemonHpCurrent]: foePokemonHpUpdate
-      })
-
-      // Show Menu.
-      this.reframe({
-        menu: true
-      })
-
-      console.log('Move ' + move.name + ' finished.')
-    }
   }
 
   // Switch Pokemon
