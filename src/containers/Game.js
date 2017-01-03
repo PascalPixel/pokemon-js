@@ -15,7 +15,7 @@ export default class Game extends React.Component {
 
   // Calculate hp
   calculateHp (level, current, power) {
-    const newHp = current - Math.floor((2 * level / 5 + 2) * power / 50 + 2)
+    const newHp = power > 0 ? current - Math.floor((2 * level / 5 + 2) * power / 50 + 2) : current
     return newHp > 0 ? newHp : 0
   }
 
