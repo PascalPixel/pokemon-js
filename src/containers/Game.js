@@ -75,7 +75,7 @@ export default class Game extends React.Component {
       [ 0.0, () => { this.reframe({ fight: false, menu: false }) } ],
 
       // Player turn.
-      [ 1.0, () => { this.setState({ lines: 'Pikachu used THUNDERSHOCK!' }) } ],
+      [ 0.5, () => { this.setState({ lines: `${pokemonPlayer.name.toUpperCase()} used ${movePlayer.name.toUpperCase()}!` }) } ],
       [ 1.0, () => { imagePlayer.style.left = '0em' } ],
       [ 0.1, () => { imagePlayer.style.left = '1.5em' } ],
       [ 0.1, () => { imagePlayer.style.left = '0.8em' } ],
@@ -85,11 +85,11 @@ export default class Game extends React.Component {
       [ 0.1, () => { imageFoe.style.opacity = 1 } ],
       [ 0.1, () => { imageFoe.style.opacity = 0 } ],
       [ 0.1, () => { imageFoe.style.opacity = 1 } ],
-      [ 0.0, () => { this.updateHp(foe, hpNewPokemonFoe) } ],
+      [ 0.1, () => { this.updateHp(foe, hpNewPokemonFoe) } ],
       [ 0.0, () => { this.setState({ lines: null }) } ],
 
       // Foe turn.
-      [ 1.0, () => { this.setState({ lines: 'Eeevee used TACKLE!' }) } ],
+      [ 0.5, () => { this.setState({ lines: `${pokemonFoe.name.toUpperCase()} used ${moveFoe.name.toUpperCase()}!` }) } ],
       [ 1.0, () => { imageFoe.style.right = '0em' } ],
       [ 0.1, () => { imageFoe.style.right = '1.5em' } ],
       [ 0.1, () => { imageFoe.style.right = '0.8em' } ],
@@ -99,7 +99,7 @@ export default class Game extends React.Component {
       [ 0.1, () => { imagePlayer.style.opacity = 1 } ],
       [ 0.1, () => { imagePlayer.style.opacity = 0 } ],
       [ 0.1, () => { imagePlayer.style.opacity = 1 } ],
-      [ 0.0, () => { this.updateHp(player, hpNewPokemonPlayer) } ],
+      [ 0.1, () => { this.updateHp(player, hpNewPokemonPlayer) } ],
       [ 0.0, () => { this.setState({ lines: null }) } ],
 
       // End turns.
