@@ -1,4 +1,4 @@
-# Pokemon-Mini
+# pokemon-js
 #### Classic Pokémon Yellow battles built for the web
 ![Screenshot](/src/screenshot_2016.png?raw=true "Screenshot 2016")
 
@@ -13,7 +13,7 @@ It started in 2013 as a way of refining web technology skills for Pascal Pixel a
 We plan to move the project into React & Redux next to get a hold on those new technologies as well.
 
 #### Authors
-[@PascalPixel](http://github.com/pascalpixel)
+[Pascal Pixel](http://github.com/Superpencil)
 
 #### To-do
 - Re-implement JSON Pokedex to call different teams
@@ -29,7 +29,7 @@ If you use this code please mention and link to the original repository.
 
 If you make improvements, please issue a pull request, we're very happy to have your involvement and look forward to learn from your code.
 
-<https://github.com/Superpencil/Pokemon-Mini>
+<https://github.com/Superpencil/pokemon-js>
 
 #### Disclaimer
 Pokémon and Pikachu are trademarks of The Pokémon Company International, this is an internal project used to study new web technologies, it is free to use.
