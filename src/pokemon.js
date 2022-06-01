@@ -97,7 +97,7 @@ function playPokemon() {
       window.setTimeout(() => {
         $("#battle .foe .images").delay(500).animate(
           {
-            bottom: "-35em",
+            bottom: "-35rem",
           },
           1000
         );
@@ -129,14 +129,14 @@ function playPokemon() {
         $("#battle .foe .images")
           .animate(
             {
-              right: "0em",
+              right: "0rem",
             },
             100,
             "linear"
           )
           .animate(
             {
-              right: "1.8em",
+              right: "1.8rem",
             },
             50,
             "linear"
@@ -144,7 +144,7 @@ function playPokemon() {
           .delay(100)
           .animate(
             {
-              right: "0.8em",
+              right: "0.8rem",
             },
             10,
             "linear"
@@ -181,7 +181,7 @@ function playPokemon() {
                         window.setTimeout(() => {
                           $("#battle .player .images").delay(500).animate(
                             {
-                              bottom: "-35.714em",
+                              bottom: "-35.714rem",
                             },
                             1000
                           );
@@ -262,14 +262,14 @@ function playPokemon() {
     $("#battle .player .images")
       .animate(
         {
-          left: "0em",
+          left: "0rem",
         },
         100,
         "linear"
       )
       .animate(
         {
-          left: "1.8em",
+          left: "1.8rem",
         },
         50,
         "linear"
@@ -277,7 +277,7 @@ function playPokemon() {
       .delay(100)
       .animate(
         {
-          left: "0.8em",
+          left: "0.8rem",
         },
         10,
         "linear"
@@ -448,8 +448,8 @@ function playPokemon() {
 
   // Start animation
   const main = () => {
-    $("#battle .foe .images").css("right", "16em");
-    $("#battle .player .images").css("left", "16em");
+    $("#battle .foe .images").css("right", "16rem");
+    $("#battle .player .images").css("left", "16rem");
     $(
       "#battle .player .pokemon, #battle .foe .pokemon, #battle .stats, #battle .balls, #battle .window.item, #battle .window.pkmn, #battle .window.fight, #battle .window.menu"
     ).hide();
@@ -457,14 +457,14 @@ function playPokemon() {
     window.setTimeout(() => {
       $("#battle .foe .images").animate(
         {
-          right: "0.8em",
+          right: "0.8rem",
         },
         800,
         "linear"
       );
       $("#battle .player .images").animate(
         {
-          left: "0.8em",
+          left: "0.8rem",
         },
         800,
         "linear"
@@ -479,7 +479,7 @@ function playPokemon() {
             $("#battle .balls").hide();
             $("#battle .foe .images").animate(
               {
-                right: "-21em",
+                right: "-21rem",
               },
               400,
               "linear"
@@ -492,7 +492,7 @@ function playPokemon() {
               $("#battle .foe .trainer").hide();
               $("#battle .foe .images").animate(
                 {
-                  right: "0.8em",
+                  right: "0.8rem",
                 },
                 700,
                 "linear"
@@ -501,7 +501,7 @@ function playPokemon() {
                 $("#battle .foe .stats").show();
                 $("#battle .player .images").animate(
                   {
-                    left: "-21em",
+                    left: "-21rem",
                   },
                   400,
                   "linear"
@@ -511,7 +511,7 @@ function playPokemon() {
                   $("#battle .player .pokemon").show();
                   $("#battle .player .images").animate(
                     {
-                      left: "0.8em",
+                      left: "0.8rem",
                     },
                     700,
                     "linear"

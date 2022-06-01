@@ -12,14 +12,17 @@
   font-weight: 400;
   font-style: italic;
 }
+html {
+  font-size: 10px;
+}
 body {
   background-color: #bbac58;
   color: #2f3622;
   font-family: "Pokemon", monospace;
-  font-size: 10px;
   margin: 0;
   padding: 0;
-  line-height: 1.3em;
+  font-size: 0.8rem;
+  line-height: 1.5em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -43,18 +46,6 @@ h6 {
   background: #4d5d31;
   color: #bbac58;
 }
-button {
-  background: #bbac58;
-  color: #4d5d31;
-  border: 1px solid #4d5d31;
-  border-radius: 0.3em;
-  padding: 0.4em 0.8em 0.5em;
-  cursor: pointer;
-}
-button.active {
-  background: #4d5d31;
-  color: #bbac58;
-}
 .gb-dark {
   fill: #2f3622;
 }
@@ -64,17 +55,15 @@ button.active {
 .gb-light {
   fill: #7d7f4c;
 }
-.text-area {
-  margin: 0 auto;
-  font-size: 0.5em;
-  width: 32em;
-  line-height: 1.6em;
-}
 .wrapper {
   display: none;
-  width: 16em;
-  height: 14.4em;
+  width: 16rem;
+  height: 14.4rem;
   position: relative;
+}
+/* every odd item */
+.window.menu .button:nth-child(odd) {
+  margin-right: 1rem;
 }
 .button:hover {
   cursor: pointer;
@@ -84,11 +73,11 @@ button.active {
   position: absolute;
   background-image: url("../public/img/marker.svg");
   background-repeat: no-repeat;
-  left: -1em;
-  top: 0.1em;
-  width: 0.5em;
-  height: 0.7em;
-  background-size: 0.5em;
+  left: -0.8rem;
+  top: 0.1rem;
+  width: 0.5rem;
+  height: 0.7rem;
+  background-size: 0.5rem;
   content: "";
 }
 img,
@@ -96,199 +85,187 @@ svg {
   width: 100%;
   height: auto;
 }
-span,
-.button,
-.level,
-.name {
-  font-size: 0.8em;
-}
-span span,
-.button span,
-.level span,
-.name span {
-  font-size: 1em;
-}
 .layer {
   position: absolute;
-  width: 16em;
-  height: 14.4em;
+  width: 16rem;
+  height: 14.4rem;
   overflow: hidden;
 }
 .images {
   position: absolute;
-  width: 5.6em;
+  width: 5.6rem;
 }
 .info {
   position: absolute;
-  width: 7.7em;
+  width: 7.7rem;
 }
 .name {
-  height: 1.1em;
+  height: 1.1rem;
 }
 .balls {
-  margin-top: 1.6em;
+  margin-top: 1.6rem;
 }
 .stats {
   background-position: bottom;
-  background-size: 7.7em;
+  background-size: 7.7rem;
   background-repeat: no-repeat;
 }
 .level-wrap {
-  margin-top: -0.1em;
-  height: 0.8em;
+  margin-top: -0.1rem;
+  height: 0.8rem;
 }
 .level-wrap img,
 .level-wrap svg {
-  width: 0.6em;
+  width: 0.6rem;
   display: inline-block;
-  margin-right: -0.8em;
+  margin-right: 0.1rem;
 }
 .health {
-  margin-left: 2.5em;
+  margin-left: 2.5rem;
 }
 .health span {
   display: inline-block;
-  width: 0.8em;
+  width: 1.6rem;
 }
 .hp-wrap {
-  height: 0.9em;
+  height: 0.9rem;
 }
 .hp-wrap img,
 .hp-wrap svg {
-  width: 1.1em;
+  width: 1.1rem;
   display: inline-block;
 }
 .hp-bar {
-  border: 0.1em solid #2f3622;
-  border-radius: 0.4em;
-  height: 0.3em;
-  width: 4.8em;
+  border: 0.1rem solid #2f3622;
+  border-radius: 0.4rem;
+  height: 0.3rem;
+  width: 4.8rem;
   display: inline-block;
-  margin-left: -0.7em;
+  margin-left: 0.25rem;
   display: inline-block;
 }
 .hp-bar-active {
   background-color: #7d7f4c;
   height: 100%;
   width: 100%;
-  border-radius: 0.4em;
+  border-radius: 0.4rem;
 }
 .foe .images {
-  right: 0.8em;
+  right: 0.8rem;
 }
 .foe .info {
-  left: 1.1em;
+  left: 1.1rem;
 }
 .foe .stats {
-  height: 3em;
+  height: 3rem;
   background-image: url("../public/img/blue_line.svg");
 }
 .foe .name {
-  margin-left: -0.3em;
-  margin-top: -0.1em;
+  margin-left: -0.3rem;
+  margin-top: -0.1rem;
 }
 .foe .level-wrap {
-  margin-left: 2.2em;
+  margin-left: 2.2rem;
 }
 .foe .hp-wrap {
-  margin-left: 0.6em;
+  margin-left: 0.6rem;
 }
 .player {
-  padding-top: 4em;
+  padding-top: 4rem;
 }
 .player .images {
-  left: 0.8em;
+  left: 0.8rem;
 }
 .player .info {
-  right: 1.1em;
+  right: 1.1rem;
 }
 .player .stats {
   background-image: url("../public/img/red_line.svg");
 }
 .player .name {
-  margin-left: 1em;
-  margin-top: 1.8em;
+  margin-left: 1rem;
+  margin-top: 1.8rem;
 }
 .player .level-wrap {
-  margin-left: 4.1em;
+  margin-left: 4.1rem;
 }
 .player .hp-wrap {
-  margin-left: 0.9em;
+  margin-left: 0.9rem;
 }
 .player .balls {
-  margin-top: 4em;
+  margin-top: 4rem;
 }
 .windows .window {
   position: absolute;
   -o-border-image: url("../public/img/frame.svg") 45% stretch;
   border-image: url("../public/img/frame.svg") 45% stretch;
   border-style: solid;
-  border-width: 0.7em;
+  border-width: 0.7rem;
   background: #bbac58;
 }
 .windows .window.texts {
   margin: 0;
-  height: 3.2em;
-  left: 0.1em;
-  right: 0.1em;
-  bottom: 0.1em;
+  height: 3.2rem;
+  left: 0.1rem;
+  right: 0.1rem;
+  bottom: 0.1rem;
 }
 .windows .window.texts .text span {
-  height: 1em;
-  width: 1em;
+  height: 1rem;
+  width: 1rem;
   display: inline-block;
 }
 .windows .window.texts .text.text1 {
-  margin-top: 0.5em;
+  margin-top: 0.5rem;
 }
 .windows .window.texts .text.text2 {
-  margin-top: 0.1em;
+  margin-top: 0.1rem;
 }
 .windows .window.menu {
   display: none;
-  bottom: 0.1em;
-  right: 0.1em;
-  height: 2.7em;
-  width: 7.4em;
-  padding: 0.5em 0 0 0.8em;
+  bottom: 0.1rem;
+  right: 0.1rem;
+  height: 2.7rem;
+  width: 7.4rem;
+  padding: 0.5rem 0 0 0.8rem;
 }
 .windows .window.menu sup,
 .windows .window.menu sub {
   display: inline-block;
-  margin-right: -1.3em;
-  font-size: 0.7em;
-  margin-left: -0.4em;
+  font-size: 0.5rem;
+  margin: 0;
+  padding: 0;
 }
 .windows .window.fight {
   display: none;
-  bottom: 0.1em;
-  right: 0.1em;
-  left: 3.3em;
-  min-height: 4.6em;
-  padding: 0.5em 0 0 0.8em;
+  bottom: 0.1rem;
+  right: 0.1rem;
+  left: 3.3rem;
+  min-height: 4.6rem;
+  padding: 0.5rem 0 0 0.8rem;
 }
 .windows .window.fight .fight-details {
-  top: -3.9em;
-  left: -3.9em;
-  width: 6.6em;
-  height: 2.4em;
+  top: -3.9rem;
+  left: -3.9rem;
+  width: 6.6rem;
+  height: 2.4rem;
 }
 .windows .window.fight .fight-details span {
-  height: 0.8em;
-  margin-top: -0.3em;
+  height: 0.8rem;
+  margin-top: -0.3rem;
 }
 .windows .window.item {
   display: none;
-  top: 1.7em;
-  bottom: 4.1em;
-  left: 3.3em;
-  right: 0.1em;
-  padding: 0.6em;
+  top: 1.7rem;
+  bottom: 4.1rem;
+  left: 3.3rem;
+  right: 0.1rem;
+  padding: 0.6rem;
 }
 .windows .window.pkmn {
   display: none;
-  top: 0.1em;
-  bottom: 0.1em;
-  left: 0.1em;
-  right: 0.1em;
+  top: 0.1rem;
+  bottom: 0.1rem;
+  left: 0.1rem;
+  right: 0.1rem;
 }
