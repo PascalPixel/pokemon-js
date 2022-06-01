@@ -28,7 +28,7 @@ export default function Game(props) {
   // Function that loops over array of functions with timeouts.
   const animateArray = (array) => {
     let offset = 0;
-    array.map((step) => {
+    array.forEach((step) => {
       let delay = step[0] * 1000;
       if (delay) offset += delay;
       _.delay(() => {
