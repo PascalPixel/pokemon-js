@@ -17,13 +17,12 @@ let Font = () => {
         // If the text element is a dark block, make an SVG rectangle 'pixel' with the x and y of the text block in the source object.
         let posX = x;
         let posY = font[glyph].length - y;
-        line[x] === "█"
-          ? paths.push(
-              `M${posX * 10} ${posY * 10}H${(posX - 1) * 10}V${
-                (posY - 1) * 10
-              }H${posX * 10}Z`
-            )
-          : null;
+        if (line[x] === "█")
+          paths.push(
+            `M${posX * 10} ${posY * 10}H${(posX - 1) * 10}V${(posY - 1) * 10}H${
+              posX * 10
+            }Z`
+          );
       }
     });
 
