@@ -16,7 +16,7 @@ body {
   background-color: #bbac58;
   color: #2f3622;
   font-family: "Pokemon", monospace;
-  font-size: 20px;
+  font-size: 10px;
   margin: 0;
   padding: 0;
   line-height: 1.3em;
@@ -70,15 +70,11 @@ button.active {
   width: 32em;
   line-height: 1.6em;
 }
-#pokemon {
+.wrapper {
+  display: none;
   width: 16em;
   height: 14.4em;
   position: relative;
-  margin: 0 auto;
-  -webkit-transform: translateZ(0em) translateY(0em) translateX(0em)
-    rotateX(0deg) rotateY(0deg);
-  transform: translateZ(0em) translateY(0em) translateX(0em) rotateX(0deg)
-    rotateY(0deg);
 }
 .button:hover {
   cursor: pointer;

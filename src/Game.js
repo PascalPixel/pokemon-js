@@ -7,7 +7,7 @@ export default function Game() {
   }, []);
 
   return (
-    <div id="pokemon">
+    <div id="battle" className="wrapper">
       <div className="depth">
         <div className="layer foe">
           <div className="info">
