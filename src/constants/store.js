@@ -5,7 +5,7 @@ const STORE = {
     fight: false,
     items: false,
     pokemon: false,
-    messages: true
+    messages: true,
   },
 
   // Text output
@@ -14,17 +14,17 @@ const STORE = {
   // Get trainer from database based on id
   allot: {
     left: 1, // Left trainer is...
-    right: 0 // Right trainer is...
+    right: 0, // Right trainer is...
   },
 
   // Trainers
   trainers: [
     {
-      name: 'blue',
+      name: "blue",
       activePokemon: 0,
       pokemon: [
         {
-          name: 'eevee',
+          name: "eevee",
           pokedex: 133,
           level: 5,
           hpCurrent: 15,
@@ -35,44 +35,45 @@ const STORE = {
           active: true,
           moves: [
             {
-              name: 'tackle',
-              category: 'offensive',
-              types: ['normal'],
+              name: "tackle",
+              category: "offensive",
+              types: ["normal"],
               id: 88,
               pp: 30,
               accuracy: 100,
-              power: 40
+              power: 40,
             },
             {
-              name: 'tail whip',
-              category: 'defensive',
-              types: ['normal'],
+              name: "tail whip",
+              category: "defensive",
+              types: ["normal"],
               id: 87,
               pp: 30,
               accuracy: 100,
-              power: 0
-            }
-          ]
-        }
+              power: 0,
+            },
+          ],
+        },
       ],
       items: [
         {
-          name: 'Potion',
-          type: 'healing',
-          amount: 20
-        }, {
-          name: 'Super Potion',
-          type: 'healing',
-          amount: 50
-        }
-      ]
+          name: "Potion",
+          type: "healing",
+          amount: 20,
+        },
+        {
+          name: "Super Potion",
+          type: "healing",
+          amount: 50,
+        },
+      ],
     },
     {
-      name: 'red',
+      name: "red",
       activePokemon: 0,
       pokemon: [
         {
-          name: 'pikachu',
+          name: "pikachu",
           pokedex: 25,
           level: 4,
           hpCurrent: 13,
@@ -83,40 +84,40 @@ const STORE = {
           active: true,
           moves: [
             {
-              name: 'thundershock',
-              category: 'offensive',
-              types: ['electric'],
+              name: "thundershock",
+              category: "offensive",
+              types: ["electric"],
               id: 84,
               pp: 30,
               accuracy: 100,
-              power: 40
+              power: 40,
             },
             {
-              name: 'tail whip',
-              category: 'defensive',
-              types: ['normal'],
+              name: "tail whip",
+              category: "defensive",
+              types: ["normal"],
               id: 85,
               pp: 30,
               accuracy: 100,
-              power: 0
-            }
-          ]
-        }
+              power: 0,
+            },
+          ],
+        },
       ],
       items: [
         {
-          name: 'Potion',
-          type: 'healing',
-          amount: 20
+          name: "Potion",
+          type: "healing",
+          amount: 20,
         },
         {
-          name: 'Super Potion',
-          type: 'healing',
-          amount: 50
-        }
-      ]
-    }
-  ]
-}
+          name: "Super Potion",
+          type: "healing",
+          amount: 50,
+        },
+      ],
+    },
+  ],
+};
 
-export default STORE
+export default STORE;

@@ -2,7 +2,7 @@
 
 ## Classic Pokémon Yellow battles built for the web
 
-![Screenshot](/img/promo.png?raw=true 'Pokemon Mini')
+![Screenshot](/img/promo.png?raw=true "Pokemon Mini")
 
 ## Demo
 

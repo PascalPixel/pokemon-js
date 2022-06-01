@@ -1,35 +1,30 @@
-import React from 'react'
+import React from "react";
 
 const WindowMenu = (props) => {
   if (props.visibility) {
     return (
-      <div className='window menu'>
-        <span
-          className='button'
-          onClick={() => props.reframe({ fight: true })}>
+      <div className="window menu">
+        <span className="button" onClick={() => props.reframe({ fight: true })}>
           FIGHT
         </span>
         <span
-          className='button'
-          onClick={() => props.reframe({ pokemon: true })}>
+          className="button"
+          onClick={() => props.reframe({ pokemon: true })}
+        >
           PKMN
         </span>
         <br />
-        <span
-          className='button'
-          onClick={() => props.reframe({ items: true })}>
+        <span className="button" onClick={() => props.reframe({ items: true })}>
           ITEM
         </span>
-        <span
-          className='button'
-          onClick={() => props.run()}>
+        <span className="button" onClick={() => props.run()}>
           RUN
         </span>
       </div>
-    )
+    );
   } else {
-    return null
+    return null;
   }
-}
+};
 
-export default WindowMenu
+export default WindowMenu;

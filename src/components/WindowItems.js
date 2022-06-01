@@ -1,37 +1,32 @@
-import React from 'react'
+import React from "react";
 
 const WindowItems = (props) => {
   if (props.visibility) {
     return (
-      <div className='window item'>
+      <div className="window item">
         {props.items.map((item) => {
           return (
             <div
               key={item.name}
-              className='button'
+              className="button"
               onClick={() => {
-                props.use(item)
-                props.reframe({ items: false })
-              }}>
-              <span>
-                {item.name}x
-              </span>
-              <span className='potionCount'>
-                {item.amount}
-              </span>
+                props.use(item);
+                props.reframe({ items: false });
+              }}
+            >
+              <span>{item.name}x</span>
+              <span className="potionCount">{item.amount}</span>
             </div>
-          )
+          );
         })}
-        <div
-          className='button'
-          onClick={() => props.reframe({ items: false })}>
+        <div className="button" onClick={() => props.reframe({ items: false })}>
           cancel
         </div>
       </div>
-    )
+    );
   } else {
-    return null
+    return null;
   }
-}
+};
 
-export default WindowItems
+export default WindowItems;

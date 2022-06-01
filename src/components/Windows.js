@@ -1,49 +1,47 @@
-import React from 'react'
-import WindowMessages from './WindowMessages'
-import WindowMenu from './WindowMenu'
-import WindowFight from './WindowFight'
-import WindowItems from './WindowItems'
-import WindowPokemon from './WindowPokemon'
+import React from "react";
+import WindowMessages from "./WindowMessages";
+import WindowMenu from "./WindowMenu";
+import WindowFight from "./WindowFight";
+import WindowItems from "./WindowItems";
+import WindowPokemon from "./WindowPokemon";
 
 const Windows = (props) => {
   return (
-    <div className='layer windows'>
-      <WindowMessages
-        visibility={props.frames.messages}
-        lines={props.lines} />
+    <div className="layer windows">
+      <WindowMessages visibility={props.frames.messages} lines={props.lines} />
 
       <WindowMenu
         visibility={props.frames.menu}
-
         // Actions
         reframe={props.reframe}
-        run={props.run} />
+        run={props.run}
+      />
 
       <WindowFight
         visibility={props.frames.fight}
         moves={props.trainer.pokemon[props.trainer.activePokemon].moves}
-
         // Actions
         reframe={props.reframe}
-        attack={props.attack} />
+        attack={props.attack}
+      />
 
       <WindowItems
         visibility={props.frames.items}
         items={props.trainer.items}
-
         // Actions
         reframe={props.reframe}
-        use={props.use} />
+        use={props.use}
+      />
 
       <WindowPokemon
         visibility={props.frames.pokemon}
         pokemon={props.trainer.pokemon}
-
         // Actions
         reframe={props.reframe}
-        change={props.change} />
+        change={props.change}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Windows
+export default Windows;

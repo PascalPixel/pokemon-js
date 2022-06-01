@@ -1,0 +1,270 @@
+@charset "UTF-8";
+
+:root {
+  --gameboy-dark: #242803;
+  --gameboy-normal: #4d5607;
+  --gameboy-light: #7a8718;
+  --gameboy-base: #a7b72d;
+}
+
+.gb-dark {
+  fill: var(--gameboy-dark);
+}
+
+.gb-normal {
+  fill: var(--gameboy-normal);
+}
+
+.gb-light {
+  fill: var(--gameboy-light);
+}
+
+body {
+  background-color: var(--gameboy-base);
+  color: var(--gameboy-dark);
+  font-family: "pokemon-font", monospace;
+  font-size: 10px;
+  margin: 1em;
+  line-height: 5px;
+  user-select: none;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+}
+
+#pokemon {
+  width: 16em;
+  height: 14.4em;
+  position: relative;
+  margin: 0 auto;
+  transform: translateZ(0em) translateY(0em) translateX(0em) rotateX(0deg)
+    rotateY(0deg);
+}
+
+.button {
+  margin-right: 0.7em;
+}
+.button:hover {
+  cursor: pointer;
+  position: relative;
+}
+.button:hover:before {
+  position: absolute;
+  left: -0.7em;
+  content: "▶";
+}
+
+img,
+svg {
+  width: 100%;
+  height: auto;
+}
+
+.layer {
+  position: absolute;
+  width: 16em;
+  height: 14.4em;
+  overflow: hidden;
+}
+
+.images {
+  position: absolute;
+  width: 5.6em;
+  transition: left 100ms, right 100ms;
+}
+
+.info {
+  position: absolute;
+  width: 7.7em;
+}
+
+.name {
+  height: 1.1em;
+}
+
+.balls {
+  margin-top: 1.6em;
+}
+
+.stats {
+  background-position: bottom;
+  background-size: 7.7em;
+  background-repeat: no-repeat;
+  height: 3.85em;
+}
+
+.level-wrap {
+  margin-top: -0.13em;
+  height: 0.8em;
+}
+.level-wrap img,
+.level-wrap svg {
+  width: 0.6em;
+  display: inline-block;
+  margin-right: 0.1em;
+}
+
+.health {
+  margin-left: 2.5em;
+}
+.health span {
+  display: inline-block;
+}
+
+.hp-wrap {
+  height: 0.9em;
+}
+.hp-wrap img,
+.hp-wrap svg {
+  width: 1.1em;
+  display: inline-block;
+}
+
+.hp-bar {
+  border: 0.1em solid var(--gameboy-dark);
+  border-radius: 0.4em;
+  height: 0.3em;
+  width: 4.5em;
+  display: inline-block;
+  margin-left: 0.2em;
+}
+
+.hp-bar-active {
+  background-color: var(--gameboy-light);
+  height: 100%;
+  width: 100%;
+  border-radius: 0.4em;
+  transition: width 500ms;
+}
+
+#foe .images {
+  right: 0.8em;
+}
+#foe .info {
+  left: 1.1em;
+}
+#foe .stats {
+  height: 3.05em;
+  background-image: url("../public/img/blue_line.svg");
+}
+#foe .name {
+  margin-left: -0.37em;
+  margin-top: 0.05em;
+  margin-bottom: -0.17em;
+}
+#foe .level-wrap {
+  margin-left: 2.2em;
+  margin-top: 0.02em;
+}
+#foe .hp-wrap {
+  margin-left: 0.6em;
+}
+
+#player {
+  padding-top: 4em;
+  height: 10.4em;
+}
+#player .images {
+  left: 0.8em;
+}
+#player .info {
+  right: 1.1em;
+}
+#player .stats {
+  background-image: url("../public/img/red_line.svg");
+}
+#player .name {
+  margin-left: 1em;
+  margin-top: 1.8em;
+}
+#player .level-wrap {
+  margin-left: 4.1em;
+}
+#player .hp-wrap {
+  margin-left: 0.9em;
+}
+#player .balls {
+  margin-top: 4em;
+}
+
+.windows {
+  line-height: 14px;
+}
+.windows .window {
+  position: absolute;
+  border-image: url("../public/img/frame.svg") 45% stretch;
+  border-style: solid;
+  border-width: 0.7em;
+  background: var(--gameboy-base);
+}
+.windows .window.texts {
+  margin: 0;
+  height: 3.2em;
+  left: 0.1em;
+  right: 0.1em;
+  bottom: 0.1em;
+}
+.windows .window.texts .text span {
+  height: 1em;
+  width: 1em;
+  display: inline-block;
+}
+.windows .window.texts .text.text1 {
+  margin-top: 0.5em;
+}
+.windows .window.texts .text.text2 {
+  margin-top: 0.1em;
+}
+.windows .window.menu {
+  bottom: 0.1em;
+  right: 0.1em;
+  height: 2.7em;
+  width: 7.4em;
+  padding: 0.5em 0 0 0.8em;
+}
+.windows .window.fight {
+  bottom: 0.1em;
+  right: 0.1em;
+  left: 3.3em;
+  min-height: 4.6em;
+  padding: 0.5em 0 0 0.8em;
+}
+.windows .window.fight .fight-details {
+  display: none;
+  top: -3.9em;
+  left: -3.9em;
+  width: 6.6em;
+  height: 2.4em;
+}
+.windows .window.fight .fight-details span {
+  display: block;
+  height: 0em;
+  margin-top: -0.2em;
+}
+.windows .window.fight .button:hover {
+  position: initial;
+}
+.windows .window.fight .button:hover:before {
+  left: 0em;
+}
+.windows .window.fight .button:hover .fight-details {
+  display: initial;
+}
+.windows .window.item {
+  top: 1.7em;
+  bottom: 4.1em;
+  left: 3.3em;
+  right: 0.1em;
+  padding: 0.6em;
+}
+.windows .window.pkmn {
+  top: 0.1em;
+  bottom: 0.1em;
+  left: 0.1em;
+  right: 0.1em;
+  padding-left: 0.8em;
+}
+
+.trainer,
+.balls {
+  display: none;
+}

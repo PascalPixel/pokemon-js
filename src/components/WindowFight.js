@@ -1,46 +1,43 @@
-import React from 'react'
+import React from "react";
 
 const WindowFight = (props) => {
   if (props.visibility) {
     return (
-      <div className='window fight'>
+      <div className="window fight">
         {props.moves.map((move) => {
           return (
             <div
-              className='button'
+              className="button"
               key={`move-${move.name}`}
-              onClick={() => { props.attack(move) }}>
+              onClick={() => {
+                props.attack(move);
+              }}
+            >
               {move.name.toUpperCase()}
-              <div className='window fight-details'>
-                <span className='type-header'>
-                  TYPE/
-                </span>
+              <div className="window fight-details">
+                <span className="type-header">TYPE/</span>
                 <br />
                 {move.types.map((type) => {
                   return (
-                    <span
-                      key={type}
-                      className='type'>
+                    <span key={type} className="type">
                       {type}
                       <br />
                     </span>
-                  )
+                  );
                 })}
               </div>
               <br />
             </div>
-          )
+          );
         })}
-        <div
-          className='button'
-          onClick={() => props.reframe({ fight: false })}>
+        <div className="button" onClick={() => props.reframe({ fight: false })}>
           cancel
         </div>
       </div>
-    )
+    );
   } else {
-    return null
+    return null;
   }
-}
+};
 
-export default WindowFight
+export default WindowFight;
