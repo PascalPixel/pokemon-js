@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="208px" height="17px" viewBox="0 0 208 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>pokemon-js</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="18" font-family="PokemonGB, Pokemon GB" font-weight="normal">
+        <g id="logo" transform="translate(0.000000, -1.000000)" fill="#585A26">
+            <text id="pokemon-js">
+                <tspan x="0" y="17">pokemon-js</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
