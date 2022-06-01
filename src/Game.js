@@ -1,38 +1,32 @@
 import _ from "lodash";
-import React from "react";
-// import VelocityComponent from 'velocity-react'
+import { useState } from "react";
 import Trainer from "./components/Trainer";
 import Windows from "./components/Windows";
 import STORE from "./constants/store";
 
-export default class Game extends React.Component {
-  constructor(props) {
-    super(props);
-
-    // Load store of info only in main Component.
-    this.state = STORE;
-  }
+export default function Game(props) {
+  const [state, setState] = useState(STORE);
 
   // Calculate hp
-  calculateHp(level, current, power) {
+  const calculateHp = (level, current, power) => {
     const newHp =
       power > 0
         ? current - Math.floor((((2 * level) / 5 + 2) * power) / 50 + 2)
         : current;
     return newHp > 0 ? newHp : 0;
-  }
+  };
 
   // Update HP
-  updateHp(side, hp) {
-    let newState = this.state;
+  const updateHp = (side, hp) => {
+    let newState = state;
     newState.trainers[side].pokemon[
       newState.trainers[side].activePokemon
     ].hpCurrent = hp;
-    this.setState(newState);
-  }
+    setState((prev) => ({ ...prev, newState }));
+  };
 
   // Function that loops over array of functions with timeouts.
-  animateArray(array) {
+  const animateArray = (array) => {
     let offset = 0;
     array.map((step) => {
       let delay = step[0] * 1000;
@@ -42,18 +36,18 @@ export default class Game extends React.Component {
         trigger();
       }, offset);
     });
-  }
+  };
 
   // Changes that Windows are visible.
-  reframe(update) {
+  const reframe = (update) => {
     console.log("Change visible windows: " + Object.keys(update));
 
-    const frames = Object.assign({}, this.state.frames, update);
-    this.setState({ frames });
-  }
+    const frames = Object.assign({}, state.frames, update);
+    setState((prev) => ({ ...prev, frames }));
+  };
 
   // Perform a move.
-  attack(movePlayer) {
+  const attack = (movePlayer) => {
     // Get all elements for animation; images and HP bars.
     const imagePlayer = document
       .getElementById("player")
@@ -63,42 +57,40 @@ export default class Game extends React.Component {
       .getElementsByClassName("images")[0];
 
     // Get the players.
-    const player = this.state.allot.left;
-    const foe = this.state.allot.right;
+    const player = state.allot.left;
+    const foe = state.allot.right;
 
     // Get details about the current Pokemon on both sides.
     const pokemonPlayer =
-      this.state.trainers[player].pokemon[
-        this.state.trainers[player].activePokemon
-      ];
+      state.trainers[player].pokemon[state.trainers[player].activePokemon];
     const pokemonFoe =
-      this.state.trainers[foe].pokemon[this.state.trainers[foe].activePokemon];
+      state.trainers[foe].pokemon[state.trainers[foe].activePokemon];
 
     // CPU pick foe move
     const moveFoe =
       pokemonFoe.moves[Math.floor(Math.random() * pokemonFoe.moves.length)];
 
     // New HP foePokemon
-    const hpNewPokemonFoe = this.calculateHp(
+    const hpNewPokemonFoe = calculateHp(
       pokemonPlayer.level,
       pokemonFoe.hpCurrent,
       movePlayer.power
     );
 
     // New HP playerPokemon
-    const hpNewPokemonPlayer = this.calculateHp(
+    const hpNewPokemonPlayer = calculateHp(
       pokemonFoe.level,
       pokemonPlayer.hpCurrent,
       moveFoe.power
     );
 
     // Array with all steps of the attack, including start and end functions, second argument is delay before running.
-    this.animateArray([
+    animateArray([
       // Start turns.
       [
         0.0,
         () => {
-          this.reframe({ fight: false, menu: false });
+          reframe({ fight: false, menu: false });
         },
       ],
 
@@ -106,9 +98,10 @@ export default class Game extends React.Component {
       [
         0.5,
         () => {
-          this.setState({
+          setState((prev) => ({
+            ...prev,
             lines: `${pokemonPlayer.name.toUpperCase()} used ${movePlayer.name.toUpperCase()}!`,
-          });
+          }));
         },
       ],
       [
@@ -168,13 +161,13 @@ export default class Game extends React.Component {
       [
         0.1,
         () => {
-          this.updateHp(foe, hpNewPokemonFoe);
+          updateHp(foe, hpNewPokemonFoe);
         },
       ],
       [
         0.0,
         () => {
-          this.setState({ lines: null });
+          setState((prev) => ({ ...prev, lines: null }));
         },
       ],
 
@@ -182,9 +175,10 @@ export default class Game extends React.Component {
       [
         0.5,
         () => {
-          this.setState({
+          setState((prev) => ({
+            ...prev,
             lines: `${pokemonFoe.name.toUpperCase()} used ${moveFoe.name.toUpperCase()}!`,
-          });
+          }));
         },
       ],
       [
@@ -244,13 +238,13 @@ export default class Game extends React.Component {
       [
         0.1,
         () => {
-          this.updateHp(player, hpNewPokemonPlayer);
+          updateHp(player, hpNewPokemonPlayer);
         },
       ],
       [
         0.0,
         () => {
-          this.setState({ lines: null });
+          setState((prev) => ({ ...prev, lines: null }));
         },
       ],
 
@@ -258,53 +252,45 @@ export default class Game extends React.Component {
       [
         1.0,
         () => {
-          this.reframe({ menu: true });
+          reframe({ menu: true });
         },
       ],
     ]);
-  }
+  };
 
   // Switch Pokemon
-  change(pokemon) {
+  const change = (pokemon) => {
     console.log("Switch to: " + pokemon.name);
-  }
+  };
 
   // Use Item
-  use(item) {
+  const use = (item) => {
     console.log("Item used: " + item.name);
-  }
+  };
 
   // Run from encounter/battle.
-  run() {
+  const run = () => {
     console.log("Attempted to Run.");
-  }
+  };
 
   // Render component.
-  render() {
-    return (
-      <div>
-        <Trainer
-          trainer={this.state.trainers[this.state.allot.right]}
-          currentTrainer={0}
-        />
+  return (
+    <div>
+      <Trainer trainer={state.trainers[state.allot.right]} currentTrainer={0} />
 
-        <Trainer
-          trainer={this.state.trainers[this.state.allot.left]}
-          currentTrainer={1}
-        />
+      <Trainer trainer={state.trainers[state.allot.left]} currentTrainer={1} />
 
-        <Windows
-          trainer={this.state.trainers[this.state.allot.left]}
-          frames={this.state.frames}
-          lines={this.state.lines}
-          // Actions.
-          reframe={this.reframe.bind(this)}
-          attack={this.attack.bind(this)}
-          change={this.change.bind(this)}
-          use={this.use.bind(this)}
-          run={this.run.bind(this)}
-        />
-      </div>
-    );
-  }
+      <Windows
+        trainer={state.trainers[state.allot.left]}
+        frames={state.frames}
+        lines={state.lines}
+        // Actions.
+        reframe={reframe.bind(this)}
+        attack={attack.bind(this)}
+        change={change.bind(this)}
+        use={use.bind(this)}
+        run={run.bind(this)}
+      />
+    </div>
+  );
 }

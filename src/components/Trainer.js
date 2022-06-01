@@ -21,7 +21,7 @@ export default class Trainer extends React.Component {
         </div>
         <div className="info">
           <div className="balls">
-            <img src="img/red_balls.svg" />
+            <img src="img/red_balls.svg" alt="balls" />
           </div>
           <Stats pokemon={pokemon} currentTrainer={currentTrainer} />
         </div>

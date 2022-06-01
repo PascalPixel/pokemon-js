@@ -11,11 +11,11 @@ const Stats = (props) => {
     <div className="stats">
       <div className="name">{name}</div>
       <div className="level-wrap">
-        <img src="img/level.svg" />
+        <img src="img/level.svg" alt="level" />
         <span className="level">{level}</span>
       </div>
       <div className="hp-wrap">
-        <img src="img/hp.svg" />
+        <img src="img/hp.svg" alt="hp" />
         <div className="hp-bar">
           <div
             className="hp-bar-active"
